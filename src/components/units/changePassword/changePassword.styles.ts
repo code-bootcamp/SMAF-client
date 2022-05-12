@@ -1,19 +1,17 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.form`
-  width: 1980px;
+  /* width: 1980px; */
   /* height: 800px; */
   /* background-color: lightgray; */
   /* padding: 108px auto; */
-
 `;
 
 export const PasswordWrapper = styled.form`
   width: 621px;
   height: 667px;
-  border: 1px solid red;
+  /* border: 1px solid blue; */
   margin: 108px auto;
-  /* margin-bottom: 108px; */
 `;
 
 
@@ -48,6 +46,7 @@ border: 1px solid #DBDBDB;
 border-radius: 8px;
 outline: none;
 margin-bottom: 24px;
+padding: 10px;
 `
 
 export const NumberInput = styled.input`
@@ -58,6 +57,7 @@ border: 1px solid #DBDBDB;
 border-radius: 8px;
 outline: none;
 margin-bottom: 12px;
+padding: 10px;
 `
 
 export const NumberButton = styled.button`
@@ -93,6 +93,7 @@ border: 1px solid #DBDBDB;
 border-radius: 8px;
 outline: none;
 margin-bottom: 12px;
+padding: 10px;
 `
 
 export const Button = styled.button`
