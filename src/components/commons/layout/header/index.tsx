@@ -1,103 +1,123 @@
-import * as S from "./header.styles";
-import { useMoveToPage } from "../../hooks/useMoveToPage";
-import { gql, useQuery, useMutation } from "@apollo/client";
-import { accessTokenState } from "../../store/index";
-import { useRecoilState } from "recoil";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { Modal } from "antd";
-import Payment from "../../../units/market/payMent/payMent.container";
+import styled from "@emotion/styled";
 
-const FETCH_USER_LOGGED_IN = gql`
-  query fetchUserLoggedIn {
-    fetchUserLoggedIn {
-      email
-      name
-      userPoint {
-        _id
-        amount
-      }
-    }
-  }
+const Wrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 90px;
+    background-color: #333333;
 `;
 
-const LOGOUT_USER = gql`
-  mutation logoutUser {
-    logoutUser
-  }
+const HeaderContents = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
 `;
 
-export default function LayoutHeader() {
-  const { onClickMoveToPage } = useMoveToPage();
-  const { data } = useQuery(FETCH_USER_LOGGED_IN);
-  const [accessToken] = useRecoilState(accessTokenState);
-  const [logoutUser] = useMutation(LOGOUT_USER);
-  const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
+const HeaderMain = styled.img`
+    width: 36px;
+    height: 36px;
+`;
 
-  const onToggleModal = () => {
-    setIsOpen((prev: boolean) => !prev);
-  };
+const HeaderTitle = styled.div`
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    padding-left: 2%;
+    padding-right: 4%;
 
-  const logoutUserName = async () => {
-    try {
-      const result = await logoutUser({});
-      console.log(result, "로그아웃결과");
-      location.reload();
-      router.push("/market");
-    } catch (error) {
-      alert("logoutFailed");
-    }
-  };
+    /* border: 1px solid yellow; */
+`;
 
-  return (
-    <>
-      <S.Wrapper>
-        <S.BasicRow>
-          <S.HomeBtn onClick={onClickMoveToPage("/")}>Home</S.HomeBtn>
-          <S.HomeBtn onClick={onClickMoveToPage("/board")}>FreeBoard</S.HomeBtn>
-          <S.HomeBtn onClick={onClickMoveToPage("/market")}>Market</S.HomeBtn>
-        </S.BasicRow>
-        <S.BasicRow>
-          {!accessToken ? (
-            <>
-              <S.LoginBtn onClick={onClickMoveToPage("/Login")}>
-                Login
-              </S.LoginBtn>
-              <S.SignBtn onClick={onClickMoveToPage("/signUp")}>
-                Sign Up
-              </S.SignBtn>
-            </>
-          ) : (
-            <>
-              <S.ProfileArea>
-                UserName : {data?.fetchUserLoggedIn.name} /
-              </S.ProfileArea>
-              <S.ProfileArea>
-                Point: {data?.fetchUserLoggedIn.userPoint.amount}
-              </S.ProfileArea>
-              <S.HomeBtn onClick={onClickMoveToPage("/myPage")}>
-                MyPage
-              </S.HomeBtn>
-              {isOpen && (
-                <Modal
-                  title="Payment"
-                  visible={true}
-                  onOk={onToggleModal}
-                  onCancel={onToggleModal}
-                >
-                  <Payment />
-                </Modal>
-              )}
-              <S.HomeBtn onClick={onToggleModal}>Payment</S.HomeBtn>
-              {/* <S.HomeBtn onClick={onClickMoveToPage("/payment")}>
-                Payment
-              </S.HomeBtn> */}
-              <S.HomeBtn onClick={logoutUserName}>logout</S.HomeBtn>
-            </>
-          )}
-        </S.BasicRow>
-      </S.Wrapper>
-    </>
-  );
+const HeaderSearch = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 44px;
+    background: #d9d9d9;
+    border-radius: 16px;
+`;
+
+const SearchFront = styled.div`
+    display: flex;
+    align-items: center;
+    padding-left: 35%;
+`;
+
+const SearchProject = styled.div`
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 36px;
+    letter-spacing: -0.03em;
+    color: #888888;
+`;
+
+const SearchEmo = styled.img`
+    width: 19px;
+    height: 19px;
+`;
+
+const SearchRight = styled.div`
+    padding-right: 4%;
+`;
+
+const SearchLine = styled.img`
+    width: 16px;
+    height: 16px;
+`;
+
+const HeaderOption = styled.div`
+    width: 90%;
+    display: flex;
+    align-items: center;
+    padding-left: 4%;
+    justify-content: space-evenly;
+`;
+
+const HeaderSignup = styled.div`
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    padding-left: 20%;
+`;
+
+const OptionAlarm = styled.img`
+    width: 30px;
+    height: 30px;
+`;
+const OptionQna = styled.img`
+    width: 33.25px;
+    height: 33.25px;
+`;
+
+export default function Layoutheader() {
+    return (
+        <Wrapper>
+            <HeaderContents>
+                <HeaderMain src="/image/mainClick.png" />
+                <HeaderTitle>SMAF</HeaderTitle>
+                <HeaderSearch>
+                    <SearchFront>
+                        <SearchEmo src="/image/searchemo.png" />
+                        <SearchProject>프로젝트 검색</SearchProject>
+                    </SearchFront>
+                    <SearchRight>
+                        <SearchLine src="/image/3line.png" />
+                    </SearchRight>
+                </HeaderSearch>
+                <HeaderOption>
+                    <OptionAlarm src="/image/alarm.png" alt="alarm" />
+                    <OptionQna src="/image/qna.png" alt="qna" />
+                    <HeaderSignup>회원가입</HeaderSignup>
+                </HeaderOption>
+            </HeaderContents>
+        </Wrapper>
+    );
 }

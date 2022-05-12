@@ -1,33 +1,33 @@
-import LayoutHeader from "./header/index";
-import LayoutBanner from "./banner/index";
-import LayoutNavigation from "./navigation/index";
-import LayoutFooter from "./footer/index";
+import styled from "@emotion/styled";
 import { ReactNode } from "react";
-import * as S from "./layoutStyle";
+import Layoutheader from "./header";
 import { useRouter } from "next/router";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import LayoutFooterBottom from "./footer/footerBottom";
+import LayoutFooterTop from "./footer/footerTop";
+
+const Body = styled.div`
+    height: 800px;
+`;
+const BodyWrapper = styled.div`
+    display: flex;
+`;
 
 interface ILayoutProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
-const HIDDEN_HEADER = [""];
-
 export default function Layout(props: ILayoutProps) {
-  const router = useRouter();
-  console.log(router);
+    const router = useRouter();
+    console.log(router);
 
-  const isHidden = HIDDEN_HEADER.includes(router.asPath);
-  return (
-    <S.MainWrapper>
-      {!isHidden && <LayoutHeader />}
-      <LayoutBanner />
-      <LayoutNavigation />
-      <S.BodyWrapper>
-        <S.Body>{props.children}</S.Body>
-      </S.BodyWrapper>
-      <LayoutFooter />
-    </S.MainWrapper>
-  );
+    return (
+        <>
+            <Layoutheader />
+            <BodyWrapper>
+                <Body>{props.children}</Body>
+            </BodyWrapper>
+            <LayoutFooterTop />
+            <LayoutFooterBottom />
+        </>
+    );
 }
