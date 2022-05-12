@@ -2,10 +2,16 @@ import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
     width: 100%;
     height: 56px;
+`;
+
+const FooterWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
     background-color: #ffffff;
     border-bottom: 1px solid #dbdbdb;
 `;
@@ -46,16 +52,18 @@ const FooterPatner = styled.div`
 export default function LayoutFooterTop() {
     return (
         <Wrapper>
-            <FooterMenu>
-                <FooterContents>회사소개</FooterContents>
-                <FooterContents>이용약관</FooterContents>
-                <FooterContents>개인정보처리방침</FooterContents>
-                <FooterContents>청소년보호방침</FooterContents>
-                <FooterContents>입점/제휴문의</FooterContents>
-                <FooterContents>대량구매문의</FooterContents>
-                <FooterStore>매장안내</FooterStore>
-            </FooterMenu>
-            <FooterPatner>파트너센터</FooterPatner>
+            <FooterWrapper>
+                <FooterMenu>
+                    <FooterContents>회사소개</FooterContents>
+                    <FooterContents>이용약관</FooterContents>
+                    <FooterContents>개인정보처리방침</FooterContents>
+                    <FooterContents>청소년보호방침</FooterContents>
+                    <FooterContents>입점/제휴문의</FooterContents>
+                    <FooterContents>대량구매문의</FooterContents>
+                    <FooterStore>매장안내</FooterStore>
+                </FooterMenu>
+                <FooterPatner>파트너센터</FooterPatner>
+            </FooterWrapper>
         </Wrapper>
     );
 }
