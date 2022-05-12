@@ -1,4 +1,4 @@
-import SignupUI from "./signUp.presenter";
+import SignupUI from "./signup.presenter";
 
 export default function SignUpContainer() {
     return <SignupUI />;
