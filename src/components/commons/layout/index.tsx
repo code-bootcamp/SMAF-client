@@ -9,7 +9,7 @@ const Body = styled.div`
     height: flex;
     margin: auto;
     width: 100%;
-    background-color: #d9d9d9;
+    background-color: #ededed;
 `;
 const BodyWrapper = styled.div`
     display: flex;

@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
     display: flex;
+    justify-content: center;
     width: 100%;
     height: 90px;
     background-color: #333333;
@@ -10,7 +11,13 @@ const Wrapper = styled.div`
 const HeaderContents = styled.div`
     display: flex;
     align-items: center;
-    width: 1920px;
+    justify-content: center;
+    width: 80%;
+`;
+
+const HeaderLogoWrapper = styled.div`
+    display: flex;
+    padding-right: 3%;
 `;
 
 const HeaderMain = styled.img`
@@ -22,29 +29,29 @@ const HeaderTitle = styled.div`
     font-weight: 700;
     font-size: 32px;
     line-height: 36px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     color: #ffffff;
-    padding-left: 2%;
-    padding-right: 4%;
+    padding-left: 10%;
 
     /* border: 1px solid yellow; */
 `;
 
 const HeaderSearch = styled.div`
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
-    width: 60%;
+    justify-content: center;
     height: 44px;
+    width: 45%;
     background: #d9d9d9;
     border-radius: 16px;
+    padding: 0 10px;
 `;
 
 const SearchFront = styled.div`
     display: flex;
     align-items: center;
-    padding-left: 35%;
+    justify-content: center;
+    width: 100%;
 `;
 
 const SearchProject = styled.div`
@@ -60,9 +67,7 @@ const SearchEmo = styled.img`
     height: 19px;
 `;
 
-const SearchRight = styled.div`
-    padding-right: 4%;
-`;
+const SearchRight = styled.div``;
 
 const SearchLine = styled.img`
     width: 16px;
@@ -70,11 +75,14 @@ const SearchLine = styled.img`
 `;
 
 const HeaderOption = styled.div`
-    width: 90%;
+    padding-left: 4%;
     display: flex;
     align-items: center;
-    padding-left: 4%;
-    justify-content: space-evenly;
+    padding-right: 4%;
+`;
+
+const HeaderQnaWrapper = styled.div`
+    padding-right: 5%;
 `;
 
 const HeaderSignup = styled.div`
@@ -83,7 +91,6 @@ const HeaderSignup = styled.div`
     line-height: 26px;
     letter-spacing: 0.02em;
     color: #ffffff;
-    padding-left: 20%;
 `;
 
 const OptionAlarm = styled.img`
@@ -99,8 +106,10 @@ export default function Layoutheader() {
     return (
         <Wrapper>
             <HeaderContents>
-                <HeaderMain src="/image/mainClick.png" />
-                <HeaderTitle>SMAF</HeaderTitle>
+                <HeaderLogoWrapper>
+                    <HeaderMain src="/image/mainClick.png" />
+                    <HeaderTitle>SMAF</HeaderTitle>
+                </HeaderLogoWrapper>
                 <HeaderSearch>
                     <SearchFront>
                         <SearchEmo src="/image/searchemo.png" />
@@ -112,9 +121,11 @@ export default function Layoutheader() {
                 </HeaderSearch>
                 <HeaderOption>
                     <OptionAlarm src="/image/alarm.png" alt="alarm" />
-                    <OptionQna src="/image/qna.png" alt="qna" />
-                    <HeaderSignup>회원가입</HeaderSignup>
                 </HeaderOption>
+                <HeaderQnaWrapper>
+                    <OptionQna src="/image/qna.png" alt="qna" />
+                </HeaderQnaWrapper>
+                <HeaderSignup>회원가입</HeaderSignup>
             </HeaderContents>
         </Wrapper>
     );
