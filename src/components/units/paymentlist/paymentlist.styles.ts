@@ -1,33 +1,41 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 1279px;
+  height: 668px;
+  display: flex;
+  flex-direction: row;
+  /* border: 1px solid red; */
+  margin: 60px auto;
 `;
 
+export const listWrapper = styled.div`
+  margin-left: 91px;
+`
 export const PaymentTitle = styled.div`
-  width: 100%;
+  width: 968px;
   height:46px;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
-  border: 1px solid red;
-  margin-top: 60px;
+  /* border: 1px solid red; */
   margin-bottom: 18px;
-
 `
 
 export const PaymentWrapper = styled.div`
   width: 968px;
   height: 604px;
   border-radius: 8px;
-  border: 1px solid blue;
+  background-color: white;
+  /* border: 1px solid blue; */
 `;
 
 export const Row = styled.div`
   width: 100%;
   height: 40px;
   background: #E5E5EF;
+  border-radius:8px 8px 0px 0px;
   display: flex;
   flex-direction: row;
   line-height: 40px;
@@ -116,10 +124,11 @@ export const ColumnCreatedAt = styled.div`
 export const Button = styled.button`
   width: 80px;
   height: 28px;
-  background: #6B6BFF;
+  background: #49496E;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 500;
+  line-height: 28px;
   color: white;
   border-radius: 8px;
   border: none;
