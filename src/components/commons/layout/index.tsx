@@ -6,10 +6,14 @@ import LayoutFooterBottom from "./footer/footerBottom";
 import LayoutFooterTop from "./footer/footerTop";
 
 const Body = styled.div`
-    height: 800px;
+    height: flex;
+    margin: auto;
+    width: 100%;
+    background-color: #d9d9d9;
 `;
 const BodyWrapper = styled.div`
     display: flex;
+    background-color: #d9d9d9;
 `;
 
 interface ILayoutProps {

@@ -2,17 +2,15 @@ import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
     display: flex;
-    justify-content: center;
-    width: 1980px; // 내가 줌 
+    width: 100%;
     height: 90px;
     background-color: #333333;
 `;
 
 const HeaderContents = styled.div`
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 1920px;
 `;
 
 const HeaderMain = styled.img`
@@ -37,7 +35,7 @@ const HeaderSearch = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    width: 100%;
+    width: 60%;
     height: 44px;
     background: #d9d9d9;
     border-radius: 16px;
