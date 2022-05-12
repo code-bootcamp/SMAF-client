@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 const Wrapper = styled.div`
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: 1980px; // 내가 줌 
     height: 90px;
     background-color: #333333;
 `;
