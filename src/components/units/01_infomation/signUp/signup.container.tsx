@@ -1,6 +1,5 @@
-import SignupUI from "./signup.container";
+import SignupUI from "./signUp.presenter";
 
-
-export default function SignUp() {
+export default function SignUpContainer() {
     return <SignupUI />;
 }
