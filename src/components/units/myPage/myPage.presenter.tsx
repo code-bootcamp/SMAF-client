@@ -1,7 +1,9 @@
 // import Project from "../../commons/project/project.container";
 import * as S from "./myPage.styles"
 import UserInfoCard from "../../commons/userInfoCard/userInfoCard.container";
-import Project from "../../commons/project/01/project01.container";
+// import Project from "../../commons/project/01/project01.container";
+import Project01 from "../../commons/project/01/project01.container";
+import Project02 from "../../commons/project/02/project02.containter";
 
 export default function MyPageUI(){
     return(
@@ -14,14 +16,14 @@ export default function MyPageUI(){
                         <S.AddButton>+ 프로젝트 추가하기</S.AddButton>
                     </S.Wrapper2>
                     {/* 맵돌릴거임 */}
-                    <Project/>
+                    <Project01/>
                 </S.ProjectWrapper2>
                 <S.ProjectWrapper2>
                     <S.Wrapper2>
                         <S.Title>지난 프로젝트</S.Title>
                         <S.DateButton>최신순</S.DateButton>
                     </S.Wrapper2>
-                    <Project/>
+                    <Project02/>
                 </S.ProjectWrapper2>
             </S.ProjectWrapper>
         </S.Wrapper>
