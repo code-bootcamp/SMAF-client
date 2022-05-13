@@ -17,9 +17,7 @@ align-items: center;
 padding-bottom: 20px;
 `
 export const TeamPeople=styled.div`
-display: flex;
-justify-content: space-between;
-padding: 0 20px 0 10px;
+
 `
 export const TeamPerson=styled.img`
 width: 48px;
@@ -27,14 +25,19 @@ height: 48px;
 border-radius: 30px;
 `
 export const Name=styled.div`
-padding-top: 10px;
+padding-left: 10px;
+font-weight: 500;
+font-size: 16px;
 `
 export const Team=styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
 font-size: 16px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 7px 0 7px 0;
+`
+export const Line=styled.div`
+border-bottom: 1px solid #EDEDED;
 `
 export const TeamPersonAdd=styled.div`
 width: 48px;
@@ -47,4 +50,16 @@ display: flex;
 align-items: center;
 justify-content: center;
 padding-bottom: 7px;
+`
+export const Member=styled.div`
+display: flex;
+align-items: center;
+`
+export const RemoveBtn=styled.button`
+width: 46px;
+height: 26px;
+font-size: 12px;
+background-color: #EDEDED;
+border-radius: 13px;
+border: none;
 `
