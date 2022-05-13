@@ -6,8 +6,7 @@ export default function MainPage(){
 
     return(
         // <Main/>
-        // <BeforeLogin />
-        <QuestionAnswerList />
-
+         <BeforeLogin />
+        // <QuestionAnswerList />
     )
 }

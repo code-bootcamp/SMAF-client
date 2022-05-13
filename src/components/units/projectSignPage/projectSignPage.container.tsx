@@ -1,4 +1,4 @@
-import ProjectSignPageHTML from "./projectSignPage.presenter";
-export default function ProjectSignPage() {
-  return <ProjectSignPageHTML />;
+import ProjectSignPageUI from "./projectSignPage.presenter";
+export default function ProjectSign() {
+  return <ProjectSignPageUI />;
 }

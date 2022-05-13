@@ -24,7 +24,23 @@ export const ListBox=styled.div`
 display: flex;
 padding-bottom: 15px;
 `
-export const Check=styled.img`
+export const Check1=styled.div`
+width: 24px;
+height: 24px;
+background-color: #FF8B8B;
+border-radius: 4px;
+`
+export const Check2=styled.div`
+width: 24px;
+height: 24px;
+background-color: #7CD2E5;
+border-radius: 4px;
+`
+export const Check3=styled.div`
+width: 24px;
+height: 24px;
+background-color: #FFD954;
+border-radius: 4px;
 `
 export const ProjectName=styled.div`
 padding-left: 5px;
