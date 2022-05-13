@@ -1,4 +1,4 @@
-import * as S from './projectList.styles.ts'
+import * as S from './projectList.styles'
 
 export default function ProjectListUI(){
 
@@ -9,16 +9,16 @@ export default function ProjectListUI(){
                 <S.Add>+</S.Add>
             </S.TitleBox>
             <S.ListBox>
-                <S.Check src="/mainPageImages/check1.png" />
-                <S.ProjectName>프로젝트 1</S.ProjectName>
+                <S.Check1></S.Check1>
+                <S.ProjectName>코카콜라 리디자인 프로젝트</S.ProjectName>
             </S.ListBox>
             <S.ListBox>
-                <S.Check src="/mainPageImages/check2.png" />
-                <S.ProjectName>프로젝트 2</S.ProjectName>
+                <S.Check2></S.Check2>
+                <S.ProjectName>친환경 서비스 프로젝트</S.ProjectName>
             </S.ListBox>
             <S.ListBox>
-                <S.Check src="/mainPageImages/check3.png" />
-                <S.ProjectName>프로젝트 3</S.ProjectName>
+                <S.Check3></S.Check3>
+                <S.ProjectName>안드로이드 백엔드 개발자</S.ProjectName>
             </S.ListBox>
         </S.Wrapper>
     )
