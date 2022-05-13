@@ -1,4 +1,4 @@
-import QuestionAnswerListUI from "./QuestionAnswerList.presenter";
+import QuestionAnswerListUI from "./QuestionAnswerList.presenter"
 
 export default function QuestionAnswerList(){
 

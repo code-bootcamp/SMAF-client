@@ -11,15 +11,17 @@ export default function ChangePasswordUI() {
         </div>
         <div>
           <S.SubTitle>휴대폰 번호</S.SubTitle>
-          <div>
+          <S.NumberWrapper>
             <S.NumberInput type="text" placeholder="01012345678"></S.NumberInput>
             <S.NumberButton>인증번호 전송</S.NumberButton>
-          </div>
-          <div>
+          </S.NumberWrapper>
+
+
+          <S.NumberWrapper>
             <S.NumberInput type="text" placeholder="인증번호를 입력해주세요."></S.NumberInput>
-            <S.NumberButton>인증하기</S.NumberButton><br/>
+            <S.NumberButton>인증하기</S.NumberButton>
+          </S.NumberWrapper>
             <S.Authorization>인증이 완료되었습니다.</S.Authorization>
-          </div>
         </div>
         <div>
           <S.SubTitle>새로운 비밀번호</S.SubTitle>
@@ -31,6 +33,7 @@ export default function ChangePasswordUI() {
             type="password"
             placeholder="비밀번호를 다시 이력해주세요."
           ></S.PasswordInput>
+               <S.PasswordAuthorization>인증이 완료되었습니다.</S.PasswordAuthorization>
         </div>
         <S.Button>비밀번호 변경</S.Button>
       </S.PasswordWrapper>

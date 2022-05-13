@@ -6,7 +6,10 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   /* border: 1px solid red; */
-  margin: 60px auto;
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 120px;
 `;
 
 export const ProjectWrapper = styled.div`
