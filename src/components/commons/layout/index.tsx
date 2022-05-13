@@ -1,19 +1,19 @@
 import styled from "@emotion/styled";
 import { ReactNode } from "react";
-import Layoutheader from "./header";
+import Layoutheader from "./header/LayoutHeader.container";
 import { useRouter } from "next/router";
-import LayoutFooterBottom from "./footer/footerBottom";
-import LayoutFooterTop from "./footer/footerTop";
+import LayoutFooterBottom from "./footer/footerBottom/LayutFooterBottom.container";
+import LayoutFooterTop from "./footer/footerTop/LayoutFooterTop.container";
 
 const Body = styled.div`
-    height: flex;
-    margin: auto;
+    display: flex;
+    justify-content: center;
     width: 100%;
     background-color: #ededed;
 `;
 const BodyWrapper = styled.div`
     display: flex;
-    background-color: #d9d9d9;
+    background-color: #ededed;
 `;
 
 interface ILayoutProps {

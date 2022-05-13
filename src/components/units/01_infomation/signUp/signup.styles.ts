@@ -23,119 +23,165 @@ export const SignUpTitle = styled.div`
 `;
 
 export const SignUpProfileButton = styled.button`
-    width: 92px;
-    height: 92px;
+    width: 120px;
+    height: 120px;
     border-radius: 100%;
+    border-color: black;
 `;
 
-export const SignUpProfileSelect = styled.div`
-    padding-top: 5%;
-    font-weight: 600;
-`;
+export const ProfileHuman = styled.img``;
 
 export const SignUpInfo = styled.div``;
 
 export const SignUpName = styled.div`
-    padding-bottom: 3%;
+    margin-top: 80px;
+    margin-bottom: 20px;
     font-weight: 600;
+    font-size: 28px;
+`;
+
+export const NameInput = styled.input`
+    width: 330px;
+    height: 60px;
+    border-radius: 8px;
+    font-size: 20px;
+    padding-left: 3%;
+    border: 2px solid #dbdbdb;
+    outline: none;
+    margin-bottom: 80px;
 `;
 
 export const SignupInput = styled.input`
-    width: 620px;
-    height: 48px;
+    width: 880px;
+    height: 60px;
     border-radius: 8px;
     background-color: #ffffff;
+    font-size: 20px;
     font-weight: 600;
+    padding-left: 3%;
+    border: 2px solid #dbdbdb;
+    outline: none;
 `;
 
 export const SignUpEmail = styled.div`
-    padding-bottom: 3%;
-    padding-top: 3%;
+    margin-bottom: 20px;
     font-weight: 600;
+    font-size: 28px;
 `;
 
 export const SignUpPassword = styled.div`
-    padding-bottom: 3%;
-    padding-top: 3%;
+    margin-bottom: 20px;
+    margin-top: 80px;
     font-weight: 600;
+    font-size: 28px;
 `;
 
 export const PasswordInput1 = styled.input`
-    width: 620px;
-    height: 48px;
+    width: 880px;
+    height: 60px;
     border-radius: 8px;
     background-color: #ffffff;
     font-weight: 600;
+    font-size: 20px;
+    padding-left: 3%;
+    border: 2px solid #dbdbdb;
+    outline: none;
+    margin-bottom: 20px;
 `;
 
 export const PasswordInput2 = styled.input`
-    width: 620px;
-    height: 48px;
+    width: 880px;
+    height: 60px;
     border-radius: 8px;
     background-color: #ffffff;
     font-weight: 600;
+    padding-left: 3%;
+    font-size: 20px;
+    border: 2px solid #dbdbdb;
+    outline: none;
 `;
 
 export const SignupPhone = styled.div``;
 
 export const SignUpNumber = styled.div`
-    padding-bottom: 3%;
-    padding-top: 5%;
+    margin-bottom: 20px;
+    margin-top: 80px;
     font-weight: 600;
+    font-size: 28px;
 `;
 
 export const SignUpcertification = styled.div``;
 
+export const SignNumberSend = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+export const SignNumberReceive = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
 export const SignUpPhoneInput = styled.input`
-    font-size: 16px;
-    width: 454.81px;
-    height: 48px;
+    font-size: 20px;
+    width: 570px;
+    height: 60px;
     border-radius: 8px;
     background-color: #ffffff;
     font-weight: 600;
+    padding-left: 3%;
+    border: 2px solid #dbdbdb;
+    outline: none;
 `;
 
 export const SignUpPhoneSendButton = styled.button`
-    width: 141.59px;
-    height: 48px;
+    width: 240px;
+    height: 60px;
     border-radius: 8px;
-    font-size: 16px;
-    background-color: #aaaaca;
+    font-size: 20px;
+    background-color: #333333;
     color: #ffffff;
     font-weight: 800;
 `;
 
-export const SignAboutMe = styled.div``;
+export const SignAboutMe = styled.div`
+    height: 20%;
+`;
 
 export const SignAboutTitle = styled.div`
-    font-size: 18px;
-    padding-top: 4%;
+    font-size: 28px;
+    padding-top: 10%;
     padding-bottom: 3%;
     font-weight: 700;
 `;
 
-export const SignAboutInput = styled.input`
+export const SignAboutInput = styled.textarea`
     background-color: #ffffff;
-    width: 620px;
-    height: 168px;
+    width: 880px;
+    height: 360px;
     border-radius: 8px;
+    font-weight: 400;
+    font-size: 20px;
+    border: 2px solid #dbdbdb;
+    outline: none;
+    padding: 16px 0 0 20px;
 `;
 
 export const SignButtonWrapper = styled.div`
     display: flex;
-    padding-top: 12%;
     justify-content: center;
-    padding-bottom: 15%;
 `;
 
 export const SignSubmitButton = styled.button`
     align-items: center;
     justify-content: center;
-    width: 264px;
-    height: 48px;
-    background-color: #49496e;
+    width: 398px;
+    height: 90px;
+    margin-top: 236px;
+    margin-bottom: 160px;
+    background-color: #333333;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 28px;
     border-radius: 8px;
     font-weight: 700;
 `;
