@@ -6,12 +6,13 @@ export default function SignupUI() {
             <S.SignUpContents>
                 <S.SignUpTop>
                     <S.SignUpTitle>회원가입</S.SignUpTitle>
-                    <S.SignUpProfileButton></S.SignUpProfileButton>
-                    <S.SignUpProfileSelect>프로필 사진 선택</S.SignUpProfileSelect>
+                    <S.SignUpProfileButton>
+                        <S.ProfileHuman src="/image/human.png" />
+                    </S.SignUpProfileButton>
                 </S.SignUpTop>
                 <S.SignUpInfo>
                     <S.SignUpName>이름</S.SignUpName>
-                    <S.SignupInput placeholder="이름을 입력해주세요"></S.SignupInput>
+                    <S.NameInput placeholder="이름을 입력해주세요"></S.NameInput>
                     <S.SignUpEmail>이메일</S.SignUpEmail>
                     <S.SignupInput placeholder="이메일을 입력해주세요"></S.SignupInput>
                     <S.SignUpPassword>비밀번호</S.SignUpPassword>
@@ -21,18 +22,17 @@ export default function SignupUI() {
                     <S.PasswordInput2 placeholder="비밀번호를 입력해주세요"></S.PasswordInput2>
                 </S.SignUpInfo>
                 <S.SignupPhone>
-                    <S.SignUpNumber>휴대폰번호</S.SignUpNumber>
+                    <S.SignUpNumber>휴대폰 번호</S.SignUpNumber>
                     <S.SignUpcertification>
-                        <span>
+                        <S.SignNumberSend>
                             <S.SignUpPhoneInput placeholder="010123456678"></S.SignUpPhoneInput>
                             <S.SignUpPhoneSendButton>인증번호 전송</S.SignUpPhoneSendButton>
-                        </span>
+                        </S.SignNumberSend>
                         <br />
-                        <span>
-                            <br />
+                        <S.SignNumberReceive>
                             <S.SignUpPhoneInput placeholder="인증받는 번호를 남겨주세요"></S.SignUpPhoneInput>
                             <S.SignUpPhoneSendButton>인증하기</S.SignUpPhoneSendButton>
-                        </span>
+                        </S.SignNumberReceive>
                     </S.SignUpcertification>
                 </S.SignupPhone>
                 <S.SignAboutMe>
