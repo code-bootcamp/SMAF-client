@@ -5,10 +5,8 @@ import {
   ApolloLink,
 } from "@apollo/client";
 import { useRecoilState } from "recoil";
-
 import { createUploadLink } from "apollo-upload-client";
 import { ReactNode, useEffect } from "react";
-
 import { getAccessToken } from "../libraries/getAccessToken.ts/getAccessToken";
 import { onError } from "@apollo/client/link/error";
 import { accessTokenState } from "../store/index";
@@ -53,7 +51,7 @@ export default function ApolloSetting(props: IAppProps) {
   });
 
   const uploadLink = createUploadLink({
-    uri: "https://backend06.codebootcamp.co.kr/graphql",
+    uri: "https://smaf.shop/graphql",
     headers: { Authorization: `Bearer ${accessToken}` },
     credentials: "include",
   });
