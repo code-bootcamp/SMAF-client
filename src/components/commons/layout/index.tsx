@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
-import { ReactNode } from "react";
 import Layoutheader from "./header/LayoutHeader.container";
 import { useRouter } from "next/router";
 import LayoutFooterBottom from "./footer/footerBottom/LayutFooterBottom.container";
 import LayoutFooterTop from "./footer/footerTop/LayoutFooterTop.container";
+import { ReactNode } from "react";
 
 const Body = styled.div`
     display: flex;
