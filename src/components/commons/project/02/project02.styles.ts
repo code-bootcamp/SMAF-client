@@ -1,54 +1,53 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div``;
+
+export const Container = styled.div`
   width: 310px;
   height: 240px;
   border: 1px solid white;
   background: white;
   border-radius: 16px 16px 16px 16px;
   cursor: pointer;
+  padding: 24px 20px 24px 20px;
 `;
 
 export const Title = styled.div`
-  width: 200px;
-  height: 29px;
+  /* width: 200px; */
+  /* height: 29px; */
   /* border: 1px solid blue; */
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 2rem;
   line-height: 29px;
   letter-spacing: -0.02em;
   color: #111111;
-  margin-top: 18px;
-  margin-bottom: 4px;
-  margin-left: 20px;
+  padding-top: 18px;
 `;
 
 export const Title2 = styled.div`
-  width: 270px;
-  /* height: 44px; */
+  /* width: 270px; */
   /* border: 1px solid blue; */
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 1.5rem;
   line-height: 22px;
   letter-spacing: -0.02em;
+  padding-top: 4px;
   color: #111111;
-  margin-left: 20px;
-  margin-bottom: 29px;
 `;
 
 export const Title3 = styled.div`
-  width: 163px;
-  height: 20px;
+  /* width: 163px; */
+  /* height: 20px; */
   /* border: 1px solid blue; */
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 20px;
+  padding-top: 29px;
   color: #767676;
-  margin-left: 20px;
 `;

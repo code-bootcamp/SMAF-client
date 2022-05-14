@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 
-export const QuestionAnswerWrapper = styled.form`
+export const Wrapper = styled.div`
+  padding: 120px 520px 120px 520px;
+`;
+
+export const Container = styled.form`
   width: 880px;
   /* height: 667px; */
-  margin-top: 120px;
-  margin-bottom: 160px;
-  margin-left: auto;
-  margin-right: auto;
   /* border: 1px solid blue; */
   display: flex;
   flex-direction: column;
@@ -16,80 +16,75 @@ export const QuestionAnswerWrapper = styled.form`
 
 export const Title = styled.div`
   width: 100%;
-  height:48px;
   text-align: center;
   font-weight: 700;
-  line-height: 48px;
-  margin-bottom: 90px;
+  line-height: 4.8rem;
+  padding-bottom: 90px;
   /* border: 1px solid red; */
-  font-size: 32px;
-  line-height: 41px;
+  font-size: 3.2rem;
   /* color: red; */
-`
+`;
 
-export const InputWrapper =styled.div`
+export const InputWrapper = styled.div`
   width: 100%;
-  height: 60px;
+  height: 6rem;
   /* border: 1px solid red; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 48px;
-`
-export const SelectQuestion = styled.div`
-
-`
+`;
+export const SelectQuestion = styled.div``;
 export const Question = styled.input`
-  height: 60px;
-  width: 704px;
-  border: 2px solid #DBDBDB;
+  height: 100%;
+  width: 80%;
+  border: 2px solid #dbdbdb;
+  /* border: 2px solid blue; */
   border-radius: 8px;
   outline: none;
   padding: 10px;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 2rem;
+  line-height: 2.8rem;
   /* identical to box height, or 140% */
   letter-spacing: -0.02em;
-  color: #A3A3A3;
-
-`
+  color: #a3a3a3;
+`;
 
 export const Content = styled.input`
   width: 100%;
-  height: 620px;
-  background: #FFFFFF;
-  border: 2px solid #DBDBDB;
+  height: 62rem;
+  background: #ffffff;
+  border: 2px solid #dbdbdb;
   border-radius: 8px;
   margin-bottom: 120px;
   padding: 10px;
   outline: none;
   padding-bottom: 571px;
-  font-family: 'Noto Sans KR';
+  font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 2rem;
+  line-height: 2.8rem;
   /* identical to box height, or 140% */
   letter-spacing: -0.02em;
-  color: #A3A3A3;
-
-`
+  color: #a3a3a3;
+`;
 
 export const Button = styled.button`
-  width: 342px;
-  height: 90px;
-  border: 1px solid #DBDBDB;
+  width: 34.2rem;
+  height: 9rem;
+  border: 1px solid #dbdbdb;
   background: #333333;
   border-radius: 12px;
-  color: #FFFFFF;
-  font-family: 'Noto Sans KR';
+  color: #ffffff;
+  font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 700;
-  font-size: 28px;
-  line-height: 41px;
+  font-size: 2.8rem;
+  line-height: 4.1rem;
   text-align: center;
   cursor: pointer;
-`
+`;
