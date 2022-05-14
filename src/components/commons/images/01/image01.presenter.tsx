@@ -1,14 +1,10 @@
 import * as S from "./image01.styles";
 
-
-interface IMembersProps{
-meberImageSrc: string | undefined;
+interface IMembersProps {
+  meberImageSrc: string | undefined;
 }
 
-
-
-
-export default function ImageCircleUI(props:IMembersProps) {
+export default function ImageCircleUI(props: IMembersProps) {
   return (
     <S.ImageBox>
       <S.One src={props.meberImageSrc}></S.One>

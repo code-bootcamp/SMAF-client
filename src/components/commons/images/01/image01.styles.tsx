@@ -3,8 +3,6 @@ import styled from "@emotion/styled";
 export const ImageBox = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: 20px;
-  margin-top: 24px;
 `;
 
 export const One = styled.img`
@@ -61,4 +59,3 @@ export const Five = styled.img`
   border: 4px solid white;
   color: white;
 `;
-
