@@ -23,7 +23,7 @@ export const FooterMenu = styled.div`
 
 export const FooterContents = styled.div`
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1.4rem;
     line-height: 20px;
     letter-spacing: -0.05em;
     color: #000000;
@@ -33,7 +33,7 @@ export const FooterContents = styled.div`
 
 export const FooterStore = styled.div`
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1.4rem;
     line-height: 20px;
     letter-spacing: -0.05em;
     color: #000000;
@@ -42,7 +42,7 @@ export const FooterStore = styled.div`
 
 export const FooterPatner = styled.div`
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1.4rem;
     line-height: 20px;
     letter-spacing: -0.05em;
 
