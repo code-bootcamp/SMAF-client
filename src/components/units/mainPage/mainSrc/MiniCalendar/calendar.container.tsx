@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-// import {Ccc} from '../../../node_modules/react-calendar/dist/Calendar'
-import Calendar from 'react-calendar';
+import { useState } from 'react';
+import * as S from './calendar.styles'
+import dayjs from 'dayjs';
 import 'react-calendar/dist/Calendar.css';
-
 
 export default function MiniCalendar(){
 
     const [value, onChange] = useState(new Date());
     
-    
     return(
-    <div style={{width:"310px"}}>
-      <Calendar onChange={onChange} value={value} />
-    </div>
+    <>
+      <S.MiniCalendar  onChange={onChange} value={value} 
+      formatDay ={(locale, date) => dayjs(date).format('DD')}
+      />
+    </>
     )
 }
