@@ -17,8 +17,6 @@ export default function SignupUI() {
                     <S.SignupInput placeholder="이메일을 입력해주세요"></S.SignupInput>
                     <S.SignUpPassword>비밀번호</S.SignUpPassword>
                     <S.PasswordInput1 placeholder="비밀번호를 입력해주세요"></S.PasswordInput1>
-                    <br />
-                    <br />
                     <S.PasswordInput2 placeholder="비밀번호를 입력해주세요"></S.PasswordInput2>
                 </S.SignUpInfo>
                 <S.SignupPhone>
@@ -28,7 +26,6 @@ export default function SignupUI() {
                             <S.SignUpPhoneInput placeholder="010123456678"></S.SignUpPhoneInput>
                             <S.SignUpPhoneSendButton>인증번호 전송</S.SignUpPhoneSendButton>
                         </S.SignNumberSend>
-                        <br />
                         <S.SignNumberReceive>
                             <S.SignUpPhoneInput placeholder="인증받는 번호를 남겨주세요"></S.SignUpPhoneInput>
                             <S.SignUpPhoneSendButton>인증하기</S.SignUpPhoneSendButton>
@@ -40,7 +37,7 @@ export default function SignupUI() {
                     <S.SignAboutInput placeholder="자기소개를 입력해주세요"></S.SignAboutInput>
                 </S.SignAboutMe>
                 <S.SignButtonWrapper>
-                    <S.SignSubmitButton>회원가입</S.SignSubmitButton>
+                    <S.SignSubmitButton>회원가입완료</S.SignSubmitButton>
                 </S.SignButtonWrapper>
             </S.SignUpContents>
         </S.Wrapper>

@@ -21,13 +21,13 @@ export const HeaderLogoWrapper = styled.div`
 `;
 
 export const HeaderMain = styled.img`
-    width: 36px;
-    height: 36px;
+    width: 3.6rem;
+    height: 3.6rem;
 `;
 
 export const HeaderTitle = styled.div`
     font-weight: 700;
-    font-size: 32px;
+    font-size: 3.2rem;
     line-height: 36px;
     letter-spacing: 0.05em;
     color: #ffffff;
@@ -36,43 +36,52 @@ export const HeaderTitle = styled.div`
     /* border: 1px solid yellow; */
 `;
 
-export const HeaderSearch = styled.div`
+export const HeaderSearch = styled.input`
     display: flex;
     align-items: center;
     justify-content: center;
     height: 44px;
     width: 45%;
     background: #d9d9d9;
-    border-radius: 16px;
-    padding: 0 10px;
-`;
-
-export const SearchFront = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-`;
-
-export const SearchProject = styled.div`
+    border-radius: 1.6rem;
+    border: none;
+    font-size: 2rem;
+    padding-left: 25rem;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 36px;
-    letter-spacing: -0.03em;
-    color: #888888;
+    outline: none;
+
+    background-image: url(/image/searchemo.png);
+    background-repeat: no-repeat;
+    background-size: 1.9rem;
+    background-position: 56rem center;
 `;
 
-export const SearchEmo = styled.img`
-    width: 19px;
-    height: 19px;
-`;
+// export const SearchFront = styled.div`
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 100%;
+// `;
 
-export const SearchRight = styled.div``;
+// export const SearchProject = styled.div`
+//     font-weight: 400;
+//     font-size: 20px;
+//     line-height: 36px;
+//     letter-spacing: -0.03em;
+//     color: #888888;
+// `;
 
-export const SearchLine = styled.img`
-    width: 16px;
-    height: 16px;
-`;
+// export const SearchEmo = styled.img`
+//     width: 19px;
+//     height: 19px;
+// `;
+
+// export const SearchRight = styled.div``;
+
+// export const SearchLine = styled.img`
+//     width: 16px;
+//     height: 16px;
+// `;
 
 export const HeaderOption = styled.div`
     padding-left: 4%;
@@ -87,17 +96,17 @@ export const HeaderQnaWrapper = styled.div`
 
 export const HeaderSignup = styled.div`
     font-weight: 700;
-    font-size: 18px;
+    font-size: 1.8rem;
     line-height: 26px;
     letter-spacing: 0.02em;
     color: #ffffff;
 `;
 
 export const OptionAlarm = styled.img`
-    width: 30px;
-    height: 30px;
+    width: 3rem;
+    height: 3rem;
 `;
 export const OptionQna = styled.img`
-    width: 33.25px;
-    height: 33.25px;
+    width: 3.325rem;
+    height: 3.325rem;
 `;
