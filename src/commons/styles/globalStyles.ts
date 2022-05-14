@@ -1,12 +1,20 @@
 import { css } from "@emotion/react";
 
 export const globalStyles = css`
-  * {
+  /* * {
     margin: 0px;
     box-sizing: border-box;
     font-family: "NotoSansKR", "Roboto";
-  }
+  } */
 
+  html {
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    height: 100%;
+    font-size: 62.5%;
+    margin: 0;
+  }
   /* ::-webkit-scrollbar {
     width: 0.4rem;
   }
