@@ -9,9 +9,9 @@ export const AddColumn = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  width: 240px;
+  width: 24rem;
   height: 60px;
   border-radius: 16px;
   background-color: #ffffff;
@@ -20,7 +20,7 @@ export const AddColumn = styled.div`
 `;
 
 export const AddCoulumnIcon = styled.img`
-  width: 24px;
-  height: 24px;
+  width: 2.4rem;
+  height: 2.4rem;
   cursor: pointer;
 `;

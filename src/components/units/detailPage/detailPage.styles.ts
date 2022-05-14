@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   /* width: 67%; */
-  width: 1280px;
+  width: 128rem;
   border: 1px solid black;
   padding-top: 60px;
 `;
@@ -21,22 +21,22 @@ export const BasicColumn = styled.div`
 export const LeftWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 220px;
+  width: 22rem;
   margin-right: 70px;
 `;
 
 export const ProjectDetail = styled.div`
   display: flex;
   flex-direction: column;
-  width: 220px;
+  width: 22rem;
   background-color: #ffffff;
   border-radius: 15px;
   margin-bottom: 32px;
 `;
 
 export const DetailImg = styled.img`
-  width: 220px;
-  height: 140px;
+  width: 22rem;
+  height: 14rem;
   object-fit: cover;
   padding-bottom: 23px;
   border-top-left-radius: 15px;
@@ -44,9 +44,9 @@ export const DetailImg = styled.img`
 `;
 
 export const DetailProjectName = styled.div`
-  width: 220px;
+  width: 22rem;
   padding: 0px 20px 0px 20px;
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 700;
   /* white-space: nowrap;
   overflow: hidden;
@@ -57,30 +57,30 @@ export const DetailProjectName = styled.div`
 
 export const DetailProjectContents = styled.div`
   width: 220px;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
   padding: 0px 31px 32px 20px;
 `;
 
 export const DetailProjectDay = styled.div`
-  width: 220px;
+  width: 22rem;
   color: #767676;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
   padding: 0px 31px 11px 20px;
 `;
 
 export const DetailProjectPosition = styled.div`
-  width: 220px;
+  width: 22rem;
   color: #767676;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 400;
   padding: 0px 31px 27px 20px;
 `;
 
 export const DetailProjectIcon = styled.img`
-  width: 13.3px;
-  height: 16.6px;
+  width: 1.33rem;
+  height: 1.66rem;
   margin-right: 5px;
 `;
 
