@@ -1,8 +1,5 @@
-import ProjectListUI from "./projectList.presenter.tsx";
+import ProjectListUI from "./projectList.presenter";
 
-export default function ProjectList(){
-
-    return(
-        <ProjectListUI/>
-    )
+export default function ProjectList() {
+  return <ProjectListUI />;
 }
