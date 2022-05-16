@@ -3,63 +3,63 @@ import styled from "@emotion/styled";
 export const Wrapper=styled.div`
 width: 100%;
 background-color: white;
-border-radius: 16px;
-padding: 15px;
+border-radius: 1.6rem;
+padding: 1.5rem;
 `
 export const Title=styled.div`
-font-size: 24px;
+font-size: 2.4rem;
 font-weight: 500;
 `
 export const TitleBox=styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding-bottom: 20px;
+padding-bottom: 2rem;
 `
 export const TeamPeople=styled.div`
 
 `
 export const TeamPerson=styled.img`
-width: 48px;
-height: 48px;
-border-radius: 30px;
+width: 4.8rem;
+height: 4.8rem;
+border-radius: 3rem;
 `
 export const Name=styled.div`
-padding-left: 10px;
+padding-left: 1rem;
 font-weight: 500;
-font-size: 16px;
+font-size: 1.6rem;
 `
 export const Team=styled.div`
-font-size: 16px;
+font-size: 1.6rem;
 display: flex;
 align-items: center;
 justify-content: space-between;
-padding: 7px 0 7px 0;
+padding: 0.7rem 0 0.7rem 0;
 `
 export const Line=styled.div`
-border-bottom: 1px solid #EDEDED;
+border-bottom: 0.1rem solid #EDEDED;
 `
 export const TeamPersonAdd=styled.div`
-width: 48px;
-height: 48px;
-border-radius: 30px;
+width: 4.8rem;
+height: 4.8rem;
+border-radius: 3rem;
 background-color: #333333;
 color: white;
-font-size: 30px;
+font-size: 3rem;
 display: flex;
 align-items: center;
 justify-content: center;
-padding-bottom: 7px;
+padding-bottom: 0.7rem;
 `
 export const Member=styled.div`
 display: flex;
 align-items: center;
 `
 export const RemoveBtn=styled.button`
-width: 46px;
-height: 26px;
-font-size: 12px;
+width: 4.6rem;
+height: 2.6rem;
+font-size: 1.2rem;
 background-color: #EDEDED;
-border-radius: 13px;
+border-radius: 1.3rem;
 border: none;
 `
