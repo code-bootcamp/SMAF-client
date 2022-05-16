@@ -5,35 +5,44 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
-  width: 310px;
-  height: 240px;
+  width: 31rem;
+  height: 24rem;
   /* border: 1px solid red; */
-  border-radius: 0px 0px 16px 16px;
+  border-radius: 1.6rem 1.6rem 1.6rem 1.6rem;
   cursor: pointer;
+  overflow: hidden;
 `;
+
 export const ImgBox = styled.img`
-  width: 100%;
-  height: 160px;
-  background-color: green;
-  border-radius: 16px 16px 0px 0px;
+  /* border: 2px solid red; */
+  width: 31rem;
+  height: 16rem;
+  border-radius: 1.6rem 1.6rem 0rem 0rem;
+  transition: all 0.2s linear;
+
+  :hover {
+    overflow: hidden;
+    transform: scale(1.1);
+    transition-duration: 0.5s;
+  }
 `;
+
 export const TextBox = styled.div`
-  width: 310px;
-  height: 80px;
+  width: 31rem;
+  height: 8rem;
   display: flex;
   flex-direction: column;
   background-color: white;
-  border-radius: 0px 0px 16px 16px;
-  padding: 14px 87px 19px 20px;
+  border-radius: 0rem 0rem 1.6rem 1.6rem;
+  padding: 1.4rem 8.7rem 1.9rem 2rem;
 `;
+
 export const Title = styled.div`
-  /* width: 203px; */
-  /* height: 26px; */
   font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 700;
   font-size: 1.8rem;
-  line-height: 26px;
+  line-height: 2.6rem;
   /* border: 1px solid red; */
 `;
 export const SubTitle = styled.div`
@@ -43,7 +52,7 @@ export const SubTitle = styled.div`
   font-style: normal;
   font-weight: 700;
   font-size: 1.4rem;
-  line-height: 20px;
+  line-height: 2rem;
   color: #767676;
   /* border: 1px solid red; */
 `;
