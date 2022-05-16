@@ -8,17 +8,17 @@ export const AddColumn = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  width: 240px;
-  height: 60px;
-  border-radius: 16px;
+  width: 24rem;
+  height: 6rem;
+  border-radius: 1.6rem;
   background-color: #ffffff;
-  padding: 0px 20px;
+  padding: 0px 2rem;
 `;
 
 export const AddCoulumnIcon = styled.img`
-  width: 24px;
-  height: 24px;
+  width: 2.4rem;
+  height: 2.4rem;
   cursor: pointer;
 `;
