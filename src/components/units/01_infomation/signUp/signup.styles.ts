@@ -11,6 +11,8 @@ export const SignUpContents = styled.div`
     width: 100%;
 `;
 
+export const SignupForm = styled.form``;
+
 export const SignUpTop = styled.div`
     display: flex;
     flex-direction: column;
@@ -20,7 +22,7 @@ export const SignUpTop = styled.div`
 export const SignUpTitle = styled.div`
     font-size: 3.2rem;
     padding-top: 20%;
-    padding-bottom: 14%;
+    padding-bottom: 9rem;
     font-weight: 700;
 `;
 
@@ -35,7 +37,7 @@ export const ProfileHuman = styled.img``;
 
 export const SignUpInfo = styled.div``;
 
-export const SignUpName = styled.div`
+export const FormLabel = styled.div`
     padding-top: 8rem;
     padding-bottom: 2rem;
     font-weight: 600;
@@ -44,44 +46,31 @@ export const SignUpName = styled.div`
 
 export const NameInput = styled.input`
     width: 45%;
-    height: 60px;
-    border-radius: 8px;
+    height: 6rem;
+    border-radius: 0.8rem;
     font-size: 2rem;
     padding-left: 3%;
-    border: 2px solid #dbdbdb;
+    border: 0.2rem solid #dbdbdb;
     outline: none;
     margin-bottom: 8rem;
 `;
 
 export const SignupInput = styled.input`
     width: 100%;
-    height: 60px;
-    border-radius: 8px;
+    height: 6rem;
+    border-radius: 0.8rem;
     background-color: #ffffff;
     font-size: 2rem;
     font-weight: 600;
     padding-left: 3%;
-    border: 2px solid #dbdbdb;
+    border: 0.2rem solid #dbdbdb;
     outline: none;
-`;
-
-export const SignUpEmail = styled.div`
-    margin-bottom: 20px;
-    font-weight: 600;
-    font-size: 2.8rem;
-`;
-
-export const SignUpPassword = styled.div`
-    padding-bottom: 2rem;
-    padding-top: 8rem;
-    font-weight: 600;
-    font-size: 2.8rem;
 `;
 
 export const PasswordInput1 = styled.input`
     width: 100%;
-    height: 60px;
-    border-radius: 8px;
+    height: 6rem;
+    border-radius: 0.8rem;
     background-color: #ffffff;
     font-weight: 600;
     font-size: 2rem;
@@ -93,8 +82,8 @@ export const PasswordInput1 = styled.input`
 
 export const PasswordInput2 = styled.input`
     width: 100%;
-    height: 60px;
-    border-radius: 8px;
+    height: 6rem;
+    border-radius: 0.8rem;
     background-color: #ffffff;
     font-weight: 600;
     padding-left: 3%;
@@ -104,13 +93,6 @@ export const PasswordInput2 = styled.input`
 `;
 
 export const SignupPhone = styled.div``;
-
-export const SignUpNumber = styled.div`
-    padding-bottom: 2rem;
-    padding-top: 8rem;
-    font-weight: 600;
-    font-size: 2.8rem;
-`;
 
 export const SignUpcertification = styled.div``;
 
@@ -128,19 +110,19 @@ export const SignNumberReceive = styled.div`
 export const SignUpPhoneInput = styled.input`
     font-size: 2rem;
     width: 67%;
-    height: 60px;
-    border-radius: 8px;
+    height: 6rem;
+    border-radius: 0.8rem;
     background-color: #ffffff;
     font-weight: 600;
     padding-left: 3%;
-    border: 2px solid #dbdbdb;
+    border: 0.2rem solid #dbdbdb;
     outline: none;
 `;
 
 export const SignUpPhoneSendButton = styled.button`
     width: 28%;
-    height: 60px;
-    border-radius: 8px;
+    height: 6rem;
+    border-radius: 0.8rem;
     font-size: 2rem;
     background-color: #333333;
     color: #ffffff;
@@ -151,23 +133,16 @@ export const SignAboutMe = styled.div`
     height: 20%;
 `;
 
-export const SignAboutTitle = styled.div`
-    font-size: 2.8rem;
-    padding-top: 10%;
-    padding-bottom: 3%;
-    font-weight: 700;
-`;
-
 export const SignAboutInput = styled.textarea`
     background-color: #ffffff;
     width: 100%;
-    height: 360px;
-    border-radius: 8px;
+    height: 36rem;
+    border-radius: 0.8rem;
     font-weight: 400;
     font-size: 2rem;
-    border: 2px solid #dbdbdb;
+    border: 0.2rem solid #dbdbdb;
     outline: none;
-    padding: 16px 0 0 20px;
+    padding: 1.6rem 0 0 2rem;
 `;
 
 export const SignButtonWrapper = styled.div`
@@ -179,11 +154,18 @@ export const SignSubmitButton = styled.button`
     align-items: center;
     justify-content: center;
     width: 40%;
-    height: 90px;
-    margin-top: 236px;
+    height: 9rem;
+    margin-top: 23.6rem;
     background-color: #333333;
     color: #ffffff;
     font-size: 2.8rem;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     font-weight: 700;
+`;
+
+export const ErrorMsg = styled.div`
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    color: #dc0000;
 `;

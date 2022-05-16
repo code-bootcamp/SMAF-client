@@ -1,10 +1,9 @@
-import * as S from './login.styles'
+import * as S from "./login.styles";
 
-export default function LoginUI(){
-
-    return(
+export default function LoginUI() {
+    return (
         <S.Wrapper>
-                <S.Title>로그인</S.Title>
+            <S.Title>로그인</S.Title>
             <S.Container>
                 <S.InputBox>
                     <S.Input type="text" placeholder="이메일을 입력하세요." />
@@ -12,7 +11,7 @@ export default function LoginUI(){
                 </S.InputBox>
                 <S.Check>
                     <div>
-                        <S.CheckBox type="checkbox"/> 로그인 상태 유지
+                        <S.CheckBox type="checkbox" /> 로그인 상태 유지
                     </div>
                     <S.IdPw>아이디/비밀번호</S.IdPw>
                 </S.Check>
@@ -31,9 +30,9 @@ export default function LoginUI(){
                 </S.Sns>
                 <S.Bottom>
                     <S.JoinBtn>회원가입</S.JoinBtn>
-                    <S.ToBeforeLogin>비회원 무료체험 이용하기 ></S.ToBeforeLogin>
+                    <S.ToBeforeLogin>비회원 무료체험 이용하기 </S.ToBeforeLogin>
                 </S.Bottom>
             </S.Container>
         </S.Wrapper>
-    )
+    );
 }

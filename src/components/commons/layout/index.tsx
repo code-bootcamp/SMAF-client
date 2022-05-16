@@ -30,8 +30,10 @@ export default function Layout(props: ILayoutProps) {
             <BodyWrapper>
                 <Body>{props.children}</Body>
             </BodyWrapper>
-            <LayoutFooterTop />
-            <LayoutFooterBottom />
+            <footer>
+                <LayoutFooterTop />
+                <LayoutFooterBottom />
+            </footer>
         </>
     );
 }
