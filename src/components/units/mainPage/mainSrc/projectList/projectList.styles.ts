@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper=styled.div`
-width: 31rem;
-height: 19.6rem;
+width: 33rem;
 background-color: white;
 border-radius: 1.6rem;
 padding: 1.5rem;
@@ -21,8 +20,7 @@ font-size: 2.4rem;
 font-weight: 500;
 `
 export const ListBox=styled.div`
-display: flex;
-padding-bottom: 1.5rem;
+padding-bottom: 3rem;
 `
 export const Check1=styled.div`
 width: 2.4rem;
@@ -45,4 +43,31 @@ border-radius: 0.4rem;
 export const ProjectName=styled.div`
 padding-left: 0.5rem;
 font-size: 1.6rem;
+`
+export const ProjectBox=styled.div`
+display: flex;
+`
+export const RateBox = styled.div`
+
+`
+export const Rate = styled.div`
+text-align: end;
+padding: 0 1rem 0.5rem 0;
+color: #767676;
+font-size: 1.2rem;
+
+`
+export const RateBackground = styled.div`
+position: absolute;
+width: 29rem;
+height: 1.2rem;
+background-color: #EDEDED;
+border-radius: 0.6rem;
+`
+export const RateBar = styled.div`
+position: relative;
+height: 1.2rem;
+width: ${(props) => (props.rate)}%;
+background-color: #FF8B8B;
+border-radius: 0.6rem;
 `

@@ -6,8 +6,8 @@ import QuestionAnswerList from "../../src/components/units/QuestionAnswer/list/Q
 export default function MainPage(){
 
     return(
-        // <Main/>
-           <BeforeLogin />
+         <Main/>
+        //    <BeforeLogin />
         // <QuestionAnswerList />
     )
 }
