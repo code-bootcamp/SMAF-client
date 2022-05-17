@@ -34,6 +34,16 @@ border: none;
 background-color: #E5E5E5;
 padding-left: 2rem;
 `
+export const LDirectionBtn=styled.button`
+border: none;
+background-color: #E5E5E5;
+padding-left: 20px;
+`
+export const RDirectionBtn=styled.button`
+border: none;
+background-color: #E5E5E5;
+padding-left: 20px;
+`
 export const AddBtn=styled.button`
 background: #333333;
 border-radius: 1.2rem;

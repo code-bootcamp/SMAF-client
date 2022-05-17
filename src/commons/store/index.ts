@@ -41,4 +41,9 @@ export const TodayItemList = atom({
   key: "TodayItemList",
   default: false,
 });
-` `
+
+// 달력 날짜 값
+export const dateValue = atom({
+    key: "dateValue", 
+    default:new Date(), 
+})

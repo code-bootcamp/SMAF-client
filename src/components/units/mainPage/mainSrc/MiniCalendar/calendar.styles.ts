@@ -61,6 +61,7 @@ abbr[title] {
  background: #f8f8fa;
 }
 .react-calendar__tile--active {
+
  background: #EBEBEB;
  border-radius: 0.6rem;
  font-weight: bold;
@@ -70,5 +71,17 @@ abbr[title] {
 .react-calendar__tile--active:enabled:focus {
  background: #DBDBDB;
  color: white;
+}
+.dotBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dot {
+  height: 6px;
+  width: 6px;
+  background-color: #FF8B8B;;
+  border-radius: 50%;
+  margin-top: 2px;
 }
 `
