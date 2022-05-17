@@ -3,8 +3,8 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div``;
 
 export const Container = styled.div`
-  width: 310px;
-  height: 240px;
+  width: 31rem;
+  height: 24rem;
   border: 1px solid white;
   background: white;
   border-radius: 16px 16px 16px 16px;

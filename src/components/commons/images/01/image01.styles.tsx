@@ -6,8 +6,8 @@ export const ImageBox = styled.div`
 `;
 
 export const One = styled.img`
-  width: 48px;
-  height: 48px;
+  width: 4.8rem;
+  height: 4.8rem;
   background-color: brown;
   position: relative;
   z-index: 1;
@@ -16,45 +16,45 @@ export const One = styled.img`
 `;
 
 export const Two = styled.img`
-  width: 48px;
-  height: 48px;
+  width: 4.8rem;
+  height: 4.8rem;
   background-color: green;
   position: relative;
   z-index: 2;
-  left: -20px;
+  left: -2rem;
   border-radius: 50%;
   border: 4px solid white;
 `;
 
 export const Three = styled.img`
-  width: 48px;
-  height: 48px;
+  width: 4.8rem;
+  height: 4.8rem;
   background-color: blue;
   position: relative;
   z-index: 3;
-  left: -40px;
+  left: -4rem;
   border-radius: 50%;
   border: 4px solid white;
 `;
 
 export const Four = styled.img`
-  width: 48px;
-  height: 48px;
+  width: 4.8rem;
+  height: 4.8rem;
   background-color: orange;
   position: relative;
   z-index: 4;
-  left: -60px;
+  left: -6rem;
   border-radius: 50%;
   border: 4px solid white;
 `;
 
 export const Five = styled.img`
-  width: 48px;
-  height: 48px;
+  width: 4.8rem;
+  height: 4.8rem;
   background-color: black;
   position: relative;
   z-index: 5;
-  left: -80px;
+  left: -8rem;
   border-radius: 50%;
   border: 4px solid white;
   color: white;
