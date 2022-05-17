@@ -4,24 +4,24 @@ import Calendar from 'react-calendar';
 export const MiniCalendar = styled(Calendar)`
 width: 100%;
 border: none;
-border-radius: 16px;
+border-radius: 1.6rem;
 
 .react-calendar { 
- width: 310px;
+ width: 31rem;
  max-width: 100%;
  background-color: #fff;
  color: #222;
- border-radius: 30px;
- box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+ border-radius: 3rem;
+ box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, 0.2);
  font-family: Arial, Helvetica, sans-serif;
  line-height: 1.125em;
 }
 .react-calendar__navigation button {
  color: #333333;
- min-width: 44px;
+ min-width: 4.4rem;
  background: none;
- font-size: 16px;
- margin-top: 8px;
+ font-size: 1.6rem;
+ margin-top: 0.8rem;
 }
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
@@ -41,18 +41,18 @@ abbr[title] {
 .react-calendar__tile:enabled:focus {
  background: #f8f8fa;
  color: #333333;
- border-radius: 6px;
+ border-radius: 0.6rem;
 }
 .react-calendar__tile--now {
  background: #333333;
- border-radius: 6px;
+ border-radius: 0.6rem;
  font-weight: bold;
  color: white;
 }
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
  background: #DBDBDB;
- border-radius: 6px;
+ border-radius: 0.6rem;
  font-weight: bold;
  color: #333333;
 }
@@ -61,8 +61,9 @@ abbr[title] {
  background: #f8f8fa;
 }
 .react-calendar__tile--active {
+
  background: #EBEBEB;
- border-radius: 6px;
+ border-radius: 0.6rem;
  font-weight: bold;
  color: white;
 }
@@ -70,5 +71,17 @@ abbr[title] {
 .react-calendar__tile--active:enabled:focus {
  background: #DBDBDB;
  color: white;
+}
+.dotBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dot {
+  height: 6px;
+  width: 6px;
+  background-color: #FF8B8B;;
+  border-radius: 50%;
+  margin-top: 2px;
 }
 `
