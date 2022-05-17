@@ -4,7 +4,7 @@ export const Wrapper = styled.header`
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 90px;
+    height: 9rem;
     background-color: #333333;
 `;
 

@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
-import { ReactNode } from "react";
 import Layoutheader from "./header/LayoutHeader.container";
 import { useRouter } from "next/router";
 import LayoutFooterBottom from "./footer/footerBottom/LayutFooterBottom.container";
 import LayoutFooterTop from "./footer/footerTop/LayoutFooterTop.container";
+import { ReactNode } from "react";
 
 const Body = styled.div`
     display: flex;
@@ -30,8 +30,10 @@ export default function Layout(props: ILayoutProps) {
             <BodyWrapper>
                 <Body>{props.children}</Body>
             </BodyWrapper>
-            <LayoutFooterTop />
-            <LayoutFooterBottom />
+            <footer>
+                <LayoutFooterTop />
+                <LayoutFooterBottom />
+            </footer>
         </>
     );
 }
