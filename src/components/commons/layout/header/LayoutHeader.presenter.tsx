@@ -1,4 +1,4 @@
-import Image02 from "../../images/02/\bimage02";
+import Image02 from "../../images/02/image02";
 import * as S from "./LayoutHeader.styles";
 
 export default function HeaderUI() {
