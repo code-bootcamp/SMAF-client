@@ -44,19 +44,19 @@ export default function ApolloSetting(props: IAppProps) {
             }
         }
     });
+  const uploadLink = createUploadLink({
+    uri: "http://34.64.156.215:3000/graphql",
+    headers: { Authorization: `Bearer ${accessToken}` },
+    credentials: "include",
+  });
+  const client = new ApolloClient({
+    link: ApolloLink.from([errorLink, uploadLink]),
+    cache: new InMemoryCache(), // 백엔드 컴퓨터 주소
+  });
+  return (
+    <>
+      <ApolloProvider client={client}>{props.children}</ApolloProvider>
+    </>
+  );
 
-    const uploadLink = createUploadLink({
-        uri: "https://smaf.shop/graphql",
-        headers: { Authorization: `Bearer ${accessToken}` },
-        credentials: "include",
-    });
-    const client = new ApolloClient({
-        link: ApolloLink.from([errorLink, uploadLink]),
-        cache: new InMemoryCache(), // 백엔드 컴퓨터 주소
-    });
-    return (
-        <>
-            <ApolloProvider client={client}>{props.children}</ApolloProvider>
-        </>
-    );
 }

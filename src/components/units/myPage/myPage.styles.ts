@@ -1,19 +1,35 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/media";
+import UserInfoCard from "../../commons/userInfoCard/userInfoCard.container";
 
 export const Wrapper = styled.div`
   /* width: 1980px; */
   /* height: 854px; */
-  padding: 6rem 32rem 12rem 32rem;
+  /* padding: 6rem 32rem 12rem 32rem; */
+  margin-top: 12rem;
+  margin-bottom: 16rem;
+  @media ${breakPoints.mobile} {
+    margin-top: 3.1rem;
+    margin-bottom: 6rem;
+  }
 `;
 
 export const Container = styled.div`
   height: 100%;
   display: flex;
   flex-direction: row;
-  /* border: 1px solid pink; */
+  border: 1px solid pink;
+`;
+
+export const UserInfoCardBox = styled(UserInfoCard)`
+  float: left;
+  @media ${breakPoints.mobile} {
+    float: none;
+  }
 `;
 
 export const ProjectWrapper = styled.div`
+  float: right;
   width: 96.8rem;
   height: 66.8rem;
   border-radius: 8px;

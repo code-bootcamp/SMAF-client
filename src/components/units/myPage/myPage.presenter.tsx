@@ -7,7 +7,7 @@ export default function MyPageUI() {
   return (
     <S.Wrapper>
       <S.Container>
-        <UserInfoCard
+        <S.UserInfoCardBox
           userEmail={undefined}
           userName={undefined}
           userImageSrc={undefined}

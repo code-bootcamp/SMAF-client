@@ -1,8 +1,16 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-width: 198rem;
-padding: 0 39rem 0 39rem;
+  width: 198rem;
+  padding: 0 39rem 0 39rem;
+`;
+
+export const Title = styled.h1`
+  text-align: center;
+  font-weight: 700;
+  font-size: 36px;
+  padding: 50px;
+
 `;
 export const Title = styled.h1`
 text-align: center;
@@ -11,33 +19,39 @@ font-size: 3.6rem;
 padding: 5rem;
 `;
 export const LabelBox = styled.div`
-display: flex;
+  display: flex;
 `;
 export const Label = styled.span`
-font-size: 2.8rem;
+
+  font-size: 2.8rem;
 font-weight: 500;
 `;
 export const Block = styled.div`
-display: flex;
+  display: flex;
 justify-content: space-between;
 margin-bottom: 4rem;
 `;
+
 export const InputBox = styled.div`
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `;
+
 export const Must = styled.div`
-font-size: 1.8rem;
+  font-size: 1.8rem;
 `;
+
 export const Inputs = styled.div`
 `;
+export const Inputs = styled.div``;
 export const Input = styled.input`
-width: 88rem;
+  width: 88rem;
 height: 6rem;
 border-radius: 0.8px;
 border: 0.1px solid #DBDBDB;
 padding: 1rem;
 `;
+
 export const ImgAddBtn = styled.button`
 width: 11rem;
 height: 3.8rem;
@@ -48,20 +62,24 @@ display: flex;
 align-items: center;
 justify-content: center;
 `;
+
 export const FileImg = styled.img`
 width:1.333rem;
 height:1.667rem;
 margin-right: 0.5rem;
 `;
+
 export const AddImg = styled.div`
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 `;
+
 export const ImgPreviewBox = styled.div`
-width: 88rem;
-display: flex;
-align-items: flex-end;
-`;
+
+  width: 88rem;
+  display: flex;
+  align-items: flex-end;
+  `;
 export const ImgPreview = styled.div`
 width: 31rem;
 height: 16rem;
@@ -95,12 +113,14 @@ height: 45.4rem;
 background: #C4C4C4;
 border-radius: 0.8rem;
 `;
+
 export const MapBox = styled.div`
-display: flex;
-justify-content: end;
+  display: flex;
+  justify-content: end;
 `;
 export const MapInput = styled.input`
-padding: 1rem;
+
+  padding: 1rem;
 width: 88rem;
 height: 6.4rem;
 border: 0.2rem solid #DBDBDB;
@@ -147,4 +167,3 @@ color: #DC0000;
 font-size: 1.8rem;
 padding: 1rem 0 0 5rem;
 `;
-
