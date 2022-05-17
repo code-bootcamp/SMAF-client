@@ -1,7 +1,5 @@
-// import Project from "../../commons/project/project.container";
 import * as S from "./myPage.styles";
 import UserInfoCard from "../../commons/userInfoCard/userInfoCard.container";
-// import Project from "../../commons/project/01/project01.container";
 import Project01 from "../../commons/project/01/project01.container";
 import Project02 from "../../commons/project/02/project02.containter";
 
