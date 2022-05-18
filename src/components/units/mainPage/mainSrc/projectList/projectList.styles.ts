@@ -1,48 +1,73 @@
 import styled from "@emotion/styled";
 
 export const Wrapper=styled.div`
-width: 310px;
-height: 196px;
+width: 33rem;
 background-color: white;
-border-radius: 16px;
-padding: 15px;
+border-radius: 1.6rem;
+padding: 1.5rem;
 `
 export const TitleBox=styled.div`
 display: flex;
 justify-content: space-between;
-padding-bottom: 20px;
+padding-bottom: 2rem;
 `
 export const Title=styled.div`
-font-size: 24px;
+font-size: 2.4rem;
 font-weight: 500;
 `
 export const Add=styled.div`
-font-size: 24px;
+font-size: 2.4rem;
 font-weight: 500;
 `
 export const ListBox=styled.div`
-display: flex;
-padding-bottom: 15px;
+padding-bottom: 3rem;
 `
 export const Check1=styled.div`
-width: 24px;
-height: 24px;
+width: 2.4rem;
+height: 2.4rem;
 background-color: #FF8B8B;
-border-radius: 4px;
+border-radius: 0.4rem;
 `
 export const Check2=styled.div`
-width: 24px;
-height: 24px;
+width: 2.4rem;
+height: 2.4rem;
 background-color: #7CD2E5;
-border-radius: 4px;
+border-radius: 0.4rem;
 `
 export const Check3=styled.div`
-width: 24px;
-height: 24px;
+width: 2.4rem;
+height: 2.4rem;
 background-color: #FFD954;
-border-radius: 4px;
+border-radius: 0.4rem;
 `
 export const ProjectName=styled.div`
-padding-left: 5px;
-font-size: 16px;
+padding-left: 0.5rem;
+font-size: 1.6rem;
+`
+export const ProjectBox=styled.div`
+display: flex;
+`
+export const RateBox = styled.div`
+
+`
+export const Rate = styled.div`
+text-align: end;
+padding: 0 1rem 0.5rem 0;
+color: #767676;
+font-size: 1.2rem;
+
+`
+export const RateBackground = styled.div`
+position: absolute;
+width: 29rem;
+height: 1.2rem;
+background-color: #EDEDED;
+border-radius: 0.6rem;
+`
+export const RateBar = styled.div`
+position: relative;
+height: 1.2rem;
+width: ${(props) => (props.rate)}%;
+background-color: #FF8B8B;
+border-radius: 0.6rem;
 `

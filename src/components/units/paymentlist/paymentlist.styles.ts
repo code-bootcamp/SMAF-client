@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   padding: 60px 320px 120px 320px;
@@ -11,6 +12,10 @@ export const Container = styled.div`
   flex-direction: row;
   /* border: 1px solid red; */
   /* margin: 60px auto; */
+  @media ${breakPoints.mobile} {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const listWrapper = styled.div`
@@ -33,6 +38,7 @@ export const PaymentTitle = styled.div`
 // 결제상자
 export const PaymentWrapper = styled.div`
   width: 970px;
+  /* width: calc(100% - 95px); */
   height: 562px;
   border-radius: 8px;
   background-color: white;

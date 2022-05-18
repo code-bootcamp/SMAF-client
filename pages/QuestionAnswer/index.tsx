@@ -1,5 +1,5 @@
-import QuestionAnswerWrite from "../../src/components/units/questionAnswer/write/questionAnswerWrite.containter";
+import QuestionAnswerList from "../../src/components/units/QuestionAnswer/list/QuestionAnswerList.container";
 
 export default function QuestionAnswerPage() {
-  return <QuestionAnswerWrite />;
+  return <QuestionAnswerList />;
 }

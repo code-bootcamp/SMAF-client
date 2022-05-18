@@ -10,7 +10,8 @@ export default function ProjectUI(props: IUserProject) {
   return (
     <S.Wrapper>
       <S.Container>
-        <S.ImgBox src={props.projectImageSrc}></S.ImgBox>
+        {/* <S.ImgBox src={props.projectImageSrc}></S.ImgBox> */}
+        <S.ImgBox src="/test.png"></S.ImgBox>
         <S.TextBox>
           <S.Title>{props.projectName}코카콜라 리디자인 프로젝트</S.Title>
           <S.SubTitle>

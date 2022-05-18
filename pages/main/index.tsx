@@ -7,7 +7,7 @@ export default function MainPage(){
 
     return(
          <Main/>
-        // <BeforeLogin />
+        //    <BeforeLogin />
         // <QuestionAnswerList />
     )
 }

@@ -29,6 +29,7 @@ export default function ChangePasswordUI() {
             ></S.NumberInput>
             <S.NumberButton>인증하기</S.NumberButton>
           </S.NumberWrapper>
+
           <S.Authorization>인증이 완료되었습니다.</S.Authorization>
         </div>
         <div>
@@ -38,12 +39,13 @@ export default function ChangePasswordUI() {
             placeholder="변경할 비밀번호를 입력해주세요."
           ></S.PasswordInput>
           <br />
+          <S.SubTitle>비밀번호 확인</S.SubTitle>
           <S.PasswordInput
             type="password"
             placeholder="비밀번호를 다시 이력해주세요."
           ></S.PasswordInput>
           <S.PasswordAuthorization>
-            인증이 완료되었습니다.
+            비밀번호가 일치하지 않습니다.
           </S.PasswordAuthorization>
         </div>
         <S.Button>비밀번호 변경</S.Button>

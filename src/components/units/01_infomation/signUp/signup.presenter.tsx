@@ -1,4 +1,4 @@
-import * as S from "./signup.styles";
+import * as S from "./signUp.styles";
 
 export default function SignupUI(props) {
     return (
