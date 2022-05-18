@@ -5,7 +5,7 @@ width: 84rem;
 height: 66.4rem;
 `
 export const Wrapper=styled.div`
-width: 100%;
+width: 33rem;
 height: 66.4rem;
 background-color: white;
 border-radius: 1.6rem;

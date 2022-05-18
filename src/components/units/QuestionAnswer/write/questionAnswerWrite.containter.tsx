@@ -23,7 +23,9 @@ export default function QuestionAnswerWrite() {
       });
       console.log(result);
       router.push("/QuestionAnswer");
-    } catch (error) {}
+    } catch (error) {
+      alert("no");
+    }
   };
   return (
     <QuestionAnswerWriteUI

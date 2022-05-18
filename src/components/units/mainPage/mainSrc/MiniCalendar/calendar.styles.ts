@@ -2,12 +2,12 @@ import styled from "@emotion/styled";
 import Calendar from 'react-calendar';
 
 export const MiniCalendar = styled(Calendar)`
-width: 100%;
+width: 33rem;
 border: none;
 border-radius: 1.6rem;
 
 .react-calendar { 
- width: 31rem;
+ width: 33rem;
  max-width: 100%;
  background-color: #fff;
  color: #222;
