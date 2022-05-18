@@ -1,4 +1,4 @@
-import * as S from "./paymentList.styles";
+import * as S from "./paymentlist.styles";
 import UserInfoCard from "../../commons/userInfoCard/userInfoCard.container";
 
 export default function PaymentListUI(props: any) {
