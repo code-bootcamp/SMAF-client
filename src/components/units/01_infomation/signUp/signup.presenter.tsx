@@ -1,15 +1,25 @@
+import Uploads01 from "../../../commons/uploads/Upload01.container";
 import * as S from "./signup.styles";
+import { v4 as uuidv4 } from "uuid";
 
 export default function SignupUI(props: any) {
+    console.log("여기", props.fileUrl);
     return (
         <S.Wrapper>
             <S.SignUpContents>
                 <S.SignupForm onSubmit={props.handleSubmit(props.onClickcreateUser)}>
                     <S.SignUpTop>
                         <S.SignUpTitle>회원가입</S.SignUpTitle>
-                        <S.SignUpProfileButton>
+                        <S.SignUpProfileWrapper>
+                            <Uploads01
+                                type="upload"
+                                key={uuidv4()}
+                                fileUrl={props.fileUrl}
+                                onChangeFileUrls={props.onChangeFileUrls}
+                            />
+
                             <S.ProfileHuman src="/image/human.png" />
-                        </S.SignUpProfileButton>
+                        </S.SignUpProfileWrapper>
                     </S.SignUpTop>
                     <S.SignUpInfo>
                         <S.FormLabel>이름</S.FormLabel>
@@ -45,7 +55,8 @@ export default function SignupUI(props: any) {
                                 <S.SignUpPhoneInput
                                     type="tel"
                                     placeholder="010123456678"
-                                    {...props.register("phoneNumber")}
+                                    {...props.register("phone")}
+                                    onChange={props.onChangePhone}
                                 ></S.SignUpPhoneInput>
                                 <S.SignUpPhoneSendButton
                                     type="button"
@@ -55,10 +66,15 @@ export default function SignupUI(props: any) {
                                 </S.SignUpPhoneSendButton>
                             </S.SignNumberSend>
                             <S.SignNumberReceive>
-                                <S.SignUpPhoneInput placeholder="인증받는 번호를 남겨주세요"></S.SignUpPhoneInput>
+                                <S.SignUpPhoneInput
+                                    type="text"
+                                    placeholder="인증받는 번호를 남겨주세요"
+                                    onChange={props.onChangeToken}
+                                ></S.SignUpPhoneInput>
                                 <S.SignUpPhoneSendButton
-                                    type="button"
+                                    // type="button"
                                     onClick={props.onClickTokenCheck}
+                                    type="button"
                                 >
                                     인증하기
                                 </S.SignUpPhoneSendButton>
@@ -68,7 +84,10 @@ export default function SignupUI(props: any) {
                     </S.SignupPhone>
                     <S.SignAboutMe>
                         <S.FormLabel>자기소개</S.FormLabel>
-                        <S.SignAboutInput placeholder="자기소개를 입력해주세요"></S.SignAboutInput>
+                        <S.SignAboutInput
+                            placeholder="자기소개를 입력해주세요"
+                            typeof="text"
+                        ></S.SignAboutInput>
                     </S.SignAboutMe>
                     <S.SignButtonWrapper>
                         <S.SignSubmitButton title="회원가입하기" type="submit">
