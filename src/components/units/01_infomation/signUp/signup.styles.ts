@@ -26,7 +26,7 @@ export const SignUpTitle = styled.div`
     font-weight: 700;
 `;
 
-export const SignUpProfileButton = styled.button`
+export const SignUpProfileWrapper = styled.div`
     width: 12rem;
     height: 12rem;
     border-radius: 100%;

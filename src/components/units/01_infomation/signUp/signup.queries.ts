@@ -21,8 +21,8 @@ export const SIGNUP_SENDTOKEN = gql`
 `;
 
 export const SIGNUP_CHECKEDTOKEN = gql`
-    mutation checkedTokenPhone($phone: String!, $inputToken: String!) {
-        checkedToken(phone: $Phone, inputToken: $InputToken)
+    mutation checkedToekn($phone: String!, $inputToken: String!) {
+        checkedToekn(phone: $phone, inputToken: $inputToken)
     }
 `;
 
