@@ -4,18 +4,9 @@ import { Modal } from "antd";
 import { useState } from "react";
 
 export default function Alert(props: any) {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  // const showModal = () => {
-  //   setIsModalVisible(true);
-  // };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const onToggleModal = () => {
+    setIsOpen((prev) => !prev);
   };
 
   return (
@@ -34,11 +25,11 @@ export default function Alert(props: any) {
         }}
         footer={null}
         centered={true}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        onOk={onToggleModal}
+        onCancel={onToggleModal}
       >
         <S.PointModal>
-          <S.Close>X</S.Close>
+          <S.Close onClick={onToggleModal}>X</S.Close>
           <S.Logo> SMAF </S.Logo>
           <S.ModalText>{props.contents ? props.contents : ""}</S.ModalText>
           <S.ConfirmBtn onClick={props.router}>확인</S.ConfirmBtn>
