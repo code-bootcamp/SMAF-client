@@ -10,13 +10,23 @@ export const Wrapper = styled.div`
   padding-bottom: 22rem;
 `;
 
+export const BasicColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const BasicRow = styled.div`
+  display: flex;
+`;
+
 export const Table = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 2.8rem 3rem;
   background-color: white;
   border-radius: 0px 0px 16px 16px;
   border-bottom: 1px solid #ededed;
+  color: #111111;
 `;
 
 export const QuestionMenuList = styled.div`
@@ -51,11 +61,12 @@ export const TableMenuTypes = styled.div`
 
 export const TableMenuTitles = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
   width: 26.3rem;
+  cursor: pointer;
 `;
 
 export const TableMenuWriter = styled.div`
@@ -99,6 +110,17 @@ export const QusStionAnswerBtn = styled.button`
 
 export const QuestionList = styled.div`
   width: 88rem;
-  border-radius: 16px;
+  border-radius: 1.6rem;
   background-color: white;
+`;
+
+export const Question = styled.div`
+  display: flex;
+  width: 26.3rem;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2.1rem;
+  letter-spacing: -2%;
+  margin-left: 22.1rem;
+  color: #505050;
 `;
