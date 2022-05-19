@@ -4,6 +4,9 @@ export const FETCH_QUESTION_COMMENTS = gql`
     fetchQuestionComments(questionBoardId: $questionBoardId) {
       questionCommentId
       contents
+      user {
+        userId
+      }
     }
   }
 `;
