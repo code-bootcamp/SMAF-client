@@ -17,6 +17,7 @@ export const BasicColumn = styled.div`
 
 export const BasicRow = styled.div`
   display: flex;
+  padding-bottom: 3rem;
 `;
 
 export const Table = styled.div`
@@ -42,7 +43,7 @@ export const QuestionMenuList = styled.div`
 export const TableMenuNo = styled.div`
   display: flex;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   width: 5.4rem;
@@ -52,7 +53,7 @@ export const TableMenuNo = styled.div`
 export const TableMenuTypes = styled.div`
   display: flex;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   width: 13.53rem;
@@ -62,7 +63,7 @@ export const TableMenuTypes = styled.div`
 export const TableMenuTitles = styled.div`
   display: flex;
   justify-content: flex-start;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   width: 26.3rem;
@@ -72,7 +73,7 @@ export const TableMenuTitles = styled.div`
 export const TableMenuWriter = styled.div`
   display: flex;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   width: 8.52rem;
@@ -82,7 +83,7 @@ export const TableMenuWriter = styled.div`
 export const TableMenuDate = styled.div`
   display: flex;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   width: 12rem;
@@ -92,19 +93,42 @@ export const Title = styled.div`
   text-align: center;
   padding-bottom: 9rem;
   font-size: 3.2rem;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 4.64rem;
   letter-spacing: -2%;
 `;
 
 export const QusStionAnswerBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8.1rem;
+  height: 2.8rem;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 23px;
+  font-size: 1.6rem;
+  line-height: 2.8rem;
   letter-spacing: -0.02em;
   color: #ffffff;
   background: #333333;
-  border-radius: 8px;
+  border-radius: 0.8rem;
+  text-align: center;
+  cursor: pointer;
+`;
+
+export const AnswerSubmitBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8.1rem;
+  height: 2.8rem;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.8rem;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  background: #333333;
+  border-radius: 0.8rem;
+  margin-left: 4.6rem;
   cursor: pointer;
 `;
 
@@ -122,5 +146,15 @@ export const Question = styled.div`
   line-height: 2.1rem;
   letter-spacing: -2%;
   margin-left: 22.1rem;
+  margin-bottom: 2.8rem;
   color: #505050;
+`;
+
+export const AnswerWriteArea = styled.div`
+  display: flex;
+  padding: 3rem 1.3rem 3rem 3rem;
+`;
+
+export const AnswerIcon = styled.div`
+  margin-left: 22.1rem;
 `;
