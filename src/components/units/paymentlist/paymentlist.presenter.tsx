@@ -17,7 +17,7 @@ export default function PaymentListUI(props: any) {
           title3={undefined}
         />
         <S.listWrapper>
-          <S.PaymentTitle>결제내역</S.PaymentTitle>
+          <S.Title>결제내역</S.Title>
           <S.PaymentWrapper>
             <S.Row>
               <S.ColumnHeaderNumber>번호</S.ColumnHeaderNumber>

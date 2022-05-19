@@ -15,6 +15,12 @@ export const globalStyles = css`
     font-size: 62.5%;
     margin: 0;
   }
+
+  p,
+  h1 {
+    margin: 0;
+  }
+
   /* ::-webkit-scrollbar {
     width: 0.4rem;
   }
