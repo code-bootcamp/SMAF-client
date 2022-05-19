@@ -2,6 +2,9 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
+  width: 192rem;
+  display: flex;
+  flex-direction: row;
   padding: 60px 320px 120px 320px;
 `;
 
@@ -24,7 +27,7 @@ export const listWrapper = styled.div`
 `;
 
 // 결제내역
-export const PaymentTitle = styled.div`
+export const Title = styled.div`
   width: 100%;
   /* height:46px; */
   font-family: "Noto Sans KR";
