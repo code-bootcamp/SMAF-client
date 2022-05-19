@@ -1,4 +1,4 @@
-import PaymentListUI from "./paymentList.presenter";
+import PaymentListUI from "./paymentListMenu.presenter";
 
 export default function PaymentList() {
   return <PaymentListUI />;
