@@ -27,10 +27,10 @@ export const SignUpTitle = styled.div`
 `;
 
 export const SignUpProfileWrapper = styled.div`
-    width: 12rem;
+    /* width: 12rem;
     height: 12rem;
     border-radius: 100%;
-    border-color: black;
+    border-color: black; */
 `;
 
 export const ProfileHuman = styled.img``;
