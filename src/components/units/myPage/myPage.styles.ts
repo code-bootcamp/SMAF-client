@@ -19,19 +19,16 @@ export const RightWrapper = styled.div`
   justify-content: space-between;
   margin-left: 9rem;
   border-radius: 8px;
-  /* background-color: green; */
   @media ${breakPoints.mobile} {
   }
 `;
 
 export const InnerWrapper = styled.div`
   height: 30.6rem;
-  /* border: 1px solid red; */
 `;
 
 export const ProjectTitle = styled.div`
   height: 4.6rem;
-  /* border: 1px solid yellow; */
   margin-bottom: 2rem;
   display: flex;
   flex-direction: row;
