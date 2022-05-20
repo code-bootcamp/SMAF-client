@@ -1,21 +1,31 @@
 import * as S from "./login.styles";
 
-export default function LoginUI() {
+export default function LoginUI(props) {
     return (
         <S.Wrapper>
             <S.Title>로그인</S.Title>
             <S.Container>
-                <S.InputBox>
-                    <S.Input type="text" placeholder="이메일을 입력하세요." />
-                    <S.Input type="password" placeholder="비밀번호를 입력하세요." />
-                </S.InputBox>
-                <S.Check>
-                    <div>
-                        <S.CheckBox type="checkbox" /> 로그인 상태 유지
-                    </div>
-                    <S.IdPw>아이디/비밀번호</S.IdPw>
-                </S.Check>
-                <S.LoginBtn>로그인</S.LoginBtn>
+                <S.LoginForm onSubmit={props.handleSubmit(props.onClickLogin)}>
+                    <S.InputBox>
+                        <S.Input
+                            type="text"
+                            placeholder="이메일을 입력하세요."
+                            {...props.register("email")}
+                        />
+                        <S.Input
+                            type="password"
+                            placeholder="비밀번호를 입력하세요."
+                            {...props.register("password")}
+                        />
+                    </S.InputBox>
+                    <S.Check>
+                        <div>
+                            <S.CheckBox type="checkbox" /> 로그인 상태 유지
+                        </div>
+                        <S.IdPw>아이디/비밀번호</S.IdPw>
+                    </S.Check>
+                    <S.LoginBtn type="submit">로그인</S.LoginBtn>
+                </S.LoginForm>
                 <S.SubTitle>SNS로 로그인하기</S.SubTitle>
                 <S.Sns>
                     <S.GoogleBtn>

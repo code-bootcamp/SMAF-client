@@ -23,7 +23,7 @@ export const BasicRow = styled.div`
 export const Table = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2.8rem 3rem;
+  padding: 2.8rem 3rem 0rem 3rem;
   background-color: white;
   border-radius: 0px 0px 16px 16px;
   border-bottom: 1px solid #ededed;
@@ -112,6 +112,7 @@ export const QusStionAnswerBtn = styled.button`
   background: #333333;
   border-radius: 0.8rem;
   text-align: center;
+  border: none;
   cursor: pointer;
 `;
 
@@ -153,6 +154,7 @@ export const Question = styled.div`
 export const AnswerWriteArea = styled.div`
   display: flex;
   padding: 3rem 1.3rem 3rem 3rem;
+  margin-bottom: 3rem;
 `;
 
 export const AnswerIcon = styled.div`

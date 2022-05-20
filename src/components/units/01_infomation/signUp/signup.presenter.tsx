@@ -3,7 +3,6 @@ import * as S from "./signup.styles";
 import { v4 as uuidv4 } from "uuid";
 
 export default function SignupUI(props: any) {
-    console.log("여기", props.fileUrl);
     return (
         <S.Wrapper>
             <S.SignUpContents>
@@ -11,13 +10,15 @@ export default function SignupUI(props: any) {
                     <S.SignUpTop>
                         <S.SignUpTitle>회원가입</S.SignUpTitle>
                         <S.SignUpProfileWrapper>
-                            <Uploads01
-                                type="upload"
-                                key={uuidv4()}
-                                fileUrl={props.fileUrl}
-                                onChangeFileUrls={props.onChangeFileUrls}
-                            />
-
+                            {props.fileUrls.map((el, index) => (
+                                <Uploads01
+                                    type="button"
+                                    key={uuidv4()}
+                                    index={index}
+                                    fileUrl={el}
+                                    onChangeFileUrls={props.onChangeFileUrls}
+                                />
+                            ))}
                             <S.ProfileHuman src="/image/human.png" />
                         </S.SignUpProfileWrapper>
                     </S.SignUpTop>

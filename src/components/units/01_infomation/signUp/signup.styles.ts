@@ -32,6 +32,7 @@ export const SignUpProfileWrapper = styled.div`
   height: 12rem;
   border-radius: 100%;
   border-color: black;
+
 `;
 
 export const ProfileHuman = styled.img``;
