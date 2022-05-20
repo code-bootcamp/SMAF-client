@@ -9,35 +9,41 @@ import { useForm } from "react-hook-form";
 
 export default function QuestionAnswerWrite() {
   const router = useRouter();
-  const [createQuestion] = useMutation(CREATE_QUESTION_BOARD);
+  const [createQuestionBoard] = useMutation(CREATE_QUESTION_BOARD);
   const { data: userData } = useQuery(FETCH_LOGIN_USER);
 
-  console.log(userData);
+  console.log(String(userData?.fetchLoginUser?.userId));
   const { register, handleSubmit, formState } = useForm({
     mode: "onChange",
   });
 
-  const createQusetionBoard = async (data: any) => {
-    try {
-      const result = await createQuestion({
-        variables: {
-          ...data,
-          questionCategory: "문의하기",
-          user: userData?.fetchLoginUser?.userName,
-        },
-      });
-      console.log(result, "결과");
-      console.log(data, "크리에이트데이터");
-      router.push("/QuestionAnswer");
-    } catch (error) {
-      alert("no");
+  const CreateNewQusetionBoard = async (data: any) => {
+    console.log(data, "data");
+    if (data) {
+      try {
+        const result = await createQuestionBoard({
+          variables: {
+            createquestionBoardInput: {
+              title: data.title,
+              contents: data.contents,
+              questionCategory: "문의하기",
+            },
+          },
+        });
+        console.log(result, "결과");
+        // console.log(data, "크리에이트데이터");
+        router.push("/QuestionAnswer");
+      } catch (error) {
+        console.log(data, "크리에이트데이타");
+        alert("no");
+      }
     }
   };
   return (
     <QuestionAnswerWriteUI
       register={register}
       handleSubmit={handleSubmit}
-      createQusetionBoard={createQusetionBoard}
+      CreateNewQusetionBoard={CreateNewQusetionBoard}
       formState={formState}
     />
   );
