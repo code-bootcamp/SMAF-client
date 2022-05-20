@@ -50,7 +50,7 @@ export default function SignUpContainer(props: any) {
     const [inputToken, setInputToken] = useState("");
     const [trueToken, setTrueToken] = useState(false);
     const [isActive, setIsActive] = useState(false);
-    const [fileUrls, setFileUrls] = useState("");
+    const [fileUrls, setFileUrls] = useState([""]);
 
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(schema),
@@ -58,14 +58,14 @@ export default function SignUpContainer(props: any) {
     });
 
     const onChangeFileUrls = (fileUrl: string, index: number) => {
-        let newFileUrls = fileUrls;
-        newFileUrls = fileUrl;
+        const newFileUrls = [...fileUrls];
+        newFileUrls[index] = fileUrl;
         setFileUrls(newFileUrls);
     };
 
     useEffect(() => {
-        if (props.data?.images) {
-            setFileUrls(props.data?.images);
+        if (props.data?.images?.length) {
+            setFileUrls([...props.data?.images]);
         }
     }, [props.data]);
 
@@ -131,12 +131,12 @@ export default function SignUpContainer(props: any) {
         try {
             await createUser({
                 variables: {
-                    createUser: {
+                    createUserInput: {
                         userName: data.name,
                         email: data.email,
                         password: data.password,
                         phone: data.phone,
-                        userImageURL: data.userImageURL,
+                        userImageURL: fileUrls,
                     },
                 },
             });

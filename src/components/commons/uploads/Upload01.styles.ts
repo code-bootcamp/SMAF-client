@@ -7,7 +7,7 @@ export const UploadImage = styled.img`
     cursor: pointer;
 `;
 
-export const UploadButton = styled.button`
+export const UploadButton = styled.div`
     width: 120px;
     height: 120px;
     background-color: #bdbdbd;
