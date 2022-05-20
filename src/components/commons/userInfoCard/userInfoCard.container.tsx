@@ -17,9 +17,10 @@ export default function UserInfoCard(props: IUserCardProps) {
     <S.Wrapper>
       <S.CardTopWrapper>
         <S.Image src={props.userImageSrc}></S.Image>
-        <S.Name>{props.userName}</S.Name>
-        <S.Email>{props.userEmail}</S.Email>
+        <S.Name>{props.userName}홍길동</S.Name>
+        <S.Email>{props.userEmail}aaa@aaa.com</S.Email>
       </S.CardTopWrapper>
+
       <S.CardBottomWrapper>
         <S.CardBottomContents>
           <S.Icon src={props.src1}></S.Icon>

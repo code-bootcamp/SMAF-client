@@ -41,6 +41,9 @@ export const CardBottomWrapper = styled.div`
 export const Image = styled.img`
   width: 8rem;
   height: 8rem;
+  background-color: green;
+  border: 2px solid white;
+  border-radius: 50%;
 `;
 
 export const Name = styled.div`

@@ -1,9 +1,9 @@
 import * as S from "./myPage.styles";
 import UserInfoCard from "../../commons/userInfoCard/userInfoCard.container";
 import Project01 from "../../commons/project/01/project01.container";
-import Project02 from "../../commons/project/02/project02.containter";
+import { IMyPageUIProps } from "./myPage.types";
 
-export default function MyPageUI() {
+export default function MyPageUI(props: IMyPageUIProps) {
   return (
     <S.Wrapper>
       {/* leftWrapper */}
@@ -23,9 +23,11 @@ export default function MyPageUI() {
         <S.InnerWrapper>
           <S.ProjectTitle>
             <S.Title>진행 중인 프로젝트</S.Title>
-            <S.AddButton>+ 프로젝트 추가하기</S.AddButton>
+            <S.AddButton onClick={props.onClickMoveToNewProject}>
+              + 프로젝트 추가하기
+            </S.AddButton>
           </S.ProjectTitle>
-          {/* 맵돌릴거임 */}
+          {/* 맵돌릴거임 하드코딩함 */}
           <S.ProjectBox>
             <Project01 />
             <Project01 />
@@ -38,9 +40,9 @@ export default function MyPageUI() {
             <S.DateButton>최신순</S.DateButton>
           </S.ProjectTitle>
           <S.ProjectBox>
-            <Project02 />
-            <Project02 />
-            <Project02 />
+            <Project01 />
+            <Project01 />
+            <Project01 />
           </S.ProjectBox>
         </S.InnerWrapper>
       </S.RightWrapper>
