@@ -6,9 +6,10 @@ import * as yup from "yup";
 import 'react-quill/dist/quill.snow.css';
 import dynamic from "next/dynamic";
 import { useMutation, useQuery } from "@apollo/client";
-import { CREATE_PROJECT, FETCH_USER } from "./projectSignPage.queries";
+import { CREATE_PROJECT, FETCH_LOGIN_USER, FETCH_USER } from "./projectSignPage.queries";
 import { useRecoilState } from "recoil";
 import { fromValues, toValues } from "../../../commons/store";
+import { useAuth } from "../../commons/hooks/useAuth";
 
 const ReactQuill = dynamic(() => import("react-quill"), {ssr : false});
 
@@ -23,9 +24,7 @@ const schema = yup.object({
 
 export default function ProjectSign() {
 
-  const { data } = useQuery(FETCH_USER)
-
-  console.log("유저", data)
+  const { data } = useQuery(FETCH_LOGIN_USER)
 
   const [ createProject ] = useMutation(CREATE_PROJECT)
 

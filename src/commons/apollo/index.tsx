@@ -45,26 +45,26 @@ export default function ApolloSetting(props: IAppProps) {
               },
             });
             // 3-2. 변경된 operation 재요청하기
-            return forward(operation);
-          });
+                        return forward(operation);
+                    });
+                }
+            }
         }
-      }
-    }
-  });
-  const uploadLink = createUploadLink({
-    uri: "http://34.64.156.215:3000/graphql",
-    headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdrZW16bUBuYXZlci5jb20iLCJzdWIiOiI5MGI3ZGE2NS0zMjYxLTQ0NWMtOGIwMC1hMzk4M2RlMjVlNDMiLCJuYW1lIjoi7YWM7Iqk7Yq464Sk7J6EIiwiaWF0IjoxNjUzMTA5OTgyLCJleHAiOjE2NTMxOTYzODJ9.RotHyWoGXFWi_VaeY7jKWwuEM-UsyjQhInY2iFx9BY0`,
-    },
-    credentials: "include",
-  });
-  const client = new ApolloClient({
-    link: ApolloLink.from([errorLink, uploadLink]),
-    cache: new InMemoryCache(), // 백엔드 컴퓨터 주소
-  });
-  return (
-    <>
-      <ApolloProvider client={client}>{props.children}</ApolloProvider>
-    </>
-  );
+    });
+    const uploadLink = createUploadLink({
+        uri: "http://34.64.156.215:3000/graphql",
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
+        credentials: "include",
+    });
+    const client = new ApolloClient({
+        link: ApolloLink.from([errorLink, uploadLink]),
+        cache: new InMemoryCache(), // 백엔드 컴퓨터 주소
+    });
+    return (
+        <>
+            <ApolloProvider client={client}>{props.children}</ApolloProvider>
+        </>
+    );
 }

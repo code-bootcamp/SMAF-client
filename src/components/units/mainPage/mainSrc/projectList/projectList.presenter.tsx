@@ -17,15 +17,7 @@ export default function ProjectListUI(props) {
             <S.RateBackground></S.RateBackground>
             <S.RateBar rate={props.rate}></S.RateBar>
         </S.RateBox>
-      </S.ListBox>
-      <S.ListBox>
-        <S.Check2></S.Check2>
-        <S.ProjectName>친환경 서비스 프로젝트</S.ProjectName>
-      </S.ListBox>
-      <S.ListBox>
-        <S.Check3></S.Check3>
-        <S.ProjectName>안드로이드 백엔드 개발자</S.ProjectName>
-      </S.ListBox>
+      </S.ListBox>      
     </S.Wrapper>
   );
 }

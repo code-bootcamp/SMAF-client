@@ -13,7 +13,7 @@ export default function SchedulesUI(props){
                         <S.RDirectionBtn onClick={props.onClickAfter}> ＞ </S.RDirectionBtn>
                     </S.Direction>
                 </S.DateInfo>
-                <S.AddBtn>+ 일정추가하기</S.AddBtn>
+                <S.AddBtn>+ 프로젝트 생성</S.AddBtn>
             </S.DateBox>
             <S.Wrapper>
             

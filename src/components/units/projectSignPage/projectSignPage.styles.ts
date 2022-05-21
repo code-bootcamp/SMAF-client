@@ -2,14 +2,14 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 198rem;
-  padding: 0 39rem 0 39rem;
+  padding: 10rem 39rem 10rem 39rem;
 `;
 
 export const Title = styled.h1`
 text-align: center;
 font-weight: 700;
 font-size: 3.6rem;
-padding: 5rem;
+padding: 5rem 0 10rem 0;
 `;
 export const LabelBox = styled.div`
   display: flex;

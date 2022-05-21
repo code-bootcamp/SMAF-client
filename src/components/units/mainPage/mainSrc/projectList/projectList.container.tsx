@@ -6,8 +6,8 @@ export default function ProjectList() {
   const [rate, setRate] = useState(0)
 
     useEffect(()=>{
-        setRate(80)
-    },[rate])
+        setRate(70)
+    },[])
 
   return <ProjectListUI
     rate={rate}
