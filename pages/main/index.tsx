@@ -3,6 +3,7 @@ import BeforeLogin from "../../src/components/units/mainPage/beforeLogin/beforeL
 import QuestionAnswerList from "../../src/components/units/QuestionAnswer/list/QuestionAnswerList.presenter";
 
 export default function MainPage() {
+
     return (
         <>
             <Main />
@@ -10,4 +11,5 @@ export default function MainPage() {
             {/* <QuestionAnswerList /> */}
         </>
     );
+
 }

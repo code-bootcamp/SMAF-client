@@ -34,7 +34,7 @@ export default function ApolloSetting(props: IAppProps) {
                         operation.setContext({
                             headers: {
                                 ...operation.getContext().headers,
-                                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cmlzdXJpQHN1cmkuY29tIiwic3ViIjoiYzU2NDRlZjUtMWY3Zi00N2I2LWEyYTgtZDkxNmIxN2RlZmZkIiwibmFtZSI6IuyImOumrCIsImlhdCI6MTY1MzA1MjEzNywiZXhwIjoxNjUzMTM4NTM3fQ.Ux10TW8Vhz563ZDGDE7QyvVADeQtBWKyWZicYPbYpIE`,
+                                Authorization: `Bearer ${newAccessToken}`,
                             },
                         });
                         // 3-2. 변경된 operation 재요청하기
@@ -47,7 +47,7 @@ export default function ApolloSetting(props: IAppProps) {
     const uploadLink = createUploadLink({
         uri: "http://34.64.156.215:3000/graphql",
         headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cmlzdXJpQHN1cmkuY29tIiwic3ViIjoiYzU2NDRlZjUtMWY3Zi00N2I2LWEyYTgtZDkxNmIxN2RlZmZkIiwibmFtZSI6IuyImOumrCIsImlhdCI6MTY1MzEwNTIyOCwiZXhwIjoxNjUzMTkxNjI4fQ.e45MLZnKT3Syv0yeXQI1dwFCMUFsHffiXKfAFTyBPfE`,
+            Authorization: `Bearer ${accessToken}`,
         },
         credentials: "include",
     });
