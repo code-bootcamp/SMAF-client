@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useApolloClient, useMutation } from "@apollo/client";
-import { FETCH_USER, LOGIN_USER } from "./login.queries";
+import { FETCH_LOGIN_USER, LOGIN_USER } from "./login.queries";
 import { useRecoilState } from "recoil";
 import { accessTokenState, userInfoState } from "../../../../../commons/store";
 import { useState } from "react";
@@ -30,9 +30,9 @@ interface IFormValues {
 export default function Login() {
     const router = useRouter();
     const [, setAccessToken] = useRecoilState(accessTokenState);
-    const [, setUserInfo] = useRecoilState(userInfoState);
+    // const [, setUserInfo] = useRecoilState(userInfoState);
     const [login] = useMutation(LOGIN_USER);
-    const client = useApolloClient();
+    // const client = useApolloClient();
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(schema),
         mode: "onChange",
@@ -62,21 +62,21 @@ export default function Login() {
         console.log("accessToken");
         setAccessToken(accessToken);
 
-        const resultUserInfo = await client.query({
-            query: FETCH_USER,
-            context: {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                },
-            },
-        });
+        // const resultUserInfo = await client.query({
+        //     query: FETCH_LOGIN_USER,
+        //     context: {
+        //         headers: {
+        //             Authorization: `Bearer ${accessToken}`,
+        //         },
+        //     },
+        // });
 
-        const userInfo = resultUserInfo.data.fetchUser;
-        setUserInfo(userInfo);
+        // const userInfo = resultUserInfo.data.fetchLoginUser;
+        // setUserInfo(userInfo);
         console.log("완료");
-        localStorage.setItem("accessToken", accessToken);
+        // localStorage.setItem("accessToken", accessToken);
         console.log(accessToken);
-        console.log(userInfo);
+        // console.log(userInfo);
         router.push("/main");
     };
 

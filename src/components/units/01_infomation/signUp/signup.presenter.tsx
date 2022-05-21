@@ -2,6 +2,7 @@ import Uploads01 from "../../../commons/uploads/Upload01.container";
 import * as S from "./signup.styles";
 
 export default function SignupUI(props: any) {
+    console.log("사진요", props.urls);
     return (
         <S.Wrapper>
             <S.SignUpContents>
