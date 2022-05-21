@@ -1,10 +1,14 @@
 import * as S from "./detailPlanCard.styles";
-export default function DetailPlanCardHTML() {
+interface DetailPlanCardHTMLProps {
+  el: any;
+}
+export default function DetailPlanCardHTML(props: DetailPlanCardHTMLProps) {
+  // console.log(props.el);
   return (
     <S.Wrapper>
-      <S.Title>Title</S.Title>
+      <S.Title>{props.el.scheduleName}</S.Title>
       <S.Contents>Contents</S.Contents>
-      <S.Date>2022.06.12</S.Date>
+      <S.Date>{props.el.scheduleDate.slice(0, 10)}</S.Date>
     </S.Wrapper>
   );
 }

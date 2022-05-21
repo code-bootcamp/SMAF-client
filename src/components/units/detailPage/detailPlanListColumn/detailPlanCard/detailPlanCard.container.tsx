@@ -1,5 +1,8 @@
 import DetailPlanCardHTML from "./detailPlanCard.presenter";
 
-export default function DetailPlanCard() {
-  return <DetailPlanCardHTML />;
+interface DetailPlanCardProps {
+  el: any;
+}
+export default function DetailPlanCard(props: DetailPlanCardProps) {
+  return <DetailPlanCardHTML el={props.el} />;
 }

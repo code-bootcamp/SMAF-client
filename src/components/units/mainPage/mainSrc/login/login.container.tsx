@@ -2,10 +2,10 @@ import LoginUI from "./login.presenter";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "./login.queries";
+import { useApolloClient, useMutation } from "@apollo/client";
+import { FETCH_LOGIN_USER, LOGIN_USER } from "./login.queries";
 import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../../../commons/store";
+import { accessTokenState, userInfoState } from "../../../../../commons/store";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -41,11 +41,11 @@ export default function Login() {
     const [, setEmail] = useState("");
     const [, setPassword] = useState("");
 
-    const onChangeEmail = (evnet) => {
+    const onChangeEmail = (evnet: any) => {
         setEmail(event.target.value);
     };
 
-    const onChangePassword = (event) => {
+    const onChangePassword = (event: any) => {
         setPassword(event.target.value);
     };
 
@@ -63,7 +63,7 @@ export default function Login() {
         setAccessToken(accessToken);
 
         // const resultUserInfo = await client.query({
-        //     query: FETCH_USER,
+        //     query: FETCH_LOGIN_USER,
         //     context: {
         //         headers: {
         //             Authorization: `Bearer ${accessToken}`,
@@ -71,7 +71,7 @@ export default function Login() {
         //     },
         // });
 
-        // const userInfo = resultUserInfo.data.fetchUser;
+        // const userInfo = resultUserInfo.data.fetchLoginUser;
         // setUserInfo(userInfo);
         console.log("완료");
         // localStorage.setItem("accessToken", accessToken);

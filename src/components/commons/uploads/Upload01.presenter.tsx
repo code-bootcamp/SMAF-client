@@ -1,14 +1,19 @@
+// import { useEffect, useState } from "react";
 import { UploadButton, UploadFileHidden, UploadImage } from "./Upload01.styles";
+// import { IUploads01UIProps } from "./Uploads01.types";
 
 export default function Uploads01UI(props) {
-    console.log("살려줘", props.fileUrl);
+    console.log(props.fileUrl);
+    // useEffect(() => {
+    //     if (!props.fileUrl) return;
+    //     const temp = props.fileUrl;
+    //     console.log(props.fileUrl);
+    //     setTest(temp);
+    // }, [props.fileUrl]);
     return (
         <>
             {props.fileUrl ? (
-                <UploadImage
-                    onClick={props.onClickUpload}
-                    src={`https://storage.cloud.google.com/teamproject_storage/userImage/${props.fileUrl}`}
-                />
+                <UploadImage onClick={props.onClickUpload} src={props.fileUrl[0]} />
             ) : (
                 <UploadButton onClick={props.onClickUpload}></UploadButton>
             )}

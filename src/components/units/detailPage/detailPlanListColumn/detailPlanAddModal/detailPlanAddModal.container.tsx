@@ -1,21 +1,52 @@
-import * as S from "./detailPlanAddModal.styled";
-export default function DetailPlanAddModal() {
+import DetailPlanAddModalHTML from "./detailPlanAddModal.presenter";
+import { useForm } from "react-hook-form";
+import { useMutation } from "@apollo/client";
+import {
+  CREATE_PROCESS_CATEGORY,
+  FETCH_PROJECT_SCHEDULES_CATEGORY,
+} from "./detailPlanAddModal.querys";
+import { useRouter } from "next/router";
+export default function DetailPlanAddModal(props: any) {
+  const router = useRouter();
+  const [createSchedule] = useMutation(CREATE_PROCESS_CATEGORY);
+  const { register, handleSubmit } = useForm({
+    mode: "onChange",
+  });
+
+  const CreateNewSchedule = async (data: any) => {
+    if (data) {
+      try {
+        await createSchedule({
+          variables: {
+            createScheduleInput: {
+              scheduleName: data.scheduleName,
+              scheduleDate: data.scheduleDate,
+              processCategoryId: props.categoryId,
+              projectId: router.query.projectId,
+            },
+          },
+          refetchQueries: [
+            {
+              query: FETCH_PROJECT_SCHEDULES_CATEGORY,
+              variables: {
+                processCategoryId: props.categoryId,
+              },
+            },
+          ],
+        });
+        alert("성공");
+        props.onToggleModal();
+      } catch (error) {
+        alert("error");
+      }
+    }
+  };
   return (
-    <S.Wrapper>
-      <S.ProjectName>
-        <S.Word>프로젝트 명</S.Word>
-        <S.ProjectNameInput></S.ProjectNameInput>
-      </S.ProjectName>
-      <S.ProjectContents>
-        <S.Word>일정내용</S.Word>
-        <S.ContentsArea></S.ContentsArea>
-      </S.ProjectContents>
-      <S.EndDate>
-        <S.Word>마감일</S.Word>
-        <S.Date></S.Date>
-      </S.EndDate>
-      <S.ConfirmBtn>일정 추가하기</S.ConfirmBtn>
-    </S.Wrapper>
+    <DetailPlanAddModalHTML
+      register={register}
+      handleSubmit={handleSubmit}
+      CreateNewSchedule={CreateNewSchedule}
+    />
   );
 }
 
