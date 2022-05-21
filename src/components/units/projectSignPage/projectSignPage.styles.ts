@@ -6,13 +6,6 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  text-align: center;
-  font-weight: 700;
-  font-size: 36px;
-  padding: 50px;
-
-`;
-export const Title = styled.h1`
 text-align: center;
 font-weight: 700;
 font-size: 3.6rem;
@@ -22,19 +15,19 @@ export const LabelBox = styled.div`
   display: flex;
 `;
 export const Label = styled.span`
-
   font-size: 2.8rem;
-font-weight: 500;
+  font-weight: 500;
 `;
 export const Block = styled.div`
   display: flex;
-justify-content: space-between;
-margin-bottom: 4rem;
+  justify-content: space-between;
+  margin-bottom: 4rem;
 `;
 
 export const InputBox = styled.div`
   display: flex;
   flex-direction: column;
+  font-size: 2rem;
 `;
 
 export const Must = styled.div`
@@ -43,24 +36,24 @@ export const Must = styled.div`
 
 export const Inputs = styled.div`
 `;
-export const Inputs = styled.div``;
 export const Input = styled.input`
   width: 88rem;
-height: 6rem;
-border-radius: 0.8px;
-border: 0.1px solid #DBDBDB;
-padding: 1rem;
+  height: 6rem;
+  border-radius: 0.8rem;
+  border: 0.2rem solid #DBDBDB;
+  padding: 1rem;
 `;
 
 export const ImgAddBtn = styled.button`
-width: 11rem;
-height: 3.8rem;
-background-color: white;
-border: none;
-border-radius: 1.2rem;
-display: flex;
-align-items: center;
-justify-content: center;
+  width: 11rem;
+  height: 3.8rem;
+  background-color: white;
+  border: none;
+  border-radius: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 `;
 
 export const FileImg = styled.img`
@@ -90,12 +83,21 @@ export const ImgInfo = styled.div`
 padding-left: 2rem;
 `;
 export const StartEndDay = styled.div`
-margin-left: 13.5rem;
+display: flex;
+padding-left: 14rem;
 `;
 export const Date = styled.div`
 font-size: 2.4rem;
 padding-bottom: 2rem;
 `;
+export const EndDate = styled.div`
+font-size: 2.4rem;
+padding: 0 0 2rem 20rem;
+`;
+export const DayPicker = styled.div`
+padding-left: 7em;
+`;
+
 export const DateBox = styled.div`
 padding: 3rem 0 3rem 0;
 display: flex;
@@ -119,8 +121,7 @@ export const MapBox = styled.div`
   justify-content: end;
 `;
 export const MapInput = styled.input`
-
-  padding: 1rem;
+padding: 1rem;
 width: 88rem;
 height: 6.4rem;
 border: 0.2rem solid #DBDBDB;
@@ -129,6 +130,7 @@ background-image: url(/images/search.png);
 background-repeat: no-repeat;
 background-size : 2.2rem;
 background-position: 84rem center;
+margin-bottom: 1rem;
 `;
 export const MemberAddInput = styled.input`
 padding: 1rem;
@@ -155,6 +157,7 @@ background: #333333;
 color: white;
 font-size: 2.8rem;
 border-radius: 1.2rem;
+cursor:pointer;
 `;
 export const Btn = styled.div`
 padding: 10rem 0 10rem 0;
@@ -165,5 +168,5 @@ justify-content: center;
 export const Error = styled.div`
 color: #DC0000;
 font-size: 1.8rem;
-padding: 1rem 0 0 5rem;
+padding: 1rem 0 0 2rem;
 `;

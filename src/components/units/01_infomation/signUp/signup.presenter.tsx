@@ -1,24 +1,15 @@
 import Uploads01 from "../../../commons/uploads/Upload01.container";
 import * as S from "./signup.styles";
-import { v4 as uuidv4 } from "uuid";
 
 export default function SignupUI(props: any) {
     return (
         <S.Wrapper>
             <S.SignUpContents>
-                <S.SignupForm onSubmit={props.handleSubmit(props.onClickcreateUser)}>
+                <S.SignupForm onSubmit={props.handleSubmit(props.onClickCreateUser)}>
                     <S.SignUpTop>
                         <S.SignUpTitle>회원가입</S.SignUpTitle>
                         <S.SignUpProfileWrapper>
-                            {props.fileUrls.map((el, index) => (
-                                <Uploads01
-                                    type="button"
-                                    key={uuidv4()}
-                                    index={index}
-                                    fileUrl={el}
-                                    onChangeFileUrls={props.onChangeFileUrls}
-                                />
-                            ))}
+                            <Uploads01 fileUrl={props.urls} setUrls={props.setUrls} index={0} />
                             <S.ProfileHuman src="/image/human.png" />
                         </S.SignUpProfileWrapper>
                     </S.SignUpTop>

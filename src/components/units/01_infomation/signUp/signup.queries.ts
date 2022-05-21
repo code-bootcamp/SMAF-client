@@ -31,3 +31,9 @@ export const LOGIN_USER = gql`
         login(email: $email, password: $password)
     }
 `;
+
+export const UPLOAD_FILE = gql`
+    mutation userImageUpload($file: [Upload!]!) {
+        userImageUpload(file: $file)
+    }
+`;

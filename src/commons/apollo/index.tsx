@@ -19,11 +19,13 @@ export default function ApolloSetting(props: IAppProps) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   // const [, setUserInfo] = useRecoilState(userInfoState);
 
-  useEffect(() => {
-    getAccessToken().then((newAccessToken) => {
-      setAccessToken(newAccessToken);
-    });
-  }, []);
+
+    useEffect(() => {
+        getAccessToken().then((newAccessToken) => {
+            setAccessToken(newAccessToken);
+        });
+    }, [accessToken]);
+
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     if (graphQLErrors) {
