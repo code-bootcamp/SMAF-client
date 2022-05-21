@@ -6,16 +6,16 @@ export const LOGIN_USER = gql`
     }
 `;
 
-// export const FETCH_USER = gql`
-//     query fetchUser($userId: String!) {
-//         fetchUser(userId: $userId) {
-//             userId
-//             userName
-//             email
-//             phone
-//             userImageURL
-//             projectTicket
-//             admin
-//         }
-//     }
-// `;
+export const FETCH_USER = gql`
+    query fetchUser($userId: String!) {
+        fetchUser(userId: $userId) {
+            userId
+            userName
+            email
+            phone
+            userImageURL
+            projectTicket
+            admin
+        }
+    }
+`;
