@@ -47,7 +47,7 @@ export default function ApolloSetting(props: IAppProps) {
     const uploadLink = createUploadLink({
         uri: "http://34.64.156.215:3000/graphql",
         headers: {
-            Authorization: `Bearer ${accessToken}`,
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cmlzdXJpQHN1cmkuY29tIiwic3ViIjoiYzU2NDRlZjUtMWY3Zi00N2I2LWEyYTgtZDkxNmIxN2RlZmZkIiwibmFtZSI6IuyImOumrCIsImlhdCI6MTY1MzExNTk5MSwiZXhwIjoxNjUzMjAyMzkxfQ.n54OUW20DO1YyEVFoFhvehu_qzS-dQV6j57aUfNTcZQ`,
         },
         credentials: "include",
     });
