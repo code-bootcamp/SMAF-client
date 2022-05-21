@@ -2,16 +2,20 @@ import DetailPlanCard from "./detailPlanCard/detailPlanCard.container";
 import * as S from "./detailPlanListColumn.styles";
 import { useState } from "react";
 import { Modal } from "antd";
+import { Draggable } from "react-beautiful-dnd";
 import DetailPlanAddModal from "./detailPlanAddModal/detailPlanAddModal.container";
-export default function DetailPlanListColumnHTML() {
+
+export default function DetailPlanListColumnHTML(props: any) {
   const [isOpen, setIsOpen] = useState(false);
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
   };
+  // console.log(props.columnData, "columnData");
+  // console.log(props.scheduleData, "scheduleData");
   return (
     <S.Wrapper>
       <S.AddColumn>
-        <div>진행예정</div>
+        <div>{props.columnData?.processName}</div>
         <S.AddCoulumnIcon
           src="/detailPage/AddColumn.png"
           onClick={onToggleModal}
@@ -34,10 +38,29 @@ export default function DetailPlanListColumnHTML() {
           footer={null}
           centered={true}
         >
-          <DetailPlanAddModal />
+          <DetailPlanAddModal
+            categoryId={props.columnData?.processCategoryId}
+            onToggleModal={onToggleModal}
+          />
         </Modal>
       )}
-      <DetailPlanCard />
+      {props.scheduleData?.fetchCategorySchedules.map((el: any, index: any) => (
+        <Draggable
+          key={String(el.scheduleId)}
+          index={index}
+          draggableId={String(el.scheduleId)}
+        >
+          {(provided) => (
+            <div
+              ref={provided.innerRef}
+              {...provided.dragHandleProps}
+              {...provided.draggableProps}
+            >
+              <DetailPlanCard key={el.scheduleId} el={el} />
+            </div>
+          )}
+        </Draggable>
+      ))}
     </S.Wrapper>
   );
 }

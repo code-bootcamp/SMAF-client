@@ -3,22 +3,44 @@ import TeamMember from "../../commons/teamMember/teamMember.container";
 import { IProjectDetailPageHTMLProps } from "./detailPage.types";
 import AddColumnBtn from "./addColumnBtn/addColumnBtn.container";
 import DetailPlanListColumn from "./detailPlanListColumn/detailPlanListColumn.container";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { useRouter } from "next/router";
 export default function ProjectDetailPageHTML(
   props: IProjectDetailPageHTMLProps
 ) {
+  // console.log(props.projectData, "projectData");
+  // console.log(props.categoriesData, "categoriesData");
+
+  const router = useRouter();
+
+  const MoveEdit = () => {
+    router.push(`./project/${router.query.projectId}/edit`);
+  };
   return (
     <S.Wrapper>
       <S.LeftWrapper>
+        <button onClick={MoveEdit}>수정하기</button>
         <S.ProjectDetail>
-          <S.DetailImg src="/test.png"></S.DetailImg>
-          <S.DetailProjectName>친환경 서비스 프로젝트</S.DetailProjectName>
+          {props.projectData?.fetchProject?.projectImageURL ? (
+            <S.DetailImg
+              src={`https://storage.googleapis.com/${props.projectData?.fetchProject?.projectImageURL}`}
+            ></S.DetailImg>
+          ) : (
+            <S.DetailImg src="/test.png"></S.DetailImg>
+          )}
+          <S.DetailProjectName>
+            {props.projectData?.fetchProject.projectName}
+          </S.DetailProjectName>
           <S.DetailProjectContents>
-            경기도와 함께하는 친환경 서비스 프로젝트{" "}
+            {props.projectData?.fetchProject.projectIntro}
           </S.DetailProjectContents>
-          <S.DetailProjectDay>2022.05.12 ~ 2022.06.24</S.DetailProjectDay>
+          <S.DetailProjectDay>
+            {props.projectData?.fetchProject.startDate.slice(0, 10)} ~{" "}
+            {props.projectData?.fetchProject.endDate.slice(0, 10)}
+          </S.DetailProjectDay>
           <S.DetailProjectPosition>
             <S.DetailProjectIcon src="/detailPage/position.png" />
-            서울종로구
+            {props.projectData?.fetchProject?.address?.address}
           </S.DetailProjectPosition>
         </S.ProjectDetail>
         <TeamMember />
@@ -51,8 +73,36 @@ export default function ProjectDetailPageHTML(
       </S.LeftWrapper>
 
       <S.RightWrapper>
-        <DetailPlanListColumn />
-        <AddColumnBtn />
+        {props.isLoading && (
+          <DragDropContext onDragEnd={props.handleDragEnd}>
+            {props.categoriesData?.fetchProcessCategories.map(
+              (el: any, index: any) => (
+                <Droppable
+                  droppableId={String(el.processCategoryId)}
+                  key={index}
+                >
+                  {(provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                      // style={{backgroundColor: snapshot.isDraggingOver ? 'white' : 'grey'}}
+                    >
+                      <DetailPlanListColumn
+                        key={el.processCategoryId}
+                        el={el}
+                        tableIndex={index}
+                      />
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              )
+            )}
+            <AddColumnBtn
+              projectId={props.projectData?.fetchProject.projectId}
+            />
+          </DragDropContext>
+        )}
       </S.RightWrapper>
     </S.Wrapper>
   );
