@@ -52,7 +52,7 @@ export default function ApolloSetting(props: IAppProps) {
   const uploadLink = createUploadLink({
     uri: "http://34.64.156.215:3000/graphql",
     headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdrZW16bUBuYXZlci5jb20iLCJzdWIiOiI5MGI3ZGE2NS0zMjYxLTQ0NWMtOGIwMC1hMzk4M2RlMjVlNDMiLCJpYXQiOjE2NTI4NTExNjAsImV4cCI6MTY1MzQ1NTk2MH0.IKsbF9M-jVcn89C-bFY6EFB1l94hUWQHA8pe4zPq1bE`,
+      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNjY0BjY2MuY29tIiwic3ViIjoiYTE0YTYwZWMtYzc5OS00MGE1LTkwOTctNzdhYWVlMmVkYWRhIiwibmFtZSI6IuyVhOustOqwnCIsImlhdCI6MTY1MzExMTAxNywiZXhwIjoxNjUzMTk3NDE3fQ.4W4bLOTdpsNr4QBVDmI3NKXL075gAMcEWTD-IStxV18`,
     },
     credentials: "include",
   });

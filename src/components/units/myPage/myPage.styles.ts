@@ -25,6 +25,7 @@ export const RightWrapper = styled.div`
 
 export const InnerWrapper = styled.div`
   height: 30.6rem;
+  /* border: 1px solid red; */
 `;
 
 export const ProjectTitle = styled.div`
@@ -53,6 +54,14 @@ export const ProjectBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 970px;
+  /* overflow: hidden; */
+`;
+
+export const Scroll = styled.div`
+  width: 970px;
+  height: 240px;
+  overflow: auto;
   /* overflow: scroll; */
 `;
 
@@ -85,3 +94,5 @@ export const DateButton = styled.button`
   @media ${breakPoints.mobile} {
   }
 `;
+
+// 캐러셀
