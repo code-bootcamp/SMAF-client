@@ -47,3 +47,15 @@ export const dateValue = atom({
     key: "dateValue", 
     default:new Date(), 
 })
+
+// 데이피커 startDate
+export const fromValues = atom({
+    key: "fromValue", 
+    default:"", 
+})
+
+// 데이피커 endDate
+export const toValues = atom({
+    key: "toValue", 
+    default:"", 
+})
