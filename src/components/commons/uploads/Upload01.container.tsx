@@ -4,9 +4,9 @@ import { checkValidationImage } from "./Upload01.validation";
 import Uploads01UI from "./Upload01.presenter";
 import { UPLOAD_FILE } from "./Upload01.queries";
 import { Modal } from "antd";
-import { IUploads01Props } from "./Uploads01.types";
+// import { IUploads01Props } from "./Uploads01.types";
 
-export default function Uploads01(props: IUploads01Props) {
+export default function Uploads01(props) {
     const fileRef = useRef<HTMLInputElement>(null);
     const [uploadFile] = useMutation(UPLOAD_FILE);
 
@@ -20,7 +20,7 @@ export default function Uploads01(props: IUploads01Props) {
 
         try {
             const result = await uploadFile({ variables: { file } });
-            props.setUrls(result.data.uploadFile.url);
+            props.setUrls(result.data.userImageUpload);
         } catch (error) {
             Modal.error({ content: error.message });
         }
