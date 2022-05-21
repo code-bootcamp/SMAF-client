@@ -7,7 +7,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_USER, SIGNUP_CHECKEDTOKEN, SIGNUP_SENDTOKEN } from "./signup.queries";
 // import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import { message, Modal } from "antd";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 
 const schema = yup.object({
     email: yup
@@ -50,24 +50,17 @@ export default function SignUpContainer(props: any) {
     const [inputToken, setInputToken] = useState("");
     const [trueToken, setTrueToken] = useState(false);
     const [isActive, setIsActive] = useState(false);
-    const [fileUrls, setFileUrls] = useState([""]);
+    const fileRef = useRef<HTMLInputElement>(null);
+    const [urls, setUrls] = useState([""]);
 
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(schema),
         mode: "onChange",
     });
 
-    const onChangeFileUrls = (fileUrl: string, index: number) => {
-        const newFileUrls = [...fileUrls];
-        newFileUrls[index] = fileUrl;
-        setFileUrls(newFileUrls);
+    const onClickImage = () => {
+        fileRef.current?.click();
     };
-
-    useEffect(() => {
-        if (props.data?.images?.length) {
-            setFileUrls([...props.data?.images]);
-        }
-    }, [props.data]);
 
     const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
         setPhone(e.target.value);
@@ -121,7 +114,7 @@ export default function SignUpContainer(props: any) {
         }
     };
 
-    const onClickcreateUser = async (data: FormValues) => {
+    const onClickCreateUser = async (data: FormValues) => {
         const { email, name, password, phone, userImageURL } = data;
 
         if (email && password && name && inputToken && trueToken && phone && userImageURL) {
@@ -136,7 +129,7 @@ export default function SignUpContainer(props: any) {
                         email: data.email,
                         password: data.password,
                         phone: data.phone,
-                        userImageURL: fileUrls,
+                        userImageURL: urls,
                     },
                 },
             });
@@ -153,14 +146,16 @@ export default function SignUpContainer(props: any) {
             register={register}
             handleSubmit={handleSubmit}
             formState={formState}
-            onClickcreateUser={onClickcreateUser}
+            onClickcreateUser={onClickCreateUser}
             onClickSendTokenPhone={onClickSendTokenPhone}
             onClickTokenCheck={onClickTokenCheck}
             onChangePhone={onChangePhone}
             onChangeToken={onChangeToken}
             isActive={isActive}
-            onChangeFileUrls={onChangeFileUrls}
-            fileUrls={fileUrls}
+            fileRef={fileRef}
+            onClickImage={onClickImage}
+            setUrls={setUrls}
+            urls={urls}
         />
     );
 }
