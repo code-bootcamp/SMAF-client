@@ -76,7 +76,7 @@ export const Question = styled.input`
   }
 `;
 
-export const Content = styled.input`
+export const Content = styled.textarea`
   width: 100%;
   height: 62rem;
   background: #ffffff;

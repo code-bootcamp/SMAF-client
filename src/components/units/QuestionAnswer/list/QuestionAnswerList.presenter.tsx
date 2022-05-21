@@ -10,7 +10,6 @@ import { v4 as uuidv4 } from "uuid";
 export default function QuestionAnswerListUI(props: IQuestionAnswerListProps) {
   const { MoveToPage } = useMoveToPage();
   // const [isOpen, setIsOpen] = useState(false);
-  console.log(props.data, "데이터");
   return (
     <S.Wrapper>
       <S.Title>QnA</S.Title>

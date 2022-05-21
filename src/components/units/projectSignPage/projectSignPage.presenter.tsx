@@ -1,7 +1,13 @@
 import * as S from "./projectSignPage.styles";
-export default function ProjectSignPageUI() {
+import DayPick from '../../commons/daypicker/daypicker'
+import KakaoMapPage from './kakaoMap/kakaomap.container'
+import { Modal } from 'antd';
+import DaumPostcode from 'react-daum-postcode';
+
+export default function ProjectSignPageUI(props){
   return (
       <S.Wrapper>
+        <form onSubmit={props.handleSubmit(props.onClickSubmit)} >
         <S.Title>새로운 프로젝트 만들기</S.Title>
         <S.Inputs>
           <S.Block>
@@ -9,8 +15,10 @@ export default function ProjectSignPageUI() {
               <S.Label>프로젝트명</S.Label><S.Must>*</S.Must>
           </S.LabelBox>
           <S.InputBox>
-            <S.Input type="text" />
-            <S.Error>기호는 포함할 수 없습니다.</S.Error>
+            <S.Input type="text" 
+                      placeholder="프로젝트 이름을 입력해주세요."
+                      {...props.register("projectName")} />
+            <S.Error>{props.formState.errors.projectName?.message}</S.Error>
           </S.InputBox> 
           </S.Block>
           <S.Block> 
@@ -18,8 +26,10 @@ export default function ProjectSignPageUI() {
               <S.Label>프로젝트 한줄소개</S.Label><S.Must>*</S.Must>
             </S.LabelBox>
           <S.InputBox>
-            <S.Input type="text" />
-            <S.Error>기호는 포함할 수 없습니다.</S.Error>
+            <S.Input type="text" 
+                     placeholder="프로젝트를 한줄로 소개해주세요."
+                     {...props.register("remarks")} />
+            <S.Error>{props.formState.errors.remarks?.message}</S.Error>
           </S.InputBox>
           </S.Block>
           <S.Block>
@@ -27,8 +37,12 @@ export default function ProjectSignPageUI() {
             <S.Label>프로젝트 설명</S.Label><S.Must>*</S.Must>
           </S.LabelBox>
           <S.InputBox>
-            <S.Input type="text" />
-            <S.Error>기호는 포함할 수 없습니다.</S.Error>
+            <div style={{width : "88rem", height:"30rem", backgroundColor:"white", borderRadius:"0.8rem"}}>
+            <props.ReactQuill 
+              style ={{height:"84%"}}
+              onChange={props.onChangeContents}  
+              value={props.getValues("contents") || ""}/>
+            </div>
           </S.InputBox>
           </S.Block>  
         </S.Inputs> 
@@ -36,13 +50,13 @@ export default function ProjectSignPageUI() {
           <S.Label>대표이미지</S.Label><S.Must>*</S.Must>
         </S.LabelBox>
           <S.AddImg>
-            <S.ImgAddBtn>
+            <S.ImgAddBtn type="button">
               <S.FileImg src="/images/file.png" />
               <span>파일찾기</span>
             </S.ImgAddBtn>
             <S.ImgPreviewBox>
               <S.ImgPreview></S.ImgPreview>
-              <S.ImgInfo>등록할 수 있는 사진의 크기는 150*150픽셀 이상, 최대용량은 20MB미만 입니다.</S.ImgInfo>
+              <S.ImgInfo>등록할 수 있는 사진의 크기는 150*150픽셀 이상, <br />최대용량은 20MB미만 입니다.</S.ImgInfo>
             </S.ImgPreviewBox>
           </S.AddImg>
          <S.DateBox>
@@ -50,38 +64,49 @@ export default function ProjectSignPageUI() {
             <S.Label>프로젝트 기간</S.Label><S.Must>*</S.Must>
           </S.LabelBox>  
           <S.InputBox>
-            <S.StartEndDay>
-              <S.Date>시작일</S.Date>
-              <S.DateInput />
-            </S.StartEndDay>
-            <S.StartEndDay>
-              <S.Date>종료일</S.Date>
-              <S.DateInput />
-            </S.StartEndDay>
+            <S.StartEndDay>          
+              <S.Date>시작일</S.Date>            
+              <S.EndDate>종료일</S.EndDate>
+            </S.StartEndDay>   
+              <S.DayPicker>
+                <DayPick />
+              </S.DayPicker>
           </S.InputBox>
           </S.DateBox>
             <S.Block>  
               <S.LabelBox> 
                 <S.Label>장소</S.Label>
-              </S.LabelBox> 
+              </S.LabelBox>               
+              {/* 주소모달 */}
+                {props.isOpen && (
+                  <Modal title="주소를 검색해주세요" 
+                    visible={true} onOk={props.handleOk}  
+                    onCancel={props.handleCancel}>
+                <DaumPostcode onComplete={props.handleComplete}/>
+                </Modal>
+              )}
               <S.InputBox>
-                <S.MapInput type="text" placeholder="도로명 주소로 검색"/>
+                <S.MapInput id="address" type="text" 
+                            placeholder="도로명 주소로 검색" 
+                            onClick={props.showModal}
+                            value={props.address}
+                            />
+                <S.Input id="addressDetail" type="text" 
+                         placeholder="상세주소를 입력해주세요."
+                         onChange={props.onChangeAddressDetail}/>
               </S.InputBox>
             </S.Block>
             <S.MapBox>
-              <S.Map></S.Map>  
+              <S.Map>
+                <KakaoMapPage 
+                  address={props.address} 
+                  zipcode={props.zipcode}/>  
+              </S.Map>  
             </S.MapBox>
-          <S.BlockMember>
-            <S.LabelBox>
-              <S.Label>팀원추가</S.Label>
-            </S.LabelBox>
-            <S.InputBox>
-              <S.MemberAddInput type="text" placeholder="아이디 검색"/>
-            </S.InputBox>
-          </S.BlockMember>  
           <S.Btn>
             <S.SubmitBtn>프로젝트 만들기</S.SubmitBtn>
           </S.Btn>
+          </form>
       </S.Wrapper>
   );
 }
