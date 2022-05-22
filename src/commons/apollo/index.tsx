@@ -19,13 +19,11 @@ export default function ApolloSetting(props: IAppProps) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   // const [, setUserInfo] = useRecoilState(userInfoState);
 
-
-    useEffect(() => {
-        getAccessToken().then((newAccessToken) => {
-            setAccessToken(newAccessToken);
-        });
-    }, [accessToken]);
-
+  useEffect(() => {
+    getAccessToken().then((newAccessToken) => {
+      setAccessToken(newAccessToken);
+    });
+  }, [accessToken]);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     if (graphQLErrors) {
@@ -45,26 +43,26 @@ export default function ApolloSetting(props: IAppProps) {
               },
             });
             // 3-2. 변경된 operation 재요청하기
-                        return forward(operation);
-                    });
-                }
-            }
+            return forward(operation);
+          });
         }
-    });
-    const uploadLink = createUploadLink({
-        uri: "http://34.64.156.215:3000/graphql",
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
-        credentials: "include",
-    });
-    const client = new ApolloClient({
-        link: ApolloLink.from([errorLink, uploadLink]),
-        cache: new InMemoryCache(), // 백엔드 컴퓨터 주소
-    });
-    return (
-        <>
-            <ApolloProvider client={client}>{props.children}</ApolloProvider>
-        </>
-    );
+      }
+    }
+  });
+  const uploadLink = createUploadLink({
+    uri: "http://34.64.156.215:3000/graphql",
+    headers: {
+      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNjY0BjY2MuY29tIiwic3ViIjoiYTE0YTYwZWMtYzc5OS00MGE1LTkwOTctNzdhYWVlMmVkYWRhIiwibmFtZSI6IuyVhOustOqwnCIsImlhdCI6MTY1MzE5ODg1NywiZXhwIjoxNjUzMjg1MjU3fQ.pp9xfDYZ7rJr76VrBa8N7gsbWUUTAn7KH8k351SwcrI`,
+    },
+    credentials: "include",
+  });
+  const client = new ApolloClient({
+    link: ApolloLink.from([errorLink, uploadLink]),
+    cache: new InMemoryCache(), // 백엔드 컴퓨터 주소
+  });
+  return (
+    <>
+      <ApolloProvider client={client}>{props.children}</ApolloProvider>
+    </>
+  );
 }

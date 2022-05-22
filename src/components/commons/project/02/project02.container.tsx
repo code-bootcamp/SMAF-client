@@ -1,19 +1,19 @@
 import { getDate } from "../../../../commons/utils";
 import ImageCircle from "../../images/01/image01.container";
 // import ProjectUI from "./project01.presenter";
-import * as S from "./project01.styles";
+import * as S from "./project02.styles";
 
 interface IUserProject {
   el?: any;
 }
 
-export default function Project01(props: IUserProject) {
+export default function Project02(props: IUserProject) {
   return (
     <S.card>
       <S.Container>
         <S.box1>
           {/* <S.ImgBox src={props.projectImageSrc}></S.ImgBox> */}
-          <S.ImgBox src="/test.png"></S.ImgBox>
+          <S.ImgBox src="/cola.png"></S.ImgBox>
           <S.TextBox>
             <S.MainTitle>{props.el?.project.projectName}</S.MainTitle>
             <S.SubTitle>{props.el?.project.projectIntro}</S.SubTitle>
