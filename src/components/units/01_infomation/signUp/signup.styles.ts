@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Wrapper = styled.div`
     width: 100%;
@@ -21,20 +22,19 @@ export const SignUpTop = styled.div`
 `;
 
 export const SignUpTitle = styled.div`
-    font-size: 3.2rem;
-    padding-top: 20%;
-    padding-bottom: 9rem;
-    font-weight: 700;
+  font-size: 3.2rem;
+  padding-top: 20%;
+  padding-bottom: 9rem;
+  font-weight: 700;
+  /* border: 1px solid red; */
 `;
 
 export const SignUpProfileWrapper = styled.div`
-    width: 12rem;
-    height: 12rem;
-    border-radius: 100%;
-    border-color: black;
+  /* width: 12rem;
+  height: 12rem;
+  border-radius: 100%;
+  border-color: black; */
 `;
-
-export const ProfileHuman = styled.img``;
 
 export const SignUpInfo = styled.div``;
 

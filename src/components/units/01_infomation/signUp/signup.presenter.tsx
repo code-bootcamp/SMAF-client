@@ -15,7 +15,6 @@ export default function SignupUI(props: any) {
                                 setUrls={props.setUrls}
                                 index={0}
                             />
-                            <S.ProfileHuman src="/image/human.png" />
                         </S.SignUpProfileWrapper>
                     </S.SignUpTop>
                     <S.SignUpInfo>

@@ -72,6 +72,21 @@ export const CardBottomContents = styled.div`
 `;
 export const Icon = styled.img`
   width: 2.2rem;
-  height: 1.6rem;
+  height: 2.2rem;
   margin-right: 1rem;
+`;
+export const Icon2 = styled.img`
+  width: 2.2rem;
+  height: 1.6rem;
+
+  margin-right: 1rem;
+`;
+export const Title = styled.div`
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  :hover {
+    font-size: 18px;
+  }
 `;
