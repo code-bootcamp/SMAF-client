@@ -7,7 +7,7 @@ import { useMutation } from "@apollo/client";
 import { CREATE_USER, SIGNUP_CHECKEDTOKEN, SIGNUP_SENDTOKEN } from "./signup.queries";
 // import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import { message, Modal } from "antd";
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 const schema = yup.object({
     email: yup
@@ -48,19 +48,19 @@ export default function SignUpContainer(props: any) {
     const [checkedTokenPhone] = useMutation(SIGNUP_CHECKEDTOKEN);
     const [phone, setPhone] = useState("");
     const [inputToken, setInputToken] = useState("");
-    const [trueToken, setTrueToken] = useState(false);
-    const [isActive, setIsActive] = useState(false);
-    const fileRef = useRef<HTMLInputElement>(null);
+    const [, setTrueToken] = useState(false);
+    // const [isActive, setIsActive] = useState(false);
+    // const fileRef = useRef<HTMLInputElement>(null);
     const [urls, setUrls] = useState([""]);
 
-    const { register, handleSubmit, formState } = useForm({
+    const { register, handleSubmit, formState } = useForm<FormValues>({
         resolver: yupResolver(schema),
         mode: "onChange",
     });
 
-    const onClickImage = () => {
-        fileRef.current?.click();
-    };
+    // const onClickImage = () => {
+    //     fileRef.current?.click();
+    // };
 
     const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
         setPhone(e.target.value);
@@ -114,12 +114,12 @@ export default function SignUpContainer(props: any) {
         }
     };
 
-    const onClickCreateUser = async (data: FormValues) => {
-        const { email, name, password, phone, userImageURL } = data;
-
-        if (email && password && name && inputToken && trueToken && phone && userImageURL) {
-            setIsActive(true);
-        }
+    const onClickcreateUser = async (data: FormValues) => {
+        // const { email, name, password, phone } = data;
+        // console.log(data, "데이터");
+        // if (email && password && name && inputToken && trueToken && phone) {
+        //     setIsActive(true);
+        // }
 
         try {
             await createUser({
@@ -129,7 +129,7 @@ export default function SignUpContainer(props: any) {
                         email: data.email,
                         password: data.password,
                         phone: data.phone,
-                        userImageURL: urls,
+                        userImageURL: urls[0],
                     },
                 },
             });
@@ -146,14 +146,14 @@ export default function SignUpContainer(props: any) {
             register={register}
             handleSubmit={handleSubmit}
             formState={formState}
-            onClickcreateUser={onClickCreateUser}
+            onClickcreateUser={onClickcreateUser}
             onClickSendTokenPhone={onClickSendTokenPhone}
             onClickTokenCheck={onClickTokenCheck}
             onChangePhone={onChangePhone}
             onChangeToken={onChangeToken}
-            isActive={isActive}
-            fileRef={fileRef}
-            onClickImage={onClickImage}
+            // isActive={isActive}
+            // fileRef={fileRef}
+            // onClickImage={onClickImage}
             setUrls={setUrls}
             urls={urls}
         />
