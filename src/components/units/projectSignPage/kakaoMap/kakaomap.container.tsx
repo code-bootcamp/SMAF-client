@@ -42,10 +42,10 @@ export default function KakaoMapPage(props){
                     });
 
                     // 인포윈도우로 장소에 대한 설명을 표시합니다
-                    const infowindow = new window.kakao.maps.InfoWindow({
-                            content: '<div style="width:150px;text-align:center;padding:6px 0;">거래장소</div>'
-                            });
-                        infowindow.open(map, marker);
+                    // const infowindow = new window.kakao.maps.InfoWindow({
+                    //         content: '<div style="width:150px;text-align:center;padding:6px 0;">희의장소</div>'
+                    //         });
+                        // infowindow.open(map, marker);
 
                         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
                         map.setCenter(coords);

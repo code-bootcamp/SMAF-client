@@ -3,6 +3,9 @@ import DayPick from '../../commons/daypicker/daypicker'
 import KakaoMapPage from './kakaoMap/kakaomap.container'
 import { Modal } from 'antd';
 import DaumPostcode from 'react-daum-postcode';
+import ColorPick from "./colorPick/colorPick.container";
+import Uploads01 from "../../commons/uploads/Upload01.container";
+import {v4 as uuidv4} from 'uuid'
 
 export default function ProjectSignPageUI(props){
   return (
@@ -46,24 +49,46 @@ export default function ProjectSignPageUI(props){
           </S.InputBox>
           </S.Block>  
         </S.Inputs> 
-        <S.LabelBox>     
-          <S.Label>대표이미지</S.Label><S.Must>*</S.Must>
-        </S.LabelBox>
-          <S.AddImg>
-            <S.ImgAddBtn type="button">
-              <S.FileImg src="/images/file.png" />
-              <span>파일찾기</span>
-            </S.ImgAddBtn>
-            <S.ImgPreviewBox>
-              <S.ImgPreview></S.ImgPreview>
-              <S.ImgInfo>등록할 수 있는 사진의 크기는 150*150픽셀 이상, <br />최대용량은 20MB미만 입니다.</S.ImgInfo>
-            </S.ImgPreviewBox>
-          </S.AddImg>
+        <S.Block>
+          <S.ImgLabelBox>    
+            <S.ImgTitle>
+              <S.Label>대표이미지</S.Label><S.Must>*</S.Must>
+            </S.ImgTitle> 
+              <input type="file" style={{display:"none"}} onChange={props.onChangeFile} ref={props.fileRef}/>
+              <S.ImgAddBtn onClick={props.onClickImg}>
+                <S.FileImg src="/images/file.png"/><span>파일찾기</span>
+              </S.ImgAddBtn>
+          </S.ImgLabelBox>
+            <S.AddImg>
+              <S.ImgPreviewBox>
+                <S.ImgPreview>
+                  {props.fileUrls.map((el, index) => (
+                            <Uploads01
+                              type="button"
+                              key={uuidv4()}
+                              index={index}
+                              fileUrl={el}
+                              onChangeFileUrls={props.onChangeFileUrls}
+                            />
+                             ))}
+                </S.ImgPreview>
+                <S.ImgInfo>등록할 수 있는 사진의 크기는 150*150픽셀 이상, <br />최대용량은 20MB미만 입니다.</S.ImgInfo>
+              </S.ImgPreviewBox>
+            </S.AddImg>
+          </S.Block>
+          <S.Block> 
+              <S.ImgTitle>
+              <S.Label>프로젝트 색상</S.Label><S.Must>*</S.Must>
+              </S.ImgTitle>
+              <S.Color>
+                <ColorPick color={props.color} setColor={props.setColor}/>
+              </S.Color>
+          </S.Block>
          <S.DateBox>
           <S.LabelBox>  
             <S.Label>프로젝트 기간</S.Label><S.Must>*</S.Must>
-          </S.LabelBox>  
-          <S.InputBox>
+          </S.LabelBox> 
+          <S.InputBox>  
             <S.StartEndDay>          
               <S.Date>시작일</S.Date>            
               <S.EndDate>종료일</S.EndDate>
@@ -99,7 +124,8 @@ export default function ProjectSignPageUI(props){
             <S.MapBox>
               <S.Map>
                 <KakaoMapPage 
-                  address={props.address} 
+                  address={props.address}
+                  addressDetail={props.addressDetail} 
                   zipcode={props.zipcode}/>  
               </S.Map>  
             </S.MapBox>
