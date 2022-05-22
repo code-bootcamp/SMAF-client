@@ -6,7 +6,6 @@ import { useApolloClient, useMutation } from "@apollo/client";
 import { FETCH_LOGIN_USER, LOGIN_USER } from "./login.queries";
 import { useRecoilState } from "recoil";
 import { accessTokenState, userInfoState } from "../../../../../commons/store";
-import { useState } from "react";
 import { useRouter } from "next/router";
 
 const schema = yup
@@ -38,17 +37,6 @@ export default function Login() {
         mode: "onChange",
     });
 
-    const [, setEmail] = useState("");
-    const [, setPassword] = useState("");
-
-    const onChangeEmail = (evnet: any) => {
-        setEmail(event.target.value);
-    };
-
-    const onChangePassword = (event: any) => {
-        setPassword(event.target.value);
-    };
-
     const onClickLogin = async (data: IFormValues) => {
         console.log("login", data);
         const result = await login({
@@ -57,8 +45,8 @@ export default function Login() {
                 password: data.password,
             },
         });
-
-        const accessToken = result.data.login.accessToken;
+        console.log(result, "result");
+        const accessToken = result.data.login;
         console.log("accessToken");
         setAccessToken(accessToken);
 
@@ -75,7 +63,7 @@ export default function Login() {
         // setUserInfo(userInfo);
         console.log("완료");
         // localStorage.setItem("accessToken", accessToken);
-        console.log(accessToken);
+        // console.log(accessToken);
         // console.log(userInfo);
         router.push("/main");
     };
@@ -86,8 +74,6 @@ export default function Login() {
             register={register}
             handleSubmit={handleSubmit}
             onClickLogin={onClickLogin}
-            onChangeEmail={onChangeEmail}
-            onChangePassword={onChangePassword}
         />
     );
 }
