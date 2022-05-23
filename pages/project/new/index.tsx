@@ -1,5 +1,6 @@
 import ProjectSign from "../../../src/components/units/projectSignPage/projectSignPage.container";
 
 export default function ProjectSignPage() {
-  return <ProjectSign />;
+  
+  return <ProjectSign isEdit={false}/>;
 }

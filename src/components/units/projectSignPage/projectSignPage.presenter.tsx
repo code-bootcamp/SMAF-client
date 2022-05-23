@@ -4,14 +4,22 @@ import KakaoMapPage from './kakaoMap/kakaomap.container'
 import { Modal } from 'antd';
 import DaumPostcode from 'react-daum-postcode';
 import ColorPick from "./colorPick/colorPick.container";
-import Uploads01 from "../../commons/uploads/Upload01.container";
-import {v4 as uuidv4} from 'uuid'
+import { useEffect } from "react";
 
 export default function ProjectSignPageUI(props){
+
+  console.log("여기", props.data?.fetchProject.startDate)
+
+  // react-quill contents 값 넣어주기
+  useEffect(() => {
+        props.reset({ contents: props.data?.fetchProject.projectDetailIntro });
+    }, [props.data]);
+
+
   return (
       <S.Wrapper>
-        <form onSubmit={props.handleSubmit(props.onClickSubmit)} >
-        <S.Title>새로운 프로젝트 만들기</S.Title>
+        <form onSubmit={props.handleSubmit(props.isEdit ? props.onClickUpdate : props.onClickSubmit)} >
+        <S.Title>{props.isEdit ? "프로젝트 수정하기" : "새로운 프로젝트 만들기"}</S.Title>
         <S.Inputs>
           <S.Block>
             <S.LabelBox>
@@ -20,7 +28,8 @@ export default function ProjectSignPageUI(props){
           <S.InputBox>
             <S.Input type="text" 
                       placeholder="프로젝트 이름을 입력해주세요."
-                      {...props.register("projectName")} />
+                      {...props.register("projectName")} 
+                      defaultValue={props.data?.fetchProject.projectName} />
             <S.Error>{props.formState.errors.projectName?.message}</S.Error>
           </S.InputBox> 
           </S.Block>
@@ -31,7 +40,8 @@ export default function ProjectSignPageUI(props){
           <S.InputBox>
             <S.Input type="text" 
                      placeholder="프로젝트를 한줄로 소개해주세요."
-                     {...props.register("remarks")} />
+                     {...props.register("remarks")}
+                     defaultValue={props.data?.fetchProject.projectIntro} />
             <S.Error>{props.formState.errors.remarks?.message}</S.Error>
           </S.InputBox>
           </S.Block>
@@ -43,8 +53,9 @@ export default function ProjectSignPageUI(props){
             <div style={{width : "88rem", height:"30rem", backgroundColor:"white", borderRadius:"0.8rem"}}>
             <props.ReactQuill 
               style ={{height:"84%"}}
-              onChange={props.onChangeContents}  
-              value={props.getValues("contents") || ""}/>
+              onChange={props.onChangeContents}
+              defaultValue={props.data?.fetchProject.projectDetailIntro}  
+              value={props.getValues("contents") || ""} />
             </div>
           </S.InputBox>
           </S.Block>  
@@ -55,23 +66,17 @@ export default function ProjectSignPageUI(props){
               <S.Label>대표이미지</S.Label><S.Must>*</S.Must>
             </S.ImgTitle> 
               <input type="file" style={{display:"none"}} onChange={props.onChangeFile} ref={props.fileRef}/>
-              <S.ImgAddBtn onClick={props.onClickImg}>
+              <S.ImgAddBtn onClick={props.onClickUpload}>
                 <S.FileImg src="/images/file.png"/><span>파일찾기</span>
               </S.ImgAddBtn>
           </S.ImgLabelBox>
             <S.AddImg>
               <S.ImgPreviewBox>
-                <S.ImgPreview>
-                  {props.fileUrls.map((el, index) => (
-                            <Uploads01
-                              type="button"
-                              key={uuidv4()}
-                              index={index}
-                              fileUrl={el}
-                              onChangeFileUrls={props.onChangeFileUrls}
-                            />
-                             ))}
-                </S.ImgPreview>
+                {props.urls ? (
+                    <S.Img src={props.urls} defaultValue={props.data?.fetchProject?.projectImageURL}/>
+                  ) : (
+                    <S.ImgPreview></S.ImgPreview>
+                  )}      
                 <S.ImgInfo>등록할 수 있는 사진의 크기는 150*150픽셀 이상, <br />최대용량은 20MB미만 입니다.</S.ImgInfo>
               </S.ImgPreviewBox>
             </S.AddImg>
@@ -81,22 +86,22 @@ export default function ProjectSignPageUI(props){
               <S.Label>프로젝트 색상</S.Label><S.Must>*</S.Must>
               </S.ImgTitle>
               <S.Color>
-                <ColorPick color={props.color} setColor={props.setColor}/>
+                <ColorPick color={props.color} setColor={props.setColor} data={props.data}/>
               </S.Color>
           </S.Block>
-         <S.DateBox>
-          <S.LabelBox>  
-            <S.Label>프로젝트 기간</S.Label><S.Must>*</S.Must>
-          </S.LabelBox> 
-          <S.InputBox>  
-            <S.StartEndDay>          
-              <S.Date>시작일</S.Date>            
-              <S.EndDate>종료일</S.EndDate>
-            </S.StartEndDay>   
-              <S.DayPicker>
-                <DayPick />
-              </S.DayPicker>
-          </S.InputBox>
+          <S.DateBox>
+            <S.LabelBox>  
+              <S.Label>프로젝트 기간</S.Label><S.Must>*</S.Must>
+            </S.LabelBox> 
+            <S.InputBox>  
+              <S.StartEndDay>          
+                <S.Date>시작일</S.Date>            
+                <S.EndDate>종료일</S.EndDate>
+              </S.StartEndDay>   
+                <S.DayPicker>
+                  <DayPick data={props.data}/>
+                </S.DayPicker>
+            </S.InputBox>
           </S.DateBox>
             <S.Block>  
               <S.LabelBox> 
@@ -114,11 +119,12 @@ export default function ProjectSignPageUI(props){
                 <S.MapInput id="address" type="text" 
                             placeholder="도로명 주소로 검색" 
                             onClick={props.showModal}
-                            value={props.address}
+                            value={props.address || props.data?.fetchProject.address?.address ||""}
                             />
                 <S.Input id="addressDetail" type="text" 
                          placeholder="상세주소를 입력해주세요."
-                         onChange={props.onChangeAddressDetail}/>
+                         onChange={props.onChangeAddressDetail}
+                         defaultValue={props.addressDetail || props.data?.fetchProject.address?.detailAddress}/>
               </S.InputBox>
             </S.Block>
             <S.MapBox>
@@ -126,11 +132,11 @@ export default function ProjectSignPageUI(props){
                 <KakaoMapPage 
                   address={props.address}
                   addressDetail={props.addressDetail} 
-                  zipcode={props.zipcode}/>  
+                  data={props.data} />  
               </S.Map>  
             </S.MapBox>
           <S.Btn>
-            <S.SubmitBtn>프로젝트 만들기</S.SubmitBtn>
+            <S.SubmitBtn>{props.isEdit ? "프로젝트 수정하기" : "프로젝트 만들기"}</S.SubmitBtn>
           </S.Btn>
           </form>
       </S.Wrapper>

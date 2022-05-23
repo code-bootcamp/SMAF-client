@@ -33,6 +33,7 @@ export default function ColorPick(props){
                     id={idx}
                     onChange={onChangeCheck(el)}
                     checked={Boolean(el.checked)}
+                    defaultValue={props.data?.fetchProject.projectColor}
                 />
                 <S.Circle className='checkbox_color' style={{ backgroundColor: el.value }}></S.Circle>
             </label>

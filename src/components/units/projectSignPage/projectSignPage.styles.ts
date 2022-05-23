@@ -74,7 +74,12 @@ export const AddImg = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-
+export const Img = styled.img`
+width: 31rem;
+height: 16rem;
+background: #C4C4C4;
+border-radius: 0.8rem;
+`;
 export const ImgPreviewBox = styled.div`
   width: 88rem;
   display: flex;
