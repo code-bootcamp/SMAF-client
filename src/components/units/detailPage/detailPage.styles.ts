@@ -5,8 +5,22 @@ export const Wrapper = styled.div`
   flex-direction: row;
   /* width: 67%; */
   width: 128rem;
-  border: 1px solid black;
   padding-top: 6rem;
+  overflow: scroll;
+
+  ::-webkit-scrollbar {
+    width: 0rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    height: 0rem;
+    background: skyblue;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f2f2f2;
+  }
 `;
 
 export const BasicLow = styled.div`
@@ -137,19 +151,4 @@ export const FileListUploadIcon = styled.img`
 export const RightWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  overflow: scroll;
-
-  ::-webkit-scrollbar {
-    width: 0rem;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    height: 1rem;
-    background: skyblue;
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: #f2f2f2;
-  }
 `;

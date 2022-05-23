@@ -16,7 +16,7 @@ export default function AddColumnBtn(props: any) {
 
   const CreateProjectCategory = async (data: any) => {
     try {
-      const result = await createCategory({
+      await createCategory({
         variables: {
           processName: data.processName,
           projectId: props.projectId,
