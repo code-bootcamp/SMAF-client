@@ -35,11 +35,10 @@ export default function PaymentObject() {
           <S.TableMenuNo>1</S.TableMenuNo>
           <S.TableMenuPaymentDate>2022-05-20</S.TableMenuPaymentDate>
           <S.TableMenuProduct>1회권</S.TableMenuProduct>
-          <S.TableMenuMoney>결제금액</S.TableMenuMoney>
+          <S.TableMenuMoney>2000</S.TableMenuMoney>
           <S.TableMenuDate>2022-05-20</S.TableMenuDate>
           <S.Button>구매완료</S.Button>
         </S.BasicRow>
-        <S.line></S.line>
       </S.Table>
     </>
   );
