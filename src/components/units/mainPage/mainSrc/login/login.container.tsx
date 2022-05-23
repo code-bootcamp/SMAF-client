@@ -1,161 +1,81 @@
-import SignupUI from "./signup.presenter";
+import LoginUI from "./login.presenter";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
-import { CREATE_USER, SIGNUP_CHECKEDTOKEN, SIGNUP_SENDTOKEN } from "./signup.queries";
-// import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
-import { message, Modal } from "antd";
-import { ChangeEvent, useState } from "react";
+import { LOGIN_USER } from "./login.queries";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../../../../../commons/store";
+import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
-const schema = yup.object({
-    email: yup
-        .string()
-        .email("이메일 아이디를 @까지 정확하게 입력해주세요.")
-        .required("이메일은 필수 입력 사항입니다."),
-    password: yup
-        .string()
-        .matches(/^[A-Za-z0-9+]{8,16}$/, "영문+숫자 조합 8~16자리의 비밀번호를 입력해주세요.")
-        .required("비밀번호는 필수 입력 사항입니다."),
-    name: yup
-        .string()
-        .min(2, "이름은 2자리 이상 입력해 주세요.")
-        .max(10, "이름이 너무 깁니다.")
-        .required("이름은 필수 입력 사항입니다."),
-    confirmPassword: yup
-        .string()
-        .oneOf([yup.ref("password"), null], "비밀번호가 일치하지 않습니다."),
-    phone: yup
-        .string()
-        .matches(/^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/, "핸드폰 형식에 올바르지 않습니다")
-        .required("필수입력입니다."),
-});
+const schema = yup
+    .object({
+        email: yup
+            .string()
+            .email("이메일 아이디를 @까지 정확하게 입력해주세요 .")
+            .required("이메일은 필수 입력 !!"),
+        password: yup
+            .string()
+            .max(16, "영문+숫자조합 8~16자리의 비밀번호 입력해주세요.")
+            .required("비밀번호는 필수입력 사항입니다."),
+    })
+    .required();
 
-interface FormValues {
-    userImageURL: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-    name: string;
-    phone: string;
-    inputToken: string;
+interface IFormValues {
+    email?: string;
+    password?: string;
 }
 
-export default function SignUpContainer(props: any) {
-    const [createUser] = useMutation(CREATE_USER);
-    const [sendTokenPhone] = useMutation(SIGNUP_SENDTOKEN);
-    const [checkedTokenPhone] = useMutation(SIGNUP_CHECKEDTOKEN);
-    const [phone, setPhone] = useState("");
-    const [inputToken, setInputToken] = useState("");
-    const [, setTrueToken] = useState(false);
-    // const [isActive, setIsActive] = useState(false);
-    // const fileRef = useRef<HTMLInputElement>(null);
-    const [urls, setUrls] = useState();
-
-    const { register, handleSubmit, formState } = useForm<FormValues>({
+export default function Login() {
+    const router = useRouter();
+    const [, setAccessToken] = useRecoilState(accessTokenState);
+    // const [, setUserInfo] = useRecoilState(userInfoState);
+    const [login] = useMutation(LOGIN_USER);
+    // const client = useApolloClient();
+    const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(schema),
         mode: "onChange",
     });
 
-    // const onClickImage = () => {
-    //     fileRef.current?.click();
-    // };
-
-    const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
-        setPhone(e.target.value);
-    };
-    const onChangeToken = (e: ChangeEvent<HTMLInputElement>) => {
-        setInputToken(e.target.value);
-    };
-
-    const onClickSendTokenPhone = async () => {
-        console.log(phone);
-
-        const checkNumber = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-        if (checkNumber.test(phone)) {
-            try {
-                const result = await sendTokenPhone({
-                    variables: {
-                        phone,
-                    },
-                });
-
-                Modal.success({
-                    content: "인증번호가 발송되었습니다.",
-                });
-            } catch (error) {
-                console.log(error.message);
-            }
-        }
-    };
-
-    const onClickTokenCheck = async () => {
-        console.log("1,2,3,Chceck");
-
-        const data = await checkedTokenPhone({
+    const onClickLogin = async (data: IFormValues) => {
+        console.log("login", data);
+        const result = await login({
             variables: {
-                phone,
-                inputToken,
+                email: data.email,
+                password: data.password,
             },
         });
-        console.log(data);
+        console.log(result, "result");
+        const accessToken = result.data.login;
+        console.log("accessToken");
+        setAccessToken(accessToken);
+        Cookies.set("accessToken", accessToken);
 
-        if (!data.data.checkedTokenPhone) {
-            Modal.success({
-                content: "인증이 완료되었습니다.",
-            });
-            setTrueToken(true);
-        } else {
-            Modal.error({
-                content: "인증번호가 일치하지 않습니다.",
-            });
-            // alert("실패");
-        }
-    };
+        // const resultUserInfo = await client.query({
+        //     query: FETCH_LOGIN_USER,
+        //     context: {
+        //         headers: {
+        //             Authorization: `Bearer ${accessToken}`,
+        //         },
+        //     },
+        // });
 
-    const onClickcreateUser = async (data: FormValues) => {
-        // const { email, name, password, phone } = data;
-        // console.log(data, "데이터");
-        // if (email && password && name && inputToken && trueToken && phone) {
-        //     setIsActive(true);
-        // }
-
-        try {
-            await createUser({
-                variables: {
-                    createUserInput: {
-                        userName: data.name,
-                        email: data.email,
-                        password: data.password,
-                        phone: data.phone,
-                        userImageURL: urls[0],
-                    },
-                },
-            });
-            Modal.success({
-                content: "회원가입을 완료하였습니다",
-            });
-        } catch (error) {
-            message.error(error.message);
-        }
+        // const userInfo = resultUserInfo.data.fetchLoginUser;
+        // setUserInfo(userInfo);
+        console.log("완료");
+        // localStorage.setItem("accessToken", accessToken);
+        // console.log(accessToken);
+        // console.log(userInfo);
+        router.push("/main");
     };
 
     return (
-        <SignupUI
+        <LoginUI
+            formState={formState}
             register={register}
             handleSubmit={handleSubmit}
-            formState={formState}
-            onClickcreateUser={onClickcreateUser}
-            onClickSendTokenPhone={onClickSendTokenPhone}
-            onClickTokenCheck={onClickTokenCheck}
-            onChangePhone={onChangePhone}
-            onChangeToken={onChangeToken}
-            // isActive={isActive}
-            // fileRef={fileRef}
-            // onClickImage={onClickImage}
-            setUrls={setUrls}
-            urls={urls}
+            onClickLogin={onClickLogin}
         />
     );
 }
