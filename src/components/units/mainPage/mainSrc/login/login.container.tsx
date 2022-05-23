@@ -2,11 +2,12 @@ import LoginUI from "./login.presenter";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useApolloClient, useMutation } from "@apollo/client";
-import { FETCH_LOGIN_USER, LOGIN_USER } from "./login.queries";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "./login.queries";
 import { useRecoilState } from "recoil";
-import { accessTokenState, userInfoState } from "../../../../../commons/store";
+import { accessTokenState } from "../../../../../commons/store";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 const schema = yup
     .object({
@@ -49,6 +50,7 @@ export default function Login() {
         const accessToken = result.data.login;
         console.log("accessToken");
         setAccessToken(accessToken);
+        Cookies.set("accessToken", accessToken);
 
         // const resultUserInfo = await client.query({
         //     query: FETCH_LOGIN_USER,
