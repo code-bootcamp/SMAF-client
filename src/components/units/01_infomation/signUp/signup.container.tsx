@@ -51,7 +51,7 @@ export default function SignUpContainer(props: any) {
     const [, setTrueToken] = useState(false);
     // const [isActive, setIsActive] = useState(false);
     // const fileRef = useRef<HTMLInputElement>(null);
-    const [urls, setUrls] = useState([""]);
+    const [urls, setUrls] = useState();
 
     const { register, handleSubmit, formState } = useForm<FormValues>({
         resolver: yupResolver(schema),

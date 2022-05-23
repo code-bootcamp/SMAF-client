@@ -22,15 +22,15 @@ export const SignUpTop = styled.div`
 `;
 
 export const SignUpTitle = styled.div`
-  font-size: 3.2rem;
-  padding-top: 20%;
-  padding-bottom: 9rem;
-  font-weight: 700;
-  /* border: 1px solid red; */
+    font-size: 3.2rem;
+    padding-top: 20%;
+    padding-bottom: 9rem;
+    font-weight: 700;
+    /* border: 1px solid red; */
 `;
 
 export const SignUpProfileWrapper = styled.div`
-  /* width: 12rem;
+    /* width: 12rem;
   height: 12rem;
   border-radius: 100%;
   border-color: black; */

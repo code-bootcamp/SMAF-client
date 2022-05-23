@@ -5,21 +5,29 @@ import { ReactNode, useEffect } from "react";
 import { getAccessToken } from "../libraries/getAccessToken.ts/getAccessToken";
 import { onError } from "@apollo/client/link/error";
 import { accessTokenState } from "../store/index";
+import Cookies from "js-cookie";
 
 interface IAppProps {
     children: ReactNode;
 }
 
 export default function ApolloSetting(props: IAppProps) {
+    const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+    // const [, setUserInfo] = useRecoilState(userInfoState);
 
-  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
-  // const [, setUserInfo] = useRecoilState(userInfoState);
+    useEffect(() => {
+        const accessToken = Cookies.get("accessToken");
+        if (accessToken) {
+            setAccessToken(accessToken);
+        } else {
+            getAccessToken().then((newAccessToken) => {
+                if (!newAccessToken) return;
+                setAccessToken(newAccessToken);
+            });
+        }
+    }, []);
 
-  useEffect(() => {
-    getAccessToken().then((newAccessToken) => {
-      setAccessToken(newAccessToken);
-    });
-  }, [accessToken]);
+    // api 요청을 할때 누군지 증명할거를 갖고만 있었던 상황이였고 이걸 제출함으로써 나를 증명
 
     const errorLink = onError(({ graphQLErrors, operation, forward }) => {
         if (graphQLErrors) {
