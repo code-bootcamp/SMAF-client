@@ -1,15 +1,17 @@
 import ProjectSignPageUI from "./projectSignPage.presenter";
-import { useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import {yupResolver} from '@hookform/resolvers/yup'
 import * as yup from "yup";
 import 'react-quill/dist/quill.snow.css';
 import dynamic from "next/dynamic";
 import { useMutation, useQuery } from "@apollo/client";
-import { CREATE_PROJECT } from "./projectSignPage.queries";
+import { CREATE_PROJECT, FETCH_PROJECT, UPDATE_PROJECT, UPLOAD_FILE } from "./projectSignPage.queries";
 import { useRecoilState } from "recoil";
 import { fromValues, toValues } from "../../../commons/store";
 import { useRouter } from "next/router";
+import { Modal } from "antd";
+import { checkValidationImage } from "../../commons/uploads/Upload01.validation";
 
 const ReactQuill = dynamic(() => import("react-quill"), {ssr : false});
 
@@ -22,20 +24,29 @@ const schema = yup.object({
 });
 
 
-export default function ProjectSign() {
+export default function ProjectSign(props) {
 
   const router = useRouter()
   const fileRef = useRef<HTMLInputElement>(null)
 
-  const [ createProject ] = useMutation(CREATE_PROJECT)
+  const [ createProject ] = useMutation(CREATE_PROJECT);
+  const [ updateProject ] = useMutation(UPDATE_PROJECT);
+  const [ uploadFile ] = useMutation(UPLOAD_FILE);
+  const { data } = useQuery(FETCH_PROJECT, {
+    variables: {
+      projectId: router.query.projectId,
+    },
+  });
 
-  const { register, handleSubmit, formState, setValue, trigger, getValues } = useForm({
+  console.log(data)
+
+  const { register, handleSubmit, formState, setValue, trigger, getValues, reset } = useForm({
         resolver: yupResolver(schema),
         mode:"onChange",   
   });
 
   // 이미지 업로드 state
-  const [fileUrls, setFileUrls] = useState([""]);
+  const [urls, setUrls] = useState();
   
   // 색깔 선택 state
   const [color, setColor] = useState<undefined | string>()
@@ -77,17 +88,23 @@ export default function ProjectSign() {
       trigger("contents");
   };
 
-  // 이미지 업로드
-  const onClickImg = () => {
+  // 이미지 업로드 
+  const onClickUpload = () => {
         fileRef.current?.click()
   }
 
   // 이미지 등록하기
-    const onChangeFileUrls = (fileUrl: string, index: number) => {
-    const newFileUrls = [...fileUrls];
-    newFileUrls[index] = fileUrl;
-    setFileUrls(newFileUrls);
-  };
+  const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
+        const file = checkValidationImage(event.target.files?.[0]);
+        if (!file) return;
+
+        try {
+            const result = await uploadFile({ variables: { file } });
+            setUrls(result.data.userImageUpload);
+        } catch (error) {
+            Modal.error({ content: error.message });
+        }
+    };
 
   // 등록하기
   const onClickSubmit = async(data:any) => {
@@ -99,7 +116,7 @@ export default function ProjectSign() {
               projectName: data.projectName,
               projectIntro: data.remarks,
               projectDetailIntro: data.contents,
-              projectImageURL: fileUrls[0],
+              projectImageURL: urls[0],
               projectColor: color,
               startDate: fromValue,
               endDate: toValue,
@@ -113,11 +130,77 @@ export default function ProjectSign() {
         alert("성공")
         console.log(result)
         router.push(`/project/${result.data.createProject.projectId}`)
-      }catch(error){
-        alert(error)
-      }
+      } catch (error) {
+          if (error instanceof Error)
+            Modal.error({
+              content: error.message,
+          });
+        }
     }
   }
+
+  // 수정하기
+  const onClickUpdate = async(data:any) => {
+    // 이미지 수정하기
+    const currentFiles = JSON.stringify(urls);
+    const defaultFiles = JSON.stringify(data?.fechProject?.projectImageURL);
+    const isChangedFiles = currentFiles !== defaultFiles;
+
+    if (
+      !data.projectName &&
+      !data.remarks &&
+      !data.contents &&
+      !isChangedFiles
+    ){
+      Modal.error({
+        content: "수정한 내용이 없습니다.",
+      });
+    }
+
+    const updateProjectInput = {}
+    if (data.name) updateProjectInput.projectName = data.projectName;
+    if (data.remarks) updateProjectInput.projectIntro = data.remarks;
+    if (data.contents) updateProjectInput.projectDetailIntro = data.contents;
+    if (color) updateProjectInput.projectColor = color;
+    if (isChangedFiles) updateProjectInput.projectImageURL = urls[0];
+    if (fromValue) updateProjectInput.startDate = fromValue;
+    if (toValue) updateProjectInput.endDate = toValue;
+
+    const projectAddressInput= {}
+    if (address) projectAddressInput.address = address;
+    if (addressDetail) projectAddressInput.detailAddress = addressDetail;
+
+    console.log("주소 왜안되니", data)
+    try{
+      await updateProject({
+        variables:{
+          projectId : router.query.projectId,
+
+          updateProjectInput:{
+            ...updateProjectInput,
+            projectAddress: projectAddressInput
+            
+          }
+        }
+      })
+      Modal.success({
+            content: '게시물 수정이 완료되었습니다!',
+      });
+      router.push(`/project/${router.query.projectId}`)
+    } catch (error) {
+          if (error instanceof Error)
+            Modal.error({
+              content: error.message,
+          });
+    }
+  }
+
+  //  이미지
+  useEffect(() => {
+    if (data?.fetchProject.projectImageURL?.length) {
+    setUrls([...data?.fetchProject.projectImageURL]);
+    }
+  }, [data]);
 
   return (
     <ProjectSignPageUI 
@@ -139,15 +222,21 @@ export default function ProjectSign() {
         formState={formState}
         ReactQuill={ReactQuill}
         getValues={getValues}
+        reset={reset}
 
         color={color}
         setColor={setColor}
 
-        onClickImg={onClickImg}
+        onClickUpload={onClickUpload}
         fileRef={fileRef}
 
-        fileUrls={fileUrls}
-        onChangeFileUrls={onChangeFileUrls}
+        setUrls={setUrls}
+        urls={urls}
+        onChangeFile={onChangeFile}
+
+        isEdit={props.isEdit}
+        onClickUpdate={onClickUpdate}
+        data={data}
       />
     )
 }

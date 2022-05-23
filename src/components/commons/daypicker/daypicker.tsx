@@ -10,7 +10,9 @@ import { useRecoilState } from 'recoil';
 import { fromValues, toValues } from '../../../commons/store';
 
 
-export default function DayPick(){
+export default function DayPick(props){
+
+  console.log("달력",props.data?.fetchProject.startDate.slice(0,10))
 
   const [selectedRange, setSelectedRange] = useState<DateRange>();
   const [fromValue, setFromValue] = useRecoilState<string>(fromValues);
@@ -67,28 +69,30 @@ export default function DayPick(){
   };
 
   const start = (
-        <form className="ma2">
+        <div className="ma2">
           <StartDay>
             <Input
               size={29}
               value={fromValue}
               onChange={handleFromChange}
               className="input-reset pa2 ma bg-white black ba"
+              defaultValue={props.data?.fetchProject.startDate.slice(0,10)}  
             />
           <FromTo></FromTo>
           </StartDay>
-          </form>
+        </div>
           )
 
 const end = (
-  <form className="ma2">
+  <div className="ma2">
           <Input
             size={29}
             value={toValue}
             onChange={handleToChange}
             className="input-reset pa2 bg-white black ba"
+            defaultChecked={props.data?.fetchProject.endDate.slice(0,10)}  
           />
-        </form>
+  </div>
   )
   
 
