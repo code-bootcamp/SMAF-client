@@ -1,5 +1,7 @@
 import * as S from "./detailPlanAddModal.styled";
 import { IDetailPlanAddModalProps } from "./detailPlanAddModal.tpyes";
+// import DayPick from "../../../../commons/daypicker/daypicker";
+
 export default function DetailPlanAddModalHTML(
   props: IDetailPlanAddModalProps
 ) {
@@ -14,8 +16,12 @@ export default function DetailPlanAddModalHTML(
         </S.ProjectName>
         <S.ProjectContents>
           <S.Word>일정내용</S.Word>
-          <S.ContentsArea></S.ContentsArea>
+
+          <S.ContentsArea
+            {...props.register("scheduleContents")}
+          ></S.ContentsArea>
         </S.ProjectContents>
+        {/* <DayPick/> */}
         <S.EndDate>
           <S.Word>마감일</S.Word>
           <S.Date {...props.register("scheduleDate")}></S.Date>
@@ -25,5 +31,3 @@ export default function DetailPlanAddModalHTML(
     </S.Wrapper>
   );
 }
-
-// 14px

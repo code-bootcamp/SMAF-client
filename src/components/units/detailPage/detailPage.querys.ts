@@ -60,23 +60,23 @@ export const FETCH_PROJECT_SCHEDULES_PROJECTID = gql`
 `;
 
 // 카테고리 ID로 전체 스케줄 조회
-// export const FETCH_PROJECT_SCHEDULES_CATEGORY = gql`
-//   query fetchCategorySchedules($processCategoryId: String!) {
-//     fetchCategorySchedules(processCategoryId: $processCategoryId) {
-//       scheduleId
-//       scheduleName
-//       scheduleDate
-//       status
-//       processCategory {
-//         processCategoryId
-//       }
-//       project {
-//         projectId
-//       }
-//       createAt
-//     }
-//   }
-// `;
+export const FETCH_PROJECT_SCHEDULES_CATEGORY = gql`
+  query fetchCategorySchedules($processCategoryId: String!) {
+    fetchCategorySchedules(processCategoryId: $processCategoryId) {
+      scheduleId
+      scheduleName
+      scheduleDate
+      status
+      processCategory {
+        processCategoryId
+      }
+      project {
+        projectId
+      }
+      createAt
+    }
+  }
+`;
 
 // 스케쥴 삭제
 export const DELETE_SCHEDULE = gql`
@@ -90,6 +90,22 @@ export const CREATE_SCHEDULE = gql`
   mutation createSchedule($createScheduleInput: CreateScheduleInput!) {
     createSchedule(createScheduleInput: $createScheduleInput) {
       scheduleId
+    }
+  }
+`;
+
+// 프로세스업데이트
+
+export const UPDATE_PROCESS_CATEGORY = gql`
+  mutation updateProcessCategory(
+    $processName: String!
+    $processCategoryId: String!
+  ) {
+    updateProcessCategory(
+      processName: $processName
+      processCategoryId: $processCategoryId
+    ) {
+      processCategoryId
     }
   }
 `;

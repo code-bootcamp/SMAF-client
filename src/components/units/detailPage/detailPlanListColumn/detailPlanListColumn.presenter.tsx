@@ -15,11 +15,14 @@ export default function DetailPlanListColumnHTML(props: any) {
   return (
     <S.Wrapper>
       <S.AddColumn>
-        <div>{props.columnData?.processName}</div>
-        <S.AddCoulumnIcon
-          src="/detailPage/AddColumn.png"
-          onClick={onToggleModal}
-        ></S.AddCoulumnIcon>
+        <S.ColumnTitle>{props.columnData?.processName}</S.ColumnTitle>
+        <div>
+          <S.EditCoulumnIcon src="/detailPage/spread.png"></S.EditCoulumnIcon>
+          <S.AddCoulumnIcon
+            src="/detailPage/AddColumn.png"
+            onClick={onToggleModal}
+          ></S.AddCoulumnIcon>
+        </div>
       </S.AddColumn>
       {isOpen && (
         <Modal

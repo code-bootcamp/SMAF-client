@@ -7,7 +7,7 @@ export default function DetailPlanCardHTML(props: DetailPlanCardHTMLProps) {
   return (
     <S.Wrapper>
       <S.Title>{props.el.scheduleName}</S.Title>
-      <S.Contents>Contents</S.Contents>
+      <S.Contents>{props.el.scheduleContents}</S.Contents>
       <S.Date>{props.el.scheduleDate.slice(0, 10)}</S.Date>
     </S.Wrapper>
   );

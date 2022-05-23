@@ -6,18 +6,22 @@ import {
   FETCH_PROCESS_CATEGORIES,
   DELETE_SCHEDULE,
   CREATE_SCHEDULE,
+  FETCH_PROJECT_SCHEDULES_PROJECTID,
+  FETCH_PROJECT_SCHEDULES_CATEGORY,
+  // UPDATE_PROCESS_CATEGORY
 } from "./detailPage.querys";
 import { useRouter } from "next/router";
-import { FETCH_PROJECT_SCHEDULES_PROJECTID } from "./detailPlanListColumn/detailPlanListColumn.querys";
 
 export default function ProjectDetail() {
   const router = useRouter();
   // const [scheduleName, setScheduleName] = useState("");
-  const [boardData, setBoardData] = useState([]);
+  // const [boardData, setBoardData] = useState([]);
+  // const [restoreItem, setRestoreItem] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [deleteSchedule] = useMutation(DELETE_SCHEDULE);
   const [createSchedule] = useMutation(CREATE_SCHEDULE);
+  // const [updateSchedule] = useMutation(UPDATE_PROCESS_CATEGORY);
   const { data: projectData } = useQuery(FETCH_PROJECT, {
     variables: {
       projectId: router.query.projectId,
@@ -28,15 +32,19 @@ export default function ProjectDetail() {
       projectId: router.query.projectId,
     },
   });
-  const { data: schedulesData } = useQuery(FETCH_PROJECT_SCHEDULES_PROJECTID, {
-    variables: {
-      projectId: router.query.projectId,
-    },
-  });
-  useEffect(() => {
-    setBoardData(schedulesData?.fetchProjectSchedules);
-    // setTitleData(boardData);
-  }, [schedulesData]);
+  console.log(categoriesData);
+  const { data: schedulesData, refetch } = useQuery(
+    FETCH_PROJECT_SCHEDULES_PROJECTID,
+    {
+      variables: {
+        projectId: router.query.projectId,
+      },
+    }
+  );
+  // useEffect(() => {
+  // setBoardData(schedulesData?.fetchProjectSchedules);
+  // setTitleData(boardData);
+  // }, [schedulesData]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -55,47 +63,60 @@ export default function ProjectDetail() {
     if (!result.destination) {
       return;
     }
-    const items = [...boardData];
-    console.log(items, "아이템리스트");
-    // const [reorderedItem] = items.splice(result?.source?.index, 1);
-    const [reorderedItem] = items.filter(
+    // const items = [...boardData];
+    console.log(schedulesData?.fetchProjectSchedules, "아이템리스트");
+    const [reorderedItem] = schedulesData?.fetchProjectSchedules.filter(
       (el: any) => el.scheduleId === result.draggableId
     );
-    console.log(reorderedItem?.scheduleName, "재사용할 아이템");
-    // 여기서 reorderedItem 데이터로 del을 해주면됨
+    console.log(reorderedItem, "재사용할 아이템");
+
+    if (
+      reorderedItem?.processCategory?.processCategoryId ===
+        result?.destination?.droppableId &&
+      result?.destination.index === result?.source.index
+    ) {
+      return;
+    }
     try {
       await deleteSchedule({
         variables: {
           scheduleId: String(result.draggableId),
         },
+        refetchQueries: [
+          {
+            query: FETCH_PROJECT_SCHEDULES_CATEGORY,
+            variables: {
+              processCategoryId:
+                reorderedItem.processCategory.processCategoryId,
+            },
+          },
+        ],
       });
-    } catch (error) {
-      alert("삭제error");
-    }
-    try {
+
       await createSchedule({
         variables: {
           createScheduleInput: {
             scheduleName: reorderedItem?.scheduleName,
             scheduleDate: reorderedItem?.scheduleDate,
+            scheduleContents: "aaa",
             processCategoryId: result?.destination?.droppableId,
             projectId: router.query.projectId,
           },
         },
         refetchQueries: [
           {
-            query: FETCH_PROJECT_SCHEDULES_PROJECTID,
+            query: FETCH_PROJECT_SCHEDULES_CATEGORY,
             variables: {
-              projectId: router.query.projectId,
+              processCategoryId: result?.destination?.droppableId,
             },
           },
         ],
       });
     } catch (error) {
-      alert("생성error");
+      alert(error);
+    } finally {
+      refetch();
     }
-    // items.splice(Number(result?.destination?.droppableId), 0, reorderedItem);
-    // setBoardData(items);
   };
 
   return (
