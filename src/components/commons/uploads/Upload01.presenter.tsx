@@ -4,12 +4,7 @@ import { UploadButton, UploadFileHidden, UploadImage } from "./Upload01.styles";
 
 export default function Uploads01UI(props) {
     console.log(props.fileUrl);
-    // useEffect(() => {
-    //     if (!props.fileUrl) return;
-    //     const temp = props.fileUrl;
-    //     console.log(props.fileUrl);
-    //     setTest(temp);
-    // }, [props.fileUrl]);
+
     return (
         <>
             {props.fileUrl ? (

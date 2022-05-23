@@ -2,139 +2,117 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
-  width: 192rem;
   display: flex;
   flex-direction: row;
-  padding: 3.125% 16.5% 6.35% 16.5%;
+  width: 128rem;
+  padding-top: 6rem;
+  padding-bottom: 12rem;
+  /* border: 1px solid red; */
   @media ${breakPoints.mobile} {
-    width: 36rem;
-    flex-direction: column;
-    padding: 0% 0% 0% 0%;
   }
+`;
+
+// 오른쪽박스
+export const RightWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 97rem;
+  margin-left: 9rem;
+  /* border: 1px solid blue; */
 `;
 
 // 표
 export const Table = styled.div`
-  height: 59.4rem;
   display: flex;
   flex-direction: column;
-  margin-left: 110px;
+  width: 100%;
+  height: 528px;
+  margin-bottom: 44px;
   /* border: 1px solid red; */
-  @media ${breakPoints.mobile} {
-    margin-left: 0px;
-    height: 32rem;
-  }
 `;
 
 // 결제내역
 export const Title = styled.div`
+  width: 116px;
+  height: 46px;
+  margin-bottom: 20px;
+  /* border: 1px solid red; */
   text-align: left;
-  padding-bottom: 2rem;
   font-size: 3.2rem;
   font-weight: 700;
   line-height: 4.64rem;
   letter-spacing: -2%;
-  @media ${breakPoints.mobile} {
-    display: none;
-  }
 `;
 
 export const PaymentMenuList = styled.div`
-  width: 97rem;
-  height: 4.8rem;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  background: #e5e5ef;
+  width: 100%;
+  height: 4.8rem;
+  /* border: 1px solid blue; */
+  padding: 12px 208px 13px 38px;
   border-radius: 16px 16px 0px 0px;
-  padding: 12px 0px 13px 38px;
-  @media ${breakPoints.mobile} {
-    width: 32rem;
-    height: 3.2rem;
-    padding: 0px 0px 0px 0px;
-  }
+  background: #e5e5ef;
 `;
 
 // 번호
 export const TableMenuNo = styled.div`
-  width: 5.4rem;
   display: flex;
   justify-content: center;
+  width: 5.4rem;
+  margin-right: 6rem;
+  /* border: 1px solid red; */
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  margin-left: 0.8rem;
-  margin-right: 6rem;
-  @media ${breakPoints.mobile} {
-    display: none;
-  }
 `;
 
 // 결제일
 export const TableMenuPaymentDate = styled.div`
-  width: 13.53rem;
   display: flex;
   justify-content: center;
+  width: 13.53rem;
+  margin-right: 9.3rem;
+  /* border: 1px solid red; */
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  margin-right: 7em;
-  @media ${breakPoints.mobile} {
-    width: 4.8rem;
-    height: 1.6rem;
-    font-size: 12px;
-    line-height: 16px;
-    margin-right: 5em;
-  }
 `;
 
 // 결제상품
 export const TableMenuProduct = styled.div`
-  width: 5.8rem;
-  margin-right: 9.8rem;
   display: flex;
   justify-content: center;
+  width: 5.8rem;
+  margin-right: 9.8rem;
+  /* border: 1px solid red; */
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  @media ${breakPoints.mobile} {
-    width: 5.1rem;
-    height: 1.6rem;
-    font-size: 12px;
-    line-height: 16px;
-    margin-right: 5em;
-  }
 `;
 
 // 결제금액
 export const TableMenuMoney = styled.div`
-  width: 8.52rem;
-  margin-right: 9.6rem;
   display: flex;
   justify-content: center;
+  width: 8.52rem;
+  margin-right: 9.5rem;
+  /* border: 1px solid red; */
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  @media ${breakPoints.mobile} {
-    width: 5.1rem;
-    height: 1.6rem;
-    font-size: 12px;
-    line-height: 16px;
-    margin-right: 0px;
-  }
 `;
 
 // 작성일
 export const TableMenuDate = styled.div`
   display: flex;
   justify-content: center;
+  width: 4.4rem;
+  /* border: 1px solid red; */
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  width: 4.4rem;
-  /* border: 1px solid red; */
-  @media ${breakPoints.mobile} {
-    display: none;
-  }
 `;
 
 export const PaymentObjectList = styled.div`
@@ -142,8 +120,13 @@ export const PaymentObjectList = styled.div`
   height: 480px;
   border-radius: 0 0 16px 16px;
   background-color: white;
-  @media ${breakPoints.mobile} {
-    width: 32rem;
-    height: 280px;
-  }
+`;
+
+export const Pagination = styled.div`
+  width: 108px;
+  height: 36px;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+  text-align: center;
+  line-height: 36px;
 `;

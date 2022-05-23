@@ -7,11 +7,39 @@ export const CREATE_PROJECT = gql`
         }
     }
 `
-export const FETCH_LOGIN_USER = gql`
-    query fetchLoginUser{
-        fetchLoginUser{   
-            userName
-            email
+export const UPDATE_PROJECT = gql`
+    mutation updateProject($projectId: String!, $updateProjectInput: UpdateProjectInput!){
+        updateProject(projectId:$projectId, updateProjectInput:$updateProjectInput){
+            projectId
         }
     }
 `
+
+export const UPLOAD_FILE = gql`
+    mutation userImageUpload($file: [Upload!]!) {
+        userImageUpload(file: $file)
+    }
+`;
+
+// 프로젝트 조회
+export const FETCH_PROJECT = gql`
+  query fetchProject($projectId: String!) {
+    fetchProject(projectId: $projectId) {
+      projectId
+      projectName
+      projectIntro
+      projectDetailIntro
+      projectImageURL
+      startDate
+      endDate
+      status
+      projectColor
+      createAt
+      address {
+        projectAddressId
+        address
+        detailAddress
+      }
+    }
+  }
+`;

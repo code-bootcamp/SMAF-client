@@ -2,16 +2,19 @@ import Uploads01 from "../../../commons/uploads/Upload01.container";
 import * as S from "./signup.styles";
 
 export default function SignupUI(props: any) {
-    console.log("사진요", props.urls);
     return (
         <S.Wrapper>
             <S.SignUpContents>
-                <S.SignupForm onSubmit={props.handleSubmit(props.onClickCreateUser)}>
+                <S.SignupForm onSubmit={props.handleSubmit(props.onClickcreateUser)}>
                     <S.SignUpTop>
                         <S.SignUpTitle>회원가입</S.SignUpTitle>
                         <S.SignUpProfileWrapper>
-                            <Uploads01 fileUrl={props.urls} setUrls={props.setUrls} index={0} />
-                            <S.ProfileHuman src="/image/human.png" />
+                            <Uploads01
+                                type="upload"
+                                fileUrl={props.urls}
+                                setUrls={props.setUrls}
+                                index={0}
+                            />
                         </S.SignUpProfileWrapper>
                     </S.SignUpTop>
                     <S.SignUpInfo>
@@ -77,10 +80,7 @@ export default function SignupUI(props: any) {
                     </S.SignupPhone>
                     <S.SignAboutMe>
                         <S.FormLabel>자기소개</S.FormLabel>
-                        <S.SignAboutInput
-                            placeholder="자기소개를 입력해주세요"
-                            typeof="text"
-                        ></S.SignAboutInput>
+                        <S.SignAboutInput placeholder="자기소개를 입력해주세요"></S.SignAboutInput>
                     </S.SignAboutMe>
                     <S.SignButtonWrapper>
                         <S.SignSubmitButton title="회원가입하기" type="submit">

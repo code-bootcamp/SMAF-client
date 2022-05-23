@@ -1,25 +1,19 @@
-import { getDate } from "../../../../commons/utils";
+import * as S from "./project02.styles";
 import ImageCircle from "../../images/01/image01.container";
-// import ProjectUI from "./project01.presenter";
-import * as S from "./project01.styles";
 
 interface IUserProject {
   el?: any;
 }
 
-export default function Project01(props: IUserProject) {
-  console.log("이미지나와라", props.el?.project.projectImageURL);
+export default function Project02(props: IUserProject) {
   return (
     <S.card>
       <S.Container>
         <S.box1>
-          {props.el?.project.projectImageURL ? (
-            <S.ImgBox src={props.el?.project.projectImageURL}></S.ImgBox>
-          ) : (
-            <S.ImgBox src="/noimage.png"></S.ImgBox>
-          )}
+          {/* <S.ImgBox src={props.projectImageSrc}></S.ImgBox> */}
+          {/* <S.ImgBox src="/cola.png"></S.ImgBox> */}
 
-          {/* <S.ImgBox src="/test.png"></S.ImgBox> */}
+          <S.ImgBox src={props.el?.project.projectImageURL}></S.ImgBox>
           <S.TextBox>
             <S.MainTitle>{props.el?.project.projectName}</S.MainTitle>
             <S.SubTitle>{props.el?.project.projectIntro}</S.SubTitle>
@@ -30,7 +24,7 @@ export default function Project01(props: IUserProject) {
           <ImageCircle />
           <S.Title01>{props.el?.project.projectName}</S.Title01>
           <S.Title02>{props.el?.project.projectIntro}</S.Title02>
-          <S.Date>{getDate(props.el?.project.startDate)}</S.Date>
+          <S.Date>프로젝트가 마감되었습니다.</S.Date>
         </S.box2>
       </S.Container>
     </S.card>

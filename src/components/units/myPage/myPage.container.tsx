@@ -1,14 +1,13 @@
 import MyPageUI from "./myPage.presenter";
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
-import { FETCH_PROJECTS_ALL, FETCH_USER } from "./myPage.queris";
+import { FETCH_ACTIVE_PROJECT, FETCH_INACTIVE_PROJECT } from "./myPage.queris";
 
 export default function MyPage() {
-  const { data } = useQuery(FETCH_PROJECTS_ALL, {});
-  const { data: userData } = useQuery(FETCH_USER);
   const router = useRouter();
 
-  console.log(userData);
+  const { data: activeData } = useQuery(FETCH_ACTIVE_PROJECT);
+  const { data: inActiveData } = useQuery(FETCH_INACTIVE_PROJECT);
 
   // 프로젝트 등록하기
   const onClickMoveToNewProject = () => {
@@ -17,15 +16,21 @@ export default function MyPage() {
 
   // 프로젝트 이동
   const onClickMoveToProject = () => {
-    router.push(`/market/${router.query.projectId}/`);
+    router.push(`/project/${router.query.projectId}/`);
+  };
+
+  // 프로젝트 이동
+  const onClickMoveToPaymentList = () => {
+    router.push("mypage/paymentlist");
   };
 
   return (
     <MyPageUI
-      data={data}
-      userData={userData}
+      inActiveData={inActiveData}
+      activeData={activeData}
       onClickMoveToNewProject={onClickMoveToNewProject}
       onClickMoveToProject={onClickMoveToProject}
+      onClickMoveToPaymentList={onClickMoveToPaymentList}
     />
   );
 }

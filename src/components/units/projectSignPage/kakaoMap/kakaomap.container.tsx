@@ -1,5 +1,5 @@
 // 카카오지도
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import KakaoMapUI from './kakaomap.presenter'
 
 declare const window: typeof globalThis & {
@@ -29,7 +29,7 @@ export default function KakaoMapPage(props){
             
             
             // 주소로 좌표를 검색합니다
-            geocoder.addressSearch(props.address, function(result, status) {
+            geocoder.addressSearch(props.address || props.data?.fetchProject.address?.address, function(result, status) {
 
                 // 정상적으로 검색이 완료됐으면 
                 if (status === window.kakao.maps.services.Status.OK) {
@@ -42,10 +42,10 @@ export default function KakaoMapPage(props){
                     });
 
                     // 인포윈도우로 장소에 대한 설명을 표시합니다
-                    const infowindow = new window.kakao.maps.InfoWindow({
-                            content: '<div style="width:150px;text-align:center;padding:6px 0;">거래장소</div>'
-                            });
-                        infowindow.open(map, marker);
+                    // const infowindow = new window.kakao.maps.InfoWindow({
+                    //         content: '<div style="width:150px;text-align:center;padding:6px 0;">희의장소</div>'
+                    //         });
+                        // infowindow.open(map, marker);
 
                         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
                         map.setCenter(coords);
@@ -53,7 +53,7 @@ export default function KakaoMapPage(props){
                 });
             });
         }
-    },[props.address])
+    },[props.address, props.data?.fetchProject.address?.address])
 
     return <KakaoMapUI />
     

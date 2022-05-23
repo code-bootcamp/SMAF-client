@@ -1,6 +1,8 @@
 export interface IMyPageUIProps {
   data?: any;
+  activeData: any;
+  inActiveData: any;
   onClickMoveToNewProject: () => void;
   onClickMoveToProject: () => void;
-  userData: any;
+  onClickMoveToPaymentList: () => void;
 }

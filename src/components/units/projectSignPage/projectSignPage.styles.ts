@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 198rem;
-  padding: 10rem 39rem 10rem 39rem;
+  padding: 10rem 30rem 10rem 30rem;
 `;
 
 export const Title = styled.h1`
@@ -28,6 +28,7 @@ export const InputBox = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 2rem;
+  padding-left: 18rem;
 `;
 
 export const Must = styled.div`
@@ -44,7 +45,7 @@ export const Input = styled.input`
   padding: 1rem;
 `;
 
-export const ImgAddBtn = styled.button`
+export const ImgAddBtn = styled.div`
   width: 11rem;
   height: 3.8rem;
   background-color: white;
@@ -56,19 +57,30 @@ export const ImgAddBtn = styled.button`
   cursor: pointer;
 `;
 
+export const ImgTitle = styled.div`
+display: flex;
+`;
+
 export const FileImg = styled.img`
 width:1.333rem;
 height:1.667rem;
 margin-right: 0.5rem;
+`;
+export const ImgLabelBox = styled.div`
+
 `;
 
 export const AddImg = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-
+export const Img = styled.img`
+width: 31rem;
+height: 16rem;
+background: #C4C4C4;
+border-radius: 0.8rem;
+`;
 export const ImgPreviewBox = styled.div`
-
   width: 88rem;
   display: flex;
   align-items: flex-end;
@@ -84,7 +96,7 @@ padding-left: 2rem;
 `;
 export const StartEndDay = styled.div`
 display: flex;
-padding-left: 14rem;
+padding-left: 15rem;
 `;
 export const Date = styled.div`
 font-size: 2.4rem;
@@ -169,4 +181,7 @@ export const Error = styled.div`
 color: #DC0000;
 font-size: 1.8rem;
 padding: 1rem 0 0 2rem;
+`;
+export const Color = styled.div`
+padding-left: 13rem;
 `;
