@@ -1,32 +1,22 @@
-import { card } from "../project/01/project01.styles";
+// import { card } from "../project/01/project01.styles";
+import { useQuery } from "@apollo/client";
+import { FETCH_LOGIN_USER } from "./userInfoCard.queris";
 import * as S from "./userInfoCard.styles";
-
-// interface IUserCardProps {
-//   userEmail: string | undefined;
-//   userName: string | undefined;
-//   userImageSrc: string | undefined;
-//   src1: string | undefined;
-//   src2: string | undefined;
-//   src3: string | undefined;
-//   title1: string | undefined;
-//   title2: string | undefined;
-//   title3: string | undefined;
-// }
 
 interface IUserCardProps {
   data?: any;
-  userData?: any;
   onClickMoveToPaymentList: () => void;
 }
 
 export default function UserInfoCard(props: IUserCardProps) {
-  console.log("최종", props.userData?.fetchLoginUser.userName);
+  const { data } = useQuery(FETCH_LOGIN_USER);
+
   return (
     <S.Wrapper>
       <S.CardTopWrapper>
         <S.Image></S.Image>
-        <S.Name>{props.userData?.fetchLoginUser.userName}</S.Name>
-        <S.Email>{props.userData?.fetchLoginUser.email}</S.Email>
+        <S.Name>{data?.fetchLoginUser.userName}</S.Name>
+        <S.Email>{data?.fetchLoginUser.email}</S.Email>
       </S.CardTopWrapper>
 
       <S.CardBottomWrapper>

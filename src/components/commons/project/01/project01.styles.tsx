@@ -6,6 +6,7 @@ export const card = styled.div`
   background-color: white;
   overflow: hidden;
   border-radius: 16px 16px 16px 16px;
+  /* border: 1px solid red; */
 `;
 
 export const Container = styled.div`
@@ -18,17 +19,21 @@ export const Container = styled.div`
   }
 `;
 
-// 📌 1번 박스
+// 📌 01 윗 박스
 export const box1 = styled.div`
   width: 31rem;
   height: 24rem;
   cursor: pointer;
   overflow: hidden;
 `;
+
+// 프로젝트사진
 export const ImgBox = styled.img`
   width: 31rem;
   height: 16rem;
 `;
+
+// 텍스트박스
 export const TextBox = styled.div`
   width: 31rem;
   height: 8rem;
@@ -39,11 +44,14 @@ export const TextBox = styled.div`
   padding: 1.4rem 8.7rem 1.9rem 2rem;
 `;
 
+// 프로젝트이름
 export const MainTitle = styled.div`
   font-weight: 700;
   font-size: 1.8rem;
   line-height: 2.6rem;
 `;
+
+// 프로젝트요약
 export const SubTitle = styled.div`
   font-weight: 700;
   font-size: 1.4rem;
@@ -51,13 +59,17 @@ export const SubTitle = styled.div`
   color: #767676;
 `;
 
-// 📌 2번 박스
+// 📌 02 아래 박스
 export const box2 = styled.div`
-  padding-top: 2.4rem;
+  width: 310px;
+  height: 240px;
+  padding: 24px 20px;
   height: 24rem;
   border-radius: 16px 16px 16px 16px;
   cursor: pointer;
 `;
+
+// 프로젝트이름
 export const Title01 = styled.div`
   width: 20rem;
   height: 29px;
@@ -65,28 +77,28 @@ export const Title01 = styled.div`
   font-size: 2rem;
   line-height: 29px;
   letter-spacing: -0.02em;
+  margin-top: 18px;
   color: #111111;
-  margin-top: 1.8rem;
-  margin-bottom: 0.4rem;
-  margin-left: 2rem;
 `;
 
+// 프로젝트요약
 export const Title02 = styled.div`
   width: 270px;
+  height: 44px;
+  margin-top: 4px;
   font-weight: 400;
   font-size: 1.5rem;
   line-height: 2.2rem;
   letter-spacing: -0.02em;
   color: #111111;
-  margin-left: 2rem;
-  margin-bottom: 2.9rem;
 `;
-export const Title03 = styled.div`
+
+export const Date = styled.div`
   width: 16.3rem;
   height: 2rem;
+  margin-top: 29px;
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 2rem;
   color: #767676;
-  margin-left: 2rem;
 `;
