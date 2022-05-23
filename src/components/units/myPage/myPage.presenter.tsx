@@ -9,6 +9,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Project02 from "../../commons/project/02/project02.container";
+import Project03 from "../../commons/project/03/project03.container";
+import PaymentModal from "../../commons/modal/paymentModal/paymentModal.container";
 
 const SliderWrapper = styled(Slider)`
   .slick-list {
@@ -16,28 +18,25 @@ const SliderWrapper = styled(Slider)`
   }
   height: 24rem;
   width: 97rem;
-  /* border: 1px solid red; */
-  display: flex;
-  flex-direction: column;
 `;
 
-const settings = {
-  dots: false, // dots 사진 밑에 버튼 false 하면 사라진다
-  rows: 1,
-  speed: 500, // 콘텐츠를 넘어갈 때 속도
-  slidesToShow: 3, // 한 화면에 보이는 콘텐츠 수
-  slidesToScroll: 1, // 한 번에 넘어가는 콘텐츠 수
-};
-
 export default function MyPageUI(props: IMyPageUIProps) {
-  console.log(props.userData);
+  const showMaxCnt = 3;
+  const arr = Array.from(new Array(3));
+
+  const settings = {
+    dots: false, // dots 사진 밑에 버튼 false 하면 사라진다
+    infinite: arr.length > showMaxCnt,
+    rows: 1,
+    speed: 500, // 콘텐츠를 넘어갈 때 속도
+    slidesToShow: showMaxCnt, // 한 화면에 보이는 콘텐츠 수
+    slidesToScroll: showMaxCnt, // 한 번에 넘어가는 콘텐츠 수
+  };
+
   return (
     <S.Wrapper>
       {/* leftWrapper */}
-      <UserInfoCard
-        userData={props.userData}
-        onClickMoveToPaymentList={props.onClickMoveToPaymentList}
-      />
+      <UserInfoCard onClickMoveToPaymentList={props.onClickMoveToPaymentList} />
 
       <S.RightWrapper>
         <S.InnerWrapper>
@@ -47,8 +46,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
               + 프로젝트 추가하기
             </S.AddButton>
           </S.ProjectTitle>
-
-          {/* map 돌림 */}
+          {/* 진행 중인 프로젝트 */}
           <SliderWrapper {...settings}>
             {props.activeData?.fetchActivatedProject.map((el: any) => (
               <Project01 key={uuidv4()} el={el} />
@@ -61,10 +59,9 @@ export default function MyPageUI(props: IMyPageUIProps) {
             <S.Title>지난 프로젝트</S.Title>
             <S.DateButton>최신순</S.DateButton>
           </S.ProjectTitle>
-
-          {/* map 돌림 */}
-          {/* 데이터가 3개일때 캐러셀 적용  */}
+          {/* 지난 프로젝트 */}
           <SliderWrapper {...settings}>
+            {/* 프로젝트가 없을때 조건 보여줘야함  */}
             {props.inActiveData?.fetchInactivatedProject.map((el: any) => (
               <Project02 key={uuidv4()} el={el} />
             ))}
@@ -74,3 +71,12 @@ export default function MyPageUI(props: IMyPageUIProps) {
     </S.Wrapper>
   );
 }
+
+// {props.el.images[0] ? (
+//   <ProductImage
+//     src={`https://storage.googleapis.com/${props.el.images[0]}`}
+//     alt="상품이미지"
+//   />
+// ) : (
+//   <ProductImage src="/images/images.png" />
+// )}

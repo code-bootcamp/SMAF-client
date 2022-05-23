@@ -1,5 +1,5 @@
 // 카카오지도
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import KakaoMapUI from './kakaomap.presenter'
 
 declare const window: typeof globalThis & {
@@ -29,7 +29,7 @@ export default function KakaoMapPage(props){
             
             
             // 주소로 좌표를 검색합니다
-            geocoder.addressSearch(props.address, function(result, status) {
+            geocoder.addressSearch(props.address || props.data?.fetchProject.address?.address, function(result, status) {
 
                 // 정상적으로 검색이 완료됐으면 
                 if (status === window.kakao.maps.services.Status.OK) {
@@ -53,7 +53,7 @@ export default function KakaoMapPage(props){
                 });
             });
         }
-    },[props.address])
+    },[props.address, props.data?.fetchProject.address?.address])
 
     return <KakaoMapUI />
     

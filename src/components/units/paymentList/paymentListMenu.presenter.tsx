@@ -18,28 +18,26 @@ export default function PaymentListUI(props: any) {
         title3={undefined}
       />
 
-      <S.Table>
+      <S.RightWrapper>
         <S.Title>결제내역</S.Title>
+        <S.Table>
+          <S.PaymentMenuList>
+            <S.TableMenuNo>번호</S.TableMenuNo>
+            <S.TableMenuPaymentDate>결제일</S.TableMenuPaymentDate>
+            <S.TableMenuProduct>결제상품</S.TableMenuProduct>
+            <S.TableMenuMoney>결제금액</S.TableMenuMoney>
+            <S.TableMenuDate>작성일</S.TableMenuDate>
+            {/* <S.QusStionAnswerBtn>문의하기</S.QusStionAnswerBtn> */}
+          </S.PaymentMenuList>
 
-        <S.PaymentMenuList>
-          <S.TableMenuNo>번호</S.TableMenuNo>
-          <S.TableMenuPaymentDate>결제일</S.TableMenuPaymentDate>
-          <S.TableMenuProduct>결제상품</S.TableMenuProduct>
-          <S.TableMenuMoney>결제금액</S.TableMenuMoney>
-          <S.TableMenuDate>작성일</S.TableMenuDate>
-
-          {/* <S.QusStionAnswerBtn>문의하기</S.QusStionAnswerBtn> */}
-        </S.PaymentMenuList>
-
-        <S.PaymentObjectList>
-          {/* {props.data &&
-            props.data?.fetchQuestionBoards.map((el: any, index: number) => (
-              <PaymentObject key={uuidv4()} el={el} no={index + 1} />
-            ))} */}
-
-          <PaymentObject />
-        </S.PaymentObjectList>
-      </S.Table>
+          <S.PaymentObjectList>
+            {/* 📌 map 돌리는 곳 */}
+            <PaymentObject />
+            <PaymentObject />
+          </S.PaymentObjectList>
+        </S.Table>
+        <S.Pagination>페이지네이션</S.Pagination>
+      </S.RightWrapper>
     </S.Wrapper>
   );
 }

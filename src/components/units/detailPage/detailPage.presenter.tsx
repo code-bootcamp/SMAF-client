@@ -14,7 +14,7 @@ export default function ProjectDetailPageHTML(
   const router = useRouter();
 
   const MoveEdit = () => {
-    router.push(`./project/${router.query.projectId}/edit`);
+    router.push(`./${router.query.projectId}/edit`);
   };
   return (
     <S.Wrapper>
