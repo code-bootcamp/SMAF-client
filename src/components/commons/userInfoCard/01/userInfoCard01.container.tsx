@@ -28,12 +28,16 @@ export default function UserInfoCard01(props: IUserCardProps) {
 
       <S.CardBottomWrapper>
         <S.CardBottomContents>
-          <S.Icon2 src={"images/friends.png"}></S.Icon2>
-          <S.Title onClick={props.onClickMoveToPaymentList}>결제내역</S.Title>
+          <S.Icon src={"images/pen.png"}></S.Icon>
+          <S.Title>마이페이지</S.Title>
         </S.CardBottomContents>
         <S.CardBottomContents>
           <S.Icon src={"images/profile.png"}></S.Icon>
           <S.Title>프로필 편집</S.Title>
+        </S.CardBottomContents>
+        <S.CardBottomContents>
+          <S.Icon2 src={"images/card.png"}></S.Icon2>
+          <S.Title onClick={props.onClickMoveToPaymentList}>결제내역</S.Title>
         </S.CardBottomContents>
         <S.CardBottomContents>
           <S.Icon src={"images/coupon.png"}></S.Icon>

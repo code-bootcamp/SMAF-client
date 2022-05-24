@@ -1,24 +1,26 @@
 import { gql } from "@apollo/client";
 
-// 모든 결제 내역 불러오기
 export const FETCH_PAYMENTS = gql`
-  query fetchPayments {
-    fetchPayments {
+  query fetchPayments($page: Int) {
+    fetchPayments(page: $page) {
       paymentId
-      product_name
       impUid
       amount
+      product_name
+      status
       createAt
       user {
         userId
         userName
+        email
       }
     }
   }
 `;
 
 // 페이지네이션
-// export const FETCH_PAYMENTS_COUNT = gql`
-//   query fetchPaymentsCount{
-//   }
-// `;
+export const FETCH_PAYMENTS_COUNT = gql`
+  query fetchPaymentsCount {
+    fetchPaymentsCount
+  }
+`;

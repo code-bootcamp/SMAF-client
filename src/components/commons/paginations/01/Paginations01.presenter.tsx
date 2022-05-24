@@ -1,11 +1,11 @@
-import { Page } from "./Paginations01.styles";
+import { Page, Wrapper } from "./Paginations01.styles";
 import { IPaginations01UIProps } from "./Paginations01.types";
 
 export default function Paginations01UI(props: IPaginations01UIProps) {
   return (
-    <div>
+    <Wrapper>
       {/* 이전페이지 */}
-      <Page onClick={props.onClickPrevPage}>&lt;</Page>
+      {/* <Page onClick={props.onClickPrevPage}>&lt;</Page> */}
 
       {/* 페이지 네비게이션 */}
       {new Array(10).fill(1).map(
@@ -22,7 +22,7 @@ export default function Paginations01UI(props: IPaginations01UIProps) {
           )
       )}
       {/* 다음페이지 */}
-      <Page onClick={props.onClickNextPage}>&gt;</Page>
-    </div>
+      {/* <Page onClick={props.onClickNextPage}>&gt;</Page> */}
+    </Wrapper>
   );
 }
