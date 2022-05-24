@@ -33,6 +33,8 @@ export default function Dropdown01(props) {
     const onClickLogOut = () => {
         logout();
         console.log("로그아웃완료, 기본페이지 이동");
+        location.reload();
+        // 강제 새로고침 로그아웃시 필요한것
         router.push(`/`);
     };
 

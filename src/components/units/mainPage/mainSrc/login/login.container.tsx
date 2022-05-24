@@ -8,6 +8,8 @@ import { useRecoilState } from "recoil";
 import { accessTokenState, userInfoState } from "../../../../../commons/store";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { useMoveToPage } from "../../../../commons/hooks/useMoveToPage";
+import axios from "axios";
 
 const schema = yup
     .object({
@@ -29,6 +31,7 @@ interface IFormValues {
 
 export default function Login() {
     const router = useRouter();
+    const moveToPage = useMoveToPage();
     const [, setAccessToken] = useRecoilState(accessTokenState);
     // const [, setUserInfo] = useRecoilState(userInfoState);
     const [login] = useMutation(LOGIN_USER);
@@ -37,6 +40,11 @@ export default function Login() {
         resolver: yupResolver(schema),
         mode: "onChange",
     });
+
+    // const responseGoogle = (response) => {
+    //     console.log(response);
+    //     console.log(response.profileObj);
+    // };
 
     const onClickLogin = async (data: IFormValues) => {
         console.log("login", data);
@@ -70,12 +78,23 @@ export default function Login() {
         router.push("/main");
     };
 
+    const onClickGoogle = () => {
+        router.push(`https://backend.smaf.shop/google`);
+    };
+
+    // const callRestApi = async () => {
+    //     const result = await axios.get("https://backend.smaf.shop/google");
+    //     console.log("리절트", result);
+    //     return result;
+    // };
     return (
         <LoginUI
             formState={formState}
             register={register}
             handleSubmit={handleSubmit}
             onClickLogin={onClickLogin}
+            onClickGoogle={onClickGoogle}
+            // callRestApi={callRestApi}
         />
     );
 }

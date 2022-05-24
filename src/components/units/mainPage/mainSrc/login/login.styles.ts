@@ -134,3 +134,5 @@ export const ToBeforeLogin = styled.div`
     padding-top: 3rem;
     cursor: pointer;
 `;
+
+export const GoogleBotton = styled.button``;
