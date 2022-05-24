@@ -1,11 +1,3 @@
-// 임시 주석처리
-// import * as S from "./paymentList.styles";
-
-// interface IPaymentProps {
-//   el: any;
-//   no: number;
-// }
-
 import { getDate } from "../../../../commons/utils";
 import * as S from "./paymentList.styles";
 
