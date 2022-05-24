@@ -10,7 +10,7 @@ export default function AddColumnBtn(props: any) {
     setIsOpen((prev: boolean) => !prev);
   };
   const [createCategory] = useMutation(CREATE_PROCESS_CATEGORY);
-  const { register, handleSubmit, formState } = useForm({
+  const { register, handleSubmit, formState, reset } = useForm({
     mode: "onChange",
   });
 
@@ -46,6 +46,7 @@ export default function AddColumnBtn(props: any) {
       formState={formState}
       onToggleModal={onToggleModal}
       isOpen={isOpen}
+      reset={reset}
     />
   );
 }

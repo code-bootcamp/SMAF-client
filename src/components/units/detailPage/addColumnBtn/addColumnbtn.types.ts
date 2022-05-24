@@ -7,4 +7,5 @@ export interface IAddColumnBtnProps {
   formState: any;
   onToggleModal: () => any;
   isOpen: boolean;
+  reset: any;
 }

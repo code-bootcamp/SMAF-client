@@ -14,6 +14,8 @@ export const globalStyles = css`
     height: 100%;
     font-size: 62.5%;
     margin: 0;
+    box-sizing: border-box;
+    font-family: "NotoSansKR", "Roboto";
   }
 
   p,

@@ -47,3 +47,9 @@ export const FETCH_PROJECT_SCHEDULES_CATEGORY = gql`
     }
   }
 `;
+
+export const DELETE_CATEGORY = gql`
+  mutation deleteProcessCategory($processCategoryId: String!) {
+    deleteProcessCategory(processCategoryId: $processCategoryId)
+  }
+`;
