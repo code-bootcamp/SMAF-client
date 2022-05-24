@@ -2,10 +2,10 @@ import LoginUI from "./login.presenter";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useMutation } from "@apollo/client";
+import { useApolloClient, useMutation } from "@apollo/client";
 import { LOGIN_USER } from "./login.queries";
 import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../../../commons/store";
+import { accessTokenState, userInfoState } from "../../../../../commons/store";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 
@@ -48,7 +48,7 @@ export default function Login() {
         });
         console.log(result, "result");
         const accessToken = result.data.login;
-        console.log("accessToken");
+        console.log("accessToken", "로그인엑세스토큰");
         setAccessToken(accessToken);
         Cookies.set("accessToken", accessToken);
 

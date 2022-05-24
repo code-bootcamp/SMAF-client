@@ -1,4 +1,4 @@
-import Uploads01 from "../../../commons/uploads/Upload01.container";
+import Uploads01 from "../../../commons/uploads/upload1/Upload01.container";
 import * as S from "./signup.styles";
 
 export default function SignupUI(props: any) {

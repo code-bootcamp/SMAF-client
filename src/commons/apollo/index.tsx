@@ -4,7 +4,7 @@ import { createUploadLink } from "apollo-upload-client";
 import { ReactNode, useEffect } from "react";
 import { getAccessToken } from "../libraries/getAccessToken.ts/getAccessToken";
 import { onError } from "@apollo/client/link/error";
-import { accessTokenState } from "../store/index";
+import { accessTokenState, userInfoState } from "../store/index";
 import Cookies from "js-cookie";
 
 interface IAppProps {
@@ -15,6 +15,7 @@ export default function ApolloSetting(props: IAppProps) {
     const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
     // const [, setUserInfo] = useRecoilState(userInfoState);
 
+    // 쿠키에 accessToken 입장
     useEffect(() => {
         const accessToken = Cookies.get("accessToken");
         if (accessToken) {
@@ -26,6 +27,11 @@ export default function ApolloSetting(props: IAppProps) {
             });
         }
     }, []);
+    // useEffect(() => {
+    //     getAccessToken().then((newAccessToken) => {
+    //         setAccessToken(newAccessToken);
+    //     });
+    // }, []);
 
     // api 요청을 할때 누군지 증명할거를 갖고만 있었던 상황이였고 이걸 제출함으로써 나를 증명
 
@@ -54,7 +60,7 @@ export default function ApolloSetting(props: IAppProps) {
         }
     });
     const uploadLink = createUploadLink({
-        uri: "http://34.64.156.215:3000/graphql",
+        uri: "https://backend.smaf.shop/graphql",
         headers: {
             Authorization: `Bearer ${accessToken}`,
         },
