@@ -29,6 +29,7 @@ export default function Dropdown01(props) {
     router.push(`/mypage`);
   };
 
+
   const [logout] = useMutation(LOGOUT);
   const onClickLogOut = () => {
     logout();
