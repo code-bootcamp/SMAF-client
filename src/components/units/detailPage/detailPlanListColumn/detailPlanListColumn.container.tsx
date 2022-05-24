@@ -52,6 +52,7 @@ export default function DetailPlanListColumn(props: any) {
       columnData={props.el}
       scheduleData={scheduleData}
       DeleteCategory={DeleteCategory}
+      dragItemId={props.dragItemId}
     />
   );
 }

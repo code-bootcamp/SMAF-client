@@ -76,7 +76,10 @@ export default function ProjectDetailPageHTML(
 
           <S.RightWrapper>
             {props.isLoading && (
-              <DragDropContext onDragEnd={props.handleDragEnd}>
+              <DragDropContext
+                onDragEnd={props.handleDragEnd}
+                onDragStart={props.handleDragStart}
+              >
                 {props.categoriesData?.fetchProcessCategories.map(
                   (el: any, index: any) => (
                     <Droppable
@@ -93,6 +96,7 @@ export default function ProjectDetailPageHTML(
                             key={el.processCategoryId}
                             el={el}
                             tableIndex={index}
+                            dragItemId={props.dragItemId}
                           />
                           {provided.placeholder}
                         </div>
