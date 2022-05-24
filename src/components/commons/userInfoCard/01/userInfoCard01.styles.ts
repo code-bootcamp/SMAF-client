@@ -77,7 +77,7 @@ export const Icon = styled.img`
 `;
 export const Icon2 = styled.img`
   width: 2.2rem;
-  height: 1.6rem;
+  height: 2rem;
 
   margin-right: 1rem;
 `;

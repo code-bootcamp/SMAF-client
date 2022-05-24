@@ -30,6 +30,8 @@ export default function MyPageUI(props: IMyPageUIProps) {
     slidesToScroll: showMaxCnt, // 한 번에 넘어가는 콘텐츠 수
   };
 
+  console.log("데이터값1", props.activeData?.fetchActivatedProject);
+  console.log("데이터값2", props.activeData?.fetchInactivatedProject);
   return (
     <S.Wrapper>
       <UserInfoCard01

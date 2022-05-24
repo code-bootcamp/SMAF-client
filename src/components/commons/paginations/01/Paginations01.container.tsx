@@ -16,21 +16,21 @@ export default function Paginations01(props: IPaginations01Props) {
     props.refetch({ page: activedPage }); // refetch 부모 bordelist.container>presenter에서 가져옴
   };
 
-  // 이전페이지
-  const onClickPrevPage = () => {
-    if (startPage <= 1) return; // -1 페이지 같이 0 이하로는 내려가지 않도록
-    setStartPage((prev) => prev - 10);
-    setActivedPage(startPage - 10);
-    props.refetch({ page: startPage - 10 });
-  };
+  // // 이전페이지
+  // const onClickPrevPage = () => {
+  //   if (startPage <= 1) return; // -1 페이지 같이 0 이하로는 내려가지 않도록
+  //   setStartPage((prev) => prev - 10);
+  //   setActivedPage(startPage - 10);
+  //   props.refetch({ page: startPage - 10 });
+  // };
 
-  // 다음페이지
-  const onClickNextPage = () => {
-    if (startPage + 10 > lastPage) return; // 1 ~ 10 목록 이후 11 ~ 20 목록, 마지막 페이지 이후로 계속 넘어가지 않도록
-    setStartPage((prev) => prev + 10);
-    setActivedPage(startPage + 10);
-    props.refetch({ page: startPage + 10 });
-  };
+  // // 다음페이지
+  // const onClickNextPage = () => {
+  //   if (startPage + 10 > lastPage) return; // 1 ~ 10 목록 이후 11 ~ 20 목록, 마지막 페이지 이후로 계속 넘어가지 않도록
+  //   setStartPage((prev) => prev + 10);
+  //   setActivedPage(startPage + 10);
+  //   props.refetch({ page: startPage + 10 });
+  // };
 
   return (
     <Paginations01UI
@@ -38,8 +38,8 @@ export default function Paginations01(props: IPaginations01Props) {
       lastPage={lastPage}
       activedPage={activedPage}
       onClickPage={onClickPage}
-      onClickPrevPage={onClickPrevPage}
-      onClickNextPage={onClickNextPage}
+      // onClickPrevPage={onClickPrevPage}
+      // onClickNextPage={onClickNextPage}
     />
   );
 }
