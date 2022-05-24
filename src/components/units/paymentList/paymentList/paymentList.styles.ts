@@ -67,7 +67,7 @@ export const TableMenuProduct = styled.div`
 export const TableMenuMoney = styled.div`
   width: 3.9rem;
   height: 2.3rem;
-  margin-right: 8rem;
+  margin-right: 15rem;
   /* border: 1px solid red; */
   font-weight: 400;
   font-size: 16px;

@@ -6,6 +6,7 @@ import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import ChangePasswordUI from "./changePassword.presenter";
 import { CHANGE_CHECKEDTOKEN, CHANGE_SENDTOKEN, UPDATE_PASSWORD } from "./changePassword.queris";
+import { useRouter } from "next/router";
 
 const schema = yup.object({
     email: yup
@@ -40,8 +41,9 @@ export default function ChangePassword(props: any) {
     const [checkedTokenPhone] = useMutation(CHANGE_CHECKEDTOKEN);
     const [phone, setPhone] = useState("");
     const [inputToken, setInputToken] = useState("");
-    const [trueToken, setTrueToken] = useState(false);
-    const [isActive, setIsActive] = useState(false);
+    const [, setTrueToken] = useState(false);
+    const [isActive] = useState(false);
+    const router = useRouter();
 
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(schema),
@@ -101,11 +103,11 @@ export default function ChangePassword(props: any) {
     };
 
     const onClickUpdatePassword = async (data: FormValues) => {
-        const { email, password, phone } = data;
+        // const { email, password, phone } = data;
 
-        if (email && password && phone && inputToken && trueToken) {
-            setIsActive(true);
-        }
+        // if (email && password && phone && inputToken && trueToken) {
+        //     setIsActive(true);
+        // }
         try {
             await updatePassword({
                 variables: {
@@ -117,6 +119,9 @@ export default function ChangePassword(props: any) {
             Modal.success({
                 content: "비밀번호 변경완료했습니다.",
             });
+            console.log("완료");
+
+            router.push("/main");
         } catch (error) {
             message.error(error.message);
         }

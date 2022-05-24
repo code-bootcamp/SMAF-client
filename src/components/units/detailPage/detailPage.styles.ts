@@ -62,11 +62,11 @@ export const DetailProjectName = styled.div`
   padding: 0px 2rem 0px 2rem;
   font-size: 1.6rem;
   font-weight: 700;
-  /* white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; */
   line-height: 2.6rem;
   padding-bottom: 1.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const DetailProjectContents = styled.div`
@@ -74,6 +74,9 @@ export const DetailProjectContents = styled.div`
   font-size: 1.4rem;
   font-weight: 400;
   padding: 0px 3.1rem 3.2rem 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const DetailProjectDay = styled.div`

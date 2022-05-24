@@ -1,19 +1,24 @@
 import ProjectSignPageUI from "./projectSignPage.presenter";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import {yupResolver} from '@hookform/resolvers/yup'
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import 'react-quill/dist/quill.snow.css';
+import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
 import { useMutation, useQuery } from "@apollo/client";
-import { CREATE_PROJECT, FETCH_PROJECT, UPDATE_PROJECT, UPLOAD_FILE } from "./projectSignPage.queries";
+import {
+    CREATE_PROJECT,
+    FETCH_PROJECT,
+    UPDATE_PROJECT,
+    UPLOAD_FILE,
+} from "./projectSignPage.queries";
 import { useRecoilState } from "recoil";
 import { fromValues, toValues } from "../../../commons/store";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
-import { checkValidationImage } from "../../commons/uploads/Upload01.validation";
+import { checkValidationImage } from "../../commons/uploads/upload1/Upload01.validation";
 
-const ReactQuill = dynamic(() => import("react-quill"), {ssr : false});
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const schema = yup.object({
   projectName: yup
@@ -31,21 +36,22 @@ const editSchema = yup.object({
   detailAddress: yup.string()
 });
 
+
 export default function ProjectSign(props) {
+    const router = useRouter();
+    const fileRef = useRef<HTMLInputElement>(null);
 
-  const router = useRouter()
-  const fileRef = useRef<HTMLInputElement>(null)
+    const [createProject] = useMutation(CREATE_PROJECT);
+    const [updateProject] = useMutation(UPDATE_PROJECT);
+    const [uploadFile] = useMutation(UPLOAD_FILE);
+    const { data } = useQuery(FETCH_PROJECT, {
+        variables: {
+            projectId: router.query.projectId,
+        },
+    });
 
-  const [ createProject ] = useMutation(CREATE_PROJECT);
-  const [ updateProject ] = useMutation(UPDATE_PROJECT);
-  const [ uploadFile ] = useMutation(UPLOAD_FILE);
-  const { data } = useQuery(FETCH_PROJECT, {
-    variables: {
-      projectId: router.query.projectId,
-    },
-  });
+    console.log(data);
 
-  console.log(data)
 
   const { register, handleSubmit, formState, setValue, trigger, getValues, reset } = useForm({
         resolver: yupResolver(props.isEdit ? editSchema : schema),
@@ -92,13 +98,57 @@ export default function ProjectSign(props) {
       trigger("contents");
   };
 
-  // 이미지 업로드 
-  const onClickUpload = () => {
-        fileRef.current?.click()
-  }
+    // 이미지 업로드 state
+    const [urls, setUrls] = useState();
 
-  // 이미지 등록하기
-  const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
+    // 색깔 선택 state
+    const [color, setColor] = useState<undefined | string>();
+
+    // 시작일 종료일 state
+    const [fromValue] = useRecoilState<string>(fromValues);
+    const [toValue] = useRecoilState<string>(toValues);
+
+    // 주소 state
+    const [address, setAddress] = useState("");
+    const [addressDetail, setAddressDetail] = useState("");
+
+    // 모달 주소입력
+    const [isOpen, setIsOpen] = useState(false);
+
+    const showModal = () => {
+        setIsOpen(true);
+    };
+
+    const handleOk = () => {
+        setIsOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsOpen(false);
+    };
+
+    const handleComplete = (data: any) => {
+        setIsOpen(false);
+        setAddress(data.address);
+    };
+
+    const onChangeAddressDetail = (event) => {
+        setAddressDetail(event.target.value);
+    };
+
+    const onChangeContents = (value: any) => {
+        setValue("contents", value === "<p><br></p>" ? "" : value);
+        trigger("contents");
+    };
+
+    // 이미지 업로드
+    const onClickUpload = () => {
+        fileRef.current?.click();
+    };
+
+    // 이미지 등록하기
+    const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
+
         const file = checkValidationImage(event.target.files?.[0]);
         if (!file) return;
 
@@ -109,6 +159,7 @@ export default function ProjectSign(props) {
             Modal.error({ content: error.message });
         }
     };
+
 
   // 등록하기
   const onClickSubmit = async(data:any) => {
@@ -136,14 +187,14 @@ export default function ProjectSign(props) {
         router.push(`/project/${result.data.createProject.projectId}`)
       } catch (error) {
           if (error instanceof Error)
-            Modal.error({
-              content: error.message,
-          });
+                    Modal.error({
+                        content: error.message,
+                    });
+            }
         }
-    }
-  }
+    };
 
-  console.log('프로젝트addressid', data?.fetchProject?.address.projectAddressId)
+
   // 수정하기
   const onClickUpdate = async(data:any) => {
     // 이미지 수정하기
@@ -263,4 +314,3 @@ console.log("요기요", urls)
         data={data}
       />
     )
-}
