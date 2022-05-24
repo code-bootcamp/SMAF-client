@@ -52,27 +52,26 @@ export default function ApolloSetting(props: IAppProps) {
               },
             });
             // 3-2. 변경된 operation 재요청하기
-            return forward(operation);
-          });
+                        return forward(operation);
+                    });
+                }
+            }
         }
-      }
-    }
-  });
-  const uploadLink = createUploadLink({
-    uri: "https://backend.smaf.shop/graphql",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-    credentials: "include",
-  });
-  const client = new ApolloClient({
-    link: ApolloLink.from([errorLink, uploadLink]),
-    cache: new InMemoryCache(), // 백엔드 컴퓨터 주소
-  });
-  return (
-    <>
-      <ApolloProvider client={client}>{props.children}</ApolloProvider>
-    </>
-  );
+    });
+    const uploadLink = createUploadLink({
+        uri: "https://backend.smaf.shop/graphql",
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+        },
+        credentials: "include",
+    });
+    const client = new ApolloClient({
+        link: ApolloLink.from([errorLink, uploadLink]),
+        cache: new InMemoryCache(), // 백엔드 컴퓨터 주소
+    });
+    return (
+        <>
+            <ApolloProvider client={client}>{props.children}</ApolloProvider>
+        </>
+    );
 }
-
