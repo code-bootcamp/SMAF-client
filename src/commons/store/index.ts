@@ -44,18 +44,23 @@ export const TodayItemList = atom({
 
 // 달력 날짜 값
 export const dateValue = atom({
-    key: "dateValue", 
-    default:new Date(), 
-})
+  key: "dateValue",
+  default: new Date(),
+});
 
 // 데이피커 startDate
 export const fromValues = atom({
-    key: "fromValue", 
-    default:"", 
-})
+  key: "fromValue",
+  default: "",
+});
 
 // 데이피커 endDate
 export const toValues = atom({
-    key: "toValue", 
-    default:"", 
-})
+  key: "toValue",
+  default: "",
+});
+
+export const triger = atom({
+  key: "triger",
+  default: false,
+});

@@ -5,6 +5,12 @@ export const Wrapper = styled.div`
   flex-direction: column;
 `;
 
+export const BasicRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
 export const AddColumn = styled.div`
   display: flex;
   flex-direction: row;
@@ -52,6 +58,7 @@ export const DropMenu = styled.div`
 export const AddCoulumnIcon = styled.img`
   width: 2.4rem;
   height: 2.4rem;
+  margin-left: 1.2rem;
   cursor: pointer;
 `;
 

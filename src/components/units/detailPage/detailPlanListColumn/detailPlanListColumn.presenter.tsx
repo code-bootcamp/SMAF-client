@@ -4,44 +4,40 @@ import { useState } from "react";
 import { Modal } from "antd";
 import { Draggable } from "react-beautiful-dnd";
 import DetailPlanAddModal from "./detailPlanAddModal/detailPlanAddModal.container";
+import DropdownDetail from "../../../commons/dropdown/04.detailPageDropdown/detailPageDropdown";
 
 export default function DetailPlanListColumnHTML(props: any) {
   const [isOpen, setIsOpen] = useState(false);
-  const [dropDown, setDropDown] = useState(false);
+  // const [dropDown, setDropDown] = useState(false);
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
   };
-  const onToggleDropDown = () => {
-    setDropDown((prev) => !prev);
-  };
+  // const onToggleDropDown = () => {
+  //   setDropDown((prev) => !prev);
+  // };
   // console.log(props.columnData, "columnData");
   // console.log(props.scheduleData, "scheduleData");
   return (
     <S.Wrapper>
       <S.AddColumn>
         <S.ColumnTitle>{props.columnData?.processName}</S.ColumnTitle>
-        <div>
-          <S.EditCoulumnIcon
-            onClick={onToggleDropDown}
+        <S.BasicRow>
+          {/* <S.EditCoulumnIcon
+            // onClick={onToggleDropDown}
             src="/detailPage/spread.png"
-          ></S.EditCoulumnIcon>
+          ></S.EditCoulumnIcon> */}
+          <DropdownDetail
+            DeleteCategory={props.DeleteCategory}
+            id={props.columnData?.processCategoryId}
+          />
 
           <S.AddCoulumnIcon
             src="/detailPage/AddColumn.png"
             onClick={onToggleModal}
           ></S.AddCoulumnIcon>
-        </div>
+        </S.BasicRow>
       </S.AddColumn>
-      {dropDown && (
-        <>
-          <S.DropDown>
-            <S.DropMenu>카테고리 수정</S.DropMenu>
-            <S.DropMenu onClick={props.DeleteCategory}>
-              카테고리 삭제
-            </S.DropMenu>
-          </S.DropDown>
-        </>
-      )}
+
       {isOpen && (
         <Modal
           visible={true}
@@ -77,7 +73,11 @@ export default function DetailPlanListColumnHTML(props: any) {
               {...provided.dragHandleProps}
               {...provided.draggableProps}
             >
-              <DetailPlanCard key={el.scheduleId} el={el} />
+              <DetailPlanCard
+                key={el.scheduleId}
+                el={el}
+                dragItemId={props.dragItemId}
+              />
             </div>
           )}
         </Draggable>

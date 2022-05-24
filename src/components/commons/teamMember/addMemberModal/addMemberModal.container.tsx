@@ -19,7 +19,7 @@ export default function AddMemberModal(props: AddMemberModalProps) {
   const router = useRouter();
   const [getUserInfo, { data }] = useLazyQuery(FETCH_PARTCIPATING_USER_EMAIL, {
     variables: {
-      email,
+      email: email,
     },
   });
 

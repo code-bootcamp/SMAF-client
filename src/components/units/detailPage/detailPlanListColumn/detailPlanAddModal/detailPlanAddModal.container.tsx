@@ -6,11 +6,13 @@ import {
   FETCH_PROJECT_SCHEDULES_CATEGORY,
 } from "./detailPlanAddModal.querys";
 import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
+import { triger } from "../../../../../commons/store/index";
 
 export default function DetailPlanAddModal(props: any) {
   const router = useRouter();
   const [createSchedule] = useMutation(CREATE_PROCESS_CATEGORY);
-
+  const [, setDataTriger] = useRecoilState(triger);
   const { register, handleSubmit } = useForm({
     mode: "onChange",
   });
@@ -38,6 +40,8 @@ export default function DetailPlanAddModal(props: any) {
       props.onToggleModal();
     } catch (error) {
       alert("error");
+    } finally {
+      setDataTriger((prev) => !prev);
     }
   };
   return (
