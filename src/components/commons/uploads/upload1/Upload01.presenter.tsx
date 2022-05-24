@@ -8,7 +8,7 @@ export default function Uploads01UI(props) {
     return (
         <>
             {props.fileUrl ? (
-                <UploadImage onClick={props.onClickUpload} src={props.fileUrl[0]} />
+                <UploadImage onClick={props.onClickUpload} src={props.fileUrl} />
             ) : (
                 <UploadButton onClick={props.onClickUpload}></UploadButton>
             )}

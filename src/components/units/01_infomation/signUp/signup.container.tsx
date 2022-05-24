@@ -8,6 +8,7 @@ import { CREATE_USER, SIGNUP_CHECKEDTOKEN, SIGNUP_SENDTOKEN } from "./signup.que
 // import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
 import { message, Modal } from "antd";
 import { ChangeEvent, useState } from "react";
+import { useRouter } from "next/router";
 
 const schema = yup.object({
     email: yup
@@ -52,6 +53,7 @@ export default function SignUpContainer(props: any) {
     // const [isActive, setIsActive] = useState(false);
     // const fileRef = useRef<HTMLInputElement>(null);
     const [urls, setUrls] = useState();
+    const router = useRouter();
 
     const { register, handleSubmit, formState } = useForm<FormValues>({
         resolver: yupResolver(schema),
@@ -129,13 +131,16 @@ export default function SignUpContainer(props: any) {
                         email: data.email,
                         password: data.password,
                         phone: data.phone,
-                        userImageURL: urls[0],
+                        userImageURL: urls?.[0],
                     },
                 },
             });
             Modal.success({
                 content: "회원가입을 완료하였습니다",
             });
+            console.log("완료");
+
+            router.push("/main");
         } catch (error) {
             message.error(error.message);
         }
