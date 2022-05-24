@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
+import Paginations01 from "../../commons/paginations/01/Paginations01.container";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -26,16 +27,16 @@ export const Table = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 528px;
-  margin-bottom: 44px;
+  height: 52.8rem;
+  margin-bottom: 4.4rem;
   /* border: 1px solid red; */
 `;
 
 // 결제내역
 export const Title = styled.div`
-  width: 116px;
-  height: 46px;
-  margin-bottom: 20px;
+  width: 11.6rem;
+  height: 4.6rem;
+  margin-bottom: 2rem;
   /* border: 1px solid red; */
   text-align: left;
   font-size: 3.2rem;
@@ -64,8 +65,8 @@ export const TableMenuNo = styled.div`
   margin-right: 6rem;
   /* border: 1px solid red; */
   font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
 `;
 
 // 결제일
@@ -76,8 +77,8 @@ export const TableMenuPaymentDate = styled.div`
   margin-right: 9.3rem;
   /* border: 1px solid red; */
   font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
 `;
 
 // 결제상품
@@ -88,8 +89,8 @@ export const TableMenuProduct = styled.div`
   margin-right: 9.8rem;
   /* border: 1px solid red; */
   font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
 `;
 
 // 결제금액
@@ -97,11 +98,11 @@ export const TableMenuMoney = styled.div`
   display: flex;
   justify-content: center;
   width: 8.52rem;
-  margin-right: 9.5rem;
+  margin-right: 13rem;
   /* border: 1px solid red; */
   font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
 `;
 
 // 작성일
@@ -111,22 +112,37 @@ export const TableMenuDate = styled.div`
   width: 4.4rem;
   /* border: 1px solid red; */
   font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
 `;
 
 export const PaymentObjectList = styled.div`
   width: 97rem;
-  height: 480px;
+  height: 48rem;
   border-radius: 0 0 16px 16px;
   background-color: white;
+  span {
+    display: block;
+    margin: 22rem auto;
+    text-align: center;
+    color: #505050;
+  }
 `;
 
 export const Pagination = styled.div`
-  width: 108px;
-  height: 36px;
+  width: 10.8rem;
+  height: 3.6rem;
   margin: 0 auto;
   /* border: 1px solid red; */
   text-align: center;
-  line-height: 36px;
+  line-height: 3.6rem;
 `;
+
+// export const Pagination = styled(Paginations01)`
+//   width: 108px;
+//   height: 36px;
+//   margin: 0 auto;
+//   /* border: 1px solid red; */
+//   text-align: center;
+//   line-height: 36px;
+// `;

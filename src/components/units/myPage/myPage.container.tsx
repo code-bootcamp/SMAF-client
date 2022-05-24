@@ -19,7 +19,7 @@ export default function MyPage() {
     router.push(`/project/${router.query.projectId}/`);
   };
 
-  // 프로젝트 이동
+  // 마이페이지 이동
   const onClickMoveToPaymentList = () => {
     router.push("mypage/paymentlist");
   };
