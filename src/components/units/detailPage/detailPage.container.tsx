@@ -27,6 +27,8 @@ export default function ProjectDetail() {
       projectId: router.query.projectId,
     },
   });
+
+  console.log("디테일", projectData)
   const { data: categoriesData } = useQuery(FETCH_PROCESS_CATEGORIES, {
     variables: {
       projectId: router.query.projectId,

@@ -21,8 +21,15 @@ const schema = yup.object({
     .required("필수 입력 사항입니다."),
   remarks: yup.string().max(150, "150자 이내로 입력해주세요").required("필수 입력 사항입니다."),
   contents: yup.string().max(1000, "100자 이내로 입력해주세요"),
+  detailAddress: yup.string()
 });
 
+const editSchema = yup.object({
+  projectName: yup.string(),
+  remarks: yup.string(),
+  contents: yup.string(),
+  detailAddress: yup.string()
+});
 
 export default function ProjectSign(props) {
 
@@ -41,12 +48,12 @@ export default function ProjectSign(props) {
   console.log(data)
 
   const { register, handleSubmit, formState, setValue, trigger, getValues, reset } = useForm({
-        resolver: yupResolver(schema),
+        resolver: yupResolver(props.isEdit ? editSchema : schema),
         mode:"onChange",   
   });
 
   // 이미지 업로드 state
-  const [urls, setUrls] = useState();
+  const [urls, setUrls] = useState("");
   
   // 색깔 선택 state
   const [color, setColor] = useState<undefined | string>()
@@ -57,7 +64,7 @@ export default function ProjectSign(props) {
   
   // 주소 state
   const [ address, setAddress] = useState("")
-  const [ addressDetail, setAddressDetail] = useState("")
+  // const [ addressDetail, setAddressDetail] = useState("")
   
   // 모달 주소입력
   const [isOpen, setIsOpen] = useState(false);
@@ -77,12 +84,9 @@ export default function ProjectSign(props) {
   const handleComplete = (data:any) =>{
     setIsOpen(false);
     setAddress(data.address)
+    console.log('주소', address)
   }
 
-  const onChangeAddressDetail = (event) => {
-    setAddressDetail(event.target.value);
-  };
-  
   const onChangeContents = (value: any) =>{
       setValue("contents", value === "<p><br></p>" ? "" : value);
       trigger("contents");
@@ -108,6 +112,7 @@ export default function ProjectSign(props) {
 
   // 등록하기
   const onClickSubmit = async(data:any) => {
+    // console.log("등록데이터", urls)
     if(data){
       try{
         const result = await createProject({
@@ -116,19 +121,18 @@ export default function ProjectSign(props) {
               projectName: data.projectName,
               projectIntro: data.remarks,
               projectDetailIntro: data.contents,
-              projectImageURL: urls[0],
+              projectImageURL: urls,
               projectColor: color,
               startDate: fromValue,
               endDate: toValue,
               projectAddress: {
                   address: address, 
-                  detailAddress: addressDetail,
+                  detailAddress: data.detailAddress,
               },
             },
           }
         })           
         alert("성공")
-        console.log(result)
         router.push(`/project/${result.data.createProject.projectId}`)
       } catch (error) {
           if (error instanceof Error)
@@ -139,11 +143,16 @@ export default function ProjectSign(props) {
     }
   }
 
+  console.log('프로젝트addressid', data?.fetchProject?.address.projectAddressId)
   // 수정하기
   const onClickUpdate = async(data:any) => {
     // 이미지 수정하기
-    const currentFiles = JSON.stringify(urls);
-    const defaultFiles = JSON.stringify(data?.fechProject?.projectImageURL);
+    // const currentFiles = JSON.stringify(urls);
+    // const defaultFiles = JSON.stringify(data.fetchProject?.projectImageURL);
+    // const isChangedFiles = currentFiles !== defaultFiles;
+
+    const currentFiles = urls;
+    const defaultFiles = data.fetchProject?.projectImageURL;
     const isChangedFiles = currentFiles !== defaultFiles;
 
     if (
@@ -157,35 +166,45 @@ export default function ProjectSign(props) {
       });
     }
 
-    const updateProjectInput = {}
-    if (data.name) updateProjectInput.projectName = data.projectName;
-    if (data.remarks) updateProjectInput.projectIntro = data.remarks;
-    if (data.contents) updateProjectInput.projectDetailIntro = data.contents;
-    if (color) updateProjectInput.projectColor = color;
-    if (isChangedFiles) updateProjectInput.projectImageURL = urls[0];
-    if (fromValue) updateProjectInput.startDate = fromValue;
-    if (toValue) updateProjectInput.endDate = toValue;
+    // const updateProjectInput = {}
+    // if (data.projectName) updateProjectInput.projectName = data.projectName;
+    // if (data.remarks) updateProjectInput.projectIntro = data.remarks;
+    // if (data.contents) updateProjectInput.projectDetailIntro = data.contents;
+    // if (color) updateProjectInput.projectColor = color;
+    // if (isChangedFiles) updateProjectInput.projectImageURL = urls?.[0];
+    // if (fromValue) updateProjectInput.startDate = fromValue;
+    // if (toValue) updateProjectInput.endDate = toValue;
 
-    const projectAddressInput= {}
-    if (address) projectAddressInput.address = address;
-    if (addressDetail) projectAddressInput.detailAddress = addressDetail;
+    // const projectAddressInput= {}
+    // if (address) projectAddressInput.address = address;
+    // if (data.detailAddress) projectAddressInput.detailAddress = data.detailAddress;
 
-    console.log("주소 왜안되니", data)
     try{
-      await updateProject({
+      const updateResult = await updateProject({
         variables:{
           projectId : router.query.projectId,
-
+          projectAddress:{
+            projectAddressId: "4adc997f-8d56-4f58-865a-c1406a8aa0f5"
+          },
           updateProjectInput:{
-            ...updateProjectInput,
-            projectAddress: projectAddressInput
-            
+            projectName: data.projectName,
+            projectIntro: data.remarks,
+            projectDetailIntro: data.contents,
+            projectImageURL: urls,
+            projectColor: color,
+            startDate: fromValue,
+            endDate: toValue,
+            projectAddress: {
+              address: address,
+              detailAddress : data.detailAddress,  
+            },
           }
         }
       })
       Modal.success({
-            content: '게시물 수정이 완료되었습니다!',
+            content: '수정이 완료되었습니다!',
       });
+      console.log("업데이트", updateResult)
       router.push(`/project/${router.query.projectId}`)
     } catch (error) {
           if (error instanceof Error)
@@ -195,12 +214,19 @@ export default function ProjectSign(props) {
     }
   }
 
+
   //  이미지
   useEffect(() => {
     if (data?.fetchProject.projectImageURL?.length) {
-    setUrls([...data?.fetchProject.projectImageURL]);
+    setUrls(data?.fetchProject.projectImageURL);
     }
+    setValue("projectName", data?.fetchProject?.projectName);
+    setValue("remarks", data?.fetchProject?.remarks);
+    setValue("detailAddress",data?.fetchProject.address.detailAddress);
+    setAddress(data?.fetchProject.address.address);
   }, [data]);
+
+console.log("요기요", urls)
 
   return (
     <ProjectSignPageUI 
@@ -210,9 +236,7 @@ export default function ProjectSign(props) {
         handleCancel={handleCancel}
         handleComplete={handleComplete}
         address={address}
-        addressDetail={addressDetail}
         setAddress={setAddress}
-        onChangeAddressDetail={onChangeAddressDetail}
 
         onChangeContents={onChangeContents}
         onClickSubmit={onClickSubmit}

@@ -8,7 +8,7 @@ const RESTORE_ACCESS_TOKEN = gql`
 
 export async function getAccessToken() {
     try {
-        const graphQLClient = new GraphQLClient("http://34.64.156.215:3000/graphql", {
+        const graphQLClient = new GraphQLClient("https://backend.smaf.shop/graphql", {
             credentials: "include",
         });
         const result = await graphQLClient.request(RESTORE_ACCESS_TOKEN);

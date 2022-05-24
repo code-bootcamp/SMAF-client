@@ -11,12 +11,15 @@ export const UPDATE_PROJECT = gql`
     mutation updateProject($projectId: String!, $updateProjectInput: UpdateProjectInput!){
         updateProject(projectId:$projectId, updateProjectInput:$updateProjectInput){
             projectId
+            address {
+              projectAddressId
+            }
         }
     }
 `
 
 export const UPLOAD_FILE = gql`
-    mutation userImageUpload($file: [Upload!]!) {
+    mutation userImageUpload($file: Upload!) {
         userImageUpload(file: $file)
     }
 `;

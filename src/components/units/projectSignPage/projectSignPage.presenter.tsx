@@ -8,12 +8,10 @@ import { useEffect } from "react";
 
 export default function ProjectSignPageUI(props){
 
-  console.log("여기", props.data?.fetchProject.startDate)
-
   // react-quill contents 값 넣어주기
   useEffect(() => {
         props.reset({ contents: props.data?.fetchProject.projectDetailIntro });
-    }, [props.data]);
+    }, [props.data?.fetchProject.projectDetailIntro]);
 
 
   return (
@@ -41,7 +39,8 @@ export default function ProjectSignPageUI(props){
             <S.Input type="text" 
                      placeholder="프로젝트를 한줄로 소개해주세요."
                      {...props.register("remarks")}
-                     defaultValue={props.data?.fetchProject.projectIntro} />
+                     defaultValue={props.data?.fetchProject.projectIntro} 
+                     />
             <S.Error>{props.formState.errors.remarks?.message}</S.Error>
           </S.InputBox>
           </S.Block>
@@ -54,8 +53,8 @@ export default function ProjectSignPageUI(props){
             <props.ReactQuill 
               style ={{height:"84%"}}
               onChange={props.onChangeContents}
-              defaultValue={props.data?.fetchProject.projectDetailIntro}  
-              value={props.getValues("contents") || ""} />
+              value={props.getValues("contents") || ""} 
+              />
             </div>
           </S.InputBox>
           </S.Block>  
@@ -73,7 +72,7 @@ export default function ProjectSignPageUI(props){
             <S.AddImg>
               <S.ImgPreviewBox>
                 {props.urls ? (
-                    <S.Img src={props.urls} defaultValue={props.data?.fetchProject?.projectImageURL}/>
+                    <S.Img src={props.urls} defaultValue={props.data?.fetchProject?.projectImageURL || ""}/>
                   ) : (
                     <S.ImgPreview></S.ImgPreview>
                   )}      
@@ -119,19 +118,19 @@ export default function ProjectSignPageUI(props){
                 <S.MapInput id="address" type="text" 
                             placeholder="도로명 주소로 검색" 
                             onClick={props.showModal}
-                            value={props.address || props.data?.fetchProject.address?.address ||""}
+                            value={props.address || props.data?.fetchProject.address?.address}
                             />
                 <S.Input id="addressDetail" type="text" 
                          placeholder="상세주소를 입력해주세요."
-                         onChange={props.onChangeAddressDetail}
-                         defaultValue={props.addressDetail || props.data?.fetchProject.address?.detailAddress}/>
+                         {...props.register("detailAddress")}
+                        //  defaultValue={props.addressDetail || props.data?.fetchProject.address?.detailAddress}
+                         />
               </S.InputBox>
             </S.Block>
             <S.MapBox>
               <S.Map>
                 <KakaoMapPage 
                   address={props.address}
-                  addressDetail={props.addressDetail} 
                   data={props.data} />  
               </S.Map>  
             </S.MapBox>

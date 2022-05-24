@@ -54,7 +54,7 @@ export default function ApolloSetting(props: IAppProps) {
         }
     });
     const uploadLink = createUploadLink({
-        uri: "http://34.64.156.215:3000/graphql",
+        uri: "https://backend.smaf.shop/graphql",
         headers: {
             Authorization: `Bearer ${accessToken}`,
         },
