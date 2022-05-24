@@ -3,7 +3,8 @@ import Head from "next/head";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { Modal, Button } from "antd";
-import { FETCH_LOGIN_USER } from "../../userInfoCard/userInfoCard.queris";
+import { FETCH_LOGIN_USER } from "../../../units/questionAnswer/write/questionAnswerWrite.queris";
+import { useRouter } from "next/router";
 
 const CREATE_PAYMENT = gql`
   mutation createPayment($impUid: String!, $amount: Float!) {
@@ -13,7 +14,8 @@ const CREATE_PAYMENT = gql`
   }
 `;
 
-export default function PaymentModal() {
+export default function PaymentModal(props) {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
@@ -33,22 +35,24 @@ export default function PaymentModal() {
         pay_method: "card",
         // merchant_uid: "ORD20180131-0000011", // 주석하면 랜덤으로 생성됨 상품아이디 (중복되지 않게!)
         name: "이용권 구매하기",
-        amount: "2000",
+        amount: "100",
         buyer_email: data?.fetchLoginUser.email,
         buyer_name: data?.fetchLoginUser.userName,
-        buyer_tel: "010-4242-4242",
-        buyer_addr: "서울특별시 강남구 신사동",
-        buyer_postcode: "01181",
+        buyer_tel: "",
+        buyer_addr: "",
+        buyer_postcode: "",
         // m_redirect_url: "http://localhost:3000/",
       },
       (rsp: any) => {
         if (rsp.success) {
           console.log(rsp);
           const result = createPayment({
-            variables: { impUid: rsp.imp_uid, amount: 2000 },
+            variables: { impUid: rsp.imp_uid, amount: 100 },
           });
+
           console.log("결제", result);
           alert("결제에 성공했습니다.");
+          router.push("/project/new");
         } else {
           alert("결제에 실패했습니다! 다시 시도해 주세요.");
         }
@@ -58,9 +62,13 @@ export default function PaymentModal() {
 
   return (
     <>
-      <Button type="primary" onClick={onToggleModal}>
+      <button
+        onClick={onToggleModal}
+        ref={props.fileRef}
+        style={{ display: "none" }}
+      >
         결제하기!!!
-      </Button>
+      </button>
       {isOpen && (
         <Modal
           visible={true}

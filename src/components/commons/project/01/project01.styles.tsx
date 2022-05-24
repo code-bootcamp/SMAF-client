@@ -7,6 +7,7 @@ export const card = styled.div`
   overflow: hidden;
   border-radius: 16px 16px 16px 16px;
   /* border: 1px solid red; */
+  cursor: pointer;
 `;
 
 export const Container = styled.div`
