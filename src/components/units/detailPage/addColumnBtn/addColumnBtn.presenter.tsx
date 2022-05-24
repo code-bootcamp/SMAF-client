@@ -1,8 +1,12 @@
 import * as S from "./addColumnBtn.style";
 import { IAddColumnBtnProps } from "./addColumnbtn.types";
 import { Modal } from "antd";
+import { useEffect } from "react";
 
 export default function AddColumnBtnHTML(props: IAddColumnBtnProps) {
+  useEffect(() => {
+    props.reset({ processName: "" });
+  }, [props.isOpen]);
   return (
     <S.Wrapper>
       <S.AddColumn>

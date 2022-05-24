@@ -48,8 +48,15 @@ export const TeamPersonAdd = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 0.7rem;
+  cursor: pointer;
 `;
 export const Member = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const BasicRow = styled.div`
   display: flex;
   align-items: center;
 `;
@@ -60,4 +67,5 @@ export const RemoveBtn = styled.button`
   background-color: #ededed;
   border-radius: 1.3rem;
   border: none;
+  cursor: pointer;
 `;

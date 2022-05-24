@@ -7,8 +7,12 @@ import DetailPlanAddModal from "./detailPlanAddModal/detailPlanAddModal.containe
 
 export default function DetailPlanListColumnHTML(props: any) {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropDown, setDropDown] = useState(false);
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
+  };
+  const onToggleDropDown = () => {
+    setDropDown((prev) => !prev);
   };
   // console.log(props.columnData, "columnData");
   // console.log(props.scheduleData, "scheduleData");
@@ -17,13 +21,27 @@ export default function DetailPlanListColumnHTML(props: any) {
       <S.AddColumn>
         <S.ColumnTitle>{props.columnData?.processName}</S.ColumnTitle>
         <div>
-          <S.EditCoulumnIcon src="/detailPage/spread.png"></S.EditCoulumnIcon>
+          <S.EditCoulumnIcon
+            onClick={onToggleDropDown}
+            src="/detailPage/spread.png"
+          ></S.EditCoulumnIcon>
+
           <S.AddCoulumnIcon
             src="/detailPage/AddColumn.png"
             onClick={onToggleModal}
           ></S.AddCoulumnIcon>
         </div>
       </S.AddColumn>
+      {dropDown && (
+        <>
+          <S.DropDown>
+            <S.DropMenu>카테고리 수정</S.DropMenu>
+            <S.DropMenu onClick={props.DeleteCategory}>
+              카테고리 삭제
+            </S.DropMenu>
+          </S.DropDown>
+        </>
+      )}
       {isOpen && (
         <Modal
           visible={true}
