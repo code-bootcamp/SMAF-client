@@ -1,120 +1,132 @@
 import ProjectSignPageUI from "./projectSignPage.presenter";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import {yupResolver} from '@hookform/resolvers/yup'
+import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import 'react-quill/dist/quill.snow.css';
+import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
 import { useMutation, useQuery } from "@apollo/client";
-import { CREATE_PROJECT, FETCH_PROJECT, UPDATE_PROJECT, UPLOAD_FILE } from "./projectSignPage.queries";
+import {
+  CREATE_PROJECT,
+  FETCH_PROJECT,
+  UPDATE_PROJECT,
+  UPLOAD_FILE,
+} from "./projectSignPage.queries";
 import { useRecoilState } from "recoil";
 import { fromValues, toValues } from "../../../commons/store";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 import { checkValidationImage } from "../../commons/uploads/upload1/Upload01.validation";
 
-const ReactQuill = dynamic(() => import("react-quill"), {ssr : false});
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const schema = yup.object({
-  projectName: yup
+  projectName: yup.string().required("필수 입력 사항입니다."),
+  remarks: yup
     .string()
+    .max(150, "150자 이내로 입력해주세요")
     .required("필수 입력 사항입니다."),
-  remarks: yup.string().max(150, "150자 이내로 입력해주세요").required("필수 입력 사항입니다."),
   contents: yup.string().max(1000, "100자 이내로 입력해주세요"),
-  detailAddress: yup.string()
+  detailAddress: yup.string(),
 });
 
 const editSchema = yup.object({
   projectName: yup.string(),
   remarks: yup.string(),
   contents: yup.string(),
-  detailAddress: yup.string()
+  detailAddress: yup.string(),
 });
 
-export default function ProjectSign(props) {
+export default function ProjectSign(props: any) {
+  const router = useRouter();
+  const fileRef = useRef<HTMLInputElement>(null);
 
-  const router = useRouter()
-  const fileRef = useRef<HTMLInputElement>(null)
-
-  const [ createProject ] = useMutation(CREATE_PROJECT);
-  const [ updateProject ] = useMutation(UPDATE_PROJECT);
-  const [ uploadFile ] = useMutation(UPLOAD_FILE);
+  const [createProject] = useMutation(CREATE_PROJECT);
+  const [updateProject] = useMutation(UPDATE_PROJECT);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
   const { data } = useQuery(FETCH_PROJECT, {
     variables: {
       projectId: router.query.projectId,
     },
   });
 
-  const { register, handleSubmit, formState, setValue, trigger, getValues, reset } = useForm({
-        resolver: yupResolver(props.isEdit ? editSchema : schema),
-        mode:"onChange",   
+  const {
+    register,
+    handleSubmit,
+    formState,
+    setValue,
+    trigger,
+    getValues,
+    reset,
+  } = useForm({
+    resolver: yupResolver(props.isEdit ? editSchema : schema),
+    mode: "onChange",
   });
 
   // 이미지 업로드 state
   const [urls, setUrls] = useState("");
-  
+
   // 색깔 선택 state
-  const [color, setColor] = useState<undefined | string>()
-  
+  const [color, setColor] = useState<undefined | string>();
+
   // 시작일 종료일 state
-  const [fromValue, ] = useRecoilState<string>(fromValues);
-  const [toValue, ] = useRecoilState<string>(toValues);
-  
+  const [fromValue] = useRecoilState<string>(fromValues);
+  const [toValue] = useRecoilState<string>(toValues);
+
   // 주소 state
-  const [ address, setAddress] = useState("")
+  const [address, setAddress] = useState("");
   // const [ addressDetail, setAddressDetail] = useState("")
-  
+
   // 모달 주소입력
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const showModal = () => {
     setIsOpen(true);
   };
-  
+
   const handleOk = () => {
     setIsOpen(false);
   };
-  
+
   const handleCancel = () => {
     setIsOpen(false);
   };
 
-  const handleComplete = (data:any) =>{
+  const handleComplete = (data: any) => {
     setIsOpen(false);
-    setAddress(data.address)
-  }
-
-  const onChangeContents = (value: any) =>{
-      setValue("contents", value === "<p><br></p>" ? "" : value);
-      trigger("contents");
+    setAddress(data.address);
   };
 
-  // 이미지 업로드 
+  const onChangeContents = (value: any) => {
+    setValue("contents", value === "<p><br></p>" ? "" : value);
+    trigger("contents");
+  };
+
+  // 이미지 업로드
   const onClickUpload = () => {
-        fileRef.current?.click()
-  }
+    fileRef.current?.click();
+  };
 
   // 이미지 등록하기
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
-        const file = checkValidationImage(event.target.files?.[0]);
-        if (!file) return;
+    const file = checkValidationImage(event.target.files?.[0]);
+    if (!file) return;
 
-        try {
-            const result = await uploadFile({ variables: { file } });
-            setUrls(result.data.projectImageUpload);
-        } catch (error) {
-            Modal.error({ content: error.message });
-        }
-    };
-
+    try {
+      const result = await uploadFile({ variables: { file } });
+      setUrls(result.data.projectImageUpload);
+    } catch (error: any) {
+      Modal.error({ content: error.message });
+    }
+  };
 
   // 등록하기
-  const onClickSubmit = async(data:any) => {
-    if(data){
-      try{
+  const onClickSubmit = async (data: any) => {
+    if (data) {
+      try {
         const result = await createProject({
           variables: {
-            createProjectInput:{
+            createProjectInput: {
               projectName: data.projectName,
               projectIntro: data.remarks,
               projectDetailIntro: data.contents,
@@ -123,27 +135,26 @@ export default function ProjectSign(props) {
               startDate: fromValue,
               endDate: toValue,
               projectAddress: {
-                  address: address, 
-                  detailAddress: data.detailAddress,
+                address: address,
+                detailAddress: data.detailAddress,
               },
             },
-            status : true
-          }
-        })           
-        alert("성공")
-        router.push(`/project/${result.data.createProject.projectId}`)
+            status: true,
+          },
+        });
+        alert("성공");
+        router.push(`/project/${result.data.createProject.projectId}`);
       } catch (error) {
-          if (error instanceof Error)
-            Modal.error({
-              content: error.message,
+        if (error instanceof Error)
+          Modal.error({
+            content: error.message,
           });
-        }
+      }
     }
-  }
+  };
 
   // 수정하기
-  const onClickUpdate = async(data:any) => {
-
+  const onClickUpdate = async (data: any) => {
     const currentFiles = urls;
     const defaultFiles = data.fetchProject?.projectImageURL;
     const isChangedFiles = currentFiles !== defaultFiles;
@@ -153,17 +164,17 @@ export default function ProjectSign(props) {
       !data.remarks &&
       !data.contents &&
       !isChangedFiles
-    ){
+    ) {
       Modal.error({
         content: "수정한 내용이 없습니다.",
       });
     }
- 
-    try{
+
+    try {
       await updateProject({
-        variables:{
-          projectId : router.query.projectId,
-          updateProjectInput:{
+        variables: {
+          projectId: router.query.projectId,
+          updateProjectInput: {
             projectName: data.projectName,
             projectIntro: data.remarks,
             projectDetailIntro: data.contents,
@@ -173,69 +184,62 @@ export default function ProjectSign(props) {
             endDate: toValue,
             projectAddress: {
               address: address,
-              detailAddress : data.detailAddress,  
+              detailAddress: data.detailAddress,
             },
           },
-          status : true
-        }
-      })
-      Modal.success({
-            content: '수정이 완료되었습니다!',
+          status: true,
+        },
       });
-      router.push(`/project/${router.query.projectId}`)
+      Modal.success({
+        content: "수정이 완료되었습니다!",
+      });
+      router.push(`/project/${router.query.projectId}`);
     } catch (error) {
-          if (error instanceof Error)
-            Modal.error({
-              content: error.message,
-          });
+      if (error instanceof Error)
+        Modal.error({
+          content: error.message,
+        });
     }
-  }
-
+  };
 
   //  이미지
   useEffect(() => {
     if (data?.fetchProject.projectImageURL?.length) {
-    setUrls(data?.fetchProject.projectImageURL);
+      setUrls(data?.fetchProject.projectImageURL);
     }
     setValue("projectName", data?.fetchProject?.projectName);
     setValue("remarks", data?.fetchProject?.remarks);
-    setValue("detailAddress",data?.fetchProject.address.detailAddress);
+    setValue("detailAddress", data?.fetchProject.address.detailAddress);
     setAddress(data?.fetchProject.address.address);
   }, [data]);
 
   return (
-    <ProjectSignPageUI 
-        isOpen={isOpen}
-        showModal={showModal}
-        handleOk={handleOk}
-        handleCancel={handleCancel}
-        handleComplete={handleComplete}
-        address={address}
-        setAddress={setAddress}
-
-        onChangeContents={onChangeContents}
-        onClickSubmit={onClickSubmit}
-
-        register={register}
-        handleSubmit={handleSubmit}
-        formState={formState}
-        ReactQuill={ReactQuill}
-        getValues={getValues}
-        reset={reset}
-
-        color={color}
-        setColor={setColor}
-
-        onClickUpload={onClickUpload}
-        fileRef={fileRef}
-
-        setUrls={setUrls}
-        urls={urls}
-        onChangeFile={onChangeFile}
-
-        isEdit={props.isEdit}
-        onClickUpdate={onClickUpdate}
-        data={data}
-      />
-    )
+    <ProjectSignPageUI
+      isOpen={isOpen}
+      showModal={showModal}
+      handleOk={handleOk}
+      handleCancel={handleCancel}
+      handleComplete={handleComplete}
+      address={address}
+      setAddress={setAddress}
+      onChangeContents={onChangeContents}
+      onClickSubmit={onClickSubmit}
+      register={register}
+      handleSubmit={handleSubmit}
+      formState={formState}
+      ReactQuill={ReactQuill}
+      getValues={getValues}
+      reset={reset}
+      color={color}
+      setColor={setColor}
+      onClickUpload={onClickUpload}
+      fileRef={fileRef}
+      setUrls={setUrls}
+      urls={urls}
+      onChangeFile={onChangeFile}
+      isEdit={props.isEdit}
+      onClickUpdate={onClickUpdate}
+      data={data}
+    />
+  );
 }

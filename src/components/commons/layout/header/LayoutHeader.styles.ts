@@ -50,6 +50,7 @@ export const Logo = styled.div`
   letter-spacing: 0.05em;
   color: #ffffff;
   padding-left: 10%;
+  cursor: pointer;
   @media ${breakPoints.mobile} {
     font-size: 1.8rem;
   }

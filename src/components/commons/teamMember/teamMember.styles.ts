@@ -67,13 +67,14 @@ export const Member = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 1.2rem;
 `;
 
 export const AddMember = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 2.4rem;
+  margin-top: 1.2rem;
 `;
 
 export const BasicRow = styled.div`

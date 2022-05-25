@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const FETCH_PARTCIPATING_USER_EMAIL = gql`
-  query fetchUserEmail($email: String!) {
-    fetchUserEmail(email: $email) {
+  query fetchUserEmail($userOremail: String!) {
+    fetchUserEmail(userOremail: $userOremail) {
       userId
       userName
       email

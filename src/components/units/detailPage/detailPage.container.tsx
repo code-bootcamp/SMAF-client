@@ -49,7 +49,7 @@ export default function ProjectDetail() {
   useEffect(() => {
     refetch();
   }, [dataTriger]);
-  console.log(dataTriger);
+
   useEffect(() => {
     setIsLoading(true);
   }, []);
@@ -63,7 +63,7 @@ export default function ProjectDetail() {
   };
 
   const handleDragStart = async (initial: any) => {
-    console.log(initial, "이니셜");
+    // console.log(initial, "이니셜");
     const restoreItemArray: any[] = [];
     // eslint-disable-next-line array-callback-return
     schedulesData?.fetchProjectSchedules.filter((el: any) => {
@@ -78,7 +78,7 @@ export default function ProjectDetail() {
   const handleDragEnd = async (result: any) => {
     // ===========================================================================
     // console.log(result);
-    // console.log(deletedItem);
+    console.log(deletedItem, "아이템");
     if (!result.destination || result.destination === null) return;
     try {
       await updataSchedule({
@@ -89,7 +89,7 @@ export default function ProjectDetail() {
             scheduleContents: deletedItem?.scheduleContents,
             scheduleDate: deletedItem?.scheduleDate,
             processCategoryId: result?.destination.droppableId,
-            status: true,
+            status: deletedItem?.status,
           },
         },
         refetchQueries: [
