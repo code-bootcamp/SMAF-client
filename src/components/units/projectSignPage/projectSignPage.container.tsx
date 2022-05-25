@@ -11,7 +11,7 @@ import { useRecoilState } from "recoil";
 import { fromValues, toValues } from "../../../commons/store";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
-import { checkValidationImage } from "../../commons/uploads/Upload01.validation";
+import { checkValidationImage } from "../../commons/uploads/upload1/Upload01.validation";
 
 const ReactQuill = dynamic(() => import("react-quill"), {ssr : false});
 
@@ -44,8 +44,6 @@ export default function ProjectSign(props) {
       projectId: router.query.projectId,
     },
   });
-
-  console.log(data)
 
   const { register, handleSubmit, formState, setValue, trigger, getValues, reset } = useForm({
         resolver: yupResolver(props.isEdit ? editSchema : schema),
@@ -84,7 +82,6 @@ export default function ProjectSign(props) {
   const handleComplete = (data:any) =>{
     setIsOpen(false);
     setAddress(data.address)
-    console.log('주소', address)
   }
 
   const onChangeContents = (value: any) =>{
@@ -104,15 +101,15 @@ export default function ProjectSign(props) {
 
         try {
             const result = await uploadFile({ variables: { file } });
-            setUrls(result.data.userImageUpload);
+            setUrls(result.data.projectImageUpload);
         } catch (error) {
             Modal.error({ content: error.message });
         }
     };
 
+
   // 등록하기
   const onClickSubmit = async(data:any) => {
-    // console.log("등록데이터", urls)
     if(data){
       try{
         const result = await createProject({
@@ -130,6 +127,7 @@ export default function ProjectSign(props) {
                   detailAddress: data.detailAddress,
               },
             },
+            status : true
           }
         })           
         alert("성공")
@@ -143,13 +141,8 @@ export default function ProjectSign(props) {
     }
   }
 
-  console.log('프로젝트addressid', data?.fetchProject?.address.projectAddressId)
   // 수정하기
   const onClickUpdate = async(data:any) => {
-    // 이미지 수정하기
-    // const currentFiles = JSON.stringify(urls);
-    // const defaultFiles = JSON.stringify(data.fetchProject?.projectImageURL);
-    // const isChangedFiles = currentFiles !== defaultFiles;
 
     const currentFiles = urls;
     const defaultFiles = data.fetchProject?.projectImageURL;
@@ -165,27 +158,11 @@ export default function ProjectSign(props) {
         content: "수정한 내용이 없습니다.",
       });
     }
-
-    // const updateProjectInput = {}
-    // if (data.projectName) updateProjectInput.projectName = data.projectName;
-    // if (data.remarks) updateProjectInput.projectIntro = data.remarks;
-    // if (data.contents) updateProjectInput.projectDetailIntro = data.contents;
-    // if (color) updateProjectInput.projectColor = color;
-    // if (isChangedFiles) updateProjectInput.projectImageURL = urls?.[0];
-    // if (fromValue) updateProjectInput.startDate = fromValue;
-    // if (toValue) updateProjectInput.endDate = toValue;
-
-    // const projectAddressInput= {}
-    // if (address) projectAddressInput.address = address;
-    // if (data.detailAddress) projectAddressInput.detailAddress = data.detailAddress;
-
+ 
     try{
-      const updateResult = await updateProject({
+      await updateProject({
         variables:{
           projectId : router.query.projectId,
-          projectAddress:{
-            projectAddressId: "4adc997f-8d56-4f58-865a-c1406a8aa0f5"
-          },
           updateProjectInput:{
             projectName: data.projectName,
             projectIntro: data.remarks,
@@ -198,13 +175,13 @@ export default function ProjectSign(props) {
               address: address,
               detailAddress : data.detailAddress,  
             },
-          }
+          },
+          status : true
         }
       })
       Modal.success({
             content: '수정이 완료되었습니다!',
       });
-      console.log("업데이트", updateResult)
       router.push(`/project/${router.query.projectId}`)
     } catch (error) {
           if (error instanceof Error)
@@ -225,8 +202,6 @@ export default function ProjectSign(props) {
     setValue("detailAddress",data?.fetchProject.address.detailAddress);
     setAddress(data?.fetchProject.address.address);
   }, [data]);
-
-console.log("요기요", urls)
 
   return (
     <ProjectSignPageUI 
