@@ -28,13 +28,14 @@ export default function LoginUI(props) {
                 </S.LoginForm>
                 <S.SubTitle>SNS로 로그인하기</S.SubTitle>
                 <S.Sns>
-                    <S.GoogleBtn className="google" type="button" onClick={props.onClickGoogle}>
+
+                    <S.GoogleBtn className="google" type="button" onClick={props.clickMeGoogle}>
                         <S.Logo src="/mainPageImages/google.png" />
                     </S.GoogleBtn>
-                    <S.NaverBtn>
+                    <S.NaverBtn className="google" type="button" onClick={props.clickMeNaver}>
                         <S.Logo src="/mainPageImages/naver.png" />
                     </S.NaverBtn>
-                    <S.KakaoBtn>
+                    <S.KakaoBtn className="google" type="button" onClick={props.clickMeKakao}>
                         <S.Logo src="/mainPageImages/kakao.png" />
                     </S.KakaoBtn>
                 </S.Sns>
