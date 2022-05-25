@@ -37,6 +37,9 @@ export const FETCH_PROJECT_SCHEDULES_CATEGORY = gql`
       scheduleDate
       scheduleContents
       status
+      user {
+        userId
+      }
       processCategory {
         processCategoryId
       }

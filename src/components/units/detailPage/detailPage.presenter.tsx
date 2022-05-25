@@ -4,24 +4,18 @@ import { IProjectDetailPageHTMLProps } from "./detailPage.types";
 import AddColumnBtn from "./addColumnBtn/addColumnBtn.container";
 import DetailPlanListColumn from "./detailPlanListColumn/detailPlanListColumn.container";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import { useRouter } from "next/router";
+import ProjectEditDropdown from "../../commons/dropdown/06.projectEditDropdown/projectEditDropdown";
 export default function ProjectDetailPageHTML(
   props: IProjectDetailPageHTMLProps
 ) {
   // console.log(props.projectData, "projectData");
   // console.log(props.categoriesData, "categoriesData");
 
-  const router = useRouter();
-
-  const MoveEdit = () => {
-    router.push(`./${router.query.projectId}/edit`);
-  };
   return (
     <S.Wrapper>
       {props.projectData && (
         <>
           <S.LeftWrapper>
-            <button onClick={MoveEdit}>수정하기</button>
             <S.ProjectDetail>
               {props.projectData?.fetchProject?.projectImageURL ? (
                 <S.DetailImg
@@ -30,9 +24,12 @@ export default function ProjectDetailPageHTML(
               ) : (
                 <S.DetailImg src="/test.png"></S.DetailImg>
               )}
-              <S.DetailProjectName>
-                {props.projectData?.fetchProject.projectName}
-              </S.DetailProjectName>
+              <S.BasicLow>
+                <S.DetailProjectName>
+                  {props.projectData?.fetchProject.projectName}
+                </S.DetailProjectName>
+                <ProjectEditDropdown projectData={props.projectData} />
+              </S.BasicLow>
               <S.DetailProjectContents>
                 {props.projectData?.fetchProject.projectIntro}
               </S.DetailProjectContents>
@@ -42,7 +39,8 @@ export default function ProjectDetailPageHTML(
               </S.DetailProjectDay>
               <S.DetailProjectPosition>
                 <S.DetailProjectIcon src="/detailPage/position.png" />
-                {props.projectData?.fetchProject?.address?.address}
+                {props.projectData?.fetchProject?.address?.address}(
+                {props.projectData?.fetchProject?.address?.detailAddress})
               </S.DetailProjectPosition>
             </S.ProjectDetail>
             <TeamMember />
@@ -73,10 +71,12 @@ export default function ProjectDetailPageHTML(
               )}
             </S.FileList>
           </S.LeftWrapper>
-
           <S.RightWrapper>
             {props.isLoading && (
-              <DragDropContext onDragEnd={props.handleDragEnd}>
+              <DragDropContext
+                onDragEnd={props.handleDragEnd}
+                onDragStart={props.handleDragStart}
+              >
                 {props.categoriesData?.fetchProcessCategories.map(
                   (el: any, index: any) => (
                     <Droppable
@@ -93,6 +93,7 @@ export default function ProjectDetailPageHTML(
                             key={el.processCategoryId}
                             el={el}
                             tableIndex={index}
+                            dragItemId={props.dragItemId}
                           />
                           {provided.placeholder}
                         </div>

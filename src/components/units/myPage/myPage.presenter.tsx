@@ -30,6 +30,8 @@ export default function MyPageUI(props: IMyPageUIProps) {
     slidesToScroll: showMaxCnt, // 한 번에 넘어가는 콘텐츠 수
   };
 
+  console.log("진행중인프로젝트2", props.activeData?.fetchActivatedProject);
+  console.log("지난프로젝트2", props.inActiveData?.fetchInactivatedProject);
   return (
     <S.Wrapper>
       <UserInfoCard01
@@ -58,7 +60,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
             <S.Title>지난 프로젝트</S.Title>
             <S.DateButton>최신순</S.DateButton>
           </S.ProjectTitle>
-          {props.activeData?.fetchInactivatedProject ? (
+          {props.inActiveData?.fetchInactivatedProject ? (
             <SliderWrapper {...settings}>
               {props.inActiveData?.fetchInactivatedProject.map((el: any) => (
                 <Project02 key={uuidv4()} el={el} />

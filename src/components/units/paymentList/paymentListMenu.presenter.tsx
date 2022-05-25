@@ -1,14 +1,15 @@
 import * as S from "./paymentListMenu.styles";
 import PaymentObject from "./paymentList/paymentList.container";
 import { v4 as uuidv4 } from "uuid";
-import UserInfoCard02 from "../../commons/userInfoCard/02/userInfoCard02.container";
-import Paginations01 from "../../commons/paginations/01/Paginations01.container";
+import UserInfoCard01 from "../../commons/userInfoCard/01/userInfoCard01.container";
+import Pagination from "../../commons/paginations/01/Pagination";
 
 export default function PaymentListUI(props: any) {
   return (
     <S.Wrapper>
-      <UserInfoCard02 onClickMoveToMyPage={props.onClickMoveToMyPage} />
-
+      <UserInfoCard01
+        onClickMoveToPaymentList={props.onClickMoveToPaymentList}
+      />
       <S.RightWrapper>
         <S.Title>결제내역</S.Title>
         <S.Table>
@@ -31,8 +32,9 @@ export default function PaymentListUI(props: any) {
             </S.PaymentObjectList>
           )}
         </S.Table>
-        <S.Pagination>1/2/3/4/5</S.Pagination>
-        {/* <S.Pagination refetch={props.refetch} count={props.count} /> */}
+        <S.Page>
+          <Pagination data={props.data} refetch={props.refetch} lastPage={props.lastPage}/>
+        </S.Page>
       </S.RightWrapper>
     </S.Wrapper>
   );

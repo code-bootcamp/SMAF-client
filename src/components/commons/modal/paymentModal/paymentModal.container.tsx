@@ -105,7 +105,7 @@ export default function PaymentModal(props) {
           </Head>
           <S.CouponWrapper>
             <div>
-              <img src="./image/coupon.png"></img>
+              <img src="./images/coupon.png"></img>
               <span>프로젝트 1개(200원)</span>
             </div>
           </S.CouponWrapper>

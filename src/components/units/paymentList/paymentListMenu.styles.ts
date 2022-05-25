@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
-import Paginations01 from "../../commons/paginations/01/Paginations01.container";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -52,7 +51,7 @@ export const PaymentMenuList = styled.div`
   width: 100%;
   height: 4.8rem;
   /* border: 1px solid blue; */
-  padding: 12px 208px 13px 38px;
+  padding: 12px 150px 13px 100px;
   border-radius: 16px 16px 0px 0px;
   background: #e5e5ef;
 `;
@@ -129,20 +128,6 @@ export const PaymentObjectList = styled.div`
   }
 `;
 
-export const Pagination = styled.div`
-  width: 10.8rem;
-  height: 3.6rem;
-  margin: 0 auto;
-  /* border: 1px solid red; */
-  text-align: center;
-  line-height: 3.6rem;
+export const Page = styled.div`
+margin-left: 25rem;
 `;
-
-// export const Pagination = styled(Paginations01)`
-//   width: 108px;
-//   height: 36px;
-//   margin: 0 auto;
-//   /* border: 1px solid red; */
-//   text-align: center;
-//   line-height: 36px;
-// `;

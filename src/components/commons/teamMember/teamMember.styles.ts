@@ -10,6 +10,13 @@ export const Title = styled.div`
   font-size: 2.4rem;
   font-weight: 500;
 `;
+
+export const FileHiddenIcon = styled.img`
+  width: 1.4rem;
+  height: 0.7rem;
+  margin-right: 1rem;
+  cursor: pointer;
+`;
 export const TitleBox = styled.div`
   display: flex;
   justify-content: space-between;
@@ -18,14 +25,18 @@ export const TitleBox = styled.div`
 `;
 export const TeamPeople = styled.div``;
 export const TeamPerson = styled.img`
-  width: 4.8rem;
-  height: 4.8rem;
+  width: 3.6rem;
+  height: 3.6rem;
   border-radius: 3rem;
 `;
 export const Name = styled.div`
+  display: flex;
+  align-items: center;
   padding-left: 1rem;
   font-weight: 500;
   font-size: 1.6rem;
+  line-height: 2.3rem;
+  letter-spacing: -0.02em;
 `;
 export const Team = styled.div`
   font-size: 1.6rem;
@@ -36,10 +47,11 @@ export const Team = styled.div`
 `;
 export const Line = styled.div`
   border-bottom: 0.1rem solid #ededed;
+  margin: 1.2rem 0rem;
 `;
 export const TeamPersonAdd = styled.div`
-  width: 4.8rem;
-  height: 4.8rem;
+  width: 3.6rem;
+  height: 3.6rem;
   border-radius: 3rem;
   background-color: #333333;
   color: white;
@@ -48,12 +60,21 @@ export const TeamPersonAdd = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 0.7rem;
+
   cursor: pointer;
 `;
 export const Member = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 1.2rem;
+`;
+
+export const AddMember = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.2rem;
 `;
 
 export const BasicRow = styled.div`

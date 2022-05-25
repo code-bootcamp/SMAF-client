@@ -26,6 +26,7 @@ export const FETCH_PROJECT = gql`
         address
         detailAddress
       }
+      status
     }
   }
 `;
@@ -47,9 +48,11 @@ export const FETCH_PROJECT_SCHEDULES_PROJECTID = gql`
       scheduleId
       scheduleName
       scheduleDate
+      scheduleContents
       status
       processCategory {
         processCategoryId
+        processName
       }
       project {
         projectId
@@ -66,9 +69,11 @@ export const FETCH_PROJECT_SCHEDULES_CATEGORY = gql`
       scheduleId
       scheduleName
       scheduleDate
+      scheduleContents
       status
       processCategory {
         processCategoryId
+        processName
       }
       project {
         projectId
@@ -78,34 +83,17 @@ export const FETCH_PROJECT_SCHEDULES_CATEGORY = gql`
   }
 `;
 
-// 스케쥴 삭제
-export const DELETE_SCHEDULE = gql`
-  mutation deleteSchedule($scheduleId: String!) {
-    deleteSchedule(scheduleId: $scheduleId)
-  }
-`;
-
-// 스케쥴 생성
-export const CREATE_SCHEDULE = gql`
-  mutation createSchedule($createScheduleInput: CreateScheduleInput!) {
-    createSchedule(createScheduleInput: $createScheduleInput) {
-      scheduleId
-    }
-  }
-`;
-
-// 프로세스업데이트
-
-export const UPDATE_PROCESS_CATEGORY = gql`
-  mutation updateProcessCategory(
-    $processName: String!
-    $processCategoryId: String!
+// 스케쥴 업데이트
+export const UPDATE_SCHEDULE = gql`
+  mutation updateSchedule(
+    $scheduleId: String!
+    $updateScheduleInput: UpdateScheduleInput!
   ) {
-    updateProcessCategory(
-      processName: $processName
-      processCategoryId: $processCategoryId
+    updateSchedule(
+      scheduleId: $scheduleId
+      updateScheduleInput: $updateScheduleInput
     ) {
-      processCategoryId
+      scheduleId
     }
   }
 `;

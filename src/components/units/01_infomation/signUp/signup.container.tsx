@@ -131,7 +131,7 @@ export default function SignUpContainer(props: any) {
                         email: data.email,
                         password: data.password,
                         phone: data.phone,
-                        userImageURL: urls?.[0],
+                        userImageURL: urls,
                     },
                 },
             });

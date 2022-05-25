@@ -102,3 +102,8 @@ export const QuestionList = styled.div`
   border-radius: 16px;
   background-color: white;
 `;
+
+export const Page = styled.div`
+padding: 3rem 0 0 18rem;
+`;
+

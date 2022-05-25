@@ -5,7 +5,8 @@ export const Table = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding: 2.9rem 5.7rem 2.7rem 5.4rem;
+  /* padding: 2.9rem 5.7rem 2.7rem 5.4rem; */
+  padding: 31px 150px 31px 116px;
   border-bottom: 1px solid #ededed;
   background-color: white;
   color: #111111;
