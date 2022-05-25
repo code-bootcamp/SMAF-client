@@ -3,6 +3,7 @@ import Image02 from "../../images/02/image02";
 import * as S from "./LayoutHeader.styles";
 
 export default function HeaderUI(props) {
+
     return (
         <S.Wrapper>
             <S.InnerWrap>

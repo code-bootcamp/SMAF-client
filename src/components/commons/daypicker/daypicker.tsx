@@ -12,8 +12,6 @@ import { fromValues, toValues } from '../../../commons/store';
 
 export default function DayPick(props){
 
-  console.log("달력",props.data?.fetchProject.startDate.slice(0,10))
-
   const [selectedRange, setSelectedRange] = useState<DateRange>();
   const [fromValue, setFromValue] = useRecoilState<string>(fromValues);
   const [toValue, setToValue] = useRecoilState<string>(toValues);

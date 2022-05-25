@@ -30,7 +30,7 @@ console.log('이것은 프롭스',props)
             
             // 주소로 좌표를 검색합니다
             geocoder.addressSearch(props.address, function(result, status) {
-console.log("리서트", result)
+
                 // 정상적으로 검색이 완료됐으면 
                 if (status === window.kakao.maps.services.Status.OK) {
                     const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);

@@ -1,8 +1,7 @@
 import * as S from "./paymentListMenu.styles";
 import PaymentObject from "./paymentList/paymentList.container";
-import { v4 as uuidv4 } from "uuid";
 import UserInfoCard02 from "../../commons/userInfoCard/02/userInfoCard02.container";
-import Paginations01 from "../../commons/paginations/01/Paginations01.container";
+
 
 export default function PaymentListUI(props: any) {
   return (
@@ -31,8 +30,8 @@ export default function PaymentListUI(props: any) {
             </S.PaymentObjectList>
           )}
         </S.Table>
-        <S.Pagination>1/2/3/4/5</S.Pagination>
-        {/* <S.Pagination refetch={props.refetch} count={props.count} /> */}
+        {/* <S.Pagination>1/2/3/4/5</S.Pagination>
+        <S.Pagination refetch={props.refetch} count={props.count} /> */}
       </S.RightWrapper>
     </S.Wrapper>
   );

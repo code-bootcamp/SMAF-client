@@ -9,8 +9,9 @@ export const CREATE_PROJECT = gql`
 `
 export const UPDATE_PROJECT = gql`
     mutation updateProject($projectId: String!, $updateProjectInput: UpdateProjectInput!){
-        updateProject(projectId:$projectId, updateProjectInput:$updateProjectInput){
+        updateProject(projectId:$projectId,  updateProjectInput:$updateProjectInput){
             projectId
+
             address {
               projectAddressId
             }
@@ -19,8 +20,8 @@ export const UPDATE_PROJECT = gql`
 `
 
 export const UPLOAD_FILE = gql`
-    mutation userImageUpload($file: Upload!) {
-        userImageUpload(file: $file)
+    mutation projectImageUpload($file: Upload!) {
+        projectImageUpload(file: $file)
     }
 `;
 

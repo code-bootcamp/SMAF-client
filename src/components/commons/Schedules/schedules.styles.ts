@@ -52,4 +52,5 @@ width: 15.1rem;
 height: 5rem;
 color: white;
 font-size: 1.8rem;
+cursor: pointer;
 `
