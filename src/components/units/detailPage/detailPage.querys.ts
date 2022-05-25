@@ -26,6 +26,7 @@ export const FETCH_PROJECT = gql`
         address
         detailAddress
       }
+      status
     }
   }
 `;

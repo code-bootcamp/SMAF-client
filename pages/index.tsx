@@ -1,6 +1,6 @@
 // import BeforeLogin from '../src/components/units/mainPage/beforeLogin/beforeLogin.container'
-import MainPage from "./main/index";
+import Main from "../src/components/units/mainPage/mainPage.container";
 
 export default function Home() {
-  return <MainPage />;
+  return <Main />;
 }

@@ -10,6 +10,8 @@ export const Wrapper = styled.div`
 
 export const BasicLow = styled.div`
   display: flex;
+  align-items: center;
+  margin-right: 1rem;
 `;
 
 export const BasicColumn = styled.div`

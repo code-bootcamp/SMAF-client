@@ -18,7 +18,7 @@ const FETCH_LOGIN_USER = gql`
   }
 `;
 
-export default function Dropdown01(props) {
+export default function Dropdown01() {
   const { data } = useQuery(FETCH_LOGIN_USER);
   const router = useRouter();
   // const onClick = ({ key }) => {
@@ -28,7 +28,6 @@ export default function Dropdown01(props) {
   const onClickMypage = () => {
     router.push(`/mypage`);
   };
-
 
   const [logout] = useMutation(LOGOUT);
   const onClickLogOut = () => {
