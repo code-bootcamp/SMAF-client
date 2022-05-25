@@ -32,7 +32,7 @@ export default function Alert(props: any) {
           <S.Close onClick={onToggleModal}>X</S.Close>
           <S.Logo> SMAF </S.Logo>
           <S.ModalText>{props.contents ? props.contents : ""}</S.ModalText>
-          <S.ConfirmBtn onClick={props.router}>확인</S.ConfirmBtn>
+          <S.ConfirmBtn onClick={props.onClickExit}>확인</S.ConfirmBtn>
         </S.PointModal>
       </Modal>
     </>
