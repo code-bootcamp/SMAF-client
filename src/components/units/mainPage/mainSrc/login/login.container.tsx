@@ -8,6 +8,8 @@ import { useRecoilState } from "recoil";
 import { accessTokenState, userInfoState } from "../../../../../commons/store";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { useEffect } from "react";
+import { getAccessToken } from "../../../../../commons/libraries/getAccessToken.ts/getAccessToken";
 
 const schema = yup
     .object({
@@ -70,12 +72,45 @@ export default function Login() {
         router.push("/main");
     };
 
+    const clickMeGoogle = () => {
+        document.location.href = "https://backend.smaf.shop/google";
+    };
+
+    const clickMeNaver = () => {
+        document.location.href = "https://backend.smaf.shop/naver";
+    };
+
+    const clickMeKakao = () => {
+        document.location.href = "https://backend.smaf.shop/kakao";
+    };
+
+    // useEffect(() => {
+    //     const accessToken = Cookies.get("accessToken");
+    //     if (accessToken) {
+    //         setAccessToken(accessToken);
+    //     } else {
+    //         getAccessToken().then((newAccessToken) => {
+    //             if (!newAccessToken) return;
+    //             setAccessToken(newAccessToken);
+    //         });
+    //     }
+    // }, []);
+
+    useEffect(() => {
+        getAccessToken().then((newAccessToken) => {
+            setAccessToken(newAccessToken);
+        });
+    }, []);
+
     return (
         <LoginUI
             formState={formState}
             register={register}
             handleSubmit={handleSubmit}
             onClickLogin={onClickLogin}
+            clickMeGoogle={clickMeGoogle}
+            clickMeNaver={clickMeNaver}
+            clickMeKakao={clickMeKakao}
         />
     );
 }

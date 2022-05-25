@@ -12,7 +12,7 @@ export async function getAccessToken() {
             credentials: "include",
         });
         const result = await graphQLClient.request(RESTORE_ACCESS_TOKEN);
-        const newAccessToken = result.restoreAccessToken.accessToken;
+        const newAccessToken = result.restoreAccessToken;
         console.log("new result", result);
         console.log("뉴에세스토큰", newAccessToken);
 
