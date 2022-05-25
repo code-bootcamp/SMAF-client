@@ -18,7 +18,7 @@ export const FETCH_PAYMENTS = gql`
   }
 `;
 
-// 페이지네이션
+// 페이지네이션을 하기위한 결제내역 갯수
 export const FETCH_PAYMENTS_COUNT = gql`
   query fetchPaymentsCount {
     fetchPaymentsCount

@@ -1,8 +1,11 @@
 import Dropdown01 from "../../dropdown/03/Dropdown04.container";
+import { useMoveToPage } from "../../hooks/useMoveToPage";
 import Image02 from "../../images/02/image02";
 import * as S from "./LayoutHeader.styles";
 
 export default function HeaderUI(props) {
+
+    const { MoveToPage } = useMoveToPage();
 
     return (
         <S.Wrapper>
@@ -16,7 +19,7 @@ export default function HeaderUI(props) {
 
                 <S.OptionWrapper>
                     <S.Alarm src="/image/changealarm.png" alt="alarm" />
-                    <S.Qna src="/image/qna.png" alt="qna" />
+                    <S.Qna onClick={MoveToPage('/QuestionAnswer')} src="/image/qna.png" alt="qna" />
                     <Image02 src={props.data?.fetchLoginUser.userImageURL} />
                     {props.data?.fetchLoginUser.userName === undefined ? (
                         <S.Signup>회원가입</S.Signup>

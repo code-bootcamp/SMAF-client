@@ -64,3 +64,9 @@ export const triger = atom({
   key: "triger",
   default: false,
 });
+
+// 결제내역 인덱스
+export const indexNum = atom({
+  key: "index",
+  default: 0,
+});

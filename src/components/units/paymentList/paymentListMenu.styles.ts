@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
-import Paginations01 from "../../commons/paginations/01/Paginations01.container";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -129,18 +128,6 @@ export const PaymentObjectList = styled.div`
   }
 `;
 
-// export const Pagination = styled.div`
-//   width: 10.8rem;
-//   height: 3.6rem;
-//   margin: 0 auto;
-//   /* border: 1px solid red; */
-//   text-align: center;
-//   line-height: 3.6rem;
-// `;
-
-export const Pagination = styled(Paginations01)`
-  height: 36px;
-  margin: 0 auto;
-  text-align: center;
-  line-height: 36px;
+export const Page = styled.div`
+margin-left: 25rem;
 `;
