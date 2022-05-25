@@ -13,6 +13,9 @@ import {
 import { useQuery, useMutation } from "@apollo/client";
 import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
+import { indexNum } from "../../../../../commons/store";
+
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -72,12 +75,13 @@ export default function QuestionObject(props: IQuestionProps) {
       setIsOpenAnswer(false);
     }
   };
-  console.log(userData?.fetchLoginUser?.admin);
+  
+  const [index, setIndex]= useRecoilState(indexNum)
   return (
     <>
       <S.Table>
         <S.BasicRow>
-          <S.TableMenuNo>{props.no}</S.TableMenuNo>
+          <S.TableMenuNo>{props.dataQuestionBoardsCount?.fetchQuestionBoardsCount - (props.index + index + 1) + 1}</S.TableMenuNo>
           <S.TableMenuTypes>{props.el.questionCategory}</S.TableMenuTypes>
           <S.TableMenuTitles onClick={onContents}>
             {props.el.title}

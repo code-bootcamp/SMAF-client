@@ -1,13 +1,17 @@
+import { useRecoilState } from "recoil";
+import { indexNum } from "../../../../commons/store";
 import { getDate } from "../../../../commons/utils";
 import * as S from "./paymentList.styles";
 
 export default function PaymentObject(props) {
-  console.log(props.index);
+
+  const [index, setIndex]= useRecoilState(indexNum)
+
   return (
     <>
-      <S.Table>
+      <S.Table key={props.el.payment}>
         <S.BasicRow>
-          <S.TableMenuNo>{props.index + 1}</S.TableMenuNo>
+          <S.TableMenuNo>{props.index + index + 1}</S.TableMenuNo>
           <S.TableMenuPaymentDate>
             {getDate(props.el?.createAt)}
           </S.TableMenuPaymentDate>

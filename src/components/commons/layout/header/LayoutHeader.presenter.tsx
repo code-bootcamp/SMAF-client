@@ -1,4 +1,5 @@
 import Dropdown01 from "../../dropdown/03/Dropdown04.container";
+import { useMoveToPage } from "../../hooks/useMoveToPage";
 import Image02 from "../../images/02/image02";
 import * as S from "./LayoutHeader.styles";
 
@@ -10,7 +11,6 @@ export default function HeaderUI(props: any) {
           <S.Icon src="/image/mainClick.png" onClick={props.onClickMain} />
           <S.Logo onClick={props.onClickMain}>SMAF</S.Logo>
         </S.LogoWrapper>
-
         <S.Search placeholder="프로젝트검색"></S.Search>
 
         <S.OptionWrapper>
