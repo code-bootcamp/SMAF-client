@@ -14,14 +14,17 @@ export const Wrapper=styled.div`
 
     /* 체크 되었을때 */
     .checkbox input:checked + .checkbox_color {
-     border: 3px solid #FFFFFF;
-     box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, .12);;
-   }
+        width: 5rem; 
+        height: 5rem;
+        border: 4px solid #FFFFFF;
+        border-radius: 50%;
+        box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, .12);;
+    }
 
 `
 
 export const Circle=styled.div`
     width: 4.8rem; 
     height:4.8rem;
-    border-radius: 3rem;
+    border-radius: 50%;
 `
