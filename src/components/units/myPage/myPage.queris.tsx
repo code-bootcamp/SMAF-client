@@ -1,15 +1,5 @@
 import { gql } from "@apollo/client";
 
-// 유저 정보
-// export const FETCH_LOGIN_USER = gql`
-//   query fetchLoginUser {
-//     fetchLoginUser {
-//       userName
-//       email
-//     }
-//   }
-// `;
-
 // 모든 프로젝트 불러오기
 export const FETCH_PROJECTS_ALL = gql`
   query fetchProjectsAll {
@@ -24,7 +14,7 @@ export const FETCH_PROJECTS_ALL = gql`
   }
 `;
 
-// fetchActivatedProject 참여중인 프로젝트 목록
+// 참여중인 프로젝트 목록
 export const FETCH_ACTIVE_PROJECT = gql`
   query fetchActivatedProject {
     fetchActivatedProject {
@@ -46,10 +36,10 @@ export const FETCH_ACTIVE_PROJECT = gql`
   }
 `;
 
-// fetchInactivatedProject 참여했던 프로젝트 목록
+// 참여했던 프로젝트 목록
 export const FETCH_INACTIVE_PROJECT = gql`
-  query fetchInactivatedProject {
-    fetchInactivatedProject {
+  query fetchInactivatedProject($standard: String!) {
+    fetchInactivatedProject(standard: $standard) {
       projectParticipantId
       isActivated
       createdAt
