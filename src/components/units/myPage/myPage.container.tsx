@@ -7,7 +7,12 @@ export default function MyPage() {
   const router = useRouter();
 
   const { data: activeData } = useQuery(FETCH_ACTIVE_PROJECT);
-  const { data: inActiveData } = useQuery(FETCH_INACTIVE_PROJECT);
+  const { data: inActiveData } = useQuery(FETCH_INACTIVE_PROJECT, {
+    variables: { standard: "최신순" },
+  });
+
+  console.log("진행중인프로젝트", activeData);
+  console.log("지난프로젝트", inActiveData);
 
   // 프로젝트 등록하기
   const onClickMoveToNewProject = () => {
