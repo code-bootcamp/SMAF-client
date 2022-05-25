@@ -24,9 +24,6 @@ export default function MainUI(props: IMainUIProps) {
             <S.Info>
               <ProjectList />
             </S.Info>
-            <S.Info>
-              <TeamMember />
-            </S.Info>
           </div>
           <S.Calender>
             <Schedules />

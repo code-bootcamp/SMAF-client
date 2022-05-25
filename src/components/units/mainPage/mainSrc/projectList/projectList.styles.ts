@@ -43,6 +43,9 @@ border-radius: 0.4rem;
 export const ProjectName=styled.div`
 padding-left: 0.5rem;
 font-size: 1.6rem;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 `
 export const ProjectBox=styled.div`
 display: flex;
