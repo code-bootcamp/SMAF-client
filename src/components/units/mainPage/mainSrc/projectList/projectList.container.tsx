@@ -14,6 +14,7 @@ export default function ProjectList() {
     },[])
 
   return <ProjectListUI
+    data={data}
     rate={rate}
   />;
 }

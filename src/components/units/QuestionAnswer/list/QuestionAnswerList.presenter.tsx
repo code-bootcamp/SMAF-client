@@ -6,6 +6,7 @@ import { IQuestionAnswerListProps } from "./QuestionAnswerList.types";
 // import { useState } from "react";
 import QuestionObject from "./Question/Question.container";
 import { v4 as uuidv4 } from "uuid";
+import Pagination from '../../../commons/paginations/01/Pagination'
 
 export default function QuestionAnswerListUI(props: IQuestionAnswerListProps) {
   const { MoveToPage } = useMoveToPage();
@@ -26,9 +27,12 @@ export default function QuestionAnswerListUI(props: IQuestionAnswerListProps) {
       <S.QuestionList>
         {props.data &&
           props.data?.fetchQuestionBoards.map((el: any, index: number) => (
-            <QuestionObject key={uuidv4()} el={el} no={index + 1} />
+            <QuestionObject key={el.questionBoardId} el={el} index={index} dataQuestionBoardsCount={props.dataQuestionBoardsCount}/>
           ))}
       </S.QuestionList>
+      <S.Page>
+        <Pagination data={props.data} refetch={props.refetch} lastPage={props.lastPage} />
+      </S.Page>
     </S.Wrapper>
   );
 }
