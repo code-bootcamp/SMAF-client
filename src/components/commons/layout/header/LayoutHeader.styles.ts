@@ -103,9 +103,10 @@ export const OptionWrapper = styled.div`
 
 export const Alarm = styled.img`
 
-  width: 3rem;
-  height: 3rem;
-  margin-right: 3.4rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-right: 2.5rem;
+
   /* margin-right: 14%; */
   border: 1px solid yellow;
   @media ${breakPoints.mobile} {
@@ -140,7 +141,6 @@ export const Qna = styled.img`
   width: 4rem;
   height: 4rem;
   margin-right: 2rem;
-
   /* margin-left: 14%; */
   /* border: 1px solid yellow; */
 

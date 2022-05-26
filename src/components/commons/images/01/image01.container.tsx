@@ -9,10 +9,7 @@ const FETCH_PARTICIPATING_USER = gql`
       projectParticipantId
       user {
         userName
-        userImageURL0
-      }
-      project {
-        projectId
+        userImageURL
       }
     }
   }
@@ -41,24 +38,17 @@ export const FETCH_ACTIVE_PROJECT = gql`
   }
 `;
 
-export default function ImageCircle() {
-  const { data: activeData } = useQuery(FETCH_ACTIVE_PROJECT);
-
-  const ddd = activeData?.fetchActivatedProject;
-
-  // const { data } = useQuery(FETCH_PARTICIPATING_USER, {
-  //   variables: {
-  //     projectId: aaa(),
-  //   },
-  // });
-
-  // console.log("gsadgs", data);
-
-  // console.log("이거다", activeData?.fetchActivatedProject);
+export default function ImageCircle(props: any) {
+  const { data } = useQuery(FETCH_PARTICIPATING_USER, {
+    variables: {
+      projectId: props.id,
+    },
+  });
+  // console.log(data, "회원사진 📌");
+  // console.log(data?.fetchInactivatedProject, "사진 📌");
 
   return (
     <>
-      {/* {data.fetchParticipatingUser} */}
       <S.ImageBox>
         <S.One></S.One>
         <S.Two></S.Two>
