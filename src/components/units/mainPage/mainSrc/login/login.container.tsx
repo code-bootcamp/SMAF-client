@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 // import { getAccessToken } from "../../../../../commons/libraries/getAccessToken.ts/getAccessToken";
 import { useMoveToPage } from "../../../../commons/hooks/useMoveToPage";
+import { Modal } from "antd";
 
 const schema = yup
     .object({
@@ -39,30 +40,44 @@ export default function Login() {
         mode: "onChange",
     });
     const { MoveToPage } = useMoveToPage();
+
+    // 얼럿모달
     const [alertModal, setAlertModal] = useState(false);
     const [modalContents, setModalContents] = useState(false);
+    const [errorAlertModal, setErrorAlertModal] = useState(false);
 
     const onClickExitAlertModal = () => {
         setAlertModal(false);
+        router.push("/")
+    };
+    
+    // 에러 모달
+    const onClickExitErrorModal = () => {
+        setErrorAlertModal(false);
     };
 
     const onClickLogin = async (data: IFormValues) => {
         console.log("login", data);
-        const result = await login({
-            variables: {
-                email: data.email,
-                password: data.password,
-            },
-        });
-        console.log(result, "result");
-        const accessToken = result.data.login;
-        console.log("accessToken", "로그인엑세스토큰");
-        setAccessToken(accessToken);
-        // Cookies.set("accessToken", accessToken);
-        setModalContents("로그인완료");
-        setAlertModal(true);
-        router.push("/");
-    };
+        try{        
+            const result = await login({
+                variables: {
+                    email: data.email,
+                    password: data.password,
+                },
+            });
+            console.log(result, "result");
+            const accessToken = result.data.login;
+            console.log("accessToken", "로그인엑세스토큰");
+            setAccessToken(accessToken);
+            Cookies.set("accessToken", accessToken);
+
+            setModalContents("로그인이 완료되었습니다.");
+            setAlertModal(true);
+        } catch(error){
+            setModalContents(error.message);
+            setErrorAlertModal(true);
+        }
+        };
 
     const clickMeGoogle = () => {
         document.location.href = "https://backend.smaf.shop/google";
@@ -107,6 +122,8 @@ export default function Login() {
             onClickExitAlertModal={onClickExitAlertModal}
             alertModal={alertModal}
             modalContents={modalContents}
+            onClickExitErrorModal={onClickExitErrorModal}
+            errorAlertModal={errorAlertModal}
         />
     );
 }

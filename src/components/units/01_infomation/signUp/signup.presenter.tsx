@@ -1,6 +1,7 @@
 import Uploads01 from "../../../commons/uploads/upload1/Upload01.container";
 import * as S from "./signup.styles";
 import Alert from "../../../commons/modal/alert/alert";
+import ErrorAlert from "../../../commons/modal/errorModal/alert";
 
 export default function SignupUI(props: any) {
   return (
@@ -8,7 +9,14 @@ export default function SignupUI(props: any) {
       {props.alertModal && (
         <Alert
           onClick={props.onClickAlertModal}
-          onClickExit={props.onClickExitAlertModal}
+          onClickExit={props.go ? props.onClickRoutingModal : props.onClickconfirmModal}
+          contents={props.modalContents}
+        />
+      )}
+      {props.errorAlertModal && (
+        <ErrorAlert
+          onClick={props.onClickAlertModal}
+          onClickExit={props.onClickErrorModal}
           contents={props.modalContents}
         />
       )}
@@ -75,7 +83,7 @@ export default function SignupUI(props: any) {
                 <S.SignNumberReceive>
                   <S.SignUpPhoneInput
                     type="text"
-                    placeholder="인증받는 번호를 남겨주세요"
+                    placeholder="인증받을 번호를 남겨주세요"
                     onChange={props.onChangeToken}
                   ></S.SignUpPhoneInput>
                   <S.SignUpPhoneSendButton

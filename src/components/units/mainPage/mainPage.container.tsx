@@ -17,9 +17,7 @@ export const FETCH_LOGIN_USER = gql`
 `;
 
 export default function Main() {
-    const { data: myData } = useQuery(FETCH_LOGIN_USER);
 
-    console.log(myData);
-
+  const { data: myData } = useQuery(FETCH_LOGIN_USER);
     return <MainUI myData={myData} />;
 }

@@ -2,7 +2,9 @@ import styled from "@emotion/styled";
 
 interface status {
   status: boolean;
+  // fetchTrigers: boolean;
 }
+
 export const Wrapper = styled.div`
   margin-top: 2rem;
   display: flex;

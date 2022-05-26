@@ -25,7 +25,7 @@ export default function ProjectSignPageUI(props){
           contents={props.modalContents}
         />
       )}
-      {props.alertModal && (
+      {props.errorAlertModal && (
         <ErrorAlert
           onClick={props.onClickAlertModal}
           onClickExit={props.onClickExitErrorModal}
@@ -158,16 +158,3 @@ export default function ProjectSignPageUI(props){
       </>
   );  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
