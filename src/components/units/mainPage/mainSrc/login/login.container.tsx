@@ -7,9 +7,9 @@ import { LOGIN_USER } from "./login.queries";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../../commons/store";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
-import { getAccessToken } from "../../../../../commons/libraries/getAccessToken.ts/getAccessToken";
+// import { getAccessToken } from "../../../../../commons/libraries/getAccessToken.ts/getAccessToken";
 import { useMoveToPage } from "../../../../commons/hooks/useMoveToPage";
 
 const schema = yup
@@ -58,7 +58,7 @@ export default function Login() {
         const accessToken = result.data.login;
         console.log("accessToken", "로그인엑세스토큰");
         setAccessToken(accessToken);
-        Cookies.set("accessToken", accessToken);
+        // Cookies.set("accessToken", accessToken);
         setModalContents("로그인완료");
         setAlertModal(true);
         router.push("/");
@@ -88,11 +88,11 @@ export default function Login() {
     //     }
     // }, []);
 
-    useEffect(() => {
-        getAccessToken().then((newAccessToken) => {
-            setAccessToken(newAccessToken);
-        });
-    }, []);
+    // useEffect(() => {
+    //     getAccessToken().then((newAccessToken) => {
+    //         setAccessToken(newAccessToken);
+    //     });
+    // }, []);
 
     return (
         <LoginUI

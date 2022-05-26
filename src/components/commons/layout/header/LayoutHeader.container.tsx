@@ -1,12 +1,17 @@
 import HeaderUI from "./LayoutHeader.presenter";
 import { useRouter } from "next/router";
-import { gql, useQuery } from "@apollo/client";
+import { gql, InMemoryCache, useQuery } from "@apollo/client";
 
-const FETCH_LOGIN_USER = gql`
+export const FETCH_LOGIN_USER = gql`
     query fetchLoginUser {
         fetchLoginUser {
+            userId
             userName
+            email
+            phone
             userImageURL
+            projectTicket
+            admin
         }
     }
 `;
@@ -27,6 +32,18 @@ export default function HeaderContainer(props: any) {
         router.push(`/signup`);
     };
 
+    const cache = new InMemoryCache({
+        typePolicies: {
+            Query: {
+                fields: {
+                    getAllPosts: {
+                        merge: true,
+                    },
+                },
+            },
+        },
+    });
+    console.log(cache, "캐쉬머지");
     return (
         <HeaderUI
             onClickMain={onClickMain}
