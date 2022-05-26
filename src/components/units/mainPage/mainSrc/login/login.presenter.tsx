@@ -1,49 +1,60 @@
+import Alert from "../../../../commons/modal/alert/alert";
 import * as S from "./login.styles";
 
 export default function LoginUI(props) {
     return (
-        <S.Wrapper>
-            <S.Title>로그인</S.Title>
-            <S.Container>
-                <S.LoginForm onSubmit={props.handleSubmit(props.onClickLogin)}>
-                    <S.InputBox>
-                        <S.Input
-                            type="text"
-                            placeholder="이메일을 입력하세요."
-                            {...props.register("email")}
-                        />
-                        <S.Input
-                            type="password"
-                            placeholder="비밀번호를 입력하세요."
-                            {...props.register("password")}
-                        />
-                    </S.InputBox>
-                    <S.Check>
-                        <div>
-                            <S.CheckBox type="checkbox" /> 로그인 상태 유지
-                        </div>
-                        <S.IdPw>아이디/비밀번호</S.IdPw>
-                    </S.Check>
-                    <S.LoginBtn type="submit">로그인</S.LoginBtn>
-                </S.LoginForm>
-                <S.SubTitle>SNS로 로그인하기</S.SubTitle>
-                <S.Sns>
-
-                    <S.GoogleBtn className="google" type="button" onClick={props.clickMeGoogle}>
-                        <S.Logo src="/mainPageImages/google.png" />
-                    </S.GoogleBtn>
-                    <S.NaverBtn className="google" type="button" onClick={props.clickMeNaver}>
-                        <S.Logo src="/mainPageImages/naver.png" />
-                    </S.NaverBtn>
-                    <S.KakaoBtn className="google" type="button" onClick={props.clickMeKakao}>
-                        <S.Logo src="/mainPageImages/kakao.png" />
-                    </S.KakaoBtn>
-                </S.Sns>
-                <S.Bottom>
-                    <S.JoinBtn>회원가입</S.JoinBtn>
-                    <S.ToBeforeLogin>비회원 무료체험 이용하기 </S.ToBeforeLogin>
-                </S.Bottom>
-            </S.Container>
-        </S.Wrapper>
+        <>
+            {props.alertModal && (
+                <Alert
+                    onClick={props.onClickAlertModal}
+                    onClickExit={props.onClickExitAlertModal}
+                    contents={props.modalContents}
+                />
+            )}
+            <S.Wrapper>
+                <S.Title>로그인</S.Title>
+                <S.Container>
+                    <S.LoginForm onSubmit={props.handleSubmit(props.onClickLogin)}>
+                        <S.InputBox>
+                            <S.Input
+                                type="text"
+                                placeholder="이메일을 입력하세요."
+                                {...props.register("email")}
+                            />
+                            <S.Input
+                                type="password"
+                                placeholder="비밀번호를 입력하세요."
+                                {...props.register("password")}
+                            />
+                        </S.InputBox>
+                        <S.Check>
+                            <div>
+                                <S.CheckBox type="checkbox" /> 로그인 상태 유지
+                            </div>
+                            <S.IdPw>아이디/비밀번호</S.IdPw>
+                        </S.Check>
+                        <S.LoginBtn type="submit">로그인</S.LoginBtn>
+                    </S.LoginForm>
+                    <S.SubTitle>SNS로 로그인하기</S.SubTitle>
+                    <S.Sns>
+                        <S.GoogleBtn className="google" type="button" onClick={props.clickMeGoogle}>
+                            <S.Logo src="/mainPageImages/google.png" />
+                        </S.GoogleBtn>
+                        <S.NaverBtn className="google" type="button" onClick={props.clickMeNaver}>
+                            <S.Logo src="/mainPageImages/naver.png" />
+                        </S.NaverBtn>
+                        <S.KakaoBtn className="google" type="button" onClick={props.clickMeKakao}>
+                            <S.Logo src="/mainPageImages/kakao.png" />
+                        </S.KakaoBtn>
+                    </S.Sns>
+                    <S.Bottom>
+                        <S.JoinBtn onClick={props.MoveToPage("/signup")}>회원가입</S.JoinBtn>
+                        <S.ToBeforeLogin onClick={props.MoveToPage("/")}>
+                            비회원 무료체험 이용하기{" "}
+                        </S.ToBeforeLogin>
+                    </S.Bottom>
+                </S.Container>
+            </S.Wrapper>
+        </>
     );
 }

@@ -1,6 +1,6 @@
-import { useMutation } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { message, Modal } from "antd";
+import { Modal } from "antd";
 import * as yup from "yup";
 import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -34,6 +34,12 @@ interface FormValues {
     inputToken: string;
 }
 
+const LOGOUT = gql`
+    mutation logout {
+        logout
+    }
+`;
+
 export default function ChangePassword(props: any) {
     // const [fetchUser] = useMutation(FETCH_USER);
     const [updatePassword] = useMutation(UPDATE_PASSWORD);
@@ -44,11 +50,28 @@ export default function ChangePassword(props: any) {
     const [, setTrueToken] = useState(false);
     const [isActive] = useState(false);
     const router = useRouter();
+    const [alertModal, setAlertModal] = useState(false);
+    const [modalContents, setModalContents] = useState(false);
+    const [logout] = useMutation(LOGOUT);
+    const [go, setGo] = useState(false);
 
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(schema),
         mode: "onChange",
     });
+
+    const onClickExitAlertModal = () => {
+        setAlertModal(false);
+    };
+
+    const onClickExitRouterModal = () => {
+        setAlertModal(false);
+        router.push("/");
+    };
+
+    const onClickRouterAlertModal = () => {
+        setAlertModal(false);
+    };
 
     const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
         setPhone(e.target.value);
@@ -69,9 +92,9 @@ export default function ChangePassword(props: any) {
                     },
                 });
 
-                Modal.success({
-                    content: "인증번호가 발송되었습니다.",
-                });
+                setModalContents("인증번호가 발송되었습니다.");
+                setAlertModal(true);
+                setGo(false);
             } catch (error) {
                 console.log(error.message);
             }
@@ -90,14 +113,16 @@ export default function ChangePassword(props: any) {
         console.log(data);
 
         if (!data.data.checkedTokenPhone) {
-            Modal.success({
-                content: "인증이 완료되었습니다.",
-            });
+            // Modal.success({
+            //     content: "인증이 완료되었습니다.",
+            // });
+            setModalContents("인증이 완료되었습니다.");
+            setAlertModal(true);
             setTrueToken(true);
+            setGo(false);
         } else {
-            Modal.error({
-                content: "인증번호가 일치하지 않습니다.",
-            });
+            setModalContents(error.message);
+            setAlertModal(true);
             // alert("실패");
         }
     };
@@ -116,14 +141,14 @@ export default function ChangePassword(props: any) {
                     phone: data.phone,
                 },
             });
-            Modal.success({
-                content: "비밀번호 변경완료했습니다.",
-            });
+            setModalContents("비밀번호변경 완료, 다시 로그인 해주세요");
+            setAlertModal(true);
             console.log("완료");
-
-            router.push("/main");
+            setGo(true);
+            console.log("완ssssssss");
         } catch (error) {
-            message.error(error.message);
+            setModalContents(error.message);
+            setAlertModal(true);
         }
     };
 
@@ -138,6 +163,12 @@ export default function ChangePassword(props: any) {
             isActive={isActive}
             onClickTokenCheck={onClickTokenCheck}
             onClickUpdatePassword={onClickUpdatePassword}
+            onClickExitAlertModal={onClickExitAlertModal}
+            alertModal={alertModal}
+            modalContents={modalContents}
+            go={go}
+            onClickExitRouterModal={onClickExitRouterModal}
+            onClickRouterAlertModal={onClickRouterAlertModal}
         />
     );
 }
