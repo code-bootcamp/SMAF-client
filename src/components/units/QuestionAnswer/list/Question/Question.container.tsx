@@ -16,12 +16,12 @@ import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { indexNum } from "../../../../../commons/store";
 
-
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface IQuestionProps {
   el: any;
-  no: number;
+  index: number;
+  dataQuestionBoardsCount: any;
 }
 
 export default function QuestionObject(props: IQuestionProps) {
@@ -75,13 +75,17 @@ export default function QuestionObject(props: IQuestionProps) {
       setIsOpenAnswer(false);
     }
   };
-  
-  const [index, setIndex]= useRecoilState(indexNum)
+
+  const [index] = useRecoilState(indexNum);
   return (
     <>
       <S.Table>
         <S.BasicRow>
-          <S.TableMenuNo>{props.dataQuestionBoardsCount?.fetchQuestionBoardsCount - (props.index + index + 1) + 1}</S.TableMenuNo>
+          <S.TableMenuNo>
+            {props.dataQuestionBoardsCount?.fetchQuestionBoardsCount -
+              (props.index + index + 1) +
+              1}
+          </S.TableMenuNo>
           <S.TableMenuTypes>{props.el.questionCategory}</S.TableMenuTypes>
           <S.TableMenuTitles onClick={onContents}>
             {props.el.title}

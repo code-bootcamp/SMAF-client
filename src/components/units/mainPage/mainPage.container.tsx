@@ -1,23 +1,9 @@
 import MainUI from "./mainPage.presenter";
 
-import { gql, useQuery } from "@apollo/client";
-
-export const FETCH_LOGIN_USER = gql`
-    query fetchLoginUser {
-        fetchLoginUser {
-            userId
-            userName
-            email
-            phone
-            userImageURL
-            projectTicket
-            admin
-        }
-    }
-`;
+import { useQuery } from "@apollo/client";
+import { FETCH_LOGIN_USER } from "./mainPage.querys";
 
 export default function Main() {
-
   const { data: myData } = useQuery(FETCH_LOGIN_USER);
-    return <MainUI myData={myData} />;
+  return <MainUI myData={myData} />;
 }

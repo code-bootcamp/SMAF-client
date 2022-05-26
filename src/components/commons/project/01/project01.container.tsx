@@ -9,14 +9,13 @@ interface IUserProject {
   el?: any;
 }
 export default function Project01(props: IUserProject) {
+  const router = useRouter();
 
-  const router = useRouter()
+  const onClickToDetail = (event: any) => {
+    router.push(`/project/${event.currentTarget.id}`);
+  };
 
-  const onClickToDetail = (event) =>{
-    router.push(`/project/${event.currentTarget.id}`)
-  }
-
-  console.log("이엘",props.el.project.projectId)
+  // console.log("이엘",props.el.project.projectId)
 
   return (
     <S.card onClick={onClickToDetail} id={props.el.project.projectId}>
@@ -36,7 +35,6 @@ export default function Project01(props: IUserProject) {
         </S.box1>
 
         <S.box2>
-
           <ImageCircle el={props.el} id={props.el?.project.projectId} />
 
           <S.Title01>{props.el?.project.projectName}</S.Title01>
