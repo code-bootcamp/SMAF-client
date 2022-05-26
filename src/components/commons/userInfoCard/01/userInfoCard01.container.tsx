@@ -1,7 +1,11 @@
 // import { card } from "../project/01/project01.styles";
+
+import { useQuery } from "@apollo/client";
+
 import { useQuery } from "@apollo/client";
 
 import { useRef } from "react";
+
 import PaymentModal from "../../modal/paymentModal/paymentModal.container";
 
 import { FETCH_LOGIN_USER } from "./userInfoCard01.queris";

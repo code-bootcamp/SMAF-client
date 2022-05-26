@@ -33,6 +33,7 @@ export default function HeaderContainer(props: any) {
     router.push(`/signup`);
   };
 
+
   return (
     <HeaderUI
       onClickMain={onClickMain}
@@ -41,4 +42,5 @@ export default function HeaderContainer(props: any) {
       data={data}
     />
   );
+
 }

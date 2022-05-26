@@ -7,9 +7,9 @@ import { LOGIN_USER } from "./login.queries";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../../commons/store";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
-import { getAccessToken } from "../../../../../commons/libraries/getAccessToken.ts/getAccessToken";
+// import { getAccessToken } from "../../../../../commons/libraries/getAccessToken.ts/getAccessToken";
 import { useMoveToPage } from "../../../../commons/hooks/useMoveToPage";
 import { Modal } from "antd";
 
@@ -79,7 +79,6 @@ export default function Login() {
         }
         };
 
-
     const clickMeGoogle = () => {
         document.location.href = "https://backend.smaf.shop/google";
     };
@@ -104,11 +103,11 @@ export default function Login() {
     //     }
     // }, []);
 
-    useEffect(() => {
-        getAccessToken().then((newAccessToken) => {
-            setAccessToken(newAccessToken);
-        });
-    }, []);
+    // useEffect(() => {
+    //     getAccessToken().then((newAccessToken) => {
+    //         setAccessToken(newAccessToken);
+    //     });
+    // }, []);
 
     return (
         <LoginUI
