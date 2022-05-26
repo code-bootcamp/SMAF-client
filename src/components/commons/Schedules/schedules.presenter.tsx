@@ -9,8 +9,6 @@ export default function SchedulesUI(props: any) {
   const onClickUpload = () => {
     fileRef.current?.click();
   };
-
-  console.log(props.myData);
   return (
     <>
       {props.myData && (

@@ -1,4 +1,5 @@
 import Alert from "../../../../commons/modal/alert/alert";
+import ErrorAlert from "../../../../commons/modal/errorModal/alert";
 import * as S from "./login.styles";
 
 export default function LoginUI(props: any) {

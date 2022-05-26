@@ -5,6 +5,8 @@ import AddColumnBtn from "./addColumnBtn/addColumnBtn.container";
 import DetailPlanListColumn from "./detailPlanListColumn/detailPlanListColumn.container";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import ProjectEditDropdown from "../../commons/dropdown/06.projectEditDropdown/projectEditDropdown";
+import ErrorAlert from '../../commons/modal/errorModal/alert'
+
 export default function ProjectDetailPageHTML(
   props: IProjectDetailPageHTMLProps
 ) {
@@ -12,6 +14,14 @@ export default function ProjectDetailPageHTML(
   // console.log(props.categoriesData, "categoriesData");
 
   return (
+    <>
+    {props.errorAlertModal && (
+        <ErrorAlert
+          onClick={props.onClickAlertModal}
+          onClickExit={props.onClickExitErrorModal}
+          contents={props.modalContents}
+        />
+      )}
     <S.Wrapper>
       {props.projectData && (
         <>
@@ -110,5 +120,6 @@ export default function ProjectDetailPageHTML(
         </>
       )}
     </S.Wrapper>
+    </>
   );
 }

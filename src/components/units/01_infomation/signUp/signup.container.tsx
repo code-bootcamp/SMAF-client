@@ -56,6 +56,8 @@ export default function SignUpContainer(props: any) {
   // Alert
   const [alertModal, setAlertModal] = useState(false);
   const [modalContents, setModalContents] = useState(false);
+  const [errorAlertModal, setErrorAlertModal] = useState(false);
+  const [go, setGo] = useState(false)
 
   const router = useRouter();
 
@@ -68,9 +70,21 @@ export default function SignUpContainer(props: any) {
   //     fileRef.current?.click();
   // };
 
-  const onClickExitAlertModal = () => {
+   console.log("go",go)
+  // 이동 모달
+  const onClickRoutingModal = () => {
     setAlertModal(false);
     router.push("/");
+  };
+
+  // 확인 모달
+  const onClickconfirmModal = () => {
+    setAlertModal(false);
+  };
+
+  // 에러 모달
+  const onClickErrorModal = () => {
+    setErrorAlertModal(false);
   };
 
   const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
@@ -91,46 +105,51 @@ export default function SignUpContainer(props: any) {
             phone,
           },
         });
-
-        // Modal.success({
-        //   content: "인증번호가 발송되었습니다.",
-        // });
         setModalContents("인증번호가 발송되었습니다.");
         setAlertModal(true);
+        setGo(false)
+        
       } catch (error) {
         if (error instanceof Error)
-        console.log(error.message);
+          setModalContents(error.message);
+          setErrorAlertModal(true);
       }
+    } else{
+      setModalContents("번호를 입력해주세요.");
+      setErrorAlertModal(true);
     }
   };
 
   const onClickTokenCheck = async () => {
     console.log("1,2,3,Chceck");
+    if(inputToken){
+        try{
+        const data = await checkedTokenPhone({
+          variables: {
+            phone,
+            inputToken,
+          },
+        });
+        console.log(data.data.checkedToekn);
+        const aaa= data.data.checkedToekn
+        if(aaa.includes("완료")){
+          setModalContents("인증이 완료되었습니다.");
+          setAlertModal(true);
+          setTrueToken(true);
+        } else{
+          setModalContents("인증번호가 일치하지 않습니다.");
+          setErrorAlertModal(true);
+        }
 
-    const data = await checkedTokenPhone({
-      variables: {
-        phone,
-        inputToken,
-      },
-    });
-    console.log(data);
-
-    if (!data.data.checkedTokenPhone) {
-      //   Modal.success({
-      //     content: "인증이 완료되었습니다.",
-      //   });
-      setModalContents("인증이 완료되었습니다.");
-      setAlertModal(true);
-      setTrueToken(true);
-    } else {
-      //   Modal.error({
-      //     content: "인증번호가 일치하지 않습니다.",
-      //   });
-      setModalContents(error.message);
-      setAlertModal(true);
-      // alert("실패");
-    }
-  };
+      } catch(error){
+        setModalContents(error.message);
+        setErrorAlertModal(true);
+      }
+      } else{
+        setModalContents("인증번호를 입력해주세요.");
+        setErrorAlertModal(true);
+      }
+  }
 
   const onClickcreateUser = async (data: FormValues) => {
     // const { email, name, password, phone } = data;
@@ -153,13 +172,18 @@ export default function SignUpContainer(props: any) {
       });
       setModalContents("회원가입이 완료되었습니다.");
       setAlertModal(true);
+      setGo(true)
+
       console.log("완료");
 
       // router.push("/");
     } catch (error) {
-      message.error(error.message);
+      setModalContents(error.message);
+      setErrorAlertModal(true);
     }
+
   };
+ 
 
   return (
     <SignupUI
@@ -177,9 +201,13 @@ export default function SignUpContainer(props: any) {
       setUrls={setUrls}
       urls={urls}
       // 모달
-      onClickExitAlertModal={onClickExitAlertModal}
       alertModal={alertModal}
+      errorAlertModal={errorAlertModal}
       modalContents={modalContents}
+      onClickRoutingModal={onClickRoutingModal}
+      onClickconfirmModal={onClickconfirmModal}
+      onClickErrorModal={onClickErrorModal}
+      go={go}
     />
   );
 }

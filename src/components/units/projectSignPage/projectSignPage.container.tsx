@@ -26,7 +26,7 @@ const schema = yup.object({
     .string()
     .max(150, "150자 이내로 입력해주세요")
     .required("필수 입력 사항입니다."),
-  contents: yup.string().max(1000, "100자 이내로 입력해주세요"),
+  contents: yup.string(),
   detailAddress: yup.string(),
 });
 
@@ -66,7 +66,8 @@ export default function ProjectSign(props: any) {
   // 얼럿모달
   const [alertModal, setAlertModal] = useState(false);
   const [modalContents, setModalContents] = useState(false);
-  const [errorAlertModal, setErrorModalContents] = useState(false);
+  const [errorAlertModal, setErrorAlertModal] = useState(false);
+  const [go, setGo] = useState(false)
 
   // 이미지 업로드 state
   const [urls, setUrls] = useState("");
@@ -84,7 +85,6 @@ export default function ProjectSign(props: any) {
   const [ submit, setSubmit ] = useState()
   const [ update, setUpdate ] = useState<string>()
 
-  const [ go, setGo ] = useState(false)
 
   // 등록하기 모달 라우터
   const onClickExitSubmitModal = () => {
@@ -98,9 +98,9 @@ export default function ProjectSign(props: any) {
     router.push(`/project/${update}`);
   };
 
-  // 에러 모달 라우터
+  // 에러 모달
   const onClickExitErrorModal = () => {
-    setErrorModalContents(false);
+    setErrorAlertModal(false);
   };
 
   // 모달 주소입력
@@ -175,8 +175,7 @@ export default function ProjectSign(props: any) {
 
       } catch (error) {
           setModalContents(error.message);
-          setAlertModal(true);
-          setGo(false)
+          setErrorAlertModal(true);
       }
     }
   };
@@ -193,9 +192,8 @@ export default function ProjectSign(props: any) {
       !data.contents &&
       !isChangedFiles
     ) {
-      Modal.error({
-        content: "수정한 내용이 없습니다.",
-      });
+      setModalContents("수정한 내용이 없습니다.");
+      setErrorAlertModal(true);
     }
 
     try {
@@ -224,10 +222,8 @@ export default function ProjectSign(props: any) {
       setUpdate(router.query.projectId)
       // router.push(`/project/${router.query.projectId}`);
     } catch (error) {
-      if (error instanceof Error)
-        Modal.error({
-          content: error.message,
-        });
+        setModalContents(error.message);
+        setErrorAlertModal(true);
     }
   };
 
@@ -275,6 +271,7 @@ export default function ProjectSign(props: any) {
       modalContents={modalContents}
       go={go}
       onClickExitErrorModal={onClickExitErrorModal}
+      errorAlertModal={errorAlertModal}
     />
   );
 }

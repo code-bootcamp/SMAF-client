@@ -14,12 +14,16 @@ import { triger, fetchTriger } from "../../../commons/store/index";
 
 export default function ProjectDetail() {
   const router = useRouter();
+
+  const [errorAlertModal, setErrorAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState(false);
   const [deletedItem, setDeletedItem] = useState({
     scheduleName: "string",
     scheduleContents: "string",
     scheduleDate: "DateTime",
     status: "boolean",
   });
+
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [dragItemId, setDragItemId] = useState("");
@@ -35,6 +39,11 @@ export default function ProjectDetail() {
       projectId: router.query.projectId,
     },
   });
+
+  // 에러 모달
+  const onClickExitErrorModal = () => {
+    setErrorAlertModal(false);
+  };
 
   // console.log("디테일", projectData);
   const { data: categoriesData } = useQuery(FETCH_PROCESS_CATEGORIES, {
@@ -120,7 +129,8 @@ export default function ProjectDetail() {
         ],
       });
     } catch (error) {
-      alert(error);
+      setModalContents(error.message);
+      setErrorAlertModal(true);
     } finally {
       setFetchTriger(false);
     }
@@ -226,6 +236,9 @@ export default function ProjectDetail() {
       handleDragEnd={handleDragEnd}
       isLoading={isLoading}
       dragItemId={dragItemId}
+      onClickExitErrorModal={onClickExitErrorModal}
+      errorAlertModal={errorAlertModal}
+      modalContents={modalContents}
     />
   );
 }
