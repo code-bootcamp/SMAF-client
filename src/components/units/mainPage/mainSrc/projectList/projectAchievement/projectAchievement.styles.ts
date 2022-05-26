@@ -43,6 +43,9 @@ export const Check3 = styled.div`
 export const ProjectName = styled.div`
   padding-left: 0.5rem;
   font-size: 1.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 export const ProjectBox = styled.div`
   display: flex;
@@ -64,7 +67,7 @@ export const RateBackground = styled.div`
 export const RateBar = styled.div`
   position: relative;
   height: 1.2rem;
-  width: ${(props: any) => props.rate}%;
+  width: ${(props: any) => props.results}%;
   background-color: #ff8b8b;
   border-radius: 0.6rem;
 `;

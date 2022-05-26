@@ -4,10 +4,9 @@ import Login from "./mainSrc/login/login.container";
 import { IMainUIProps } from "./mainPage.types";
 import MiniCalendar from "./mainSrc/MiniCalendar/calendar.container";
 import ProjectList from "./mainSrc/projectList/projectList.container";
-import TeamMember from "../../commons/teamMember/teamMember.container";
 
 export default function MainUI(props: IMainUIProps) {
-  console.log(props.myData?.fetchLoginUser.userId);
+  // console.log(props.myData?.fetchLoginUser.userId);
   return (
     <>
       {!props.myData?.fetchLoginUser?.userId ? (
@@ -23,9 +22,6 @@ export default function MainUI(props: IMainUIProps) {
             </S.Info>
             <S.Info>
               <ProjectList />
-            </S.Info>
-            <S.Info>
-              <TeamMember />
             </S.Info>
           </div>
           <S.Calender>
