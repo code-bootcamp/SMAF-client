@@ -1,6 +1,9 @@
 // import { card } from "../project/01/project01.styles";
 import { useQuery } from "@apollo/client";
-import { useRef, useState } from "react";
+
+import { useRef } from "react";
+import PaymentModal from "../../modal/paymentModal/paymentModal.container";
+
 import { FETCH_LOGIN_USER } from "./userInfoCard01.queris";
 
 import PaymentModal from "../../modal/paymentModal/paymentModal.container";
@@ -10,13 +13,12 @@ import * as S from "./userInfoCard01.styles";
 interface IUserCardProps {
   data?: any;
   onClickMoveToPaymentList: () => void;
+  onClickMoveToMyPage: () => void;
 }
 
 export default function UserInfoCard01(props: IUserCardProps) {
-  const { data } = useQuery(FETCH_LOGIN_USER);
+  // const { data } = useQuery(FETCH_LOGIN_USER);
   const fileRef = useRef<HTMLInputElement>(null);
-
-  console.log("eeeee",data)
 
 
   const onClickUpload = () => {
@@ -26,15 +28,15 @@ export default function UserInfoCard01(props: IUserCardProps) {
   return (
     <S.Wrapper>
       <S.CardTopWrapper>
-        <S.Image src={data?.fetchLoginUser.userImageURL}></S.Image>
-        <S.Name>{data?.fetchLoginUser.userName}</S.Name>
-        <S.Email>{data?.fetchLoginUser.email}</S.Email>
+        <S.Image src={props.data?.fetchLoginUser.userImageURL}></S.Image>
+        <S.Name>{props.data?.fetchLoginUser.userName}</S.Name>
+        <S.Email>{props.data?.fetchLoginUser.email}</S.Email>
       </S.CardTopWrapper>
 
       <S.CardBottomWrapper>
         <S.CardBottomContents>
           <S.Icon src={"images/pen.png"}></S.Icon>
-          <S.Title>마이페이지</S.Title>
+          <S.Title onClick={props.onClickMoveToMyPage}>마이페이지</S.Title>
         </S.CardBottomContents>
         <S.CardBottomContents>
           <S.Icon src={"images/profile.png"}></S.Icon>

@@ -43,6 +43,14 @@ export const FETCH_PROJECT_SCHEDULES_CATEGORY = gql`
   }
 `;
 
+export const FETCH_PROCESS_CATEGORY = gql`
+  query fetchprocessCategory($processCategoryId: String!) {
+    fetchprocessCategory(processCategoryId: $processCategoryId) {
+      processCategoryId
+    }
+  }
+`;
+
 const Img = styled.img`
   margin-bottom: 1.2rem;
 `;
@@ -120,6 +128,12 @@ export default function DropdownSchduels(props: any) {
               processCategoryId: props.categoryId,
             },
           },
+          {
+            query: FETCH_PROCESS_CATEGORY,
+            variables: {
+              processCategoryId: props.categoryId,
+            },
+          },
         ],
       });
     } catch (error) {
@@ -143,6 +157,12 @@ export default function DropdownSchduels(props: any) {
         refetchQueries: [
           {
             query: FETCH_PROJECT_SCHEDULES_CATEGORY,
+            variables: {
+              processCategoryId: props.categoryId,
+            },
+          },
+          {
+            query: FETCH_PROCESS_CATEGORY,
             variables: {
               processCategoryId: props.categoryId,
             },

@@ -1,5 +1,5 @@
 import { Menu, Dropdown, Space } from "antd";
-import { useMutation, gql } from "@apollo/client";
+import { useMutation, gql, useQuery } from "@apollo/client";
 import * as S from "./projectEditDropdown.styles";
 import { useRouter } from "next/router";
 
@@ -26,15 +26,20 @@ export const FETCH_PROJECT = gql`
   query fetchProject($projectId: String!) {
     fetchProject(projectId: $projectId) {
       projectId
+      projectColor
     }
   }
 `;
 
 export default function ProjectEditDropdown(props: any) {
+  const router = useRouter();
   const [updataProject] = useMutation(UPDATE_PROJECT);
   const [deleteProject] = useMutation(DELETE_PROJECT);
-
-  const router = useRouter();
+  const { data: projectData } = useQuery(FETCH_PROJECT, {
+    variables: {
+      projectId: router.query.projectId,
+    },
+  });
 
   const MoveEdit = () => {
     router.push(`./${router.query.projectId}/edit`);
@@ -112,7 +117,6 @@ export default function ProjectEditDropdown(props: any) {
       alert(error);
     }
   };
-  // console.log(props.projectData?.fetchProject.status, "111");/
   const menu = (
     <Menu>
       <Menu.Item onClick={MoveEdit}>프로젝트 수정하기</Menu.Item>
@@ -134,7 +138,7 @@ export default function ProjectEditDropdown(props: any) {
       <a onClick={(e) => e.preventDefault()}>
         <Space>
           <div style={{ width: "1.3rem" }}></div>
-          <S.Setting />
+          <S.Setting color={projectData?.fetchProject.projectColor} />
           {/* <DownOutlined style={{ color: "#E5E5E5" }} /> */}
         </Space>
       </a>

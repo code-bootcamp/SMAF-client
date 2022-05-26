@@ -26,11 +26,12 @@ export default function DetailPlanListColumnHTML(props: any) {
             // onClick={onToggleDropDown}
             src="/detailPage/spread.png"
           ></S.EditCoulumnIcon> */}
-          <DropdownDetail
-            DeleteCategory={props.DeleteCategory}
-            id={props.columnData?.processCategoryId}
-          />
-
+          {props.my?.[0].position === "LEADER" && (
+            <DropdownDetail
+              DeleteCategory={props.DeleteCategory}
+              id={props.columnData?.processCategoryId}
+            />
+          )}
           <S.AddCoulumnIcon
             src="/detailPage/AddColumn.png"
             onClick={onToggleModal}

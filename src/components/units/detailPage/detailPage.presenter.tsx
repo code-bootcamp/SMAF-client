@@ -81,7 +81,7 @@ export default function ProjectDetailPageHTML(
               )}
             </S.FileList>
           </S.LeftWrapper>
-          <S.RightWrapper>
+          <S.RightWrapper color={props.projectData?.fetchProject.projectColor}>
             {props.isLoading && (
               <DragDropContext
                 onDragEnd={props.handleDragEnd}

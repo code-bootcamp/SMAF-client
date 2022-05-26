@@ -9,55 +9,34 @@ export default function ProjectAchievement(props: any) {
       projectId: props.el?.project.projectId,
     },
   });
-  const [allSchedule, setAllSchedule] = useState<number | undefined>(
-    schedulesData?.fetchProjectSchedules.length
-  );
-  const [falesSchedulel, setFalesSchedulel] = useState<number | undefined>();
-  const [result, setResult] = useState<number | undefined>();
+
+  const [result, setResult] = useState(0);
 
   const Persent = async () => {
-    setAllSchedule(schedulesData?.fetchProjectSchedules.length);
-    await new Promise((resolve, reject) => {
-      const persentValues: any = [];
-      schedulesData?.fetchProjectSchedules.forEach((el: any) => {
-        if (el.status === false) {
-          persentValues.push(el);
-        }
-      });
-      setFalesSchedulel(Number(persentValues.length));
-
-      if (allSchedule === 0) {
-        resolve(setResult(0));
-        //   setResult(0);
-      } else if (falesSchedulel === 0 && allSchedule !== 0) {
-        resolve(setResult(100));
-        //   setResult(100);
-      } else if (falesSchedulel !== undefined && allSchedule !== undefined) {
-        resolve(setResult((falesSchedulel / allSchedule) * 100));
-        //   setResult((falesSchedulel / allSchedule) * 100);
+    const allSchedule = schedulesData?.fetchProjectSchedules.length;
+    if (allSchedule === 0) {
+      setResult(0);
+    }
+    const persentValues: any = [];
+    schedulesData?.fetchProjectSchedules.forEach((el: any) => {
+      if (el.status === false) {
+        persentValues.push(el);
       }
     });
+    const falesSchedulel = Number(persentValues.length);
 
-    // await new Promise((resolve, reject) => {
-    //   if (allSchedule === 0) {
-    //     resolve(setResult(0));
-    //   } else if (falesSchedulel === 0 && allSchedule !== 0) {
-    //     resolve(setResult(100));
-    //   } else if (falesSchedulel !== undefined && allSchedule !== undefined) {
-    //     resolve(setResult((falesSchedulel / allSchedule) * 100));
-    //   }
-    // });
+    const result = Math.ceil((falesSchedulel / allSchedule) * 100);
+
+    setResult(result);
   };
 
   useEffect(() => {
-    // setAllSchedule(schedulesData?.fetchProjectSchedules.length);
     Persent();
   }, [schedulesData]);
 
-  console.log(schedulesData, "sData");
-  console.log(allSchedule, "allSchedule");
-  console.log(falesSchedulel, "falesSchedule");
-  console.log(Number(result), "resultPer");
+  // console.log(schedulesData, "sData");
+
+  // console.log(Number(result), "resultPer");
 
   return (
     <ProjectAchievementHTML

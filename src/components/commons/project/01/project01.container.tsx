@@ -8,7 +8,6 @@ import * as S from "./project01.styles";
 interface IUserProject {
   el?: any;
 }
-
 export default function Project01(props: IUserProject) {
 
   const router = useRouter()
@@ -37,7 +36,9 @@ export default function Project01(props: IUserProject) {
         </S.box1>
 
         <S.box2>
-          <ImageCircle el={props.el} />
+
+          <ImageCircle el={props.el} id={props.el?.project.projectId} />
+
           <S.Title01>{props.el?.project.projectName}</S.Title01>
           <S.Title02>{props.el?.project.projectIntro}</S.Title02>
           <S.Date>{getDate(props.el?.project.startDate)}</S.Date>

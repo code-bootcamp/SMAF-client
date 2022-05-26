@@ -10,17 +10,25 @@ import {
 import { useRouter } from "next/router";
 import { UPDATE_SCHEDULE } from "../../commons/dropdown/05.detailSchduelsDropdown/detailSchduelsDropdown";
 import { useRecoilState } from "recoil";
-import { triger } from "../../../commons/store/index";
+import { triger, fetchTriger } from "../../../commons/store/index";
 
 export default function ProjectDetail() {
   const router = useRouter();
+
   const [errorAlertModal, setErrorAlertModal] = useState(false);
   const [modalContents, setModalContents] = useState(false);
-  const [deletedItem, setDeletedItem] = useState({});
+  const [deletedItem, setDeletedItem] = useState({
+    scheduleName: "string",
+    scheduleContents: "string",
+    scheduleDate: "DateTime",
+    status: "boolean",
+  });
+
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [dragItemId, setDragItemId] = useState("");
   const [dataTriger] = useRecoilState(triger);
+  const [, setFetchTriger] = useRecoilState(fetchTriger);
   // const [deleteSchedule] = useMutation(DELETE_SCHEDULE);
   // const [createSchedule] = useMutation(CREATE_SCHEDULE);
   // const [updateCategory] = useMutation(UPDATE_PROCESS_CATEGORY);
@@ -82,11 +90,17 @@ export default function ProjectDetail() {
     setDeletedItem(restoreItemArray[0]);
   };
 
+  const Triger = () => {
+    setFetchTriger(true);
+  };
   const handleDragEnd = async (result: any) => {
     // ===========================================================================
-    // console.log(result);
-    console.log(deletedItem, "아이템");
+    // console.log(deletedItem, "아이템");
+    // setFetchTriger(true);
     if (!result.destination || result.destination === null) return;
+    await new Promise((resolve, reject) => {
+      resolve(Triger());
+    });
     try {
       await updataSchedule({
         variables: {
@@ -117,7 +131,10 @@ export default function ProjectDetail() {
     } catch (error) {
       setModalContents(error.message);
       setErrorAlertModal(true);
+    } finally {
+      setFetchTriger(false);
     }
+
     // ===========================================================================
     // console.log(result, "함수 초기 결과값");
     // console.log(itemIndex, "targetIndex");

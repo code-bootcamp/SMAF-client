@@ -73,7 +73,6 @@ export default function AddMemberModal(props: AddMemberModalProps) {
     }
     props.onToggleModal();
   };
-
   return (
     // <AddMemberModalHTML SearchUser={SearchUser} aaa={[getUserInfo, { data }]} />
     <>
