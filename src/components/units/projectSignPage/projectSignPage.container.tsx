@@ -66,6 +66,7 @@ export default function ProjectSign(props: any) {
   // 얼럿모달
   const [alertModal, setAlertModal] = useState(false);
   const [modalContents, setModalContents] = useState(false);
+  const [errorAlertModal, setErrorModalContents] = useState(false);
 
   // 이미지 업로드 state
   const [urls, setUrls] = useState("");
@@ -81,7 +82,7 @@ export default function ProjectSign(props: any) {
   const [address, setAddress] = useState("");
 
   const [ submit, setSubmit ] = useState()
-  const [ update, setUpdate ] = useState()
+  const [ update, setUpdate ] = useState<string>()
 
   const [ go, setGo ] = useState(false)
 
@@ -95,6 +96,11 @@ export default function ProjectSign(props: any) {
   const onClickExitUpdateModal = () => {
     setAlertModal(false);
     router.push(`/project/${update}`);
+  };
+
+  // 에러 모달 라우터
+  const onClickExitErrorModal = () => {
+    setErrorModalContents(false);
   };
 
   // 모달 주소입력
@@ -168,10 +174,9 @@ export default function ProjectSign(props: any) {
         setSubmit(result.data.createProject.projectId)
 
       } catch (error) {
-        if (error instanceof Error)
-          Modal.error({
-            content: error.message,
-          });
+          setModalContents(error.message);
+          setAlertModal(true);
+          setGo(false)
       }
     }
   };
@@ -269,6 +274,7 @@ export default function ProjectSign(props: any) {
       alertModal={alertModal}
       modalContents={modalContents}
       go={go}
+      onClickExitErrorModal={onClickExitErrorModal}
     />
   );
 }
