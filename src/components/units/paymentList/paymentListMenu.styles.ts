@@ -2,12 +2,12 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   width: 128rem;
-  padding-top: 6rem;
-  padding-bottom: 12rem;
-  /* border: 1px solid red; */
+  /* padding-top: 6rem; */
+  /* padding-bottom: 12rem;
+  border: 1px solid red;  */
   @media ${breakPoints.mobile} {
   }
 `;
@@ -117,7 +117,7 @@ export const TableMenuDate = styled.div`
 
 export const PaymentObjectList = styled.div`
   width: 97rem;
-  height: 48rem;
+  height: 47rem;
   border-radius: 0 0 16px 16px;
   background-color: white;
   span {
@@ -129,5 +129,5 @@ export const PaymentObjectList = styled.div`
 `;
 
 export const Page = styled.div`
-margin-left: 25rem;
+  margin-left: 25rem;
 `;

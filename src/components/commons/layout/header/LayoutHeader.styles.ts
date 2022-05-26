@@ -37,6 +37,7 @@ export const LogoWrapper = styled.div`
 export const Icon = styled.img`
   width: 3.6rem;
   height: 3.6rem;
+  cursor: pointer;
   @media ${breakPoints.mobile} {
     width: 2.4rem;
     height: 2.4rem;
@@ -101,9 +102,9 @@ export const OptionWrapper = styled.div`
 `;
 
 export const Alarm = styled.img`
-  width: 3rem;
-  height: 3rem;
-  margin-right: 3.4rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-right: 2.5rem;
   /* margin-right: 14%; */
   /* border: 1px solid yellow; */
   @media ${breakPoints.mobile} {
@@ -113,9 +114,9 @@ export const Alarm = styled.img`
 `;
 
 export const Qna = styled.img`
-  width: 3.325rem;
-  height: 3.325rem;
-  /* margin-left: 14%; */
+  width: 4rem;
+  height: 4rem;
+  margin-right: 2rem;
   /* border: 1px solid yellow; */
   margin-right: 2.73rem;
   @media ${breakPoints.mobile} {
@@ -132,6 +133,7 @@ export const Signup = styled.div`
   letter-spacing: 0.02em;
   color: #ffffff;
   margin-left: 1.2rem;
+  cursor: pointer;
 
   @media ${breakPoints.mobile} {
     display: none;

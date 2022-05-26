@@ -80,6 +80,10 @@ export const Title01 = styled.div`
   letter-spacing: -0.02em;
   margin-top: 18px;
   color: #111111;
+  :hover {
+    font-size: 2.2rem;
+    transition: all 0.5s;
+  }
 `;
 
 // 프로젝트요약

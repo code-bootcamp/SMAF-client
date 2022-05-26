@@ -1,3 +1,4 @@
+// import { OrderedListOutlined } from "@ant-design/icons";
 import { getDate } from "../../../../commons/utils";
 import ImageCircle from "../../images/01/image01.container";
 // import ProjectUI from "./project01.presenter";
@@ -8,7 +9,6 @@ interface IUserProject {
 }
 
 export default function Project01(props: IUserProject) {
-  console.log("이미지나와라", props.el?.project.projectImageURL);
   return (
     <S.card>
       <S.Container>
@@ -27,7 +27,7 @@ export default function Project01(props: IUserProject) {
         </S.box1>
 
         <S.box2>
-          <ImageCircle />
+          <ImageCircle el={props.el} id={props.el?.project.projectId} />
           <S.Title01>{props.el?.project.projectName}</S.Title01>
           <S.Title02>{props.el?.project.projectIntro}</S.Title02>
           <S.Date>{getDate(props.el?.project.startDate)}</S.Date>
