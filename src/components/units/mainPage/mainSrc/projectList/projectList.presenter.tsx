@@ -7,7 +7,7 @@ export default function ProjectListUI(props: any) {
     <S.Wrapper>
       <S.TitleBox>
         <S.Title>Project</S.Title>
-        <S.Add>+</S.Add>
+        <S.Add onClick={props.onclickToProjectNew}>+</S.Add>
       </S.TitleBox>
       {props.data?.fetchParticipatingProject.map((el: any) => (
         <ProjectAchievement key={uuidv4()} el={el} />

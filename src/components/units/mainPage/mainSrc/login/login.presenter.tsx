@@ -1,4 +1,5 @@
 import Alert from "../../../../commons/modal/alert/alert";
+import ErrorAlert from "../../../../commons/modal/errorModal/alert";
 import * as S from "./login.styles";
 
 export default function LoginUI(props) {
@@ -9,6 +10,13 @@ export default function LoginUI(props) {
                     onClick={props.onClickAlertModal}
                     onClickExit={props.onClickExitAlertModal}
                     contents={props.modalContents}
+                />
+            )}
+            {props.errorAlertModal && (
+                <ErrorAlert
+                onClick={props.onClickAlertModal}
+                onClickExit={props.onClickExitErrorModal}
+                contents={props.modalContents}
                 />
             )}
             <S.Wrapper>

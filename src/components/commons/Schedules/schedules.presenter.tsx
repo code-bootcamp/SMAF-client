@@ -17,7 +17,7 @@ export default function SchedulesUI(props){
                 <S.AddBtn onClick={props.onClickToProjectSignUp}>+ 프로젝트 생성</S.AddBtn>
             </S.DateBox>
             <S.Wrapper>
-            <Todo />
+                <Todo />
             </S.Wrapper>
         </S.Container>
     )

@@ -1,8 +1,10 @@
 // import { card } from "../project/01/project01.styles";
 import { useQuery } from "@apollo/client";
 import { useRef, useState } from "react";
-import PaymentModal from "../../modal/paymentModal/paymentModal.container";
 import { FETCH_LOGIN_USER } from "./userInfoCard01.queris";
+
+import PaymentModal from "../../modal/paymentModal/paymentModal.container";
+
 import * as S from "./userInfoCard01.styles";
 
 interface IUserCardProps {
@@ -13,6 +15,9 @@ interface IUserCardProps {
 export default function UserInfoCard01(props: IUserCardProps) {
   const { data } = useQuery(FETCH_LOGIN_USER);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  console.log("eeeee",data)
+
 
   const onClickUpload = () => {
     fileRef.current?.click();

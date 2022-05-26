@@ -10,6 +10,7 @@ height: 66.4rem;
 background-color: white;
 border-radius: 1.6rem;
 padding: 1.5rem;
+overflow: scroll;
 `
 export const DateBox=styled.div`
 display: flex;

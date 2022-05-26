@@ -6,6 +6,8 @@ export default function Todo(){
 
     const { data } = useQuery(FETCH_PARTICIPATING_PROJECTS)
 
+
+
     return(
         <TodoUI 
         data={data}/>
