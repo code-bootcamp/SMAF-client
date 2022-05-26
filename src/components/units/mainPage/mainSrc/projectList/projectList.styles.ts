@@ -53,24 +53,24 @@ display: flex;
 export const RateBox = styled.div`
 
 `
-export const Rate = styled.div`
-text-align: end;
-padding: 0 1rem 0.5rem 0;
-color: #767676;
-font-size: 1.2rem;
 
-`
+export const Rate = styled.div`
+  text-align: end;
+  padding: 0 1rem 0.5rem 0;
+  color: #767676;
+  font-size: 1.2rem;
+`;
 export const RateBackground = styled.div`
-position: absolute;
-width: 29rem;
-height: 1.2rem;
-background-color: #EDEDED;
-border-radius: 0.6rem;
-`
+  position: absolute;
+  width: 29rem;
+  height: 1.2rem;
+  background-color: #ededed;
+  border-radius: 0.6rem;
+`;
 export const RateBar = styled.div`
-position: relative;
-height: 1.2rem;
-width: ${(props) => (props.rate)}%;
-background-color: #FF8B8B;
-border-radius: 0.6rem;
-`
+  position: relative;
+  height: 1.2rem;
+  width: ${(props: any) => props.rate}%;
+  background-color: #ff8b8b;
+  border-radius: 0.6rem;
+`;
