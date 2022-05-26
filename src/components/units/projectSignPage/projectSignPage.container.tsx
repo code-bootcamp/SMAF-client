@@ -15,8 +15,8 @@ import {
 import { useRecoilState } from "recoil";
 import { fromValues, toValues } from "../../../commons/store";
 import { useRouter } from "next/router";
-import { Modal } from "antd";
 import { checkValidationImage } from "../../commons/uploads/upload1/Upload01.validation";
+import { Modal } from "antd";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -63,6 +63,11 @@ export default function ProjectSign(props: any) {
     mode: "onChange",
   });
 
+  // 얼럿모달
+  const [alertModal, setAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState(false);
+  const [errorAlertModal, setErrorModalContents] = useState(false);
+
   // 이미지 업로드 state
   const [urls, setUrls] = useState("");
 
@@ -75,7 +80,28 @@ export default function ProjectSign(props: any) {
 
   // 주소 state
   const [address, setAddress] = useState("");
-  // const [ addressDetail, setAddressDetail] = useState("")
+
+  const [ submit, setSubmit ] = useState()
+  const [ update, setUpdate ] = useState<string>()
+
+  const [ go, setGo ] = useState(false)
+
+  // 등록하기 모달 라우터
+  const onClickExitSubmitModal = () => {
+    setAlertModal(false);
+    router.push(`/project/${submit}`);
+  };
+
+  // 수정하기 모달 라우터
+  const onClickExitUpdateModal = () => {
+    setAlertModal(false);
+    router.push(`/project/${update}`);
+  };
+
+  // 에러 모달 라우터
+  const onClickExitErrorModal = () => {
+    setErrorModalContents(false);
+  };
 
   // 모달 주소입력
   const [isOpen, setIsOpen] = useState(false);
@@ -142,13 +168,15 @@ export default function ProjectSign(props: any) {
             status: true,
           },
         });
-        alert("성공");
-        router.push(`/project/${result.data.createProject.projectId}`);
+        setModalContents("프로젝트 등록이 완료되었습니다!");
+        setAlertModal(true);
+        setGo(true)
+        setSubmit(result.data.createProject.projectId)
+
       } catch (error) {
-        if (error instanceof Error)
-          Modal.error({
-            content: error.message,
-          });
+          setModalContents(error.message);
+          setAlertModal(true);
+          setGo(false)
       }
     }
   };
@@ -190,10 +218,11 @@ export default function ProjectSign(props: any) {
           status: true,
         },
       });
-      Modal.success({
-        content: "수정이 완료되었습니다!",
-      });
-      router.push(`/project/${router.query.projectId}`);
+      setModalContents("프로젝트 수정이 완료되었습니다!");
+      setAlertModal(true);
+      setGo(false)
+      setUpdate(router.query.projectId)
+      // router.push(`/project/${router.query.projectId}`);
     } catch (error) {
       if (error instanceof Error)
         Modal.error({
@@ -240,6 +269,12 @@ export default function ProjectSign(props: any) {
       isEdit={props.isEdit}
       onClickUpdate={onClickUpdate}
       data={data}
+      onClickExitSubmitModal={onClickExitSubmitModal}
+      onClickExitUpdateModal={onClickExitUpdateModal}
+      alertModal={alertModal}
+      modalContents={modalContents}
+      go={go}
+      onClickExitErrorModal={onClickExitErrorModal}
     />
   );
 }

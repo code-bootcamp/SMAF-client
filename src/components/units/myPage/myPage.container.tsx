@@ -17,7 +17,6 @@ export default function MyPage() {
   // console.log("🍏마이페이지에서 진행중인프로젝트", activeData);
   // console.log("🍏마이페이지에서 지난프로젝트", inActiveData);
   const [visible, setVisible] = useState(true);
-
   // const cache = new InMemoryCache({
   //   typePolicies: {
   //     Query: {
@@ -29,8 +28,12 @@ export default function MyPage() {
   //     },
   //   },
   // });
-
   // console.log(cache, "얍얍얍");
+  const [show, setShow] = useState(false);
+
+  // console.log("진행중인프로젝트", activeData);
+  // console.log("지난프로젝트", inActiveData);
+
 
   // 프로젝트 등록하기
   const onClickMoveToNewProject = () => {
@@ -53,16 +56,39 @@ export default function MyPage() {
       router.push(`/project/${event.target.id}`);
   };
 
+  // const onClickMoveToPaymentList = () => {
+  //   // router.push("mypage/paymentlist");
+  //   setShow(true);
+  // };
+
+  // 프로젝트 상세로 이동
+  // const onClickMoveToDetail = () => {
+  //   setShow(true);
+  // };
+
+  // const [visible, setVisible] = useState(true);
+  // const onPress = () => {
+  //   setVisible(!visible);
+  // };
+  // const onPress02 = () => {
+  //   setVisible(visible);
+  // };
+
   return (
     <MyPageUI
       inActiveData={inActiveData}
       activeData={activeData}
       userData={userData}
       onClickMoveToNewProject={onClickMoveToNewProject}
+
       onClickMoveToPaymentList={onClickMoveToPaymentList}
       onClickMoveToMyPage={onClickMoveToMyPage}
       onClickMoveToProjectDetail={onClickMoveToProjectDetail}
       visible={visible}
+
+      // onPress={onPress}
+      // onPress02={onPress02}
+      // visible={visible}
     />
   );
 }

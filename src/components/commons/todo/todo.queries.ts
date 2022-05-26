@@ -1,21 +1,17 @@
 import { gql } from "@apollo/client";
 
-// 프로젝트 조회
-export const FETCH_PARTICIPATING_PROJECTS = gql`
-  query fetchParticipatingProject {
-    fetchParticipatingProject {
-     projectParticipantId
-     position
-     project {
+export const FETCH_PROJECT_SCHEDULES = gql`
+  query fetchProjectSchedules($projectId: String!) {
+    fetchProjectSchedules(projectId: $projectId) {
+      scheduleId
+      scheduleName
+      scheduleContents
+      scheduleDate
+      createAt
+      project {
         projectId
-        projectName
-        projectIntro
-        projectDetailIntro
-        projectImageURL
-        startDate
-        endDate
         projectColor
-     }
+      }
     }
   }
 `;

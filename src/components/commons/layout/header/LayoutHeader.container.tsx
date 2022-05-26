@@ -1,18 +1,17 @@
 import HeaderUI from "./LayoutHeader.presenter";
 import { useRouter } from "next/router";
-import { gql, useMutation, useQuery } from "@apollo/client";
-
-const LOGOUT = gql`
-  mutation logout {
-    logout
-  }
-`;
+import { gql, useQuery } from "@apollo/client";
 
 const FETCH_LOGIN_USER = gql`
   query fetchLoginUser {
     fetchLoginUser {
+      userId
       userName
+      email
+      phone
+      admin
       userImageURL
+      projectTicket
     }
   }
 `;
@@ -25,5 +24,20 @@ export default function HeaderContainer(props: any) {
     router.push(`/`);
   };
 
-  return <HeaderUI onClickMain={onClickMain} data={data} />;
+  const onClickQna = () => {
+    router.push(`/QuestionAnswer`);
+  };
+
+  const onClickSignUp = () => {
+    router.push(`/signup`);
+  };
+
+  return (
+    <HeaderUI
+      onClickMain={onClickMain}
+      onClickQna={onClickQna}
+      onClickSignUp={onClickSignUp}
+      data={data}
+    />
+  );
 }

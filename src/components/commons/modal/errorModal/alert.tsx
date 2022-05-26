@@ -3,7 +3,7 @@ import * as S from "./alert.styles";
 import { Modal } from "antd";
 import { useState } from "react";
 
-export default function Alert(props: any) {
+export default function ErrorAlert(props: any) {
     const [isOpen, setIsOpen] = useState(false);
     const onToggleModal = () => {
         setIsOpen((prev) => !prev);
@@ -30,7 +30,7 @@ export default function Alert(props: any) {
             >
                 <S.PointModal>
                     <S.Close onClick={onToggleModal}>X</S.Close>
-                    <S.Logo> SMAF </S.Logo>
+                    <S.Logo src="/images/remove.png"/>
                     <S.ModalText>{props.contents ? props.contents : ""}</S.ModalText>
                     <S.ConfirmBtn onClick={props.onClickExit}>확인</S.ConfirmBtn>
                 </S.PointModal>

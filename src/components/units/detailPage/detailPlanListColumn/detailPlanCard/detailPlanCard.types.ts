@@ -3,4 +3,5 @@ export interface DetailPlanCardHTMLProps {
   userData: any;
   myData: any;
   dragItemId: string;
+  participatingData: any;
 }

@@ -5,6 +5,8 @@ import { Modal } from 'antd';
 import DaumPostcode from 'react-daum-postcode';
 import ColorPick from "./colorPick/colorPick.container";
 import { useEffect } from "react";
+import Alert from '../../commons/modal/alert/alert'
+import ErrorAlert from "../../commons/modal/errorModal/alert";
 
 export default function ProjectSignPageUI(props){
 
@@ -15,6 +17,21 @@ export default function ProjectSignPageUI(props){
 
 
   return (
+    <>
+    {props.alertModal && (
+        <Alert
+          onClick={props.onClickAlertModal}
+          onClickExit={props.go ? props.onClickExitSubmitModal : props.onClickExitUpdateModal}
+          contents={props.modalContents}
+        />
+      )}
+      {props.alertModal && (
+        <ErrorAlert
+          onClick={props.onClickAlertModal}
+          onClickExit={props.onClickExitErrorModal}
+          contents={props.modalContents}
+        />
+      )}
       <S.Wrapper>
         <form onSubmit={props.handleSubmit(props.isEdit ? props.onClickUpdate : props.onClickSubmit)} >
         <S.Title>{props.isEdit ? "프로젝트 수정하기" : "새로운 프로젝트 만들기"}</S.Title>
@@ -123,8 +140,7 @@ export default function ProjectSignPageUI(props){
                 <S.Input id="addressDetail" type="text" 
                          placeholder="상세주소를 입력해주세요."
                          {...props.register("detailAddress")}
-                        //  defaultValue={props.addressDetail || props.data?.fetchProject.address?.detailAddress}
-                         />
+                        />
               </S.InputBox>
             </S.Block>
             <S.MapBox>
@@ -139,7 +155,8 @@ export default function ProjectSignPageUI(props){
           </S.Btn>
           </form>
       </S.Wrapper>
-  );
+      </>
+  );  
 }
 
 

@@ -2,86 +2,67 @@ import LoginUI from "./login.presenter";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useApolloClient, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "./login.queries";
 import { useRecoilState } from "recoil";
-import { accessTokenState, userInfoState } from "../../../../../commons/store";
+import { accessTokenState } from "../../../../../commons/store";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAccessToken } from "../../../../../commons/libraries/getAccessToken.ts/getAccessToken";
-
+import { useMoveToPage } from "../../../../commons/hooks/useMoveToPage";
 
 const schema = yup
-  .object({
-    email: yup
-      .string()
-      .email("이메일 아이디를 @까지 정확하게 입력해주세요 .")
-      .required("이메일은 필수 입력 !!"),
-    password: yup
-      .string()
-      .max(16, "영문+숫자조합 8~16자리의 비밀번호 입력해주세요.")
-      .required("비밀번호는 필수입력 사항입니다."),
-  })
-  .required();
+    .object({
+        email: yup
+            .string()
+            .email("이메일 아이디를 @까지 정확하게 입력해주세요 .")
+            .required("이메일은 필수 입력 !!"),
+        password: yup
+            .string()
+            .max(16, "영문+숫자조합 8~16자리의 비밀번호 입력해주세요.")
+            .required("비밀번호는 필수입력 사항입니다."),
+    })
+    .required();
 
 interface IFormValues {
-  email?: string;
-  password?: string;
+    email?: string;
+    password?: string;
 }
 
 export default function Login() {
-  const router = useRouter();
-  //   const moveToPage = useMoveToPage();
-  const [, setAccessToken] = useRecoilState(accessTokenState);
-  // const [, setUserInfo] = useRecoilState(userInfoState);
-  const [login] = useMutation(LOGIN_USER);
-  // const client = useApolloClient();
-  const { register, handleSubmit, formState } = useForm({
-    resolver: yupResolver(schema),
-    mode: "onChange",
-  });
-
-  // const responseGoogle = (response) => {
-  //     console.log(response);
-  //     console.log(response.profileObj);
-  // };
-
-  const onClickLogin = async (data: IFormValues) => {
-    console.log("login", data);
-    const result = await login({
-      variables: {
-        email: data.email,
-        password: data.password,
-      },
+    const router = useRouter();
+    const [, setAccessToken] = useRecoilState(accessTokenState);
+    const [login] = useMutation(LOGIN_USER);
+    const { register, handleSubmit, formState } = useForm({
+        resolver: yupResolver(schema),
+        mode: "onChange",
     });
-    console.log(result, "result");
-    const accessToken = result.data.login;
-    console.log("accessToken", "로그인엑세스토큰");
-    setAccessToken(accessToken);
-    Cookies.set("accessToken", accessToken);
+    const { MoveToPage } = useMoveToPage();
+    const [alertModal, setAlertModal] = useState(false);
+    const [modalContents, setModalContents] = useState(false);
 
-    // const resultUserInfo = await client.query({
-    //     query: FETCH_LOGIN_USER,
-    //     context: {
-    //         headers: {
-    //             Authorization: `Bearer ${accessToken}`,
-    //         },
-    //     },
-    // });
+    const onClickExitAlertModal = () => {
+        setAlertModal(false);
+    };
 
-    // const userInfo = resultUserInfo.data.fetchLoginUser;
-    // setUserInfo(userInfo);
-    // localStorage.setItem("accessToken", accessToken);
-    // console.log(accessToken);
-    // console.log(userInfo);
-    router.push("/");
-  };
-
-  const onClickGoogle = () => {
-    router.push(`https://backend.smaf.shop/google`);
-  };
-
+    const onClickLogin = async (data: IFormValues) => {
+        console.log("login", data);
+        const result = await login({
+            variables: {
+                email: data.email,
+                password: data.password,
+            },
+        });
+        console.log(result, "result");
+        const accessToken = result.data.login;
+        console.log("accessToken", "로그인엑세스토큰");
+        setAccessToken(accessToken);
+        Cookies.set("accessToken", accessToken);
+        setModalContents("로그인완료");
+        setAlertModal(true);
+        router.push("/");
+    };
 
     const clickMeGoogle = () => {
         document.location.href = "https://backend.smaf.shop/google";
@@ -122,7 +103,10 @@ export default function Login() {
             clickMeGoogle={clickMeGoogle}
             clickMeNaver={clickMeNaver}
             clickMeKakao={clickMeKakao}
+            MoveToPage={MoveToPage}
+            onClickExitAlertModal={onClickExitAlertModal}
+            alertModal={alertModal}
+            modalContents={modalContents}
         />
     );
-
 }

@@ -1,3 +1,4 @@
+
 import { gql } from "@apollo/client";
 export const FETCH_LOGIN_USER = gql`
   query fetchLoginUser {
@@ -7,6 +8,9 @@ export const FETCH_LOGIN_USER = gql`
       email
       phone
       admin
+      userImageURL
+      projectTicket
     }
   }
 `;
+
