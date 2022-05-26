@@ -1,8 +1,4 @@
 import { atom } from "recoil";
-export const aaa = atom({
-  key: "aaa",
-  default: true,
-});
 
 export const accessTokenState = atom({
   key: "accessTokenState",
@@ -62,6 +58,11 @@ export const toValues = atom({
 
 export const triger = atom({
   key: "triger",
+  default: false,
+});
+
+export const fetchTriger = atom({
+  key: "fetchTriger",
   default: false,
 });
 

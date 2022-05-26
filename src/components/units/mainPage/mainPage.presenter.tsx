@@ -9,25 +9,29 @@ export default function MainUI(props: IMainUIProps) {
   // console.log(props.myData?.fetchLoginUser.userId);
   return (
     <>
-      {!props.myData?.fetchLoginUser?.userId ? (
-        <S.Wrapper>
-          <Schedules />
-          <Login />
-        </S.Wrapper>
-      ) : (
-        <S.Wrapper>
-          <div>
-            <S.Info>
-              <MiniCalendar />
-            </S.Info>
-            <S.Info>
-              <ProjectList />
-            </S.Info>
-          </div>
-          <S.Calender>
-            <Schedules />
-          </S.Calender>
-        </S.Wrapper>
+      {props.myData && (
+        <>
+          {!props.myData ? (
+            <S.Wrapper>
+              <Schedules />
+              <Login />
+            </S.Wrapper>
+          ) : (
+            <S.Wrapper>
+              <div>
+                <S.Info>
+                  <MiniCalendar />
+                </S.Info>
+                <S.Info>
+                  <ProjectList />
+                </S.Info>
+              </div>
+              <S.Calender>
+                <Schedules />
+              </S.Calender>
+            </S.Wrapper>
+          )}
+        </>
       )}
     </>
   );

@@ -17,7 +17,20 @@ export const FETCH_LOGIN_USER = gql`
       email
       phone
       projectTicket
+      userImageURL
       admin
+    }
+  }
+`;
+
+export const FETCH_PARTICIPATING_USER = gql`
+  query fetchParticipatingUser($projectId: String!) {
+    fetchParticipatingUser(projectId: $projectId) {
+      projectParticipantId
+      position
+      user {
+        userId
+      }
     }
   }
 `;
