@@ -6,6 +6,7 @@ import DaumPostcode from 'react-daum-postcode';
 import ColorPick from "./colorPick/colorPick.container";
 import { useEffect } from "react";
 import Alert from '../../commons/modal/alert/alert'
+import ErrorAlert from "../../commons/modal/errorModal/alert";
 
 export default function ProjectSignPageUI(props){
 
@@ -21,6 +22,13 @@ export default function ProjectSignPageUI(props){
         <Alert
           onClick={props.onClickAlertModal}
           onClickExit={props.go ? props.onClickExitSubmitModal : props.onClickExitUpdateModal}
+          contents={props.modalContents}
+        />
+      )}
+      {props.alertModal && (
+        <ErrorAlert
+          onClick={props.onClickAlertModal}
+          onClickExit={props.onClickExitErrorModal}
           contents={props.modalContents}
         />
       )}
