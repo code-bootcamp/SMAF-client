@@ -5,4 +5,5 @@ export interface IMyPageUIProps {
   onClickMoveToNewProject: () => void;
   onClickMoveToProject: () => void;
   onClickMoveToPaymentList: () => void;
+  onClickMoveToDetail: (event: any) => void;
 }
