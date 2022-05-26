@@ -25,6 +25,7 @@ export const FETCH_ACTIVE_PROJECT = gql`
         userName
       }
       project {
+        projectId
         projectName
         projectIntro
         projectDetailIntro

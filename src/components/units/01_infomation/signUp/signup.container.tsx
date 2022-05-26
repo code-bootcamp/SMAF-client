@@ -80,6 +80,7 @@ export default function SignUpContainer(props: any) {
 
   const onClickExitAlertModal = () => {
     setAlertModal(false);
+    router.push("/");
   };
 
   const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
@@ -163,7 +164,7 @@ export default function SignUpContainer(props: any) {
       setAlertModal(true);
       console.log("완료");
 
-      router.push("/");
+      // router.push("/");
     } catch (error) {
       message.error(error.message);
     }
