@@ -27,8 +27,15 @@ height: 2rem;
 export const Title = styled.div`
 font-size: 1.8rem;
 font-weight: 700;
+
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 `;
 export const Detail = styled.div`
 font-size: 1.6rem;
 font-weight: 400;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 `;
