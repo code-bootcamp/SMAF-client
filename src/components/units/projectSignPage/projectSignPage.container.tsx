@@ -67,7 +67,7 @@ export default function ProjectSign(props: any) {
 
   // 얼럿모달
   const [alertModal, setAlertModal] = useState(false);
-  const [modalContents, setModalContents] = useState(false);
+  const [modalContents, setModalContents] = useState("");
   const [errorAlertModal, setErrorAlertModal] = useState(false);
   const [go, setGo] = useState(false);
 
@@ -85,7 +85,7 @@ export default function ProjectSign(props: any) {
   const [address, setAddress] = useState("");
 
   const [submit, setSubmit] = useState();
-  const [update, setUpdate] = useState<string>();
+  const [update, setUpdate] = useState<string | string[] | undefined>();
 
   // 등록하기 모달 라우터
   const onClickExitSubmitModal = () => {
@@ -173,7 +173,7 @@ export default function ProjectSign(props: any) {
         setAlertModal(true);
         setGo(true);
         setSubmit(result.data.createProject.projectId);
-      } catch (error) {
+      } catch (error: any) {
         setModalContents(error.message);
         setErrorAlertModal(true);
       }
@@ -207,7 +207,7 @@ export default function ProjectSign(props: any) {
       setGo(false);
       setUpdate(router.query.projectId);
       // router.push(`/project/${router.query.projectId}`);
-    } catch (error) {
+    } catch (error: any) {
       setModalContents(error.message);
       setErrorAlertModal(true);
     }

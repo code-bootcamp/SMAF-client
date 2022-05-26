@@ -1,27 +1,26 @@
 // 페이지네이션
-import * as S from './pagination.style'
-import { useEffect, useState } from 'react'
-import { useRecoilState } from 'recoil';
-import { indexNum } from '../../../../commons/store';
+import * as S from "./pagination.style";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { indexNum } from "../../../../commons/store";
 
-
-export default function Pagination(props) {
+export default function Pagination(props: any) {
   const [startPage, setStartPage] = useState(1);
-  const [current, setCurrent] = useState();
-  const [idNum, setIdNum]= useState(0)
-  const [index, setIndex]= useRecoilState(indexNum)
+  const [current, setCurrent] = useState<any>();
+  const [idNum, setIdNum] = useState(0);
+  const [index, setIndex] = useRecoilState(indexNum);
 
-  useEffect(()=>{
-    setCurrent(1)
-    setIdNum(1)
-  },[])
- 
-  const onClickPage = (event) => {
+  useEffect(() => {
+    setCurrent(1);
+    setIdNum(1);
+  }, []);
+
+  const onClickPage = (event: any) => {
     props.refetch({ page: Number(event.target.id) });
     setCurrent(Number(event.target.id));
-    setIdNum(event.target.id)
-  };  
-  setIndex(5 * (idNum -1))
+    setIdNum(event.target.id);
+  };
+  setIndex(5 * (idNum - 1));
 
   const onClickPrevPage = () => {
     if (startPage === 1) {
@@ -40,11 +39,12 @@ export default function Pagination(props) {
     setCurrent(Number(startPage + 5));
   };
 
- 
   return (
     <S.Wrapper>
-      <S.Pre onClick={onClickPrevPage} 
-      style={{ color: startPage === 1 ? "lightgray" : "black"}}>    
+      <S.Pre
+        onClick={onClickPrevPage}
+        style={{ color: startPage === 1 ? "lightgray" : "black" }}
+      >
         ◀
       </S.Pre>
 
@@ -58,7 +58,7 @@ export default function Pagination(props) {
               current={startPage + index === current}
               style={{
                 color: current === startPage + index ? "#111111" : "#999999",
-                fontWeight: current === startPage + index ? "700" : "400"
+                fontWeight: current === startPage + index ? "700" : "400",
               }}
             >
               {startPage + index}
@@ -67,7 +67,10 @@ export default function Pagination(props) {
       )}
       <S.Next
         onClick={onClickNextPage}
-        style={{ color: startPage + 5 > props.lastPage ? "lightgray" : "black"}}>
+        style={{
+          color: startPage + 5 > props.lastPage ? "lightgray" : "black",
+        }}
+      >
         ▶
       </S.Next>
     </S.Wrapper>

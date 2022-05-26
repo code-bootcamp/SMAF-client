@@ -1,17 +1,17 @@
 import ProjectDetailPageHTML from "./detailPage.presenter";
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import {
-    FETCH_PROJECT,
-    FETCH_PROCESS_CATEGORIES,
-    FETCH_PROJECT_SCHEDULES_PROJECTID,
-    FETCH_PROJECT_SCHEDULES_CATEGORY,
-    PROJECT_FILE_UPLOAD,
+  FETCH_PROJECT,
+  FETCH_PROCESS_CATEGORIES,
+  FETCH_PROJECT_SCHEDULES_PROJECTID,
+  FETCH_PROJECT_SCHEDULES_CATEGORY,
+  // PROJECT_FILE_UPLOAD,
 } from "./detailPage.querys";
 import { useRouter } from "next/router";
 import { UPDATE_SCHEDULE } from "../../commons/dropdown/05.detailSchduelsDropdown/detailSchduelsDropdown";
 import { useRecoilState } from "recoil";
-import { checkValidationImage } from "../../commons/uploads/upload1/Upload01.validation";
+// import { checkValidationImage } from "../../commons/uploads/upload1/Upload01.validation";
 import { triger, fetchTriger } from "../../../commons/store/index";
 
 export default function ProjectDetail() {
@@ -62,47 +62,46 @@ export default function ProjectDetail() {
       },
     }
   );
-    useEffect(() => {
-        refetch();
-    }, [dataTriger]);
+  useEffect(() => {
+    refetch();
+  }, [dataTriger]);
 
-    useEffect(() => {
-        setIsLoading(true);
-    }, []);
+  useEffect(() => {
+    setIsLoading(true);
+  }, []);
 
-    const OpenFileList = () => {
-        if (isOpen) {
-            setIsOpen(false);
-        } else {
-            setIsOpen(true);
-        }
-    };
+  const OpenFileList = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+    }
+  };
 
-    const handleDragStart = async (initial: any) => {
-        // console.log(initial, "이니셜");
-        const restoreItemArray: any[] = [];
-        // eslint-disable-next-line array-callback-return
-        schedulesData?.fetchProjectSchedules.filter((el: any) => {
-            if (el.scheduleId === initial?.draggableId) {
-                restoreItemArray.push(el);
-                setDragItemId(el.scheduleId);
-            }
-        });
-        setDeletedItem(restoreItemArray[0]);
-    };
+  const handleDragStart = async (initial: any) => {
+    // console.log(initial, "이니셜");
+    const restoreItemArray: any[] = [];
+    // eslint-disable-next-line array-callback-return
+    schedulesData?.fetchProjectSchedules.filter((el: any) => {
+      if (el.scheduleId === initial?.draggableId) {
+        restoreItemArray.push(el);
+        setDragItemId(el.scheduleId);
+      }
+    });
+    setDeletedItem(restoreItemArray[0]);
+  };
 
+  //     const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
+  //         const file = checkValidationImage(event.target.files?.[0]);
+  //         if (!file) return;
 
-//     const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
-//         const file = checkValidationImage(event.target.files?.[0]);
-//         if (!file) return;
-
-//         try {
-//             const result = await projectFileUpload({ variables: { file } });
-//             setUrls(result.data.projectImageUpload);
-//         } catch (error: any) {
-//             Modal.error({ content: error.message });
-//         }
-//     };
+  //         try {
+  //             const result = await projectFileUpload({ variables: { file } });
+  //             setUrls(result.data.projectImageUpload);
+  //         } catch (error: any) {
+  //             Modal.error({ content: error.message });
+  //         }
+  //     };
 
   const Triger = () => {
     setFetchTriger(true);
@@ -141,7 +140,7 @@ export default function ProjectDetail() {
           },
         ],
       });
-    } catch (error) {
+    } catch (error: any) {
       setModalContents(error.message);
       setErrorAlertModal(true);
     } finally {
