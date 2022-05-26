@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 export const Setting = styled(SettingFilled)`
   width: 3.2rem;
   height: 3.2rem;
+  color: ${(props: any) => props.color};
 `;
 export const Wrapper = styled.div`
   display: flex;

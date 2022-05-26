@@ -19,6 +19,7 @@ export const FETCH_LOGIN_USER = gql`
       phone
       projectTicket
       admin
+      userImageURL
     }
   }
 `;

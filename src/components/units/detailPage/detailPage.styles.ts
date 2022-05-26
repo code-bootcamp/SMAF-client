@@ -149,7 +149,7 @@ export const RightWrapper = styled.div`
 
   ::-webkit-scrollbar-thumb {
     height: 0rem;
-    background: skyblue;
+    background: ${(props: any) => props.color};
     border-radius: 4px;
   }
 

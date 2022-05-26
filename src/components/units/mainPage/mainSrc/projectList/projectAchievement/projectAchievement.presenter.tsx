@@ -13,7 +13,7 @@ export default function ProjectAchievementHTML(
             ></S.Check1>
             <S.ProjectName>{props.el.project.projectName}</S.ProjectName>
           </S.ProjectBox>
-          {typeof props.result === "number" ? (
+          {!isNaN(props.result) ? (
             <S.RateBox>
               <S.Rate>{Number(props.result)}%</S.Rate>
               <S.RateBackground></S.RateBackground>

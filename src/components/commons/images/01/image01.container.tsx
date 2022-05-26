@@ -45,7 +45,6 @@ export default function ImageCircle() {
   const { data: activeData } = useQuery(FETCH_ACTIVE_PROJECT);
 
   const ddd = activeData?.fetchActivatedProject;
-  console.log(ddd);
 
   // const { data } = useQuery(FETCH_PARTICIPATING_USER, {
   //   variables: {
