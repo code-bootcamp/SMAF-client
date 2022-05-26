@@ -108,6 +108,7 @@ export default function SignUpContainer(props: any) {
         setModalContents("인증번호가 발송되었습니다.");
         setAlertModal(true);
       } catch (error) {
+        if (error instanceof Error)
         console.log(error.message);
       }
     }
