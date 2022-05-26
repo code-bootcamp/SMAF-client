@@ -9,6 +9,7 @@ import Project01 from "../../commons/project/01/project01.container";
 import Project02 from "../../commons/project/02/project02.container";
 import Project03 from "../../commons/project/03/project03.container";
 import UserInfoCard01 from "../../commons/userInfoCard/01/userInfoCard01.container";
+import PaymentList from "../paymentList/paymentListMenu.contatiner";
 
 const SliderWrapper = styled(Slider)`
   .slick-list {
@@ -30,47 +31,53 @@ export default function MyPageUI(props: IMyPageUIProps) {
     slidesToScroll: showMaxCnt, // 한 번에 넘어가는 콘텐츠 수
   };
 
-  console.log("진행중인프로젝트2", props.activeData?.fetchActivatedProject);
-  console.log("지난프로젝트2", props.inActiveData?.fetchInactivatedProject);
+  // console.log("진행중인프로젝트2", props.activeData?.fetchActivatedProject);
+  // console.log("지난프로젝트2", props.inActiveData?.fetchInactivatedProject);
+
   return (
-    <S.Wrapper>
-      <UserInfoCard01
-        onClickMoveToPaymentList={props.onClickMoveToPaymentList}
-      />
-      <S.RightWrapper>
-        <S.InnerWrapper>
-          <S.ProjectTitle>
-            <S.Title>진행 중인 프로젝트</S.Title>
-            <S.AddButton onClick={props.onClickMoveToNewProject}>
-              + 프로젝트 추가하기
-            </S.AddButton>
-          </S.ProjectTitle>
-          {props.activeData?.fetchActivatedProject ? (
-            <SliderWrapper {...settings}>
-              {props.activeData?.fetchActivatedProject.map((el: any) => (
-                <Project01 key={uuidv4()} el={el} />
-              ))}
-            </SliderWrapper>
-          ) : (
-            <Project03 />
-          )}
-        </S.InnerWrapper>
-        <S.InnerWrapper>
-          <S.ProjectTitle>
-            <S.Title>지난 프로젝트</S.Title>
-            <S.DateButton>최신순</S.DateButton>
-          </S.ProjectTitle>
-          {props.inActiveData?.fetchInactivatedProject ? (
-            <SliderWrapper {...settings}>
-              {props.inActiveData?.fetchInactivatedProject.map((el: any) => (
-                <Project02 key={uuidv4()} el={el} />
-              ))}
-            </SliderWrapper>
-          ) : (
-            <Project03 />
-          )}
-        </S.InnerWrapper>
-      </S.RightWrapper>
-    </S.Wrapper>
+    <>
+      <S.Wrapper>
+        <UserInfoCard01
+          onClickMoveToPaymentList={props.onClickMoveToPaymentList}
+        />
+        <S.RightWrapper>
+          <S.InnerWrapper>
+            <S.ProjectTitle>
+              <S.Title>진행 중인 프로젝트</S.Title>
+              <S.AddButton onClick={props.onClickMoveToNewProject}>
+                + 프로젝트 추가하기
+              </S.AddButton>
+            </S.ProjectTitle>
+            {props.activeData?.fetchActivatedProject ? (
+              <SliderWrapper {...settings}>
+                {/* 진행중인프로젝트 */}
+                {props.activeData?.fetchActivatedProject.map((el: any) => (
+                  <Project01 key={uuidv4()} el={el} />
+                ))}
+              </SliderWrapper>
+            ) : (
+              <Project03 />
+            )}
+          </S.InnerWrapper>
+          <S.InnerWrapper>
+            <S.ProjectTitle>
+              <S.Title>지난 프로젝트</S.Title>
+              <S.DateButton>최신순</S.DateButton>
+            </S.ProjectTitle>
+            {props.inActiveData?.fetchInactivatedProject ? (
+              <SliderWrapper {...settings}>
+                {/* 진행완료된프로젝트 */}
+                {props.inActiveData?.fetchInactivatedProject.map((el: any) => (
+                  <Project02 key={uuidv4()} el={el} />
+                ))}
+              </SliderWrapper>
+            ) : (
+              <Project03 />
+            )}
+          </S.InnerWrapper>
+        </S.RightWrapper>
+      </S.Wrapper>
+      {/* <PaymentList /> */}
+    </>
   );
 }

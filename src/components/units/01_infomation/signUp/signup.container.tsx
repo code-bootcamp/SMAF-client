@@ -44,140 +44,142 @@ interface FormValues {
 }
 
 export default function SignUpContainer(props: any) {
-    const [createUser] = useMutation(CREATE_USER);
-    const [sendTokenPhone] = useMutation(SIGNUP_SENDTOKEN);
-    const [checkedTokenPhone] = useMutation(SIGNUP_CHECKEDTOKEN);
-    const [phone, setPhone] = useState("");
-    const [inputToken, setInputToken] = useState("");
-    const [, setTrueToken] = useState(false);
-    // const [isActive, setIsActive] = useState(false);
-    // const fileRef = useRef<HTMLInputElement>(null);
-    const [urls, setUrls] = useState();
-    // Alert
-    const [alertModal, setAlertModal] = useState(false);
-    const [modalContents, setModalContents] = useState(false);
+  const [createUser] = useMutation(CREATE_USER);
+  const [sendTokenPhone] = useMutation(SIGNUP_SENDTOKEN);
+  const [checkedTokenPhone] = useMutation(SIGNUP_CHECKEDTOKEN);
+  const [phone, setPhone] = useState("");
+  const [inputToken, setInputToken] = useState("");
+  const [, setTrueToken] = useState(false);
+  // const [isActive, setIsActive] = useState(false);
+  // const fileRef = useRef<HTMLInputElement>(null);
+  const [urls, setUrls] = useState();
+  // Alert
+  const [alertModal, setAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState(false);
 
-    const router = useRouter();
+  const router = useRouter();
 
-    const { register, handleSubmit, formState } = useForm<FormValues>({
-        resolver: yupResolver(schema),
-        mode: "onChange",
-    });
+  const { register, handleSubmit, formState } = useForm<FormValues>({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
 
-    // const onClickImage = () => {
-    //     fileRef.current?.click();
-    // };
+  // const onClickImage = () => {
+  //     fileRef.current?.click();
+  // };
 
-    const onClickExitAlertModal = () => {
-        setAlertModal(false);
-    };
+  const onClickExitAlertModal = () => {
+    setAlertModal(false);
+    router.push("/");
+  };
 
-    const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
-        setPhone(e.target.value);
-    };
-    const onChangeToken = (e: ChangeEvent<HTMLInputElement>) => {
-        setInputToken(e.target.value);
-    };
+  const onChangePhone = (e: ChangeEvent<HTMLInputElement>) => {
+    setPhone(e.target.value);
+  };
+  const onChangeToken = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputToken(e.target.value);
+  };
 
-    const onClickSendTokenPhone = async () => {
-        console.log(phone);
+  const onClickSendTokenPhone = async () => {
+    console.log(phone);
 
-        const checkNumber = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-        if (checkNumber.test(phone)) {
-            try {
-                const result = await sendTokenPhone({
-                    variables: {
-                        phone,
-                    },
-                });
-
-                // Modal.success({
-                //   content: "인증번호가 발송되었습니다.",
-                // });
-                setModalContents("인증번호가 발송되었습니다.");
-                setAlertModal(true);
-            } catch (error) {
-                console.log(error.message);
-            }
-        }
-    };
-
-    const onClickTokenCheck = async () => {
-        console.log("1,2,3,Chceck");
-
-        const data = await checkedTokenPhone({
-            variables: {
-                phone,
-                inputToken,
-            },
+    const checkNumber = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+    if (checkNumber.test(phone)) {
+      try {
+        const result = await sendTokenPhone({
+          variables: {
+            phone,
+          },
         });
-        console.log(data);
 
-        if (!data.data.checkedTokenPhone) {
-            //   Modal.success({
-            //     content: "인증이 완료되었습니다.",
-            //   });
-            setModalContents("인증이 완료되었습니다.");
-            setAlertModal(true);
-            setTrueToken(true);
-        } else {
-            //   Modal.error({
-            //     content: "인증번호가 일치하지 않습니다.",
-            //   });
-            setModalContents(error.message);
-            setAlertModal(true);
-            // alert("실패");
-        }
-    };
+        // Modal.success({
+        //   content: "인증번호가 발송되었습니다.",
+        // });
+        setModalContents("인증번호가 발송되었습니다.");
+        setAlertModal(true);
+      } catch (error) {
+        if (error instanceof Error)
+        console.log(error.message);
+      }
+    }
+  };
 
-    const onClickcreateUser = async (data: FormValues) => {
-        // const { email, name, password, phone } = data;
-        // console.log(data, "데이터");
-        // if (email && password && name && inputToken && trueToken && phone) {
-        //     setIsActive(true);
-        // }
+  const onClickTokenCheck = async () => {
+    console.log("1,2,3,Chceck");
 
-        try {
-            await createUser({
-                variables: {
-                    createUserInput: {
-                        userName: data.name,
-                        email: data.email,
-                        password: data.password,
-                        phone: data.phone,
-                        userImageURL: urls,
-                    },
-                },
-            });
-            setModalContents("회원가입이 완료되었습니다.");
-            setAlertModal(true);
-            console.log("완료");
+    const data = await checkedTokenPhone({
+      variables: {
+        phone,
+        inputToken,
+      },
+    });
+    console.log(data);
 
-            router.push("/");
-        } catch (error) {
-            message.error(error.message);
-        }
-    };
+    if (!data.data.checkedTokenPhone) {
+      //   Modal.success({
+      //     content: "인증이 완료되었습니다.",
+      //   });
+      setModalContents("인증이 완료되었습니다.");
+      setAlertModal(true);
+      setTrueToken(true);
+    } else {
+      //   Modal.error({
+      //     content: "인증번호가 일치하지 않습니다.",
+      //   });
+      setModalContents(error.message);
+      setAlertModal(true);
+      // alert("실패");
+    }
+  };
 
-    return (
-        <SignupUI
-            register={register}
-            handleSubmit={handleSubmit}
-            formState={formState}
-            onClickcreateUser={onClickcreateUser}
-            onClickSendTokenPhone={onClickSendTokenPhone}
-            onClickTokenCheck={onClickTokenCheck}
-            onChangePhone={onChangePhone}
-            onChangeToken={onChangeToken}
-            // isActive={isActive}
-            // fileRef={fileRef}
-            // onClickImage={onClickImage}
-            setUrls={setUrls}
-            urls={urls}
-            // 모달
-            onClickExitAlertModal={onClickExitAlertModal}
-            alertModal={alertModal}
-            modalContents={modalContents}
-        />
-    );
+  const onClickcreateUser = async (data: FormValues) => {
+    // const { email, name, password, phone } = data;
+    // console.log(data, "데이터");
+    // if (email && password && name && inputToken && trueToken && phone) {
+    //     setIsActive(true);
+    // }
+
+    try {
+      await createUser({
+        variables: {
+          createUserInput: {
+            userName: data.name,
+            email: data.email,
+            password: data.password,
+            phone: data.phone,
+            userImageURL: urls,
+          },
+        },
+      });
+      setModalContents("회원가입이 완료되었습니다.");
+      setAlertModal(true);
+      console.log("완료");
+
+      // router.push("/");
+    } catch (error) {
+      message.error(error.message);
+    }
+  };
+
+  return (
+    <SignupUI
+      register={register}
+      handleSubmit={handleSubmit}
+      formState={formState}
+      onClickcreateUser={onClickcreateUser}
+      onClickSendTokenPhone={onClickSendTokenPhone}
+      onClickTokenCheck={onClickTokenCheck}
+      onChangePhone={onChangePhone}
+      onChangeToken={onChangeToken}
+      // isActive={isActive}
+      // fileRef={fileRef}
+      // onClickImage={onClickImage}
+      setUrls={setUrls}
+      urls={urls}
+      // 모달
+      onClickExitAlertModal={onClickExitAlertModal}
+      alertModal={alertModal}
+      modalContents={modalContents}
+    />
+  );
 }

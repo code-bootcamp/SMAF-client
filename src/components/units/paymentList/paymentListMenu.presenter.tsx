@@ -7,9 +7,9 @@ import Pagination from "../../commons/paginations/01/Pagination";
 export default function PaymentListUI(props: any) {
   return (
     <S.Wrapper>
-      <UserInfoCard01
+      {/* <UserInfoCard01
         onClickMoveToPaymentList={props.onClickMoveToPaymentList}
-      />
+      /> */}
       <S.RightWrapper>
         <S.Title>결제내역</S.Title>
         <S.Table>
@@ -33,7 +33,11 @@ export default function PaymentListUI(props: any) {
           )}
         </S.Table>
         <S.Page>
-          <Pagination data={props.data} refetch={props.refetch} lastPage={props.lastPage}/>
+          <Pagination
+            data={props.data}
+            refetch={props.refetch}
+            lastPage={props.lastPage}
+          />
         </S.Page>
       </S.RightWrapper>
     </S.Wrapper>

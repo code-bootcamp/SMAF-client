@@ -2,10 +2,10 @@ import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/media";
 
 const UserPhoto = styled.img`
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 3.1rem;
+  height: 3.1rem;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 3px solid white;
   @media ${breakPoints.mobile} {
     width: 2.4rem;
     height: 2.4rem;

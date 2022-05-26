@@ -12,6 +12,7 @@ export default function HeaderUI(props: any) {
                 </S.LogoWrapper>
                 <S.Search placeholder="프로젝트검색"></S.Search>
 
+
                 <S.OptionWrapper>
                     <S.Alarm src="/image/changealarm.png" alt="alarm" />
                     <S.Qna src="/image/qna.png" alt="qna" onClick={props.onClickQna} />
