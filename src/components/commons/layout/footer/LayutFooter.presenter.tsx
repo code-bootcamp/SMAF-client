@@ -20,7 +20,9 @@ export default function FooterBottomUI() {
             <span></span>
           </S.Youtube>
           <S.Instagram>
-            <span></span>
+            <div>
+              <span></span>
+            </div>
           </S.Instagram>
         </S.SnsWrapper>
         <S.Copyright>COPYRIGHT(C)2022SMAF,LTD ALL RIGHTS RESERVED</S.Copyright>
