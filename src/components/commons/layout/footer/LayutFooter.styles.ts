@@ -138,9 +138,14 @@ export const Youtube = styled.div`
   border-radius: 50%;
   span {
     display: block;
+    position: relative;
     background-image: url(/images/youtube.png);
-    width: 80px;
-    height: 80px;
+    background-repeat: no-repeat;
+    background-size: 25px;
+    top: 34%;
+    left: 37%;
+    width: 35px;
+    height: 35px;
   }
 `;
 
@@ -150,12 +155,25 @@ export const Instagram = styled.div`
   margin: 0 1.5rem;
   background: #e5e5ec;
   border-radius: 50%;
-  span {
+  div {
     display: block;
+    position: relative;
     border: 4px solid #ffffff;
     border-radius: 12px;
     width: 40px;
     height: 40px;
+    top: 26%;
+    left: 25%;
+  }
+  span {
+    display: block;
+    position: relative;
+    width: 17px;
+    height: 17px;
+    border: 4px solid #ffffff;
+    border-radius: 12px;
+    top: 26%;
+    left: 23%;
   }
 `;
 

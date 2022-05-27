@@ -3,25 +3,15 @@ import { breakPoints } from "../../../../commons/styles/media";
 
 export const Wrapper = styled.header`
   display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 9rem;
-  background-color: #333333;
-
-  @media ${breakPoints.mobile} {
-    height: 48px;
-  }
-`;
-
-export const InnerWrap = styled.div`
-  width: 192rem;
-  display: flex;
-  /* border: 1px solid yellow; */
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  height: 9rem;
+  /* border: 1px solid yellow; */
+  background-color: #333333;
   @media ${breakPoints.mobile} {
-    width: 90%;
+    /* width: 90%; */
+    height: 5.6rem;
     justify-content: space-between;
   }
 `;
@@ -38,6 +28,7 @@ export const Icon = styled.img`
   width: 3.6rem;
   height: 3.6rem;
   cursor: pointer;
+  /* border: 1px solid green; */
   @media ${breakPoints.mobile} {
     width: 2.4rem;
     height: 2.4rem;
@@ -50,8 +41,9 @@ export const Logo = styled.div`
   line-height: 36px;
   letter-spacing: 0.05em;
   color: #ffffff;
-  padding-left: 10%;
+  padding-left: 12px;
   cursor: pointer;
+  /* border: 1px solid red; */
   @media ${breakPoints.mobile} {
     font-size: 1.8rem;
   }
@@ -87,63 +79,36 @@ export const Search = styled.input`
 `;
 
 export const OptionWrapper = styled.div`
-  /* border: 1px solid yellow; */
-  padding-left: 12.36rem;
-  /* width: 22rem; */
-  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  /* width: 22rem; */
+  height: 100%;
+  /* border: 1px solid green; */
+  /* padding-left: 12.36rem; */
+  padding-left: 8%;
   @media ${breakPoints.mobile} {
-    width: 10rem;
     height: 100%;
+    padding-left: 0rem;
   }
 `;
 
 export const Alarm = styled.img`
-
   width: 3.5rem;
   height: 3.5rem;
   margin-right: 2.5rem;
-
-  /* margin-right: 14%; */
-  border: 1px solid yellow;
   @media ${breakPoints.mobile} {
     width: 2.4rem;
     height: 2.4rem;
   }
 `;
 
-// export const Qna = styled.img`
-//     width: 3.325rem;
-//     height: 3.325rem;
-//     /* margin-left: 14%; */
-//     /* border: 1px solid yellow; */
-//     margin-right: 2.73rem;
-//     cursor: pointer;
-//     @media ${breakPoints.mobile} {
-//         width: 2.4rem;
-//         height: 2.4rem;
-//     }
-//   width: 4rem;
-//   height: 4rem;
-//   margin-right: 2rem;
-//   /* margin-right: 14%; */
-//   /* border: 1px solid yellow; */
-//   @media ${breakPoints.mobile} {
-//     width: 2.4rem;
-//     height: 2.4rem;
-//   }
-// `;
-
 export const Qna = styled.img`
   width: 4rem;
   height: 4rem;
   margin-right: 2rem;
-  /* margin-left: 14%; */
   /* border: 1px solid yellow; */
-
   margin-right: 2.73rem;
   @media ${breakPoints.mobile} {
     width: 2.4rem;
