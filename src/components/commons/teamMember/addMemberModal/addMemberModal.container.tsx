@@ -77,12 +77,14 @@ export default function AddMemberModal(props: AddMemberModalProps) {
     // <AddMemberModalHTML SearchUser={SearchUser} aaa={[getUserInfo, { data }]} />
     <>
       <S.Wrapper>
-        <S.SearchInput
-          placeholder="E-mail을 입력해주세요"
-          onChange={onChangeEmail}
-        ></S.SearchInput>
-        {/* <div>{emailError}</div> */}
-        <button onClick={() => getUserInfo()}>검색시작</button>
+        <S.InnerWrapper>
+          <S.SearchInput
+            placeholder="E-mail을 입력해주세요"
+            onChange={onChangeEmail}
+          ></S.SearchInput>
+          {/* <div>{emailError}</div> */}
+          <button onClick={() => getUserInfo()}>팀원검색</button>
+        </S.InnerWrapper>
         {data?.fetchUserEmail.map((el: any) => (
           <>
             <div>{el.userName}</div>

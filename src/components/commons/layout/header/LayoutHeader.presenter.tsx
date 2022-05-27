@@ -1,6 +1,6 @@
 import Dropdown01 from "../../dropdown/03/Dropdown04.container";
 import { useMoveToPage } from "../../hooks/useMoveToPage";
-import Image02 from "../../images/02/image02";
+import Image02 from "../../images/01/image02";
 import * as S from "./LayoutHeader.styles";
 
 export default function HeaderUI(props: any) {

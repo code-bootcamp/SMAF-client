@@ -1,5 +1,5 @@
 import * as S from "./todoDetail.styles";
-import ImageCircle from "../../images/01/image01.container";
+import ImageCircle from "../../images/imagecircle/01/imagecircle.container";
 export default function TodoDetailHTML(props: any) {
   return (
     <>
