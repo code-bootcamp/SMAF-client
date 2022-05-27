@@ -49,8 +49,8 @@ export default function ProjectDetailPageHTML(
               </S.DetailProjectDay>
               <S.DetailProjectPosition>
                 <S.DetailProjectIcon src="/detailPage/position.png" />
-                {props.projectData?.fetchProject?.address?.address}(
-                {props.projectData?.fetchProject?.address?.detailAddress})
+                {props.projectData?.fetchProject?.address?.address}{` `}
+                {props.projectData?.fetchProject?.address?.detailAddress}
               </S.DetailProjectPosition>
             </S.ProjectDetail>
             <TeamMember />

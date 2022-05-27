@@ -47,8 +47,9 @@ export default function Login() {
   const [errorAlertModal, setErrorAlertModal] = useState(false);
 
   const onClickExitAlertModal = () => {
+    console.log("클릭됨!!!!!!!!!")
     setAlertModal(false);
-    router.push("/");
+    // router.push("/");
   };
 
   // 에러 모달
@@ -73,6 +74,7 @@ export default function Login() {
 
       setModalContents("로그인이 완료되었습니다.");
       setAlertModal(true);
+      
     } catch (error: any) {
       setModalContents(error.message);
       setErrorAlertModal(true);
@@ -119,6 +121,7 @@ export default function Login() {
       clickMeNaver={clickMeNaver}
       clickMeKakao={clickMeKakao}
       MoveToPage={MoveToPage}
+
       onClickExitAlertModal={onClickExitAlertModal}
       alertModal={alertModal}
       modalContents={modalContents}

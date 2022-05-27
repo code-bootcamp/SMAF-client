@@ -11,10 +11,6 @@ export const UPDATE_PROJECT = gql`
     mutation updateProject($projectId: String!, $updateProjectInput: UpdateProjectInput!){
         updateProject(projectId:$projectId,  updateProjectInput:$updateProjectInput){
             projectId
-
-            address {
-              projectAddressId
-            }
         }
     }
 `

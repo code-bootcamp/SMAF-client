@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/media";
+import { Tooltip } from 'antd';
 
 export const Wrapper = styled.header`
   display: flex;
@@ -15,7 +16,6 @@ export const Wrapper = styled.header`
     justify-content: space-between;
   }
 `;
-
 export const LogoWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -97,7 +97,7 @@ export const OptionWrapper = styled.div`
 export const Alarm = styled.img`
   width: 3.5rem;
   height: 3.5rem;
-  margin-right: 2.5rem;
+  margin: 0 1.5rem 0 1.5;
   @media ${breakPoints.mobile} {
     width: 2.4rem;
     height: 2.4rem;
@@ -107,9 +107,8 @@ export const Alarm = styled.img`
 export const Qna = styled.img`
   width: 4rem;
   height: 4rem;
-  margin-right: 2rem;
+  margin: 0 2rem 0 2rem;
   /* border: 1px solid yellow; */
-  margin-right: 2.73rem;
   cursor: pointer;
   @media ${breakPoints.mobile} {
     width: 2.4rem;
