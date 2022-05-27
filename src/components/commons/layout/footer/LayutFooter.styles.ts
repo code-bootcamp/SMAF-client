@@ -125,8 +125,8 @@ export const FaceBook = styled.div`
     font-style: normal;
     font-weight: 700;
     font-size: 48px;
-    left: 40%;
-    top: 10%;
+    left: 38%;
+    top: 3.5%;
     color: #ffffff;
   }
 `;
@@ -163,7 +163,7 @@ export const Instagram = styled.div`
     width: 40px;
     height: 40px;
     top: 26%;
-    left: 25%;
+    left: 25.5%;
   }
   span {
     display: block;
