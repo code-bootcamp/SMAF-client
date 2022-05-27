@@ -88,8 +88,7 @@ export default function ProjectSignPageUI(props: any) {
                     borderRadius: "0.8rem",
                   }}
                 >
-                  <props.ReactQuill
-                    style={{ height: "84%" }}
+                  <S.RQuill
                     onChange={props.onChangeContents}
                     value={props.getValues("contents") || ""}
                   />

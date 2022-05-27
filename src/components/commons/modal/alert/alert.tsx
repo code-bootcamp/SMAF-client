@@ -1,4 +1,3 @@
-// import { useRouter } from "next/router";
 import * as S from "./alert.styles";
 import { Modal } from "antd";
 import { useState } from "react";

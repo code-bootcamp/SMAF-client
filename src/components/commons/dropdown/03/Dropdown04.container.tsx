@@ -25,10 +25,7 @@ const FETCH_LOGIN_USER = gql`
 export default function Dropdown01() {
   const { data } = useQuery(FETCH_LOGIN_USER);
   const router = useRouter();
-  // const onClick = ({ key }) => {
-  //     message.info(`Click on item ${key}`);
-  //     console.log({ key });
-  // };
+
   const onClickMypage = () => {
     router.push(`/mypage`);
   };
@@ -37,9 +34,9 @@ export default function Dropdown01() {
   const onClickLogOut = () => {
     logout();
     console.log("로그아웃완료, 기본페이지 이동");
-    location.reload();
-    // 강제 새로고침 로그아웃시 필요한것
     router.push(`/`);
+    // 강제 새로고침 로그아웃시 필요한것
+    location.reload();
   };
 
   const menu = (
@@ -50,13 +47,14 @@ export default function Dropdown01() {
   );
 
   return (
+
     <Dropdown overlay={menu}>
-      <a onClick={(e) => e.preventDefault()}>
-        <Space>
-          <div style={{ width: "1.3rem" }}></div>
-          <DownOutlined style={{ color: "#E5E5E5" }} />
-        </Space>
-      </a>
-    </Dropdown>
+        <a onClick={(e) => e.preventDefault()}>
+          <Space  >
+            <div style={{ width: "1rem" }}></div>
+            <DownOutlined style={{ color: "#E5E5E5" }} />
+          </Space>
+        </a>
+      </Dropdown>
   );
 }

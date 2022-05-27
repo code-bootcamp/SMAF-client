@@ -1,4 +1,5 @@
 import Alert from "../../../../commons/modal/alert/alert";
+import ErrorAlert from "../../../../commons/modal/errorModal/alert";
 import * as S from "./login.styles";
 
 export default function LoginUI(props: any) {
@@ -8,6 +9,14 @@ export default function LoginUI(props: any) {
         <Alert
           onClick={props.onClickAlertModal}
           onClickExit={props.onClickExitAlertModal}
+          contents={props.modalContents}
+        />
+      )}
+
+      {props.errorAlertModal && (
+        <ErrorAlert
+          onClick={props.onClickAlertModal}
+          onClickExit={props.onClickExitErrorModal}
           contents={props.modalContents}
         />
       )}
@@ -60,10 +69,10 @@ export default function LoginUI(props: any) {
             </S.KakaoBtn>
           </S.Sns>
           <S.Bottom>
-            <S.JoinBtn onClick={props.MoveToPage("/signup")}>
+            <S.JoinBtn type="button" onClick={props.MoveToPage("/signup")}>
               회원가입
             </S.JoinBtn>
-            <S.ToBeforeLogin onClick={props.MoveToPage("/")}>
+            <S.ToBeforeLogin type="button" onClick={props.MoveToPage("/")}>
               비회원 무료체험 이용하기{" "}
             </S.ToBeforeLogin>
           </S.Bottom>
