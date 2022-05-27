@@ -8,10 +8,13 @@ export default function ProjectAchievementHTML(
       {props.schedulesData && (
         <S.ListBox>
           <S.ProjectBox>
-            <S.Check1
-              style={{ backgroundColor: props.el.project.projectColor }}
-            ></S.Check1>
-            <S.ProjectName>{props.el.project.projectName}</S.ProjectName>
+            <S.BasicRow>
+              <S.Check1
+                style={{ backgroundColor: props.el.project.projectColor }}
+              ></S.Check1>
+              <S.ProjectName>{props.el.project.projectName}</S.ProjectName>
+            </S.BasicRow>
+            <S.Dday>D-{props.dday}</S.Dday>
           </S.ProjectBox>
           {!isNaN(props.result) ? (
             <S.RateBox>

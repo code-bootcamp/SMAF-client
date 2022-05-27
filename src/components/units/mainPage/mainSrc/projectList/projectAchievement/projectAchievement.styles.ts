@@ -42,13 +42,28 @@ export const Check3 = styled.div`
 `;
 export const ProjectName = styled.div`
   padding-left: 0.5rem;
+  max-width: 18rem;
   font-size: 1.6rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
+export const Dday = styled.div`
+  padding: 0.4rem 0.8rem;
+  border-radius: 1.2rem;
+  background-color: #f0f0f0;
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+`;
+
+export const BasicRow = styled.div`
+  display: flex;
+`;
 export const ProjectBox = styled.div`
   display: flex;
+  justify-content: space-between;
+  padding-right: 1rem;
 `;
 export const RateBox = styled.div``;
 export const Rate = styled.div`
