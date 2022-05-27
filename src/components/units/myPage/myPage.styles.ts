@@ -26,6 +26,9 @@ export const RightWrapper = styled.div`
 
 export const InnerWrapper = styled.div`
   height: 30.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   /* border: 1px solid green; */
 `;
 
@@ -36,6 +39,15 @@ export const ProjectTitle = styled.div`
   align-items: center;
   height: 4.6rem;
   margin-bottom: 2rem;
+`;
+
+export const Slider01 = styled.div`
+  height: 24rem;
+  width: 97rem;
+  /* border: 2px solid green; */
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
 `;
 
 export const Title = styled.div`

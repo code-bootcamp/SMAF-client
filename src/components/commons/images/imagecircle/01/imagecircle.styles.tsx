@@ -8,7 +8,7 @@ export const ImageBox = styled.div`
 export const One = styled.img`
   width: 4.8rem;
   height: 4.8rem;
-  background-color: brown;
+  /* background-color: brown; */
   position: relative;
   z-index: 1;
   border-radius: 50%;
@@ -18,7 +18,7 @@ export const One = styled.img`
 export const Two = styled.img`
   width: 4.8rem;
   height: 4.8rem;
-  background-color: green;
+  /* background-color: green; */
   position: relative;
   z-index: 2;
   left: -2rem;
@@ -29,7 +29,7 @@ export const Two = styled.img`
 export const Three = styled.img`
   width: 4.8rem;
   height: 4.8rem;
-  background-color: blue;
+  /* background-color: blue; */
   position: relative;
   z-index: 3;
   left: -4rem;
@@ -40,7 +40,7 @@ export const Three = styled.img`
 export const Four = styled.img`
   width: 4.8rem;
   height: 4.8rem;
-  background-color: orange;
+  /* background-color: orange; */
   position: relative;
   z-index: 4;
   left: -6rem;
