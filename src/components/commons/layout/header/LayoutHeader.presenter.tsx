@@ -15,7 +15,7 @@ export default function HeaderUI(props: any) {
 
       <S.OptionWrapper>
         <S.Alarm src="/image/changealarm.png" alt="alarm" />
-        <S.Qna src="/image/qna.png" alt="qna" />
+        <S.Qna src="/image/qna.png" alt="qna" onClick={props.onClickQna} />
         <Image02 src={props.data?.fetchLoginUser.userImageURL} />
         {props.data?.fetchLoginUser.userName === undefined ? (
           <S.Signup>회원가입</S.Signup>

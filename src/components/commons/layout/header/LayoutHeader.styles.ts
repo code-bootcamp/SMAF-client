@@ -110,6 +110,7 @@ export const Qna = styled.img`
   margin-right: 2rem;
   /* border: 1px solid yellow; */
   margin-right: 2.73rem;
+  cursor: pointer;
   @media ${breakPoints.mobile} {
     width: 2.4rem;
     height: 2.4rem;
