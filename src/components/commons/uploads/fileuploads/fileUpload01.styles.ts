@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
     border-radius: 1.6rem;
     padding: 1.5rem;
     margin-top: 3rem;
+    margin-bottom: 3rem;
 `;
 
 export const Title = styled.div`
@@ -64,37 +65,37 @@ export const FileName = styled.div`
 `;
 
 export const SubmitBtn = styled.div`
-width:100%;
-height: 4rem;
-background-color: #49496E;
-color: white;
-border-radius: 1.2rem;
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
+    width: 100%;
+    height: 4rem;
+    background-color: #49496e;
+    color: white;
+    border-radius: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 `;
 export const SubmitBtnBox = styled.div`
-padding-top: 1rem;
+    padding-top: 1rem;
 `;
 export const FileImg = styled.img`
-width: 1.6rem;
-opacity: 0.5;
-margin-right: 0.5rem;
+    width: 1.6rem;
+    opacity: 0.5;
+    margin-right: 0.5rem;
 `;
 export const Files = styled.div`
-padding-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
 `;
 export const Filename = styled.div`
-font-size: 1.6rem;
-display: flex;
-justify-content: space-between;
-white-space: nowrap;
-overflow: hidden;
-text-overflow: ellipsis;
+    font-size: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 export const DownImg = styled.img`
-width: 1.8rem;
-height: 1.8rem;
-opacity: 0.3;
+    width: 1.8rem;
+    height: 1.8rem;
+    opacity: 0.3;
 `;
