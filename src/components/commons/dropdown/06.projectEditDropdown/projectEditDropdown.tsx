@@ -118,7 +118,7 @@ export default function ProjectEditDropdown(props: any) {
     }
   };
   const menu = (
-    <Menu>
+    <Menu style={{ borderRadius: "8px" }}>
       <Menu.Item onClick={MoveEdit}>프로젝트 수정하기</Menu.Item>
       <Menu.Item onClick={DeleteProject}>프로젝트 삭제하기</Menu.Item>
       <Menu.Item

@@ -69,6 +69,9 @@ export const AddButton = styled.button`
   font-weight: 400;
   line-height: 46px;
   outline: none;
+  :hover {
+    background: #6b6bff;
+  }
   cursor: pointer;
   @media ${breakPoints.mobile} {
   }

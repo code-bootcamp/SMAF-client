@@ -10,4 +10,5 @@ export interface IMyPageUIProps {
   onClickMoveToDetail: (event: any) => void;
   onClickMoveToMyPage: () => void;
   onClickMoveToProjectDetail: (event: any) => void;
+  onClickMoveToPasswordChange: () => void;
 }

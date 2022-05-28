@@ -36,7 +36,7 @@ export default function DetailPlanAddModal(props: any) {
           },
         ],
       });
-      alert("성공");
+      alert("얍얍");
       props.onToggleModal();
     } catch (error) {
       alert("error");
