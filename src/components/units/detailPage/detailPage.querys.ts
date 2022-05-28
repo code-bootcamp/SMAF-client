@@ -43,43 +43,48 @@ export const FETCH_PROCESS_CATEGORIES = gql`
 
 // 프로젝트 ID로 전체 스케줄 조회
 export const FETCH_PROJECT_SCHEDULES_PROJECTID = gql`
-    query fetchProjectSchedules($projectId: String!) {
-        fetchProjectSchedules(projectId: $projectId) {
-            scheduleId
-            scheduleName
-            scheduleDate
-            scheduleContents
-            status
-            processCategory {
-                processCategoryId
-                processName
-            }
-            project {
-                projectId
-            }
-            createAt
-        }
+  query fetchProjectSchedules($projectId: String!) {
+    fetchProjectSchedules(projectId: $projectId) {
+      scheduleId
+      scheduleName
+      scheduleDate
+      scheduleContents
+      status
+      processCategory {
+        processCategoryId
+        processName
+      }
+      project {
+        projectId
+      }
+      createAt
+      user {
+        userId
+      }
+
     }
 `;
 
 // 카테고리 ID로 전체 스케줄 조회
 export const FETCH_PROJECT_SCHEDULES_CATEGORY = gql`
-    query fetchCategorySchedules($processCategoryId: String!) {
-        fetchCategorySchedules(processCategoryId: $processCategoryId) {
-            scheduleId
-            scheduleName
-            scheduleDate
-            scheduleContents
-            status
-            processCategory {
-                processCategoryId
-                processName
-            }
-            project {
-                projectId
-            }
-            createAt
-        }
+  query fetchCategorySchedules($processCategoryId: String!) {
+    fetchCategorySchedules(processCategoryId: $processCategoryId) {
+      scheduleId
+      scheduleName
+      scheduleDate
+      scheduleContents
+      status
+      processCategory {
+        processCategoryId
+        processName
+      }
+      project {
+        projectId
+      }
+      createAt
+      user {
+        userId
+      }
     }
 `;
 
@@ -90,4 +95,44 @@ export const UPDATE_SCHEDULE = gql`
             scheduleId
         }
     }
+`;
+
+export const FETCH_LOGIN_USER = gql`
+  query fetchLoginUser {
+    fetchLoginUser {
+      userId
+      userName
+      email
+      phone
+      admin
+      userImageURL
+      projectTicket
+    }
+  }
+`;
+
+export const FETCH_PARTCIPATING_USER = gql`
+  query fetchParticipatingUser($projectId: String!) {
+    fetchParticipatingUser(projectId: $projectId) {
+      projectParticipantId
+      position
+      isActivated
+      user {
+        userId
+        userName
+        userImageURL
+      }
+      project {
+        projectId
+      }
+    }
+  }
+`;
+
+export const FETCH_CATEGORYS = gql`
+  query fetchProcessCategories($projectId: String!) {
+    fetchProcessCategories(projectId: $projectId) {
+      processCategoryId
+    }
+  }
 `;

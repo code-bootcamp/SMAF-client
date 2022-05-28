@@ -8,81 +8,103 @@ import DropdownDetail from "../../../commons/dropdown/04.detailPageDropdown/deta
 
 export default function DetailPlanListColumnHTML(props: any) {
   const [isOpen, setIsOpen] = useState(false);
-  // const [dropDown, setDropDown] = useState(false);
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
   };
-  // const onToggleDropDown = () => {
-  //   setDropDown((prev) => !prev);
-  // };
-  // console.log(props.columnData, "columnData");
-  // console.log(props.scheduleData, "scheduleData");
+  // console.log(props.scheduleArray, "1");
+  // console.log(props.scheduleData?.fetchCategorySchedules, "2");
   return (
-    <S.Wrapper>
-      <S.AddColumn>
-        <S.ColumnTitle>{props.columnData?.processName}</S.ColumnTitle>
-        <S.BasicRow>
-          {/* <S.EditCoulumnIcon
+    <>
+      {props.scheduleArray && (
+        <S.Wrapper>
+          <S.AddColumn>
+            <S.ColumnTitle>{props.columnData?.processName}</S.ColumnTitle>
+            <S.BasicRow>
+              {/* <S.EditCoulumnIcon
             // onClick={onToggleDropDown}
             src="/detailPage/spread.png"
           ></S.EditCoulumnIcon> */}
-          {props.my?.[0].position === "LEADER" && (
-            <DropdownDetail
-              DeleteCategory={props.DeleteCategory}
-              id={props.columnData?.processCategoryId}
-            />
-          )}
-          <S.AddCoulumnIcon
-            src="/detailPage/AddColumn.png"
-            onClick={onToggleModal}
-          ></S.AddCoulumnIcon>
-        </S.BasicRow>
-      </S.AddColumn>
+              {props.my?.position === "LEADER" && (
+                <DropdownDetail
+                  DeleteCategory={props.DeleteCategory}
+                  id={props.columnData?.processCategoryId}
+                />
+              )}
+              <S.AddCoulumnIcon
+                src="/detailPage/AddColumn.png"
+                onClick={onToggleModal}
+              ></S.AddCoulumnIcon>
+            </S.BasicRow>
+          </S.AddColumn>
 
-      {isOpen && (
-        <Modal
-          visible={true}
-          onOk={onToggleModal}
-          onCancel={onToggleModal}
-          maskStyle={{
-            width: "100%",
-            height: "100%",
-          }}
-          bodyStyle={{
-            width: "52rem",
-            height: "50rem",
-            backgroundColor: "#FFFFFF",
-          }}
-          footer={null}
-          centered={true}
-        >
-          <DetailPlanAddModal
-            categoryId={props.columnData?.processCategoryId}
-            onToggleModal={onToggleModal}
-          />
-        </Modal>
-      )}
-      {props.scheduleData?.fetchCategorySchedules.map((el: any, index: any) => (
-        <Draggable
-          key={String(el.scheduleId)}
-          index={index}
-          draggableId={String(el.scheduleId)}
-        >
-          {(provided) => (
-            <div
-              ref={provided.innerRef}
-              {...provided.dragHandleProps}
-              {...provided.draggableProps}
+          {isOpen && (
+            <Modal
+              visible={true}
+              onOk={onToggleModal}
+              onCancel={onToggleModal}
+              maskStyle={{
+                width: "100%",
+                height: "100%",
+              }}
+              bodyStyle={{
+                width: "52rem",
+                height: "50rem",
+                backgroundColor: "#FFFFFF",
+              }}
+              footer={null}
+              centered={true}
             >
-              <DetailPlanCard
-                key={el.scheduleId}
-                el={el}
-                dragItemId={props.dragItemId}
+              <DetailPlanAddModal
+                categoryId={props.columnData?.processCategoryId}
+                onToggleModal={onToggleModal}
               />
-            </div>
+            </Modal>
           )}
-        </Draggable>
-      ))}
-    </S.Wrapper>
+          {props.scheduleArray?.map((el: any, index: any) => (
+            <Draggable
+              key={String(el.scheduleId)}
+              index={index}
+              draggableId={String(el.scheduleId)}
+            >
+              {(provided) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.dragHandleProps}
+                  {...provided.draggableProps}
+                >
+                  <DetailPlanCard
+                    key={el.scheduleId}
+                    el={el}
+                    dragItemId={props.dragItemId}
+                  />
+                </div>
+              )}
+            </Draggable>
+          ))}
+        </S.Wrapper>
+      )}
+    </>
   );
 }
+
+// {props.scheduleData?.fetchCategorySchedules.map((el: any, index: any) => (
+//   <Draggable
+//     key={String(el.scheduleId)}
+//     index={index}
+//     draggableId={String(el.scheduleId)}
+//   >
+//     {(provided) => (
+//       <div
+//         ref={provided.innerRef}
+//         {...provided.dragHandleProps}
+//         {...provided.draggableProps}
+//       >
+//         <DetailPlanCard
+//           key={el.scheduleId}
+//           el={el}
+//           dragItemId={props.dragItemId}
+//         />
+//       </div>
+//     )}
+//   </Draggable>
+//   ))}

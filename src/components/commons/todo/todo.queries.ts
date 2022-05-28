@@ -12,6 +12,7 @@ export const FETCH_PROJECT_SCHEDULES = gql`
         projectId
         projectColor
       }
+      status
     }
   }
 `;

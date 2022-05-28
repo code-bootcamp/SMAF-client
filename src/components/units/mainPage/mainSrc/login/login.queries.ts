@@ -15,7 +15,6 @@ export const FETCH_LOGIN_USER = gql`
       phone
       userImageURL
       projectTicket
-      userImageURL
       admin
     }
   }

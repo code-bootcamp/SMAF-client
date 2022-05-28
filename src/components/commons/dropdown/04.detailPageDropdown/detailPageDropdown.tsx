@@ -6,6 +6,8 @@ import styled from "@emotion/styled";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as S from "./detailPageDropdown.styles";
+import { triger } from "../../../../commons/store/index";
+import { useRecoilState } from "recoil";
 
 export const UPDATE_PROCESS_CATEGORY = gql`
   mutation updateProcessCategory(
@@ -35,6 +37,7 @@ const Img = styled.img`
 `;
 export default function DropdownDetail(props: any) {
   const [updataProcessCategory] = useMutation(UPDATE_PROCESS_CATEGORY);
+  const [, setDataTriger] = useRecoilState(triger);
   const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -63,6 +66,8 @@ export default function DropdownDetail(props: any) {
       onToggleModal();
     } catch (error) {
       alert(error);
+    } finally {
+      setDataTriger((prev) => !prev);
     }
   };
 

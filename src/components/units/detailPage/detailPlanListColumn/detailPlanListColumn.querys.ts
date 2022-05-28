@@ -32,6 +32,7 @@ export const FETCH_LOGIN_USER = gql`
       phone
       admin
       userImageURL
+      projectTicket
     }
   }
 `;
@@ -80,5 +81,14 @@ export const FETCH_PROJECT_SCHEDULES_CATEGORY = gql`
 export const DELETE_CATEGORY = gql`
   mutation deleteProcessCategory($processCategoryId: String!) {
     deleteProcessCategory(processCategoryId: $processCategoryId)
+  }
+`;
+
+export const FETCH_CATEGORY = gql`
+  query fetchprocessCategory($processCategoryId: String!) {
+    fetchprocessCategory(processCategoryId: $processCategoryId) {
+      processCategoryId
+      processName
+    }
   }
 `;

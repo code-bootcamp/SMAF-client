@@ -9,7 +9,6 @@ export default function TodoDetail(props: any) {
 
 
   const [dateArray, setDateArray] = useState<string[]>([]);
-  const [dday,setDday] = useState(0)
 
   function getDates() {
     const startDay = props.el.createAt.slice(0, 10);

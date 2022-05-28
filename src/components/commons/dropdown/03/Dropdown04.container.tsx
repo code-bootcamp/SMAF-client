@@ -1,4 +1,4 @@
-import { Menu, Dropdown, message, Space } from "antd";
+import { Menu, Dropdown, Space } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
@@ -18,6 +18,7 @@ const FETCH_LOGIN_USER = gql`
       phone
       admin
       userImageURL
+      projectTicket
     }
   }
 `;
@@ -47,14 +48,13 @@ export default function Dropdown01() {
   );
 
   return (
-
     <Dropdown overlay={menu}>
-        <a onClick={(e) => e.preventDefault()}>
-          <Space  >
-            <div style={{ width: "1rem" }}></div>
-            <DownOutlined style={{ color: "#E5E5E5" }} />
-          </Space>
-        </a>
-      </Dropdown>
+      <a onClick={(e) => e.preventDefault()}>
+        <Space>
+          <div style={{ width: "1rem" }}></div>
+          <DownOutlined style={{ color: "#E5E5E5" }} />
+        </Space>
+      </a>
+    </Dropdown>
   );
 }

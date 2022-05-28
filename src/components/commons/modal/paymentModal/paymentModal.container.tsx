@@ -3,7 +3,6 @@ import Head from "next/head";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { Modal, Button } from "antd";
-import { FETCH_LOGIN_USER } from "../../../units/questionAnswer/write/questionAnswerWrite.queris";
 import { useRouter } from "next/router";
 
 const CREATE_PAYMENT = gql`
@@ -14,7 +13,21 @@ const CREATE_PAYMENT = gql`
   }
 `;
 
-export default function PaymentModal(props) {
+const FETCH_LOGIN_USER = gql`
+  query fetchLoginUser {
+    fetchLoginUser {
+      userId
+      userName
+      email
+      phone
+      admin
+      userImageURL
+      projectTicket
+    }
+  }
+`;
+
+export default function PaymentModal(props: any) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const onToggleModal = () => {

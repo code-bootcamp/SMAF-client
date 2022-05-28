@@ -9,7 +9,6 @@ export default function ProjectAchievement(props: any) {
       projectId: props.el?.project.projectId,
     },
   });
-  console.log(props.el, "el");
   const [result, setResult] = useState(0);
   const [dday, setDday] = useState(0);
 
@@ -25,19 +24,14 @@ export default function ProjectAchievement(props: any) {
       }
     });
     const falesSchedulel = Number(persentValues.length);
-
     const result = Math.ceil((falesSchedulel / allSchedule) * 100);
-
     setResult(result);
   };
 
   const Dday = () => {
     const startDate = new Date();
     const endDate = new Date(props.el?.project.endDate.slice(0, 10));
-    console.log(startDate);
-    console.log(endDate);
     const day = startDate.getTime() - endDate.getTime();
-
     const dday = Math.trunc(Math.abs(day / (1000 * 3600 * 24)));
     setDday(dday);
   };
