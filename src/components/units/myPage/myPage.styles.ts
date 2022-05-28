@@ -78,6 +78,10 @@ export const AddButton = styled.button`
 `;
 
 export const DateButton = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 8.9rem;
   height: 3.6rem;
   border: none;
@@ -87,6 +91,11 @@ export const DateButton = styled.button`
   font-weight: 400;
   line-height: 3.6rem;
   cursor: pointer;
+  img {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: 0.5rem;
+  }
   @media ${breakPoints.mobile} {
   }
 `;

@@ -71,7 +71,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
                 )}
               </S.ProjectTitle>
 
-              {props.activeData?.fetchActivatedProject ? (
+              {props.activeData?.fetchActivatedProject.length ? (
                 <SliderWrapper {...settings}>
                   {/* 진행완료된프로젝트 */}
                   {props.activeData?.fetchActivatedProject.map((el: any) => (
@@ -90,10 +90,12 @@ export default function MyPageUI(props: IMyPageUIProps) {
             <S.InnerWrapper>
               <S.ProjectTitle>
                 <S.Title>지난 프로젝트</S.Title>
-                <S.DateButton>최신순</S.DateButton>
+                <S.DateButton>
+                  최신순 <img src="/images/more.png"></img>
+                </S.DateButton>
               </S.ProjectTitle>
 
-              {props.inActiveData?.fetchInactivatedProject ? (
+              {props.inActiveData?.fetchInactivatedProject.length ? (
                 <SliderWrapper {...settings}>
                   {/* 진행완료된프로젝트 */}
                   {props.inActiveData?.fetchInactivatedProject.map(
