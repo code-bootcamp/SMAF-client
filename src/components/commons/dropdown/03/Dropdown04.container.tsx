@@ -40,21 +40,20 @@ export default function Dropdown01() {
   };
 
   const menu = (
-    <Menu>
+    <Menu style={{ borderRadius: "8px" }}>
       <Menu.Item onClick={onClickLogOut}>로그아웃</Menu.Item>
       <Menu.Item onClick={onClickMypage}>마이페이지</Menu.Item>
     </Menu>
   );
 
   return (
-
     <Dropdown overlay={menu}>
-        <a onClick={(e) => e.preventDefault()}>
-          <Space  >
-            <div style={{ width: "1rem" }}></div>
-            <DownOutlined style={{ color: "#E5E5E5" }} />
-          </Space>
-        </a>
-      </Dropdown>
+      <a onClick={(e) => e.preventDefault()}>
+        <Space>
+          <div style={{ width: "1rem" }}></div>
+          <DownOutlined style={{ color: "#E5E5E5" }} />
+        </Space>
+      </a>
+    </Dropdown>
   );
 }

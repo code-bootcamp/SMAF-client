@@ -87,6 +87,8 @@ export const Title = styled.div`
 `;
 
 export const QusStionAnswerBtn = styled.button`
+  width: 8.1rem;
+  height: 2.8rem;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -94,7 +96,12 @@ export const QusStionAnswerBtn = styled.button`
   color: #ffffff;
   background: #333333;
   border-radius: 8px;
+  outline: none;
+  border: none;
   cursor: pointer;
+  :hover {
+    background: #6b6bff;
+  }
 `;
 
 export const QuestionList = styled.div`
@@ -104,6 +111,5 @@ export const QuestionList = styled.div`
 `;
 
 export const Page = styled.div`
-padding: 3rem 0 0 18rem;
+  padding: 3rem 0 0 18rem;
 `;
-

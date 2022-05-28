@@ -5,12 +5,10 @@ import { IQuestionProps } from "./questionAnswerWrite.types";
 export default function QuestionAnswerWriteUI(props: IQuestionProps) {
   return (
     <S.Wrapper>
-      {/* <form onSubmit={props.handleSubmit(props.createQusetionBoard)}> */}
       <S.Container onSubmit={props.handleSubmit(props.CreateNewQusetionBoard)}>
         <S.Title>문의 글 등록하기</S.Title>
         <S.InputWrapper>
           <Dropdown02 />
-          {/* <QuestionAnswerSelect/> */}
           <S.Question
             {...props.register("title")}
             placeholder="제목을 입력해 주세요."

@@ -18,22 +18,22 @@ export const SignUpTop = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* border: 1px solid red; */
 `;
 
 export const SignUpTitle = styled.div`
-
   padding-top: 20%;
   padding-bottom: 9rem;
-  /* border: 1px solid red; */
+  /* border: 1px solid red;s */
   font-size: 3.2rem;
   font-weight: 700;
 `;
 
 export const SignUpProfileWrapper = styled.div`
-    /* width: 12rem;
+  width: 12rem;
   height: 12rem;
   border-radius: 100%;
-  border-color: black; */
+  border-color: black;
 `;
 
 export const SignUpInfo = styled.div``;
@@ -127,6 +127,12 @@ export const SignUpPhoneSendButton = styled.button`
   color: #ffffff;
   font-size: 2rem;
   font-weight: 800;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  :hover {
+    background: #6b6bff;
+  }
 `;
 
 export const SignAboutMe = styled.div`
@@ -162,6 +168,12 @@ export const SignSubmitButton = styled.button`
   color: #ffffff;
   font-size: 2.8rem;
   font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  :hover {
+    background: #6b6bff;
+  }
 `;
 
 export const ErrorMsg = styled.div`

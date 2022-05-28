@@ -23,7 +23,8 @@ export const Basic = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 5rem;
+  padding-left: 5.6rem;
+  /* border: 1px solid blue; */
 `;
 
 export const ProjectContents = styled.div`
@@ -36,7 +37,7 @@ export const ProjectContents = styled.div`
 export const ProjectNameInput = styled.input`
   width: 26.8rem;
   height: 4rem;
-  border: 1px solid #ededed;
+  border: 2px solid #dbdbdb;
   border-radius: 0.8rem;
   margin-left: 1.6rem;
 `;
@@ -44,7 +45,8 @@ export const ProjectNameInput = styled.input`
 export const ContentsArea = styled.textarea`
   width: 36rem;
   height: 8rem;
-  border: 1px solid #ededed;
+  margin-top: 1.2rem;
+  border: 2px solid #dbdbdb;
   border-radius: 0.8rem;
 `;
 
@@ -58,7 +60,7 @@ export const Date = styled.input`
   width: 12.6rem;
   height: 4rem;
   background: #ffffff;
-  border: 1px solid #dbdbdb;
+  border: 2px solid #dbdbdb;
   border-radius: 0.8rem;
   margin-left: 1.6rem;
 `;
@@ -78,4 +80,7 @@ export const ConfirmBtn = styled.button`
   text-align: center;
   letter-spacing: -0.02em;
   cursor: pointer;
+  :hover {
+    background-color: #6b6bff;
+  }
 `;
