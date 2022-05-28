@@ -66,4 +66,7 @@ export const AddBtn = styled.button`
   color: white;
   font-size: 1.8rem;
   cursor: pointer;
+  :hover {
+    background: #6b6bff;
+  }
 `;

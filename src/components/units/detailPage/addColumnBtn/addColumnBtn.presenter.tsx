@@ -20,11 +20,11 @@ export default function AddColumnBtnHTML(props: IAddColumnBtnProps) {
               width: "100%",
               height: "100%",
             }}
-            bodyStyle={{
-              width: "52rem",
-              height: "25rem",
-              backgroundColor: "#FFFFFF",
-            }}
+            // bodyStyle={{
+            //   width: "52rem",
+            //   height: "25rem",
+            //   backgroundColor: "#FFFFFF",
+            // }}
             footer={null}
             centered={true}
           >

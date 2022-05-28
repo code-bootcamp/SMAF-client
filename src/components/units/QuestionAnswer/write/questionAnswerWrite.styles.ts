@@ -120,6 +120,9 @@ export const Button = styled.button`
   line-height: 4.1rem;
   text-align: center;
   cursor: pointer;
+  :hover {
+    background: #6b6bff;
+  }
 
   @media ${breakPoints.mobile} {
     width: 32rem;

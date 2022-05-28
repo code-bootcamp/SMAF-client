@@ -27,6 +27,9 @@ export const NewCategory = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  height: 130px;
+  /* border: 1px solid red; */
 `;
 
 export const CategoryTitle = styled.div`
@@ -34,32 +37,45 @@ export const CategoryTitle = styled.div`
   font-size: 2rem;
   font-weight: 700;
   display: flex;
-  align-items: center;
   justify-content: center;
+  /* border: 1px solid red; */
 `;
 
 export const AddCategory = styled.div`
   width: 80%;
   height: 8rem;
   margin-top: 2rem;
-  background: #f1f1f5;
+  /* background: #f1f1f5; */
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: 1px solid red; */
 `;
 
 export const CategoryInput = styled.input`
   width: 90%;
   height: 4rem;
+  padding-left: 10px;
+  border: 2px solid #dbdbdb;
+  border-radius: 8px;
+  outline: none;
 `;
 
 export const CategoryBtn = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  margin-top: 3rem;
+  width: 8rem;
+  height: 3.1rem;
+  background: #49496e;
+  border-radius: 8px;
   border: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: -0.02em;
+  color: white;
+  outline: none;
   cursor: pointer;
+  :hover {
+    background-color: #6b6bff;
+  }
 `;

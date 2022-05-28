@@ -114,6 +114,9 @@ export const QusStionAnswerBtn = styled.button`
   text-align: center;
   border: none;
   cursor: pointer;
+  :hover {
+    background: #6b6bff;
+  }
 `;
 
 export const AnswerSubmitBtn = styled.button`

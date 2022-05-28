@@ -17,8 +17,6 @@ export default function Project01(props: IUserProject) {
     router.push(`/project/${event.currentTarget.id}`);
   };
 
-  // console.log("이엘", props.el.project.projectId);
-
   return (
     <S.card onClick={onClickToDetail} id={props.el.project.projectId}>
       <S.Container>
@@ -37,7 +35,8 @@ export default function Project01(props: IUserProject) {
           <ImageCircle el={props.el} id={props.el?.project.projectId} />
           <S.Title01>{props.el?.project.projectName}</S.Title01>
           <S.Title02>{props.el?.project.projectIntro}</S.Title02>
-          <S.Date>{getDate(props.el?.project.startDate)}</S.Date>
+          {/* <S.Date>{getDate(props.el?.project.startDate)}</S.Date> */}
+          <S.Date>마감까지일 남았습니다.</S.Date>
         </S.box2>
       </S.Container>
     </S.card>

@@ -41,7 +41,7 @@ export default function Dropdown01() {
   };
 
   const menu = (
-    <Menu>
+    <Menu style={{ borderRadius: "8px" }}>
       <Menu.Item onClick={onClickLogOut}>로그아웃</Menu.Item>
       <Menu.Item onClick={onClickMypage}>마이페이지</Menu.Item>
     </Menu>

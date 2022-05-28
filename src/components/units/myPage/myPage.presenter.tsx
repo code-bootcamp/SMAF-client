@@ -46,6 +46,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
         <UserInfoCard01
           onClickMoveToPaymentList={props.onClickMoveToPaymentList}
           onClickMoveToMyPage={props.onClickMoveToMyPage}
+          onClickMoveToPasswordChange={props.onClickMoveToPasswordChange}
           data={props.userData}
         />
         {props.visible ? (

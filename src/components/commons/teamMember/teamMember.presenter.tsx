@@ -74,12 +74,11 @@ export default function TeamMemberUI(props: TeamMemberUIProps) {
                 onOk={onToggleModal}
                 onCancel={onToggleModal}
                 maskStyle={{
-                  width: "100%",
                   height: "100%",
                 }}
                 bodyStyle={{
-                  width: "52rem",
-                  height: "50rem",
+                  // width: "52rem",
+                  // height: "50rem",
                   backgroundColor: "#FFFFFF",
                 }}
                 footer={null}

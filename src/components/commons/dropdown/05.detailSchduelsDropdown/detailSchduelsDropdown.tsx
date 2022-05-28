@@ -185,7 +185,7 @@ export default function DropdownSchduels(props: any) {
   };
 
   const menu = (
-    <Menu>
+    <Menu style={{ borderRadius: "8px" }}>
       {isOpen && (
         <Modal
           visible={true}

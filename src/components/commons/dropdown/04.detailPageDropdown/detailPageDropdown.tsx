@@ -72,7 +72,7 @@ export default function DropdownDetail(props: any) {
   };
 
   const menu = (
-    <Menu>
+    <Menu style={{ borderRadius: "8px" }}>
       {isOpen && (
         <Modal
           visible={true}
@@ -82,20 +82,13 @@ export default function DropdownDetail(props: any) {
             width: "100%",
             height: "100%",
           }}
-          bodyStyle={{
-            width: "52rem",
-            height: "25rem",
-            backgroundColor: "#FFFFFF",
-          }}
           footer={null}
           centered={true}
         >
           <form onSubmit={handleSubmit(UpdateCategory)}>
             <S.NewCategory>
               <S.CategoryTitle>카테고리 수정</S.CategoryTitle>
-              <S.AddCategory>
-                <S.CategoryInput {...register("processName")}></S.CategoryInput>
-              </S.AddCategory>
+              <S.CategoryInput {...register("processName")}></S.CategoryInput>
               <S.CategoryBtn>수정하기</S.CategoryBtn>
             </S.NewCategory>
           </form>
