@@ -7,7 +7,7 @@ export default function LoginUI(props: any) {
     <>
       {props.alertModal && (
         <Alert
-          onClick={props.onClickAlertModal}
+          // onClick={props.onClickAlertModal}
           onClickExit={props.onClickExitAlertModal}
           contents={props.modalContents}
         />

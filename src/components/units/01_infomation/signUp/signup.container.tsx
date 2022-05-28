@@ -107,8 +107,7 @@ export default function SignUpContainer(props: any) {
         setAlertModal(true);
         setGo(false)
         
-      } catch (error) {
-        if (error instanceof Error)
+      } catch (error:any) {
           setModalContents(error.message);
           setErrorAlertModal(true);
       }

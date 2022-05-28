@@ -45,21 +45,24 @@ export default function ProjectDetail() {
         setErrorAlertModal(false);
     };
 
-    // console.log("디테일", projectData);
-    const { data: categoriesData } = useQuery(FETCH_PROCESS_CATEGORIES, {
-        variables: {
-            projectId: router.query.projectId,
-        },
-    });
-    // console.log(categoriesData);
-    const { data: schedulesData, refetch } = useQuery(FETCH_PROJECT_SCHEDULES_PROJECTID, {
-        variables: {
-            projectId: router.query.projectId,
-        },
-    });
-    useEffect(() => {
-        refetch();
-    }, [dataTriger]);
+
+  const { data: categoriesData } = useQuery(FETCH_PROCESS_CATEGORIES, {
+    variables: {
+      projectId: router.query.projectId,
+    },
+  });
+  // console.log(categoriesData);
+  const { data: schedulesData, refetch } = useQuery(
+    FETCH_PROJECT_SCHEDULES_PROJECTID,
+    {
+      variables: {
+        projectId: router.query.projectId,
+      },
+    }
+  );
+  useEffect(() => {
+    refetch();
+  }, [dataTriger]);
 
     useEffect(() => {
         setIsLoading(true);

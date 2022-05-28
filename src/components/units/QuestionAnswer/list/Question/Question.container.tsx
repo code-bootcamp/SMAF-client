@@ -25,11 +25,13 @@ interface IQuestionProps {
 }
 
 export default function QuestionObject(props: IQuestionProps) {
+   
+
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
   const [createQuestionComment] = useMutation(CREATE_QUESTION_BOARD_COMMENT);
   const { data: userData } = useQuery(FETCH_LOGIN_USER);
-  console.log(userData);
+
   const { data } = useQuery(FETCH_QUESTION_COMMENTS, {
     variables: {
       questionBoardId: String(props.el.questionBoardId),
@@ -76,6 +78,7 @@ export default function QuestionObject(props: IQuestionProps) {
     }
   };
 
+console.log(props)
   const [index] = useRecoilState(indexNum);
   return (
     <>
@@ -91,7 +94,7 @@ export default function QuestionObject(props: IQuestionProps) {
             {props.el.title}
           </S.TableMenuTitles>
           <S.TableMenuWriter>작성자</S.TableMenuWriter>
-          <S.TableMenuDate>작성일</S.TableMenuDate>
+          <S.TableMenuDate>{props.el.createAt.slice(0,10)}</S.TableMenuDate>
           {/* {data?.fetchQuestionComments[0] &&
           !userData?.fetchLoginUser?.admin ? (
             <S.QusStionAnswerBtn>답변완료</S.QusStionAnswerBtn>
