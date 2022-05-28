@@ -183,6 +183,8 @@ export const SubmitBtn = styled.button`
   font-size: 2.8rem;
   border-radius: 1.2rem;
   cursor: pointer;
+  outline: none;
+  border: none;
   :hover {
     background: #6b6bff;
   }

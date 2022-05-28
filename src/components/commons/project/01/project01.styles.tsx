@@ -92,8 +92,7 @@ export const Title01 = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   :hover {
-    font-size: 2.2rem;
-    transition: all 0.5s;
+    font-size: 2.1rem;
   }
 `;
 

@@ -17,13 +17,9 @@ export default function SchedulesUI(props: any) {
             <S.Date>{moment(props.value).format("YYYY년 MM월 DD일")}</S.Date>
             <S.Direction>
               <S.LDirectionBtn onClick={props.onClickBefore}>
-                {" "}
-                ＜{" "}
+                ＜
               </S.LDirectionBtn>
-              <S.RDirectionBtn onClick={props.onClickAfter}>
-                {" "}
-                ＞{" "}
-              </S.RDirectionBtn>
+              <S.RDirectionBtn onClick={props.onClickAfter}>＞</S.RDirectionBtn>
             </S.Direction>
           </S.DateInfo>
           {!(props.myData?.fetchLoginUser.projectTicket <= 0) ? (

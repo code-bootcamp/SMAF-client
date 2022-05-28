@@ -2,6 +2,7 @@ import * as S from "./myPage.styles";
 import styled from "@emotion/styled";
 import { IMyPageUIProps } from "./myPage.types";
 import { v4 as uuidv4 } from "uuid";
+import { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,6 +11,7 @@ import Project02 from "../../commons/project/02/project02.container";
 import Project03 from "../../commons/project/03/project03.container";
 import UserInfoCard01 from "../../commons/userInfoCard/01/userInfoCard01.container";
 import PaymentList from "../paymentList/paymentListMenu.contatiner";
+import PaymentModal from "../../commons/modal/paymentModal/paymentModal.container";
 
 const SliderWrapper = styled(Slider)`
   height: 24rem;
@@ -18,7 +20,6 @@ const SliderWrapper = styled(Slider)`
     height: 24rem;
     width: 97rem;
     padding-left: 5px;
-    /* border: 1px solid blue; */
   }
   .slick-track {
     margin: 0;
@@ -26,19 +27,21 @@ const SliderWrapper = styled(Slider)`
 `;
 
 export default function MyPageUI(props: IMyPageUIProps) {
+  const fileRef = useRef<HTMLInputElement>(null);
+  const onClickUpload = () => {
+    fileRef.current?.click();
+  };
+
   const showMaxCnt = 3;
   const arr = Array.from(new Array(3));
   const settings = {
-    dots: false, // dots 사진 밑에 버튼 false 하면 사라진다
+    dots: false,
     infinite: arr.length > showMaxCnt,
     rows: 1,
-    speed: 500, // 콘텐츠를 넘어갈 때 속도
-    slidesToShow: showMaxCnt, // 한 화면에 보이는 콘텐츠 수
-    slidesToScroll: showMaxCnt, // 한 번에 넘어가는 콘텐츠 수
+    speed: 500,
+    slidesToShow: showMaxCnt,
+    slidesToScroll: showMaxCnt,
   };
-  // console.log("👺👺 2번", props.userData?.fetchLoginUser);
-  // console.log("진행중인프로젝트2", props.activeData?.fetchActivatedProject);
-  // console.log("지난프로젝트2", props.inActiveData?.fetchInactivatedProject);
 
   return (
     <>
@@ -54,9 +57,18 @@ export default function MyPageUI(props: IMyPageUIProps) {
             <S.InnerWrapper>
               <S.ProjectTitle>
                 <S.Title>진행 중인 프로젝트</S.Title>
-                <S.AddButton onClick={props.onClickMoveToNewProject}>
-                  + 프로젝트 추가하기
-                </S.AddButton>
+                {!(props.userData?.fetchLoginUser.projectTicket <= 0) ? (
+                  <S.AddButton onClick={props.onClickMoveToNewProject}>
+                    + 프로젝트 추가하기
+                  </S.AddButton>
+                ) : (
+                  <>
+                    <S.AddButton onClick={onClickUpload}>
+                      + 프로젝트 추가하기
+                    </S.AddButton>
+                    <PaymentModal fileRef={fileRef} />
+                  </>
+                )}
               </S.ProjectTitle>
 
               {props.activeData?.fetchActivatedProject ? (
