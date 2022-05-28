@@ -14,6 +14,7 @@ import { triger } from "../../../../commons/store/index";
 import { useRecoilState } from "recoil";
 
 export default function DetailPlanListColumn(props: any) {
+
   const router = useRouter();
   // const router = useRouter();
   const [my, setMy] = useState();

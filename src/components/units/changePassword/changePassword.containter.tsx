@@ -1,6 +1,5 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Modal } from "antd";
 import * as yup from "yup";
 import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -34,12 +33,6 @@ interface FormValues {
     inputToken: string;
 }
 
-const LOGOUT = gql`
-    mutation logout {
-        logout
-    }
-`;
-
 export default function ChangePassword(props: any) {
     // const [fetchUser] = useMutation(FETCH_USER);
     const [updatePassword] = useMutation(UPDATE_PASSWORD);
@@ -52,13 +45,28 @@ export default function ChangePassword(props: any) {
     const router = useRouter();
     const [alertModal, setAlertModal] = useState(false);
     const [modalContents, setModalContents] = useState(false);
-    const [logout] = useMutation(LOGOUT);
     const [go, setGo] = useState(false);
+    const [errorAlertModal, setErrorAlertModal] = useState(false);
 
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(schema),
         mode: "onChange",
     });
+
+    const onClickRoutingModal = () => {
+        setAlertModal(false);
+        router.push("/");
+    };
+
+    // 확인 모달
+    const onClickconfirmModal = () => {
+        setAlertModal(false);
+    };
+
+    // 에러 모달
+    const onClickErrorModal = () => {
+        setErrorAlertModal(false);
+    };
 
     const onClickExitAlertModal = () => {
         setAlertModal(false);
@@ -103,27 +111,31 @@ export default function ChangePassword(props: any) {
 
     const onClickTokenCheck = async () => {
         console.log("1,2,3,Chceck");
-
-        const data = await checkedTokenPhone({
-            variables: {
-                phone,
-                inputToken,
-            },
-        });
-        console.log(data);
-
-        if (!data.data.checkedTokenPhone) {
-            // Modal.success({
-            //     content: "인증이 완료되었습니다.",
-            // });
-            setModalContents("인증이 완료되었습니다.");
-            setAlertModal(true);
-            setTrueToken(true);
-            setGo(false);
+        if (inputToken) {
+            try {
+                const data = await checkedTokenPhone({
+                    variables: {
+                        phone,
+                        inputToken,
+                    },
+                });
+                console.log(data.data.checkedToekn);
+                const aaa = data.data.checkedToekn;
+                if (aaa.includes("완료")) {
+                    setModalContents("인증이 완료되었습니다.");
+                    setAlertModal(true);
+                    setTrueToken(true);
+                } else {
+                    setModalContents("인증번호가 일치하지 않습니다.");
+                    setErrorAlertModal(true);
+                }
+            } catch (error) {
+                setModalContents(error.message);
+                setErrorAlertModal(true);
+            }
         } else {
-            setModalContents(error.message);
-            setAlertModal(true);
-            // alert("실패");
+            setModalContents("인증번호를 입력해주세요.");
+            setErrorAlertModal(true);
         }
     };
 
@@ -169,6 +181,10 @@ export default function ChangePassword(props: any) {
             go={go}
             onClickExitRouterModal={onClickExitRouterModal}
             onClickRouterAlertModal={onClickRouterAlertModal}
+            onClickRoutingModal={onClickRoutingModal}
+            onClickconfirmModal={onClickconfirmModal}
+            onClickErrorModal={onClickErrorModal}
+            errorAlertModal={errorAlertModal}
         />
     );
 }

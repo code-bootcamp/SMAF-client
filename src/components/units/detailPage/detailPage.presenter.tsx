@@ -6,7 +6,6 @@ import DetailPlanListColumn from "./detailPlanListColumn/detailPlanListColumn.co
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import ProjectEditDropdown from "../../commons/dropdown/06.projectEditDropdown/projectEditDropdown";
 import ErrorAlert from "../../commons/modal/errorModal/alert";
-
 export default function ProjectDetailPageHTML(
   props: IProjectDetailPageHTMLProps
 ) {
@@ -128,3 +127,4 @@ export default function ProjectDetailPageHTML(
     </>
   );
 }
+

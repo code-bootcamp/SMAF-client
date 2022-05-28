@@ -7,6 +7,7 @@ export const FETCH_QUESTION_BOARDS = gql`
       questionCategory
       title
       contents
+      createAt
     }
   }
 `;

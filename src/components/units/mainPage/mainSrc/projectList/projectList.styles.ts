@@ -18,6 +18,7 @@ font-weight: 500;
 export const Add=styled.div`
 font-size: 2.4rem;
 font-weight: 500;
+cursor: pointer;
 `
 export const ListBox=styled.div`
 padding-bottom: 3rem;

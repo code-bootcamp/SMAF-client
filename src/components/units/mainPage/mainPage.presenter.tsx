@@ -6,7 +6,6 @@ import MiniCalendar from "./mainSrc/MiniCalendar/calendar.container";
 import ProjectList from "./mainSrc/projectList/projectList.container";
 
 export default function MainUI(props: IMainUIProps) {
-  // console.log(props.myData?.fetchLoginUser.userId);
   return (
     <>
       {!props.myData ? (

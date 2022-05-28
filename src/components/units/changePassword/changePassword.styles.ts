@@ -232,3 +232,10 @@ export const Button = styled.button`
         line-height: 2.2rem;
     }
 `;
+
+export const ErrorMsg = styled.div`
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 2.6rem;
+    color: #dc0000;
+`;

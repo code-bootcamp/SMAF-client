@@ -14,8 +14,9 @@ import { UPDATE_SCHEDULE } from "../../commons/dropdown/05.detailSchduelsDropdow
 import { useRecoilState } from "recoil";
 import { triger } from "../../../commons/store/index";
 
+
 export default function ProjectDetail() {
-  const router = useRouter();
+    const router = useRouter();
 
   const [errorAlertModal, setErrorAlertModal] = useState(false);
   const [modalContents] = useState(false);
@@ -42,6 +43,7 @@ export default function ProjectDetail() {
     },
   });
   // console.log("디테일", projectData);
+
   const { data: categoriesData } = useQuery(FETCH_PROCESS_CATEGORIES, {
     variables: {
       projectId: router.query.projectId,
@@ -85,9 +87,9 @@ export default function ProjectDetail() {
     refetch();
   }, [dataTriger]);
 
-  useEffect(() => {
-    setIsLoading(true);
-  }, []);
+    useEffect(() => {
+        setIsLoading(true);
+    }, []);
 
   useEffect(() => {
     DragAndDropData();

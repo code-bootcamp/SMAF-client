@@ -1,6 +1,12 @@
 import * as S from "./todoDetail.styles";
 import ImageCircle from "../../images/imagecircle/01/imagecircle.container";
+
+
+
 export default function TodoDetailHTML(props: any) {
+
+
+
   return (
     <>
       {[...props.dateArray].includes(String(props.today)) &&
@@ -17,7 +23,7 @@ export default function TodoDetailHTML(props: any) {
               <S.Star src="/image/star.png" />
             </S.TitleBox>
             <S.Detail>{props.el.scheduleContents}</S.Detail>
-            <ImageCircle />
+            <ImageCircle id={props.el?.project.projectId}/>
           </S.Box>
         </S.Wrapper>
       ) : (
