@@ -47,7 +47,6 @@ export default function Login() {
   const [errorAlertModal, setErrorAlertModal] = useState(false);
 
   const onClickExitAlertModal = () => {
-    console.log("클릭됨!!!!!!!!!")
     setAlertModal(false);
     // router.push("/");
   };
@@ -74,8 +73,10 @@ export default function Login() {
 
       setModalContents("로그인이 완료되었습니다.");
       setAlertModal(true);
+    alert("로그인이 완료되었습니다.")
       
     } catch (error: any) {
+      console.log(error.message)
       setModalContents(error.message);
       setErrorAlertModal(true);
     }

@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
 export default function DetailPlanListColumn(props: any) {
+
   const router = useRouter();
   // const router = useRouter();
   const [my, setMy] = useState();

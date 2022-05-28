@@ -7,6 +7,7 @@ export default function TodoDetail(props: any) {
   //   console.log(props.el.scheduleDate.slice(0, 10), "마감일");
   //   console.log(props.today, "props.today");
 
+
   const [dateArray, setDateArray] = useState<string[]>([]);
   const [dday,setDday] = useState(0)
 
