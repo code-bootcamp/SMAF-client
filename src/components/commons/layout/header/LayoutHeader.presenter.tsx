@@ -1,9 +1,12 @@
 import Dropdown01 from "../../dropdown/03/Dropdown04.container";
 import { useMoveToPage } from "../../hooks/useMoveToPage";
-import Image02 from "../../images/02/image02";
+import Image02 from "../../images/01/image02";
 import * as S from "./LayoutHeader.styles";
 
+import { Tooltip } from 'antd';
+
 export default function HeaderUI(props: any) {
+
   return (
     <S.Wrapper>
       <S.LogoWrapper>
@@ -15,8 +18,23 @@ export default function HeaderUI(props: any) {
 
       <S.OptionWrapper>
         <S.Alarm src="/image/changealarm.png" alt="alarm" />
-        <S.Qna src="/image/qna.png" alt="qna" onClick={props.onClickQna} />
-        <Image02 src={props.data?.fetchLoginUser.userImageURL} />
+
+        <Tooltip
+        color="#FAC38B" 
+        overlayInnerStyle={{color: "#6D2F2F", fontWeight:"600", borderRadius:"12px"}}
+        placement="bottom" 
+        title="문의하기">
+          <span><S.Qna src="/image/qna.png" alt="qna" onClick={props.onClickQna} /></span>
+        </Tooltip>
+
+        <Tooltip
+        color="#FAC38B"
+        overlayInnerStyle={{color: "#6D2F2F", fontWeight:"600", borderRadius:"12px"}}
+        placement="bottom" 
+        title={`무료체험이 ${props.data?.fetchLoginUser.projectTicket}회 남았습니다`}>
+          <span><Image02 src={props.data?.fetchLoginUser.userImageURL} /></span>
+        </Tooltip>
+
         {props.data?.fetchLoginUser.userName === undefined ? (
           <S.Signup>회원가입</S.Signup>
         ) : (
@@ -24,7 +42,7 @@ export default function HeaderUI(props: any) {
             {props.data?.fetchLoginUser.userName} 님
           </S.WelcomeText>
         )}
-        {props.data && <Dropdown01></Dropdown01>}
+        {props.data && <Dropdown01 />}
       </S.OptionWrapper>
     </S.Wrapper>
   );

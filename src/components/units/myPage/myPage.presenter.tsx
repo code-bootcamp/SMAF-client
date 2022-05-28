@@ -10,14 +10,19 @@ import Project02 from "../../commons/project/02/project02.container";
 import Project03 from "../../commons/project/03/project03.container";
 import UserInfoCard01 from "../../commons/userInfoCard/01/userInfoCard01.container";
 import PaymentList from "../paymentList/paymentListMenu.contatiner";
-import { useRouter } from "next/router";
 
 const SliderWrapper = styled(Slider)`
-  .slick-list {
-    margin-right: -19px;
-  }
   height: 24rem;
   width: 97rem;
+  .slick-list {
+    height: 24rem;
+    width: 97rem;
+    padding-left: 5px;
+    /* border: 1px solid blue; */
+  }
+  .slick-track {
+    margin: 0;
+  }
 `;
 
 export default function MyPageUI(props: IMyPageUIProps) {
@@ -52,9 +57,10 @@ export default function MyPageUI(props: IMyPageUIProps) {
                   + 프로젝트 추가하기
                 </S.AddButton>
               </S.ProjectTitle>
+
               {props.activeData?.fetchActivatedProject ? (
                 <SliderWrapper {...settings}>
-                  {/* 진행중인프로젝트 */}
+                  {/* 진행완료된프로젝트 */}
                   {props.activeData?.fetchActivatedProject.map((el: any) => (
                     <Project01
                       key={uuidv4()}
@@ -67,11 +73,13 @@ export default function MyPageUI(props: IMyPageUIProps) {
                 <Project03 />
               )}
             </S.InnerWrapper>
+
             <S.InnerWrapper>
               <S.ProjectTitle>
                 <S.Title>지난 프로젝트</S.Title>
                 <S.DateButton>최신순</S.DateButton>
               </S.ProjectTitle>
+
               {props.inActiveData?.fetchInactivatedProject ? (
                 <SliderWrapper {...settings}>
                   {/* 진행완료된프로젝트 */}

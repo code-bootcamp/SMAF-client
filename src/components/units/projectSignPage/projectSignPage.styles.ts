@@ -1,4 +1,7 @@
 import styled from "@emotion/styled";
+import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export const Wrapper = styled.div`
   width: 198rem;
@@ -17,6 +20,19 @@ export const LabelBox = styled.div`
 export const Label = styled.span`
   font-size: 2.8rem;
   font-weight: 500;
+`;
+export const RQuill = styled(ReactQuill)`
+height: 84%;
+.ql-editor{
+        padding:1rem;
+        min-height: 320px;
+        font-size: 2rem;
+        line-height: 1.5;
+    }
+/* 첫번째 자식요소에 스타일링 css */
+    /* .ql-editor .ql-blank::before{
+        left: 0;
+    } */
 `;
 export const Block = styled.div`
   display: flex;
