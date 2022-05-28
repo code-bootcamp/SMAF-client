@@ -20,22 +20,15 @@ export default function AddColumnBtnHTML(props: IAddColumnBtnProps) {
               width: "100%",
               height: "100%",
             }}
-            // bodyStyle={{
-            //   width: "52rem",
-            //   height: "25rem",
-            //   backgroundColor: "#FFFFFF",
-            // }}
             footer={null}
             centered={true}
           >
             <form onSubmit={props.handleSubmit(props.CreateProjectCategory)}>
               <S.NewCategory>
                 <S.CategoryTitle>카테고리 추가</S.CategoryTitle>
-                <S.AddCategory>
-                  <S.CategoryInput
-                    {...props.register("processName")}
-                  ></S.CategoryInput>
-                </S.AddCategory>
+                <S.CategoryInput
+                  {...props.register("processName")}
+                ></S.CategoryInput>
                 <S.CategoryBtn>추가하기</S.CategoryBtn>
               </S.NewCategory>
             </form>

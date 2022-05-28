@@ -41,18 +41,6 @@ export const CategoryTitle = styled.div`
   /* border: 1px solid red; */
 `;
 
-export const AddCategory = styled.div`
-  width: 80%;
-  height: 8rem;
-  margin-top: 2rem;
-  /* background: #f1f1f5; */
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* border: 1px solid red; */
-`;
-
 export const CategoryInput = styled.input`
   width: 90%;
   height: 4rem;

@@ -32,7 +32,7 @@ export default function ProjectDetailPageHTML(
                     src={props.projectData?.fetchProject?.projectImageURL}
                   ></S.DetailImg>
                 ) : (
-                  <S.DetailImg src="/test.png"></S.DetailImg>
+                  <S.DetailImg src="/images/noimage.png"></S.DetailImg>
                 )}
                 <S.BasicLow>
                   <S.DetailProjectName>
@@ -130,4 +130,3 @@ export default function ProjectDetailPageHTML(
     </>
   );
 }
-

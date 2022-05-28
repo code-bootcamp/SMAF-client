@@ -36,7 +36,7 @@ export default function DetailPlanAddModal(props: any) {
           },
         ],
       });
-      alert("얍얍");
+      alert("일정이 등록되었습니다.");
       props.onToggleModal();
     } catch (error) {
       alert("error");
