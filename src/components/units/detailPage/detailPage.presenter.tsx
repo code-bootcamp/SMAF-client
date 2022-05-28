@@ -6,6 +6,8 @@ import DetailPlanListColumn from "./detailPlanListColumn/detailPlanListColumn.co
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import ProjectEditDropdown from "../../commons/dropdown/06.projectEditDropdown/projectEditDropdown";
 import ErrorAlert from "../../commons/modal/errorModal/alert";
+import ProjectFileUpload from "../../commons/uploads/fileuploads/fileUpload01.container";
+
 export default function ProjectDetailPageHTML(
   props: IProjectDetailPageHTMLProps
 ) {
@@ -55,16 +57,17 @@ export default function ProjectDetailPageHTML(
                 </S.DetailProjectPosition>
               </S.ProjectDetail>
               <TeamMember />
-              <S.FileList>
+              <ProjectFileUpload />
+              {/* <S.FileList>
                 <S.FileListName>
                   <div>File</div>
                   <S.FileHiddenIcon
                     src="/detailPage/hiddenBtn.png"
                     onClick={props.OpenFileList}
                   ></S.FileHiddenIcon>
-                </S.FileListName>
+                </S.FileListName> */}
                 {/* data.map 부분 */}
-                {props.isOpen && (
+                {/* {props.isOpen && (
                   <>
                     <S.FileListUpload>
                       <S.FileListUploadIcon src="/detailPage/file.png"></S.FileListUploadIcon>
@@ -80,7 +83,7 @@ export default function ProjectDetailPageHTML(
                     </S.FileListUpload>
                   </>
                 )}
-              </S.FileList>
+              </S.FileList> */}
             </S.LeftWrapper>
             <S.RightWrapper
               color={props.projectData?.fetchProject.projectColor}

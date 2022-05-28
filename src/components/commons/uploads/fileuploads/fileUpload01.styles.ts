@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
     background-color: white;
     border-radius: 1.6rem;
     padding: 1.5rem;
+    margin-top: 3rem;
 `;
 
 export const Title = styled.div`
@@ -33,6 +34,7 @@ export const AddFile = styled.div`
     justify-content: space-between;
     margin-top: 1.2rem;
     justify-content: flex-start;
+    cursor: pointer;
 `;
 
 export const ProjectFileAdd = styled.div`
@@ -59,4 +61,40 @@ export const FileName = styled.div`
     font-size: 1.6rem;
     line-height: 2.3rem;
     letter-spacing: -0.02em;
+`;
+
+export const SubmitBtn = styled.div`
+width:100%;
+height: 4rem;
+background-color: #49496E;
+color: white;
+border-radius: 1.2rem;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+`;
+export const SubmitBtnBox = styled.div`
+padding-top: 1rem;
+`;
+export const FileImg = styled.img`
+width: 1.6rem;
+opacity: 0.5;
+margin-right: 0.5rem;
+`;
+export const Files = styled.div`
+padding-bottom: 1.2rem;
+`;
+export const Filename = styled.div`
+font-size: 1.6rem;
+display: flex;
+justify-content: space-between;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+`;
+export const DownImg = styled.img`
+width: 1.8rem;
+height: 1.8rem;
+opacity: 0.3;
 `;
