@@ -13,7 +13,6 @@ const Menu01 = styled(Menu)`
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
-
   @media ${breakPoints.mobile} {
     width: 32rem;
     height: 136.22px;
@@ -65,16 +64,6 @@ const MenuItem = styled(Menu.Item)`
   }
 `;
 
-// const Line = styled.div`
-//   width: 116px;
-//   height: 0px;
-//   /* border-top: 1px solid #ededed; */
-//   @media ${breakPoints.mobile} {
-//     width: 320px;
-//     height: 48px;
-//   }
-// `;
-
 const DownOutlinedButton = styled(DownOutlined)`
   @media ${breakPoints.mobile} {
     /* border: 1px solid red; */
@@ -91,9 +80,7 @@ export default function Dropdown02() {
   const menu = (
     <Menu01>
       <MenuItem>서비스 문의</MenuItem>
-      {/* <Line></Line> */}
       <MenuItem>환불 문의</MenuItem>
-      {/* <Line></Line> */}
       <MenuItem>신고하기</MenuItem>
     </Menu01>
   );
