@@ -16,9 +16,9 @@ export const FETCH_LOGIN_USER = gql`
       userName
       email
       phone
-      projectTicket
-      userImageURL
       admin
+      userImageURL
+      projectTicket
     }
   }
 `;

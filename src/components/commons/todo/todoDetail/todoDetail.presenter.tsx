@@ -3,7 +3,8 @@ import ImageCircle from "../../images/imagecircle/01/imagecircle.container";
 export default function TodoDetailHTML(props: any) {
   return (
     <>
-      {[...props.dateArray].includes(String(props.today)) ? (
+      {[...props.dateArray].includes(String(props.today)) &&
+      props.el?.status === true ? (
         <S.Wrapper>
           <S.Color
             style={{ backgroundColor: props.el.project.projectColor }}
@@ -17,9 +18,6 @@ export default function TodoDetailHTML(props: any) {
             </S.TitleBox>
             <S.Detail>{props.el.scheduleContents}</S.Detail>
             <ImageCircle />
-            {/* <div>생성일 : {props.el.createAt.slice(0, 10)}</div>
-          <div>마감일 : {props.el.scheduleDate.slice(0, 10)}</div>
-          <div>today : {props.today}</div> */}
           </S.Box>
         </S.Wrapper>
       ) : (

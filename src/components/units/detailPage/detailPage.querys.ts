@@ -58,6 +58,9 @@ export const FETCH_PROJECT_SCHEDULES_PROJECTID = gql`
         projectId
       }
       createAt
+      user {
+        userId
+      }
     }
   }
 `;
@@ -79,6 +82,9 @@ export const FETCH_PROJECT_SCHEDULES_CATEGORY = gql`
         projectId
       }
       createAt
+      user {
+        userId
+      }
     }
   }
 `;
@@ -101,5 +107,45 @@ export const UPDATE_SCHEDULE = gql`
 export const PROJECT_FILE_UPLOAD = gql`
   mutation projectFileUpload($file: Upload!) {
     projectFileUpload(file: $file)
+  }
+`;
+
+export const FETCH_LOGIN_USER = gql`
+  query fetchLoginUser {
+    fetchLoginUser {
+      userId
+      userName
+      email
+      phone
+      admin
+      userImageURL
+      projectTicket
+    }
+  }
+`;
+
+export const FETCH_PARTCIPATING_USER = gql`
+  query fetchParticipatingUser($projectId: String!) {
+    fetchParticipatingUser(projectId: $projectId) {
+      projectParticipantId
+      position
+      isActivated
+      user {
+        userId
+        userName
+        userImageURL
+      }
+      project {
+        projectId
+      }
+    }
+  }
+`;
+
+export const FETCH_CATEGORYS = gql`
+  query fetchProcessCategories($projectId: String!) {
+    fetchProcessCategories(projectId: $projectId) {
+      processCategoryId
+    }
   }
 `;

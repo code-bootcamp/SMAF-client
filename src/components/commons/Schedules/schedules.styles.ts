@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   overflow: scroll;
   ::-webkit-scrollbar {
     width: 2rem;
+    height: 0rem;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -22,7 +23,7 @@ export const Wrapper = styled.div`
   }
 
   ::-webkit-scrollbar-track {
-    background: #f2f2f2;
+    background: white;
   }
 `;
 export const DateBox = styled.div`

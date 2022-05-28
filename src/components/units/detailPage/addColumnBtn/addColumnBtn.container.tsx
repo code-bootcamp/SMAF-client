@@ -4,8 +4,11 @@ import { CREATE_PROCESS_CATEGORY } from "../detailPage.querys";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { FETCH_PROCESS_CATEGORIES } from "./addColumnbtn.querys";
+import { triger } from "../../../../commons/store/index";
+import { useRecoilState } from "recoil";
 export default function AddColumnBtn(props: any) {
   const [isOpen, setIsOpen] = useState(false);
+  const [, setDataTriger] = useRecoilState(triger);
   const onToggleModal = () => {
     setIsOpen((prev: boolean) => !prev);
   };
@@ -35,6 +38,8 @@ export default function AddColumnBtn(props: any) {
       onToggleModal();
     } catch (error) {
       alert("error");
+    } finally {
+      setDataTriger((prev) => !prev);
     }
   };
 

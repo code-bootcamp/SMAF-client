@@ -51,6 +51,7 @@ export default function ProjectEditDropdown(props: any) {
         projectId: router.query.projectId,
       },
     });
+    router.push("/");
   };
 
   const EndProject = async () => {

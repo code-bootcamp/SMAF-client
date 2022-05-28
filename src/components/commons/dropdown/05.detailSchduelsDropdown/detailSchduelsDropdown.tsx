@@ -5,6 +5,8 @@ import styled from "@emotion/styled";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as S from "./detailSchduelsDropdown.styles";
+import { triger } from "../../../../commons/store/index";
+import { useRecoilState } from "recoil";
 
 export const UPDATE_SCHEDULE = gql`
   mutation updateSchedule(
@@ -51,6 +53,14 @@ export const FETCH_PROCESS_CATEGORY = gql`
   }
 `;
 
+export const FETCH_SCHEDULE = gql`
+  query fetchSchedule($scheduleId: String!) {
+    fetchSchedule(scheduleId: $scheduleId) {
+      scheduleId
+    }
+  }
+`;
+
 const Img = styled.img`
   margin-bottom: 1.2rem;
 `;
@@ -60,6 +70,8 @@ export default function DropdownSchduels(props: any) {
 
   // console.log(props.el, "props.el");
   const [isOpen, setIsOpen] = useState(false);
+  const [, setDataTriger] = useRecoilState(triger);
+  // const [, setDndData] = useRecoilState(dataTrigers);
   const onToggleModal = () => {
     setIsOpen((prev: boolean) => !prev);
   };
@@ -74,13 +86,14 @@ export default function DropdownSchduels(props: any) {
       },
       refetchQueries: [
         {
-          query: FETCH_PROJECT_SCHEDULES_CATEGORY,
+          query: FETCH_SCHEDULE,
           variables: {
-            processCategoryId: props.categoryId,
+            scheduleId: props.id,
           },
         },
       ],
     });
+    setDataTriger((prev) => !prev);
   };
   const UpdataSchedule = async (data: any) => {
     try {
@@ -95,16 +108,19 @@ export default function DropdownSchduels(props: any) {
         },
         refetchQueries: [
           {
-            query: FETCH_PROJECT_SCHEDULES_CATEGORY,
+            query: FETCH_SCHEDULE,
             variables: {
-              processCategoryId: props.categoryId,
+              scheduleId: props.id,
             },
           },
         ],
       });
+
       onToggleModal();
     } catch (error) {
       alert(error);
+    } finally {
+      setDataTriger((prev) => !prev);
     }
   };
 
@@ -123,21 +139,18 @@ export default function DropdownSchduels(props: any) {
         },
         refetchQueries: [
           {
-            query: FETCH_PROJECT_SCHEDULES_CATEGORY,
+            query: FETCH_SCHEDULE,
             variables: {
-              processCategoryId: props.categoryId,
-            },
-          },
-          {
-            query: FETCH_PROCESS_CATEGORY,
-            variables: {
-              processCategoryId: props.categoryId,
+              scheduleId: props.id,
             },
           },
         ],
       });
     } catch (error) {
       alert(error);
+    } finally {
+      // setDndData((prev) => !prev);
+      setDataTriger((prev) => !prev);
     }
   };
 
@@ -156,21 +169,18 @@ export default function DropdownSchduels(props: any) {
         },
         refetchQueries: [
           {
-            query: FETCH_PROJECT_SCHEDULES_CATEGORY,
+            query: FETCH_SCHEDULE,
             variables: {
-              processCategoryId: props.categoryId,
-            },
-          },
-          {
-            query: FETCH_PROCESS_CATEGORY,
-            variables: {
-              processCategoryId: props.categoryId,
+              scheduleId: props.id,
             },
           },
         ],
       });
     } catch (error) {
       alert(error);
+    } finally {
+      // setDndData((prev) => !prev);
+      setDataTriger((prev) => !prev);
     }
   };
 

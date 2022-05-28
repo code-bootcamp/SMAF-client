@@ -26,7 +26,7 @@ export default function SchedulesUI(props: any) {
               </S.RDirectionBtn>
             </S.Direction>
           </S.DateInfo>
-          {!(props.myData?.fetchLoginUser.projectTicket === 0) ? (
+          {!(props.myData?.fetchLoginUser.projectTicket <= 0) ? (
             <S.AddBtn onClick={props.onClickToProjectSignUp}>
               + 프로젝트 생성
             </S.AddBtn>

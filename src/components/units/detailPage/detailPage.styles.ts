@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   /* width: 67%; */
-  width: 128rem;
+  width: 148rem;
   padding-top: 6rem;
 `;
 
@@ -142,9 +142,15 @@ export const RightWrapper = styled.div`
   display: flex;
   flex-direction: row;
   overflow: scroll;
+  overflow-y: auto;
+  margin: 1.5rem 0rem;
+  /* transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg); */
 
   ::-webkit-scrollbar {
     width: 0rem;
+    height: 1rem;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -154,6 +160,6 @@ export const RightWrapper = styled.div`
   }
 
   ::-webkit-scrollbar-track {
-    background: #f2f2f2;
+    background: #ededed;
   }
 `;
