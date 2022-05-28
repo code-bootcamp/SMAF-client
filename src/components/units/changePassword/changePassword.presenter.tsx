@@ -26,6 +26,7 @@ export default function ChangePasswordUI(props: any) {
                                 placeholder="가입한 이메일을 작성해주세요."
                                 {...props.register("email")}
                             ></S.SubInput>
+                            <S.ErrorMsg>{props.formState.errors?.email?.message}</S.ErrorMsg>
                         </div>
                         <div>
                             <S.SubTitle>휴대폰 번호</S.SubTitle>
@@ -51,8 +52,7 @@ export default function ChangePasswordUI(props: any) {
                                     인증하기
                                 </S.NumberButton>
                             </S.NumberWrapper>
-
-                            <S.Authorization>인증이 완료되었습니다.</S.Authorization>
+                            <S.ErrorMsg>{props.formState.errors?.phone?.message}</S.ErrorMsg>
                         </div>
                         <div>
                             <S.SubTitle>새로운 비밀번호</S.SubTitle>
@@ -68,9 +68,7 @@ export default function ChangePasswordUI(props: any) {
                                 placeholder="비밀번호를 다시 입력해주세요."
                                 {...props.register("confirmPassword")}
                             ></S.PasswordInput>
-                            <S.PasswordAuthorization>
-                                비밀번호가 일치하지 않습니다.
-                            </S.PasswordAuthorization>
+                            <S.ErrorMsg>{props.formState.errors?.password?.message}</S.ErrorMsg>
                         </div>
                         <S.Button title="비밀번호 변경" type="submit">
                             비밀번호 변경
