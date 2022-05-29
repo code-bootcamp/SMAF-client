@@ -48,7 +48,6 @@ export default function Login() {
 
   const onClickExitAlertModal = () => {
     setAlertModal(false);
-    // router.push("/");
   };
 
   // 에러 모달
@@ -71,9 +70,10 @@ export default function Login() {
       setAccessToken(accessToken);
       Cookies.set("accessToken", accessToken);
 
-      setModalContents("로그인이 완료되었습니다.");
-      setAlertModal(true);
-      alert("로그인이 완료되었습니다.");
+    //   setModalContents("로그인이 완료되었습니다.");
+    //   setAlertModal(true);
+    // alert("로그인이 완료되었습니다.")
+
     } catch (error: any) {
       console.log(error.message);
       setModalContents(error.message);

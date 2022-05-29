@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import {
   DayPicker,
 } from 'react-day-picker';
+import { breakPoints } from "../../../commons/styles/media";
 
 export const Input = styled.input`
   width: 22rem;
@@ -16,6 +17,12 @@ export const Input = styled.input`
   background-repeat: no-repeat;
   background-size : 2.2rem;
   background-position: 1rem center;
+
+  @media ${breakPoints.mobile} {
+    width: 14rem;
+    height: 4.0rem;
+    padding: 0;
+  }
 `
 export const StartEndDate = styled.div`
 display: flex;
@@ -29,7 +36,7 @@ border-radius: 1rem;
 
 export const FromTo = styled.div`
 border-bottom: 2px solid #DBDBDB;
-width: 30px;
+width: 15px;
 margin: 0 10px 20px 10px;
 `
 export const StartDay = styled.div`
@@ -47,6 +54,10 @@ export const ReactDayPick = styled(DayPicker)`
   --rdp-outline: 2px solid var(--rdp-accent-color);
   /* Outline border for focused and selected elements */
   --rdp-outline-selected: 2px solid #DBDBDB;
+
+  @media ${breakPoints.mobile} {
+    --rdp-cell-size: 35px;
+  }
 }
 
 .rdp {
@@ -87,6 +98,10 @@ export const ReactDayPick = styled(DayPicker)`
   font-size: 2rem;
   -moz-appearance: none;
   -webkit-appearance: none;
+
+  @media ${breakPoints.mobile} {
+    font-size: 1.8rem;
+  }
 }
 
 .rdp-button {
@@ -173,6 +188,10 @@ export const ReactDayPick = styled(DayPicker)`
   font-family: inherit;
   font-size: 200%;
   font-weight: bold;
+
+  @media ${breakPoints.mobile} {
+    font-size: 2.5rem;
+  }
 }
 
 .rdp-nav {
@@ -268,6 +287,10 @@ export const ReactDayPick = styled(DayPicker)`
   height: 100%;
   height: var(--rdp-cell-size);
   padding: 0;
+  @media ${breakPoints.mobile} {
+    font-size: 2rem;
+    padding: 0.6rem;
+  }
 }
 
 .rdp-tbody {

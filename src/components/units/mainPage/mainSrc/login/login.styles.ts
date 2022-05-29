@@ -55,6 +55,8 @@ export const LoginBtn = styled.button`
   background-color: #333333;
   border-radius: 0.8rem;
   cursor: pointer;
+  outline: none;
+  border: none;
   :hover {
     background: #6b6bff;
   }
@@ -119,6 +121,7 @@ export const JoinBtn = styled.button`
   width: 25rem;
   height: 4.8rem;
   border: 0.1rem solid #dbdbdb;
+  background-color: #ffffff;
   border-radius: 0.8rem;
   font-size: 1.5rem;
   font-weight: 500;

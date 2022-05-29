@@ -3,33 +3,39 @@ import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { ChangeEvent, useRef, useState } from "react";
 import ProjectFileUploadUI from "./fileUpload01.presenter";
-import { PROJECT_FILES_FETCH, PROJECT_FILE_UPLOAD } from "./fileUpload01.queries";
+import { CREATE_PROJECT_FILE, PROJECT_FILES_FETCH, PROJECT_FILE_UPLOAD } from "./fileUpload01.queries";
 import { checkValidationFile } from "./fileUpload01.validation";
 
-export default function ProjectFileUpload(props) {
-    const router = useRouter();
+export default function ProjectFileUpload() {
+
+    const router = useRouter()
     const fileRef = useRef<HTMLInputElement>(null);
+    const [urls, setUrls] = useState("");
+
+    const [alertModal, setAlertModal] = useState(false);
+    const [modalContents, setModalContents] = useState("");
+    const [errorAlertModal, setErrorAlertModal] = useState(false);
+
     const [projectFileUpload] = useMutation(PROJECT_FILE_UPLOAD);
+    const [createProjectFile] = useMutation(CREATE_PROJECT_FILE)
+
     const { data: fetchProjectFiles } = useQuery(PROJECT_FILES_FETCH, {
         variables: {
             projectId: String(router.query.projectId),
         },
     });
 
-    // const [urls, setUrls] = useState<string[]>([]);
-    const [urls, setUrls] = useState("");
-    const [isOpen, setIsOpen] = useState(false);
-    const [isProjectFile, setisProjectFile] = useState(true);
-    const onToggleModal = () => {
-        setIsOpen((prev) => !prev);
-    };
-    const OpenList = () => {
-        setisProjectFile((prev) => !prev);
-    };
+     // 등록하기 모달
+  const onClickExitSubmitModal = () => {
+    setAlertModal(false);
+  };
 
-    const onClickFileUpload = () => {
-        fileRef.current?.click();
-    };
+  // 에러 모달
+  const onClickExitErrorModal = () => {
+    setErrorAlertModal(false);
+  };
+
+    console.log("봅시다!!!",fetchProjectFiles)
 
     const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
         const file = checkValidationFile(event.target.files?.[0]);
@@ -37,7 +43,7 @@ export default function ProjectFileUpload(props) {
 
         try {
             const result = await projectFileUpload({
-                variables: { projectId: props.projectId },
+                variables: { file },
             });
             setUrls(result.data.projectFileUpload);
             console.log(result, "파일결과값");
@@ -45,6 +51,45 @@ export default function ProjectFileUpload(props) {
             Modal.error({ content: error.message });
         }
     };
+    
+    const onClickFileUpload = () => {
+        fileRef.current?.click();
+    };
+
+    const aa = urls.split("/")
+    const fname = aa[aa.length-1]
+
+    const onClickSubmit = async() => {
+
+        try{
+            const result = await createProjectFile({
+                variables:{
+                    filename : decodeURIComponent(fname),
+                    fileURL : urls,
+                    projectId: router.query.projectId
+                },
+                refetchQueries: [
+                    {
+                        query: PROJECT_FILES_FETCH,
+                        variables: {
+                        projectId: router.query.projectId,
+                        },
+                    },
+                ],
+            })
+
+            setUrls("")
+        
+            setModalContents("파일 등록이 완료되었습니다!");
+            setAlertModal(true);
+
+        } catch(error){
+            setModalContents(error.message);
+            setErrorAlertModal(true);
+        }
+        
+
+    }
 
     return (
         <ProjectFileUploadUI
@@ -52,11 +97,13 @@ export default function ProjectFileUpload(props) {
             urls={urls}
             onClickFileUpload={onClickFileUpload}
             onChangeFile={onChangeFile}
-            onToggleModal={onToggleModal}
-            OpenList={OpenList}
-            isOpen={isOpen}
-            isProjectFile={isProjectFile}
+            onClickSubmit={onClickSubmit}
             fetchProjectFiles={fetchProjectFiles}
+            alertModal={alertModal}
+            modalContents={modalContents}
+            errorAlertModal={errorAlertModal}
+            onClickExitSubmitModal={onClickExitSubmitModal}
+            onClickExitErrorModal={onClickExitErrorModal}
         />
     );
 }

@@ -7,8 +7,11 @@ export const Wrapper = styled.div`
   width: 128rem;
   padding-top: 6rem;
   padding-bottom: 12rem;
-  /* border: 1px solid red; */
   @media ${breakPoints.mobile} {
+    width: 36rem;
+    flex-direction: column;
+    padding-top: 0rem;
+    padding-bottom: 6rem;
   }
 `;
 
@@ -18,9 +21,11 @@ export const RightWrapper = styled.div`
   justify-content: space-between;
   width: 97rem;
   margin-left: 9rem;
-  /* border: 1px solid blue; */
   border-radius: 8px;
   @media ${breakPoints.mobile} {
+    width: 36rem;
+    padding-top: 32px;
+    margin-left: 0rem;
   }
 `;
 
@@ -29,7 +34,6 @@ export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* border: 1px solid green; */
 `;
 
 export const ProjectTitle = styled.div`
@@ -39,15 +43,12 @@ export const ProjectTitle = styled.div`
   align-items: center;
   height: 4.6rem;
   margin-bottom: 2rem;
-`;
-
-export const Slider01 = styled.div`
-  height: 24rem;
-  width: 97rem;
-  /* border: 2px solid green; */
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
+  @media ${breakPoints.mobile} {
+    width: 36rem;
+    /* background-color: blue; */
+    margin-left: 0rem;
+    margin-bottom: 0rem;
+  }
 `;
 
 export const Title = styled.div`
@@ -55,6 +56,10 @@ export const Title = styled.div`
   font-weight: 700;
   font-size: 3.2rem;
   @media ${breakPoints.mobile} {
+    height: 2.6rem;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    margin-left: 2.2rem;
   }
 `;
 
@@ -67,17 +72,28 @@ export const AddButton = styled.button`
   color: #ffffff;
   font-size: 1.5rem;
   font-weight: 400;
-  line-height: 46px;
+  line-height: 4.6rem;
   outline: none;
   :hover {
     background: #6b6bff;
   }
   cursor: pointer;
   @media ${breakPoints.mobile} {
+    width: 14rem;
+    height: 2.6rem;
+    margin-right: 2.5rem;
+    color: white;
+    font-size: 1.4rem;
+    line-height: 2.6rem;
+    border-radius: 8px;
   }
 `;
 
 export const DateButton = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 8.9rem;
   height: 3.6rem;
   border: none;
@@ -87,6 +103,17 @@ export const DateButton = styled.button`
   font-weight: 400;
   line-height: 3.6rem;
   cursor: pointer;
+  img {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-left: 0.5rem;
+  }
   @media ${breakPoints.mobile} {
+    width: 8rem;
+    height: 2.6rem;
+    margin-right: 2.5rem;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    line-height: 2.6rem;
   }
 `;

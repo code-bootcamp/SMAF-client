@@ -2,8 +2,12 @@ import ProjectAchievementHTML from "./projectAchievement.presenter";
 import { useQuery } from "@apollo/client";
 import { FETCH_PROJECT_SCHEDULES_PROJECTID } from "./projectAchievement.querys";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function ProjectAchievement(props: any) {
+
+  const router = useRouter()
+
   const { data: schedulesData } = useQuery(FETCH_PROJECT_SCHEDULES_PROJECTID, {
     variables: {
       projectId: props.el?.project.projectId,
@@ -27,7 +31,6 @@ export default function ProjectAchievement(props: any) {
     const result = Math.ceil((falesSchedulel / allSchedule) * 100);
     setResult(result);
   };
-
   const Dday = () => {
     const startDate = new Date();
     const endDate = new Date(props.el?.project.endDate.slice(0, 10));
@@ -35,6 +38,11 @@ export default function ProjectAchievement(props: any) {
     const dday = Math.trunc(Math.abs(day / (1000 * 3600 * 24)));
     setDday(dday);
   };
+
+
+  const onClickDetail = (event) => {
+    router.push(`/project/${event.currentTarget.id}`)
+  }
 
   useEffect(() => {
     Persent();
@@ -47,6 +55,7 @@ export default function ProjectAchievement(props: any) {
       result={result}
       schedulesData={schedulesData}
       dday={dday}
+      onClickDetail={onClickDetail}
     />
   );
 }

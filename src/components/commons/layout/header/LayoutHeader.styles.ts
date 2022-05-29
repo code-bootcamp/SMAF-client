@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../../commons/styles/media";
-import { Tooltip } from 'antd';
+import { Tooltip } from "antd";
 
 export const Wrapper = styled.header`
   display: flex;
@@ -11,11 +11,12 @@ export const Wrapper = styled.header`
   /* border: 1px solid yellow; */
   background-color: #333333;
   @media ${breakPoints.mobile} {
-    /* width: 90%; */
     height: 5.6rem;
     justify-content: space-between;
+    padding: 0 20px;
   }
 `;
+
 export const LogoWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -63,10 +64,6 @@ export const Search = styled.input`
   padding-left: 13.5%;
   font-weight: 400;
   outline: none;
-  /* background-image: url(/image/searchemo.png); */
-  /* background-repeat: no-repeat;
-  background-size: 1.9rem;
-  background-position: 65rem center; */
   ::placeholder {
     padding: 0px 0px 0px 2.2rem;
     background-image: url(/image/searchemo.png);
@@ -143,30 +140,3 @@ export const WelcomeText = styled.div`
     display: none;
   }
 `;
-
-// export const SearchFront = styled.div`;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     width: 100%;
-// `;
-
-// export const SearchProject = styled.div`
-//     font-weight: 400;
-//     font-size: 20px;
-//     line-height: 36px;
-//     letter-spacing: -0.03em;
-//     color: #888888;
-// `;
-
-// export const SearchEmo = styled.img`
-//     width: 19px;
-//     height: 19px;
-// `;
-
-// export const SearchRight = styled.div``;
-
-// export const SearchLine = styled.img`
-//     width: 16px;
-//     height: 16px;
-// `;

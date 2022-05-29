@@ -7,6 +7,8 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import ProjectEditDropdown from "../../commons/dropdown/06.projectEditDropdown/projectEditDropdown";
 import ErrorAlert from "../../commons/modal/errorModal/alert";
 import { useState } from 'react';
+import ProjectFileUpload from "../../commons/uploads/fileuploads/fileUpload01.container";
+
 export default function ProjectDetailPageHTML(
   props: IProjectDetailPageHTMLProps
 ) {
@@ -50,7 +52,7 @@ export default function ProjectDetailPageHTML(
                     src={props.projectData?.fetchProject?.projectImageURL}
                   ></S.DetailImg>
                 ) : (
-                  <S.DetailImg src="/test.png"></S.DetailImg>
+                  <S.DetailImg src="/images/noimage.png"></S.DetailImg>
                 )}
                 <S.BasicLow>
                   <S.DetailProjectName>
@@ -79,37 +81,13 @@ export default function ProjectDetailPageHTML(
                   <S.ShowBtn3 onClick={OpenFile} isOpenFile={isOpenFile}>파일</S.ShowBtn3>
                 </S.BtnList>
               </S.ProjectDetail>
-              <S.MemberList isOpenMember={isOpenMember}>
-                <TeamMember />
-              </S.MemberList>
-                    {/* 업로드버튼은 머지후에 */}
-              <S.FileList isOpenFile={isOpenFile}>
-                <S.FileListName>
-                  <div>File</div>
-                  <S.FileHiddenIcon
-                    src="/detailPage/hiddenBtn.png"
-                    onClick={props.OpenFileList}
-                  ></S.FileHiddenIcon>
-                </S.FileListName>
-                {/* data.map 부분 */}
-                {props.isOpen && (
-                  <>
-                    <S.FileListUpload>
-                      <S.FileListUploadIcon src="/detailPage/file.png"></S.FileListUploadIcon>
-                      <S.FileListContents>
-                        대한민국 환경오염 문제asdas
-                      </S.FileListContents>
-                    </S.FileListUpload>
-                    <S.FileListUpload>
-                      <S.FileListUploadIcon src="/detailPage/file.png"></S.FileListUploadIcon>
-                      <S.FileListContents>
-                        대한민국 환경오염 문제asdas
-                      </S.FileListContents>
-                    </S.FileListUpload>
-                  </>
-                )}
-              </S.FileList>
-              
+
+                <S.MemberList isOpenMember={isOpenMember}>
+              <TeamMember />
+                  </S.MemberList>
+                <S.FileList isOpenFile={isOpenFile}>
+              <ProjectFileUpload />
+                  </S.FileList>
             </S.LeftWrapper>
             <S.RightWrapper isOpenProject={isOpenProject}
               color={props.projectData?.fetchProject.projectColor}
@@ -156,4 +134,3 @@ export default function ProjectDetailPageHTML(
     </>
   );
 }
-

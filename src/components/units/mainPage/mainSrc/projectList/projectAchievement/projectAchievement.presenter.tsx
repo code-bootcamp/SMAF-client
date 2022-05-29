@@ -1,8 +1,12 @@
 import * as S from "./projectAchievement.styles";
 import { IProjectAchievementHTMLProps } from "./projectAchievement.types";
+
 export default function ProjectAchievementHTML(
   props: IProjectAchievementHTMLProps
 ) {
+
+  console.log("😂",props.el.project.projectId)
+
   return (
     <>
       {props.schedulesData && (
@@ -12,7 +16,7 @@ export default function ProjectAchievementHTML(
               <S.Check1
                 style={{ backgroundColor: props.el.project.projectColor }}
               ></S.Check1>
-              <S.ProjectName>{props.el.project.projectName}</S.ProjectName>
+              <S.ProjectName id={props.el.project.projectId} onClick={props.onClickDetail}>{props.el.project.projectName}</S.ProjectName>
             </S.BasicRow>
             <S.Dday>D-{props.dday}</S.Dday>
           </S.ProjectBox>

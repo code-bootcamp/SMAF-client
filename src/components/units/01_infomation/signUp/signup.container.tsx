@@ -69,10 +69,11 @@ export default function SignUpContainer(props: any) {
   // const onClickImage = () => {
   //     fileRef.current?.click();
   // };
+  
   // 이동 모달
   const onClickRoutingModal = () => {
     setAlertModal(false);
-    // router.push("/");
+    router.push("/");
   };
 
   // 확인 모달

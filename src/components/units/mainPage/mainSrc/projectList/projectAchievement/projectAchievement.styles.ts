@@ -47,6 +47,7 @@ export const ProjectName = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
 `;
 export const Dday = styled.div`
   padding: 0.4rem 0.8rem;

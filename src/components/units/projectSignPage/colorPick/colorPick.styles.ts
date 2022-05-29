@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Wrapper=styled.div`
     display: flex;
@@ -27,4 +28,9 @@ export const Circle=styled.div`
     width: 4.8rem; 
     height:4.8rem;
     border-radius: 50%;
+    @media ${breakPoints.mobile} {
+    width: 2.4rem; 
+    height: 2.4rem;
+    margin-right: -2.15rem;
+  }
 `
