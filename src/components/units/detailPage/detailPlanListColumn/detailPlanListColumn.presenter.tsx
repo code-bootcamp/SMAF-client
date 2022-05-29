@@ -5,6 +5,7 @@ import { Modal } from "antd";
 import { Draggable } from "react-beautiful-dnd";
 import DetailPlanAddModal from "./detailPlanAddModal/detailPlanAddModal.container";
 import DropdownDetail from "../../../commons/dropdown/04.detailPageDropdown/detailPageDropdown";
+import ErrorAlert from "../../../commons/modal/errorModal/alert";
 
 export default function DetailPlanListColumnHTML(props: any) {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +16,13 @@ export default function DetailPlanListColumnHTML(props: any) {
   // console.log(props.scheduleData?.fetchCategorySchedules, "2");
   return (
     <>
+    {props.errorAlertModal && (
+                <ErrorAlert
+                    onClick={props.onClickAlertModal}
+                    onClickExit={props.onClickErrorModal}
+                    contents={props.modalContents}
+                />
+            )}
       {props.scheduleArray && (
         <S.Wrapper>
           <S.AddColumn>
