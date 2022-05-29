@@ -44,9 +44,11 @@ export default function DropdownDetail(props: any) {
   const onToggleModal = () => {
     setIsOpen((prev: boolean) => !prev);
   };
+
   const { register, handleSubmit } = useForm({
     mode: "onChange",
   });
+  
   const UpdateCategory = async (data: any) => {
     try {
       await updataProcessCategory({

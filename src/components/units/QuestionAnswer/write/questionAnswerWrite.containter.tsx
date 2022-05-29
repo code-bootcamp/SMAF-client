@@ -6,6 +6,9 @@ import {
 } from "./questionAnswerWrite.queris";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { useRecoilState } from "recoil";
+import { dropdownKey } from "../../../../commons/store";
+import { useState } from "react";
 
 export default function QuestionAnswerWrite() {
   const router = useRouter();
@@ -17,6 +20,24 @@ export default function QuestionAnswerWrite() {
     mode: "onChange",
   });
 
+  const [select, setSelect] = useRecoilState<string>(dropdownKey)
+
+  // 얼럿모달
+  const [alertModal, setAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState("");
+  const [errorAlertModal, setErrorAlertModal] = useState(false);
+
+  // 모달 라우터
+  const onClickExitSubmitModal = () => {
+    setAlertModal(false);
+    router.push("/QuestionAnswer");
+  };
+  
+  // 에러 모달
+  const onClickExitErrorModal = () => {
+    setErrorAlertModal(false);
+  };
+
   const CreateNewQusetionBoard = async (data: any) => {
     console.log(data, "data");
     if (data) {
@@ -26,15 +47,17 @@ export default function QuestionAnswerWrite() {
             createquestionBoardInput: {
               title: data.title,
               contents: data.contents,
-              questionCategory: "문의하기",
+              questionCategory: select,
             },
           },
         });
         console.log(result, "결과");
-        router.push("/QuestionAnswer");
-      } catch (error) {
-        console.log(data, "크리에이트데이타");
-        alert("no");
+        setModalContents("문의 등록이 완료되었습니다!");
+        setAlertModal(true);
+
+      } catch (error:any) {
+        setModalContents(error.message);
+        setErrorAlertModal(true);
       }
     }
   };
@@ -44,6 +67,12 @@ export default function QuestionAnswerWrite() {
       handleSubmit={handleSubmit}
       CreateNewQusetionBoard={CreateNewQusetionBoard}
       formState={formState}
+
+      alertModal={alertModal}
+      modalContents={modalContents}
+      errorAlertModal={errorAlertModal}
+      onClickExitSubmitModal={onClickExitSubmitModal}
+      onClickExitErrorModal={onClickExitErrorModal}
     />
   );
 }

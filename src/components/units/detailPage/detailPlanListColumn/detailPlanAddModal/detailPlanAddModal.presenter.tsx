@@ -4,6 +4,7 @@ import Alert from '../../../../commons/modal/alert/alert'
 import ErrorAlert from '../../../../commons/modal/errorModal/alert'
 import OneDayPick from "../../../../commons/daypicker/oneDayPick/onedaypicker";
 
+
 export default function DetailPlanAddModalHTML(
   props: IDetailPlanAddModalProps
 ) {
@@ -36,15 +37,17 @@ export default function DetailPlanAddModalHTML(
           ></S.ProjectNameInput>
         </S.ProjectName>
         <S.ProjectContents>
-          <S.Word>일정내용</S.Word>
+          <S.Word>일정 내용</S.Word>
           <S.ContentsArea
             {...props.register("scheduleContents")}
           ></S.ContentsArea>
         </S.ProjectContents>
         <S.EndDate>
           <S.Word>마감일</S.Word>
-          {/* <OneDayPick /> */}
-          <S.Date {...props.register("scheduleDate")}></S.Date>
+          <S.Daypick>
+            <OneDayPick />
+          </S.Daypick>
+          {/* <S.Date {...props.register("scheduleDate")}></S.Date> */}
         </S.EndDate>
         <S.ConfirmBtn>일정 추가하기</S.ConfirmBtn>
       </form>

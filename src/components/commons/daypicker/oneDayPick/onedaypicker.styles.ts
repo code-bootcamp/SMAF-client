@@ -6,13 +6,14 @@ import { breakPoints } from "../../../../commons/styles/media";
 
 
 export const Input = styled.input`
-  width: 22rem;
-  height: 4.8rem;
+  width: 36rem;
+  height: 4rem;
   border-radius: 0.8rem;
   padding: 10px;
   padding-left: 40px;
   font-size: 1.8rem;
   border: 2px solid #DBDBDB;
+  margin-bottom: 1rem;
 
   background-image: url(/images/calendar.png);
   background-repeat: no-repeat;
@@ -25,27 +26,11 @@ export const Input = styled.input`
     padding: 0;
   }
 `
-export const StartEndDate = styled.div`
-display: flex;
-`
-export const Picker = styled.div`
-margin-top: 1rem;
-padding: 2rem;
+export const ReactDayOnePick = styled(DayPicker)`
 background-color: white;
 border-radius: 1rem;
-`
-
-export const FromTo = styled.div`
-border-bottom: 2px solid #DBDBDB;
-width: 15px;
-margin: 0 10px 20px 10px;
-`
-export const StartDay = styled.div`
-display: flex;
-`
-export const ReactDayPick = styled(DayPicker)`
 * {
-  --rdp-cell-size: 65px;
+  --rdp-cell-size: 50px;
   --rdp-accent-color: #333333;
   --rdp-background-color: #e7edff;
   /* Switch to dark colors for dark themes */
