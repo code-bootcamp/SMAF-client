@@ -1,10 +1,10 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import ChangePasswordUI from "./changePassword.presenter";
-import { CHANGE_CHECKEDTOKEN, CHANGE_SENDTOKEN, UPDATE_PASSWORD } from "./changePassword.queris";
+import { CHANGE_CHECKEDTOKEN, CHANGE_SENDTOKEN, FETCH_LOGIN_USER, FETCH_USER, UPDATE_PASSWORD } from "./changePassword.queris";
 import { useRouter } from "next/router";
 
 const schema = yup.object({
@@ -34,7 +34,7 @@ interface FormValues {
 }
 
 export default function ChangePassword(props: any) {
-    // const [fetchUser] = useMutation(FETCH_USER);
+    const { data } = useQuery(FETCH_LOGIN_USER);
     const [updatePassword] = useMutation(UPDATE_PASSWORD);
     const [sendTokenPhone] = useMutation(CHANGE_SENDTOKEN);
     const [checkedTokenPhone] = useMutation(CHANGE_CHECKEDTOKEN);
@@ -43,6 +43,7 @@ export default function ChangePassword(props: any) {
     const [, setTrueToken] = useState(false);
     const [isActive] = useState(false);
     const router = useRouter();
+
     const [alertModal, setAlertModal] = useState(false);
     const [modalContents, setModalContents] = useState(false);
     const [go, setGo] = useState(false);
@@ -53,6 +54,8 @@ export default function ChangePassword(props: any) {
         mode: "onChange",
     });
 
+
+    // 이동 모달
     const onClickRoutingModal = () => {
         setAlertModal(false);
         router.push("/");
@@ -68,15 +71,6 @@ export default function ChangePassword(props: any) {
         setErrorAlertModal(false);
     };
 
-    const onClickExitAlertModal = () => {
-        setAlertModal(false);
-    };
-
-    const onClickExitRouterModal = () => {
-        setAlertModal(false);
-        router.push("/");
-    };
-
     const onClickRouterAlertModal = () => {
         setAlertModal(false);
     };
@@ -89,28 +83,32 @@ export default function ChangePassword(props: any) {
     };
 
     const onClickSendTokenPhone = async () => {
-        console.log(phone);
+    console.log(phone);
 
-        const checkNumber = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-        if (checkNumber.test(phone)) {
-            try {
-                const result = await sendTokenPhone({
-                    variables: {
-                        phone,
-                    },
-                });
-
-                setModalContents("인증번호가 발송되었습니다.");
-                setAlertModal(true);
-                setGo(false);
-            } catch (error) {
-                console.log(error.message);
-            }
+    const checkNumber = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+    if (checkNumber.test(phone)) {
+        try {
+            const result = await sendTokenPhone({
+            variables: {
+                phone,
+            },
+            });
+            setModalContents("인증번호가 발송되었습니다.");
+            setAlertModal(true);
+            setGo(false)
+            
+        } catch (error:any) {
+            setModalContents(error.message);
+            setErrorAlertModal(true);
+        }
+        } else{
+        setModalContents("번호를 입력해주세요.");
+        setErrorAlertModal(true);
         }
     };
 
     const onClickTokenCheck = async () => {
-        console.log("1,2,3,Chceck");
+
         if (inputToken) {
             try {
                 const data = await checkedTokenPhone({
@@ -153,11 +151,10 @@ export default function ChangePassword(props: any) {
                     phone: data.phone,
                 },
             });
-            setModalContents("비밀번호변경 완료, 다시 로그인 해주세요");
+            setModalContents("비밀번호 변경이 완료되었습니다! 다시 로그인해주세요.");
             setAlertModal(true);
-            console.log("완료");
+
             setGo(true);
-            console.log("완ssssssss");
         } catch (error) {
             setModalContents(error.message);
             setAlertModal(true);
@@ -175,16 +172,15 @@ export default function ChangePassword(props: any) {
             isActive={isActive}
             onClickTokenCheck={onClickTokenCheck}
             onClickUpdatePassword={onClickUpdatePassword}
-            onClickExitAlertModal={onClickExitAlertModal}
             alertModal={alertModal}
             modalContents={modalContents}
             go={go}
-            onClickExitRouterModal={onClickExitRouterModal}
             onClickRouterAlertModal={onClickRouterAlertModal}
             onClickRoutingModal={onClickRoutingModal}
             onClickconfirmModal={onClickconfirmModal}
             onClickErrorModal={onClickErrorModal}
             errorAlertModal={errorAlertModal}
+            data={data}
         />
     );
 }

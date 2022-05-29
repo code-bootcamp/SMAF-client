@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -8,15 +9,9 @@ export const Wrapper = styled.div`
   margin: 0px;
   padding-top: 12rem;
   padding-bottom: 22rem;
-`;
-
-export const Table = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding: 2.8rem 3rem;
-  background-color: white;
-  border-radius: 0px 0px 16px 16px;
-  border-bottom: 1px solid #ededed;
+  @media ${breakPoints.mobile} {
+    padding-top: 8rem;
+  }
 `;
 
 export const QuestionMenuList = styled.div`
@@ -27,6 +22,10 @@ export const QuestionMenuList = styled.div`
   background: #e5e5ef;
   border-radius: 16px 16px 0px 0px;
   padding: 0px 30px;
+  @media ${breakPoints.mobile} {
+    width: 32rem;
+    padding: 0 1rem 0rem 1rem;
+  }
 `;
 
 export const TableMenuNo = styled.div`
@@ -37,6 +36,9 @@ export const TableMenuNo = styled.div`
   line-height: 24px;
   width: 5.4rem;
   margin-right: 1.6rem;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const TableMenuTypes = styled.div`
@@ -56,6 +58,9 @@ export const TableMenuTitles = styled.div`
   font-size: 16px;
   line-height: 24px;
   width: 26.3rem;
+  @media ${breakPoints.mobile} {
+    width: 20rem;
+  }
 `;
 
 export const TableMenuWriter = styled.div`
@@ -66,6 +71,9 @@ export const TableMenuWriter = styled.div`
   line-height: 24px;
   width: 8.52rem;
   margin-right: 1.6rem;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const TableMenuDate = styled.div`
@@ -76,6 +84,9 @@ export const TableMenuDate = styled.div`
   line-height: 24px;
   width: 12rem;
   margin-right: 1.875rem;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 export const Title = styled.div`
   text-align: center;
@@ -84,6 +95,9 @@ export const Title = styled.div`
   font-weight: 700;
   line-height: 4.64rem;
   letter-spacing: -2%;
+  @media ${breakPoints.mobile} {
+    padding-bottom: 3rem;
+  }
 `;
 
 export const QusStionAnswerBtn = styled.button`
@@ -102,14 +116,27 @@ export const QusStionAnswerBtn = styled.button`
   :hover {
     background: #6b6bff;
   }
+  @media ${breakPoints.mobile} {
+    width: 7.2rem;
+  height: 2.4rem;
+  font-size: 0.4rem;
+  line-height: 1rem;
+  }
 `;
 
 export const QuestionList = styled.div`
   width: 88rem;
   border-radius: 16px;
   background-color: white;
+  @media ${breakPoints.mobile} {
+    width: 32rem;
+  }
 `;
 
 export const Page = styled.div`
   padding: 3rem 0 0 18rem;
+  @media ${breakPoints.mobile} {
+    width: 32rem;
+    padding: 0rem;
+  }
 `;

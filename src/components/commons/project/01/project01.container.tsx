@@ -15,8 +15,6 @@ export default function Project01(props: IUserProject) {
     router.push(`/project/${event.currentTarget.id}`);
   };
 
-  // console.log(props.el?.project.endDate, "🍏시간");
-
   // 마감 디데이
   const Dday = () => {
     const startDate = new Date();

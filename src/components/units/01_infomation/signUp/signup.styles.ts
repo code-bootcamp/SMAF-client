@@ -127,6 +127,7 @@ export const SignUpPhoneSendButton = styled.button`
   color: #ffffff;
   font-size: 2rem;
   font-weight: 800;
+  cursor: pointer;
 `;
 
 export const SignAboutMe = styled.div`
@@ -162,6 +163,7 @@ export const SignSubmitButton = styled.button`
   color: #ffffff;
   font-size: 2.8rem;
   font-weight: 700;
+  cursor: pointer;
 `;
 
 export const ErrorMsg = styled.div`

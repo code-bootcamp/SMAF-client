@@ -43,9 +43,6 @@ export const Title = styled.div`
 export const InputWrapper = styled.div`
   width: 100%;
   height: 6rem;
-  /* border: 1px solid red; */
-  /* display: flex;
-  flex-direction: row; */
   justify-content: space-between;
   margin-bottom: 4.8rem;
 `;

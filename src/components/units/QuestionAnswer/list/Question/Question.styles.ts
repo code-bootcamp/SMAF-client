@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -28,6 +29,9 @@ export const Table = styled.div`
   border-radius: 0px 0px 16px 16px;
   border-bottom: 1px solid #ededed;
   color: #111111;
+  @media ${breakPoints.mobile} {
+    padding: 2.8rem 1rem 0rem 1rem;
+  }
 `;
 
 export const QuestionMenuList = styled.div`
@@ -48,6 +52,9 @@ export const TableMenuNo = styled.div`
   line-height: 24px;
   width: 5.4rem;
   margin-right: 1.6rem;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const TableMenuTypes = styled.div`
@@ -68,6 +75,9 @@ export const TableMenuTitles = styled.div`
   line-height: 24px;
   width: 26.3rem;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 20rem;
+  }
 `;
 
 export const TableMenuWriter = styled.div`
@@ -78,6 +88,9 @@ export const TableMenuWriter = styled.div`
   line-height: 24px;
   width: 8.52rem;
   margin-right: 1.6rem;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const TableMenuDate = styled.div`
@@ -88,6 +101,9 @@ export const TableMenuDate = styled.div`
   line-height: 24px;
   width: 12rem;
   margin-right: 1.875rem;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 export const Title = styled.div`
   text-align: center;
@@ -116,6 +132,12 @@ export const QusStionAnswerBtn = styled.button`
   cursor: pointer;
   :hover {
     background: #6b6bff;
+  }
+  @media ${breakPoints.mobile} {
+  width: 7.2rem;
+  height: 2.4rem;
+  font-size: 0.4rem;
+  line-height: 1rem;
   }
 `;
 
