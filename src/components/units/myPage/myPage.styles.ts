@@ -56,11 +56,10 @@ export const Title = styled.div`
   font-weight: 700;
   font-size: 3.2rem;
   @media ${breakPoints.mobile} {
-    /* background-color: yellow; */
-    height: 26px;
-    font-size: 18px;
-    line-height: 26px;
-    margin-left: 20px;
+    height: 2.6rem;
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    margin-left: 2.2rem;
   }
 `;
 
@@ -73,19 +72,19 @@ export const AddButton = styled.button`
   color: #ffffff;
   font-size: 1.5rem;
   font-weight: 400;
-  line-height: 46px;
+  line-height: 4.6rem;
   outline: none;
   :hover {
     background: #6b6bff;
   }
   cursor: pointer;
   @media ${breakPoints.mobile} {
-    width: 150px;
-    height: 26px;
-    margin-right: 20px;
+    width: 14rem;
+    height: 2.6rem;
+    margin-right: 2.5rem;
     color: white;
-    font-size: 14px;
-    line-height: 26px;
+    font-size: 1.4rem;
+    line-height: 2.6rem;
     border-radius: 8px;
   }
 `;
@@ -110,11 +109,11 @@ export const DateButton = styled.button`
     margin-left: 0.5rem;
   }
   @media ${breakPoints.mobile} {
-    width: 80px;
-    height: 26px;
-    margin-right: 20px;
+    width: 8rem;
+    height: 2.6rem;
+    margin-right: 2.5rem;
     border-radius: 8px;
-    font-size: 14px;
-    line-height: 26px;
+    font-size: 1.4rem;
+    line-height: 2.6rem;
   }
 `;
