@@ -128,6 +128,5 @@ export const Button = styled.button`
     font-size: 1.5rem;
     line-height: 2.2rem;
     /* margin-top: 6rem; */
-    margin-bottom: 6rem;
   }
 `;

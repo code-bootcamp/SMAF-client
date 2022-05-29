@@ -12,17 +12,28 @@ import Project03 from "../../commons/project/03/project03.container";
 import UserInfoCard01 from "../../commons/userInfoCard/01/userInfoCard01.container";
 import PaymentList from "../paymentList/paymentListMenu.contatiner";
 import PaymentModal from "../../commons/modal/paymentModal/paymentModal.container";
+import { breakPoints } from "../../../commons/styles/media";
 
 const SliderWrapper = styled(Slider)`
   height: 24rem;
   width: 97rem;
+  @media ${breakPoints.mobile} {
+    width: 36rem;
+    border: 1px solid red;
+  }
   .slick-list {
     height: 24rem;
     width: 97rem;
     padding-left: 5px;
+    @media ${breakPoints.mobile} {
+      width: 36rem;
+    }
   }
   .slick-track {
     margin: 0;
+    @media ${breakPoints.mobile} {
+      margin-left: 20px;
+    }
   }
 `;
 
@@ -71,7 +82,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
                 )}
               </S.ProjectTitle>
 
-              {props.activeData?.fetchActivatedProject ? (
+              {props.activeData?.fetchActivatedProject.length ? (
                 <SliderWrapper {...settings}>
                   {/* 진행완료된프로젝트 */}
                   {props.activeData?.fetchActivatedProject.map((el: any) => (
@@ -90,10 +101,12 @@ export default function MyPageUI(props: IMyPageUIProps) {
             <S.InnerWrapper>
               <S.ProjectTitle>
                 <S.Title>지난 프로젝트</S.Title>
-                <S.DateButton>최신순</S.DateButton>
+                <S.DateButton>
+                  최신순 <img src="/images/more.png"></img>
+                </S.DateButton>
               </S.ProjectTitle>
 
-              {props.inActiveData?.fetchInactivatedProject ? (
+              {props.inActiveData?.fetchInactivatedProject.length ? (
                 <SliderWrapper {...settings}>
                   {/* 진행완료된프로젝트 */}
                   {props.inActiveData?.fetchInactivatedProject.map(

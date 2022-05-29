@@ -23,7 +23,12 @@ export default function UserInfoCard01(props: IUserCardProps) {
         <S.Image src={props.data?.fetchLoginUser.userImageURL}></S.Image>
         <S.Name>{props.data?.fetchLoginUser.userName}</S.Name>
         <S.Email>{props.data?.fetchLoginUser.email}</S.Email>
+        <S.Ticket>
+          <S.Coupon src="/images/ticket.png"></S.Coupon>남은 티켓 수
+          {props.data?.fetchLoginUser.projectTicket} 개
+        </S.Ticket>
       </S.CardTopWrapper>
+
       <S.CardBottomWrapper>
         <S.CardBottomContents>
           <S.Icon src={"images/pen.png"}></S.Icon>

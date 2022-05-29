@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -9,6 +10,11 @@ export const Wrapper = styled.div`
   border: none;
   border-radius: 1.5rem;
   background-color: #333333;
+  @media ${breakPoints.mobile} {
+    width: 36rem;
+    height: 21.2rem;
+    border-radius: 0rem;
+  }
 `;
 
 export const BasicLow = styled.div`
@@ -28,6 +34,11 @@ export const CardTopWrapper = styled.div`
   width: 100%;
   height: 33.8%;
   padding-top: 4rem;
+  @media ${breakPoints.mobile} {
+    padding-top: 0rem;
+    height: 21.2rem;
+    margin-top: 28px;
+  }
 `;
 
 export const Image = styled.img`
@@ -35,6 +46,10 @@ export const Image = styled.img`
   height: 8rem;
   border: 2px solid white;
   border-radius: 50%;
+  @media ${breakPoints.mobile} {
+    width: 6.4rem;
+    height: 6.4rem;
+  }
 `;
 
 export const Name = styled.div`
@@ -43,6 +58,10 @@ export const Name = styled.div`
   font-size: 2rem;
   font-weight: 700;
   padding-top: 1.5rem;
+  @media ${breakPoints.mobile} {
+    font-size: 16px;
+    line-height: 23px;
+  }
 `;
 
 export const Email = styled.div`
@@ -51,6 +70,37 @@ export const Email = styled.div`
   font-size: 1.4rem;
   font-weight: 400;
   padding-top: 15px;
+  @media ${breakPoints.mobile} {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+  }
+`;
+
+export const Ticket = styled.div`
+  height: 20px;
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding-top: 15px;
+  display: none;
+  @media ${breakPoints.mobile} {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 12px;
+  }
+`;
+
+export const Coupon = styled.img`
+  width: 16px;
+  height: 13px;
+  color: white;
+  margin-right: 5px;
+  margin-top: 3px;
 `;
 
 export const CardBottomWrapper = styled.div`
@@ -62,6 +112,9 @@ export const CardBottomWrapper = styled.div`
   border-bottom-left-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
   background-color: #ffffff;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 export const Line = styled.div`

@@ -31,7 +31,6 @@ export default function ProjectAchievement(props: any) {
     const result = Math.ceil((falesSchedulel / allSchedule) * 100);
     setResult(result);
   };
-
   const Dday = () => {
     const startDate = new Date();
     const endDate = new Date(props.el?.project.endDate.slice(0, 10));

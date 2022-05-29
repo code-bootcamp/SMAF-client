@@ -18,7 +18,7 @@ export default function QuestionAnswerWriteUI(props: IQuestionProps) {
           placeholder="문의 내용을 입력해 주세요."
           {...props.register("contents")}
         ></S.Content>
-        <S.Button>등록 하기</S.Button>
+        <S.Button>문의 하기</S.Button>
       </S.Container>
       {/* </form> */}
     </S.Wrapper>

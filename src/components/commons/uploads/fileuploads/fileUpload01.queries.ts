@@ -23,13 +23,14 @@ export const PROJECT_FILES_FETCH = gql`
         fetchProjectFiles(projectId: $projectId) {
             projectFileId
             filename
+            fileURL
         }
     }
 `;
 
 export const CREATE_PROJECT_FILE = gql`
     mutation createProjectFile($filename: String!, $fileURL: String!, $projectId: String!) {
-        createProjectFile(filename: $filename, fileURL: $fileURL, projectId: $projectId){
+        createProjectFile(filename: $filename, fileURL: $fileURL, projectId: $projectId) {
             projectFileId
         }
     }
