@@ -10,22 +10,22 @@ export default function MainUI(props: IMainUIProps) {
   return (
     <>
       {!props.myData ? (
-        <S.Wrapper>
+        <S.Wrapper2>
           <ExperienceSMAF />
           <Login />
-        </S.Wrapper>
+        </S.Wrapper2>
       ) : (
-        <S.Wrapper>
+        <S.Wrapper isOpenSchedules={props.isOpenSchedules}>
           <div>
             <S.Info>
-              <MiniCalendar />
+              <MiniCalendar OpenSchedules={props.OpenSchedules} />
             </S.Info>
-            <S.Info>
+            <S.ProjectList isOpenSchedules={props.isOpenSchedules}>
               <ProjectList />
-            </S.Info>
+            </S.ProjectList>
           </div>
-          <S.Calender>
-            <Schedules />
+          <S.Calender isOpenSchedules={props.isOpenSchedules}>
+            <Schedules CloseSchedules={props.CloseSchedules} />
           </S.Calender>
         </S.Wrapper>
       )}

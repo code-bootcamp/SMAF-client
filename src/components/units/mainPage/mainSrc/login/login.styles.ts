@@ -1,7 +1,14 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   padding: 0 10rem 0 10rem;
+  @media ${breakPoints.mobile} {
+    padding: 0rem;
+    width: 32rem;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 export const Container = styled.div`
   width: 33rem;

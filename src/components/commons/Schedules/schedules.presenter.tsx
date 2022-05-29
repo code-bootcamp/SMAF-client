@@ -15,7 +15,9 @@ export default function SchedulesUI(props: any) {
       <S.Container>
         <S.DateBox>
           <S.DateInfo>
-            <S.Date>{moment(props.value).format("YYYY년 MM월 DD일")}</S.Date>
+            <S.Date onClick={props.CloseSchedules}>
+              {moment(props.value).format("YYYY년 MM월 DD일")}
+            </S.Date>
             <S.Direction>
               <S.LDirectionBtn onClick={props.onClickBefore}>
                 ＜

@@ -7,6 +7,10 @@ export const Container = styled.div`
   @media ${breakPoints.mobile} {
     width: 36rem;
     height: 55rem;
+    background-color: white;
+    /* border-top-left-radius: 16rem;
+    border-top-right-radius: 16rem; */
+    padding-top: 3rem;
   }
 `;
 export const Wrapper = styled.div`
@@ -49,12 +53,16 @@ export const Date = styled.span`
   @media ${breakPoints.mobile} {
     font-size: 1.6rem;
     margin-left: 20px;
+    cursor: pointer;
   }
 `;
 export const DateInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media ${breakPoints.mobile} {
+    background-color: white;
+  }
 `;
 export const Direction = styled.span`
   margin-left: 100px;

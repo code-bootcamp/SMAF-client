@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../../commons/styles/media";
 
 interface btnStyles1 {
   isOpenProject: boolean;
@@ -35,6 +36,11 @@ export const Wrapper = styled.div`
     background: white;
     border-bottom-right-radius: 1.6rem;
     border-bottom-left-radius: 1.6rem;
+  }
+  @media ${breakPoints.mobile} {
+    width: 32rem;
+    display: flex;
+    flex-direction: column;
   }
 `;
 

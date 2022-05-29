@@ -8,7 +8,7 @@ import {
   FETCH_LOGIN_USER,
 } from "./schedules.querys";
 
-export default function Schedules() {
+export default function Schedules(props: any) {
   const router = useRouter();
   const { data: ParticipatingData } = useQuery(FETCH_PARTICIPATING_PROJECTS);
   const { data: myData } = useQuery(FETCH_LOGIN_USER);
@@ -34,6 +34,7 @@ export default function Schedules() {
       onClickAfter={onClickAfter}
       onClickToProjectSignUp={onClickToProjectSignUp}
       ParticipatingData={ParticipatingData}
+      CloseSchedules={props.CloseSchedules}
     />
   );
 }
