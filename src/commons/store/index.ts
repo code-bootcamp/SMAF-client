@@ -76,3 +76,15 @@ export const sessionTriger = atom({
   key: "sessionTriger",
   default: false
 })
+
+// 일정등록 달력
+export const selectedDate = atom({
+  key: "selectedDay",
+  default: new Date(),
+});
+
+// 문의하기 드롭다운 값
+export const dropdownKey = atom({
+  key: "select",
+  default: "문의하기",
+});

@@ -56,7 +56,7 @@ export default function DetailPlanListColumnHTML(props: any) {
               }}
               bodyStyle={{
                 width: "52rem",
-                height: "50rem",
+                // height: "50rem",
                 backgroundColor: "#FFFFFF",
               }}
               footer={null}

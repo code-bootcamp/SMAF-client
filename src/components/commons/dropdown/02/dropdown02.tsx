@@ -3,6 +3,9 @@ import styled from "@emotion/styled";
 import { Menu, Dropdown, message, Space } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { breakPoints } from "../../../../commons/styles/media";
+import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { dropdownKey } from "../../../../commons/store";
 
 const Menu01 = styled(Menu)`
   width: 100%;
@@ -20,7 +23,7 @@ const Menu01 = styled(Menu)`
 `;
 
 const Space01 = styled(Space)`
-  width: 142px;
+  width: 16.8rem;
   height: 100%;
   background: #ffffff;
   border: 2px solid #dbdbdb;
@@ -39,6 +42,7 @@ const Space01 = styled(Space)`
       color: #999999;
       font-size: 14px;
       line-height: 14px;
+      padding-left: 5px;
     }
   }
 
@@ -71,17 +75,21 @@ const DownOutlinedButton = styled(DownOutlined)`
   }
 `;
 
+
 export default function Dropdown02() {
-  const onClick = ({ key }) => {
-    message.info(`Click on item ${key}`);
-    console.log({ key });
-  };
+
+  const [select, setSelect] = useRecoilState<string>(dropdownKey)
+
+  const handleClick = ({key}:any) => {
+  console.log(key)
+  setSelect(key)
+}
 
   const menu = (
-    <Menu01>
-      <MenuItem>서비스 문의</MenuItem>
-      <MenuItem>환불 문의</MenuItem>
-      <MenuItem>신고하기</MenuItem>
+    <Menu01 onClick={handleClick} >
+      <MenuItem key="서비스문의">서비스 문의</MenuItem>
+      <MenuItem key="환불문의">환불 문의</MenuItem>
+      <MenuItem key="신고하기">신고하기</MenuItem>
     </Menu01>
   );
 
@@ -90,8 +98,8 @@ export default function Dropdown02() {
       <a onClick={(e) => e.preventDefault()}>
         <Space01>
           {/* <div>문의유형 </div> */}
-          <div>서비스 문의 </div>
-          <DownOutlinedButton style={{ color: "#DBDBDB" }} />
+          <div>{select}<DownOutlinedButton style={{ color: "#DBDBDB", paddingLeft:"2.2rem"}} /></div>
+          
         </Space01>
       </a>
     </Dropdown>

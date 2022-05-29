@@ -7,8 +7,9 @@ import {
 } from "./detailPlanAddModal.querys";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
-import { triger } from "../../../../../commons/store/index";
+import { selectedDate, triger } from "../../../../../commons/store/index";
 import { useState } from "react";
+import moment from "moment";
 
 export default function DetailPlanAddModal(props: any) {
   const router = useRouter();
@@ -22,6 +23,8 @@ export default function DetailPlanAddModal(props: any) {
   const [modalContents, setModalContents] = useState<string>();
   const [errorAlertModal, setErrorAlertModal] = useState(false);
 
+  const [selectedDay, setSelectedDay] = useRecoilState<Date | undefined>(selectedDate);
+
   // 확인 모달
     const onClickConfirmModal = () => {
         setAlertModal(false);
@@ -32,12 +35,15 @@ export default function DetailPlanAddModal(props: any) {
         setErrorAlertModal(false);
     };
 
+  const dDay= moment(selectedDay).format("YYYY-MM-DD")  
+
   const CreateNewSchedule = async (data: any) => {
     try {
-      await createSchedule({
+      const result = await createSchedule({
         variables: {
           createScheduleInput: {
             ...data,
+            scheduleDate: dDay,
             processCategoryId: props.categoryId,
             projectId: router.query.projectId,
           },
@@ -54,6 +60,10 @@ export default function DetailPlanAddModal(props: any) {
       setModalContents("일정이 등록되었습니다.");
       setAlertModal(true);
       props.onToggleModal();
+      setSelectedDay(new Date())
+
+      console.log("여기여기여기", result)
+
     } catch (error:any) {
       setModalContents(error.message);
       setErrorAlertModal(true);

@@ -13,6 +13,7 @@ export const Word = styled.p`
   font-weight: 500;
   line-height: 2.4rem;
   letter-spacing: -2%;
+  
 `;
 export const ProjectName = styled.div`
   display: flex;
@@ -47,7 +48,6 @@ export const ContentsArea = styled.textarea`
 `;
 
 export const EndDate = styled.div`
-  display: flex;
   padding-bottom: 4.8rem;
   align-items: baseline;
 `;
@@ -80,4 +80,7 @@ export const ConfirmBtn = styled.button`
   :hover {
     background-color: #6b6bff;
   }
+`;
+export const Daypick = styled.div`
+padding-top: 1rem;
 `;
