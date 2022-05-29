@@ -14,8 +14,6 @@ export default function MyPage() {
   });
   const [visible, setVisible] = useState(true);
 
-  console.log(inActiveData, "데이터가 없어야함🍎");
-
   // 프로젝트 등록하기
   const onClickMoveToNewProject = () => {
     router.push("project/new");

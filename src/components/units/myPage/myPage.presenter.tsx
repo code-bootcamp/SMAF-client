@@ -12,17 +12,28 @@ import Project03 from "../../commons/project/03/project03.container";
 import UserInfoCard01 from "../../commons/userInfoCard/01/userInfoCard01.container";
 import PaymentList from "../paymentList/paymentListMenu.contatiner";
 import PaymentModal from "../../commons/modal/paymentModal/paymentModal.container";
+import { breakPoints } from "../../../commons/styles/media";
 
 const SliderWrapper = styled(Slider)`
   height: 24rem;
   width: 97rem;
+  @media ${breakPoints.mobile} {
+    width: 36rem;
+    border: 1px solid red;
+  }
   .slick-list {
     height: 24rem;
     width: 97rem;
     padding-left: 5px;
+    @media ${breakPoints.mobile} {
+      width: 36rem;
+    }
   }
   .slick-track {
     margin: 0;
+    @media ${breakPoints.mobile} {
+      margin-left: 20px;
+    }
   }
 `;
 

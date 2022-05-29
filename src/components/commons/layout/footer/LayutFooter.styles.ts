@@ -19,6 +19,10 @@ export const TopWrapper = styled.div`
   justify-content: center;
   /* background-color: orange; */
   border-bottom: 1px solid #dbdbdb;
+  @media ${breakPoints.mobile} {
+    padding-top: 22px;
+    border-bottom: none;
+  }
 `;
 
 // 회사소개
@@ -65,6 +69,9 @@ export const Info = styled.div`
   line-height: 20px;
   letter-spacing: -0.05em;
   color: #000000;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 
 // 고객센터
@@ -104,76 +111,77 @@ export const BottomWrapper = styled.div`
   justify-content: center;
   align-items: center;
   /* background-color: yellow; */
+  @media ${breakPoints.mobile} {
+    justify-content: center;
+  }
+`;
+
+export const Logo = styled.div`
+  display: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.05em;
+  color: #111111;
+  @media ${breakPoints.mobile} {
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    line-height: 20px;
+    letter-spacing: -0.05em;
+    /* border: 1px solid blue; */
+    padding-top: 16px;
+    margin-right: 255px;
+  }
 `;
 
 export const SnsWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  /* border: 1px solid red; */
-`;
-
-export const FaceBook = styled.div`
-  width: 80px;
-  height: 80px;
-  margin: 0 1.5rem;
-  background: #e5e5ec;
-  border-radius: 50%;
-
-  span {
-    position: relative;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 48px;
-    left: 38%;
-    top: 3.5%;
-    color: #ffffff;
-  }
-`;
-export const Youtube = styled.div`
-  width: 80px;
-  height: 80px;
-  margin: 0 1.5rem;
-  background: #e5e5ec;
-  border-radius: 50%;
-  span {
-    display: block;
-    position: relative;
-    background-image: url(/images/youtube.png);
-    background-repeat: no-repeat;
-    background-size: 25px;
-    top: 34%;
-    left: 37%;
-    width: 35px;
-    height: 35px;
+  @media ${breakPoints.mobile} {
+    flex-direction: flex-start;
+    /* border: 1px solid red; */
+    margin-top: 20px;
+    padding-bottom: 24px;
+    margin-right: 212px;
   }
 `;
 
-export const Instagram = styled.div`
+export const FaceBook = styled.img`
   width: 80px;
   height: 80px;
   margin: 0 1.5rem;
-  background: #e5e5ec;
   border-radius: 50%;
-  div {
-    display: block;
-    position: relative;
-    border: 4px solid #ffffff;
-    border-radius: 12px;
-    width: 40px;
-    height: 40px;
-    top: 26%;
-    left: 25.5%;
+  cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 28px;
+    height: 28px;
+    margin: 0 0.5rem;
   }
-  span {
-    display: block;
-    position: relative;
-    width: 17px;
-    height: 17px;
-    border: 4px solid #ffffff;
-    border-radius: 12px;
-    top: 26%;
-    left: 23%;
+`;
+export const Youtube = styled.img`
+  width: 80px;
+  height: 80px;
+  margin: 0 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 28px;
+    height: 28px;
+    margin: 0 0.5rem;
+  }
+`;
+
+export const Instagram = styled.img`
+  width: 80px;
+  height: 80px;
+  margin: 0 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  @media ${breakPoints.mobile} {
+    width: 28px;
+    height: 28px;
+    margin: 0 0.5rem;
   }
 `;
 
@@ -183,4 +191,14 @@ export const Copyright = styled.div`
   text-align: center;
   font-size: 1.3rem;
   color: #505050;
+  @media ${breakPoints.mobile} {
+    /* border: 1px solid red; */
+    margin-top: 0rem;
+    margin-bottom: 3.2rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #767676;
+  }
 `;
