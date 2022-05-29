@@ -1,9 +1,11 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 2rem;
+  
 `;
 
 export const BasicRow = styled.div`
@@ -25,6 +27,10 @@ export const AddColumn = styled.div`
   background-color: #ffffff;
   padding: 0px 2rem;
   margin-right: 2rem;
+  @media ${breakPoints.mobile} {
+    width: 18.8rem;
+    height: 4rem;
+  }
 `;
 export const EditCoulumnIcon = styled.img`
   width: 1.6rem;

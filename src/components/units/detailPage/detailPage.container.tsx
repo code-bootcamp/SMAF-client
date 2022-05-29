@@ -14,9 +14,8 @@ import { UPDATE_SCHEDULE } from "../../commons/dropdown/05.detailSchduelsDropdow
 import { useRecoilState } from "recoil";
 import { triger } from "../../../commons/store/index";
 
-
 export default function ProjectDetail() {
-    const router = useRouter();
+  const router = useRouter();
 
   const [errorAlertModal, setErrorAlertModal] = useState(false);
   const [modalContents, setModalContents] = useState<string>();
@@ -90,9 +89,9 @@ export default function ProjectDetail() {
     refetch();
   }, [dataTriger]);
 
-    useEffect(() => {
-        setIsLoading(true);
-    }, []);
+  useEffect(() => {
+    setIsLoading(true);
+  }, []);
 
   useEffect(() => {
     DragAndDropData();
@@ -140,8 +139,6 @@ export default function ProjectDetail() {
   };
 
   const handleDragEnd = async (result: any) => {
-    // console.log(scheduleArray, "전");
-
     if (!result?.destination) return;
     try {
       scheduleArray.forEach((el: any) => {
@@ -160,7 +157,6 @@ export default function ProjectDetail() {
           });
         }
       });
-
       setScheduleArray(scheduleArray);
     } catch (error:any) {
       setModalContents(error.message);
@@ -183,7 +179,7 @@ export default function ProjectDetail() {
     }
   };
 
-  console.log(scheduleArray, "넘겨줄 배열11");
+  console.log(scheduleArray, "넘겨줄 배열 - 2차원");
 
   return (
     <ProjectDetailPageHTML

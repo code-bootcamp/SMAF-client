@@ -4,8 +4,7 @@ import { getDate } from "../../../../commons/utils";
 import * as S from "./paymentList.styles";
 
 export default function PaymentObject(props) {
-
-  const [index, setIndex]= useRecoilState(indexNum)
+  const [index, setIndex] = useRecoilState(indexNum);
 
   return (
     <>

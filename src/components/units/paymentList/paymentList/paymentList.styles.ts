@@ -10,13 +10,10 @@ export const Table = styled.div`
   border-bottom: 1px solid #ededed;
   background-color: white;
   color: #111111;
-`;
-
-export const line = styled.div`
-  width: 890px;
-  margin: 0 auto;
-  margin-top: 27px;
-  border: 1px solid #ededed; ;
+  @media ${breakPoints.mobile} {
+    width: 320px;
+    padding: 20px 22px;
+  }
 `;
 
 export const BasicRow = styled.div`
@@ -34,6 +31,7 @@ export const TableMenuNo = styled.div`
   text-align: center;
   line-height: 24px;
   @media ${breakPoints.mobile} {
+    display: none;
   }
 `;
 
@@ -48,6 +46,12 @@ export const TableMenuPaymentDate = styled.div`
   text-align: center;
   line-height: 24px;
   @media ${breakPoints.mobile} {
+    margin-right: 0rem;
+    width: 7.4rem;
+    height: 1.7rem;
+    font-size: 12px;
+    line-height: 17px;
+    margin-right: 35px;
   }
 `;
 
@@ -62,6 +66,12 @@ export const TableMenuProduct = styled.div`
   text-align: center;
   line-height: 2.3rem;
   @media ${breakPoints.mobile} {
+    margin-right: 0rem;
+    width: 5.1rem;
+    height: 2rem;
+    font-size: 12px;
+    line-height: 17px;
+    margin-right: 70px;
   }
 `;
 // 결제금액
@@ -74,6 +84,11 @@ export const TableMenuMoney = styled.div`
   font-size: 16px;
   line-height: 24px;
   @media ${breakPoints.mobile} {
+    margin-right: 0rem;
+    width: 5.4rem;
+    height: 2rem;
+    font-size: 12px;
+    line-height: 17px;
   }
 `;
 
@@ -89,6 +104,8 @@ export const TableMenuDate = styled.div`
   font-size: 16px;
   line-height: 24px;
   @media ${breakPoints.mobile} {
+    display: none;
+    margin-right: 0rem;
   }
 `;
 

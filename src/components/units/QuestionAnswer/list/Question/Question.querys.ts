@@ -12,12 +12,10 @@ export const CREATE_QUESTION_BOARD_COMMENT = gql`
   mutation createQuestionComment(
     $contents: String!
     $questionboardId: String!
-    $userId: String!
   ) {
     createQuestionComment(
       contents: $contents
       questionboardId: $questionboardId
-      userId: $userId
     ) {
       questionCommentId
     }

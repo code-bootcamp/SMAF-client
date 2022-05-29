@@ -11,6 +11,7 @@ import Pagination from "../../../commons/paginations/01/Pagination";
 export default function QuestionAnswerListUI(props: IQuestionAnswerListProps) {
   const { MoveToPage } = useMoveToPage();
   // const [isOpen, setIsOpen] = useState(false);
+  // console.log(props.myData?.fetchLoginUser.admin);
   return (
     <S.Wrapper>
       <S.Title>QnA</S.Title>
@@ -19,10 +20,15 @@ export default function QuestionAnswerListUI(props: IQuestionAnswerListProps) {
         <S.TableMenuTypes>문의유형</S.TableMenuTypes>
         <S.TableMenuTitles>제목</S.TableMenuTitles>
         <S.TableMenuWriter>작성자</S.TableMenuWriter>
+        
         <S.TableMenuDate>작성일</S.TableMenuDate>
-        <S.QusStionAnswerBtn onClick={MoveToPage("/QuestionAnswer/new")}>
-          문의하기
-        </S.QusStionAnswerBtn>
+        {!props.myData?.fetchLoginUser.admin ? (
+          <S.QusStionAnswerBtn onClick={MoveToPage("/QuestionAnswer/new")}>
+            문의하기
+          </S.QusStionAnswerBtn>
+        ) : (
+          <div></div>
+        )}
       </S.QuestionMenuList>
       <S.QuestionList>
         {props.data &&

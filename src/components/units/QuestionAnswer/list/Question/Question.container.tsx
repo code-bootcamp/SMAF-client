@@ -25,8 +25,6 @@ interface IQuestionProps {
 }
 
 export default function QuestionObject(props: IQuestionProps) {
-   
-
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenAnswer, setIsOpenAnswer] = useState(false);
   const [createQuestionComment] = useMutation(CREATE_QUESTION_BOARD_COMMENT);
@@ -45,7 +43,6 @@ export default function QuestionObject(props: IQuestionProps) {
       variables: {
         contents: data.contents,
         questionboardId: props.el.questionBoardId,
-        userId: String(userData?.fetchLoginUser?.userId),
       },
       refetchQueries: [
         {
@@ -78,7 +75,8 @@ export default function QuestionObject(props: IQuestionProps) {
     }
   };
 
-console.log(props)
+  // console.log(props);
+  // console.log(userData?.fetchLoginUser.admin);
   const [index] = useRecoilState(indexNum);
   return (
     <>
@@ -94,10 +92,25 @@ console.log(props)
             {props.el.title}
           </S.TableMenuTitles>
           <S.TableMenuWriter>작성자</S.TableMenuWriter>
-          <S.TableMenuDate>{props.el.createAt.slice(0,10)}</S.TableMenuDate>
-          <S.QusStionAnswerBtn onClick={onAnswerWrite}>
-            {isOpenAnswer ? "작성취소" : "답글달기"}
-          </S.QusStionAnswerBtn>
+          <S.TableMenuDate>{props.el.createAt.slice(0, 10)}</S.TableMenuDate>
+          {/* {data?.fetchQuestionComments[0] &&
+          !userData?.fetchLoginUser?.admin ? (
+            <S.QusStionAnswerBtn>답변완료</S.QusStionAnswerBtn>
+          ) : (
+            <div></div>
+          )}
+          {userData?.fetchLoginUser?.admin && (
+            <S.QusStionAnswerBtn onClick={onAnswerWrite}>
+              {isOpenAnswer ? "작성취소" : "답글달기"}
+            </S.QusStionAnswerBtn>
+          )} */}
+          {userData?.fetchLoginUser.admin ? (
+            <S.QusStionAnswerBtn onClick={onAnswerWrite}>
+              {isOpenAnswer ? "작성취소" : "답글달기"}
+            </S.QusStionAnswerBtn>
+          ) : (
+            <div></div>
+          )}
         </S.BasicRow>
         {isOpen && <S.Question>{props.el.contents}</S.Question>}
         <form onSubmit={handleSubmit(CreateNewQuestionComment)}>

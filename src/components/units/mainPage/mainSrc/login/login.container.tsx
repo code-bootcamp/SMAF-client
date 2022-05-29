@@ -73,9 +73,9 @@ export default function Login() {
     //   setModalContents("로그인이 완료되었습니다.");
     //   setAlertModal(true);
     // alert("로그인이 완료되었습니다.")
-      
+
     } catch (error: any) {
-      console.log(error.message)
+      console.log(error.message);
       setModalContents(error.message);
       setErrorAlertModal(true);
     }
@@ -121,7 +121,6 @@ export default function Login() {
       clickMeNaver={clickMeNaver}
       clickMeKakao={clickMeKakao}
       MoveToPage={MoveToPage}
-
       onClickExitAlertModal={onClickExitAlertModal}
       alertModal={alertModal}
       modalContents={modalContents}
