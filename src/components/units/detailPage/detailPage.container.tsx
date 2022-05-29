@@ -19,7 +19,8 @@ export default function ProjectDetail() {
     const router = useRouter();
 
   const [errorAlertModal, setErrorAlertModal] = useState(false);
-  const [modalContents] = useState(false);
+  const [modalContents, setModalContents] = useState<string>();
+
   const [restoreItem, setRestoreItem] = useState({
     scheduleName: "string",
     scheduleContents: "string",
@@ -35,6 +36,7 @@ export default function ProjectDetail() {
   const [myDataInProject, setMyDataInProject] = useState<{ position: string }>({
     position: "",
   });
+
   const [dataTriger] = useRecoilState(triger);
   const [updataSchedule] = useMutation(UPDATE_SCHEDULE);
   const { data: projectData } = useQuery(FETCH_PROJECT, {
@@ -71,6 +73,7 @@ export default function ProjectDetail() {
       projectId: router.query.projectId,
     },
   });
+  
   // 에러 모달
   const onClickExitErrorModal = () => {
     setErrorAlertModal(false);
@@ -157,10 +160,11 @@ export default function ProjectDetail() {
           });
         }
       });
-      // console.log(scheduleArray, "후");
+
       setScheduleArray(scheduleArray);
-    } catch (error) {
-      alert(error);
+    } catch (error:any) {
+      setModalContents(error.message);
+      setErrorAlertModal(true);
     } finally {
       if (result?.destination) {
         await updataSchedule({

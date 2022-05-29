@@ -8,6 +8,7 @@ import {
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { triger } from "../../../../../commons/store/index";
+import { useState } from "react";
 
 export default function DetailPlanAddModal(props: any) {
   const router = useRouter();
@@ -16,6 +17,20 @@ export default function DetailPlanAddModal(props: any) {
   const { register, handleSubmit } = useForm({
     mode: "onChange",
   });
+
+  const [alertModal, setAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState<string>();
+  const [errorAlertModal, setErrorAlertModal] = useState(false);
+
+  // 확인 모달
+    const onClickConfirmModal = () => {
+        setAlertModal(false);
+    };
+
+    // 에러 모달
+    const onClickErrorModal = () => {
+        setErrorAlertModal(false);
+    };
 
   const CreateNewSchedule = async (data: any) => {
     try {
@@ -36,10 +51,12 @@ export default function DetailPlanAddModal(props: any) {
           },
         ],
       });
-      alert("일정이 등록되었습니다.");
+      setModalContents("일정이 등록되었습니다.");
+      setAlertModal(true);
       props.onToggleModal();
-    } catch (error) {
-      alert("error");
+    } catch (error:any) {
+      setModalContents(error.message);
+      setErrorAlertModal(true);
     } finally {
       setDataTriger((prev) => !prev);
     }
@@ -49,6 +66,11 @@ export default function DetailPlanAddModal(props: any) {
       register={register}
       handleSubmit={handleSubmit}
       CreateNewSchedule={CreateNewSchedule}
+      alertModal={alertModal}
+      modalContents={modalContents}
+      errorAlertModal={errorAlertModal}
+      onClickConfirmModal={onClickConfirmModal}
+      onClickErrorModal={onClickErrorModal}
     />
   );
 }

@@ -2,11 +2,8 @@ import SignupUI from "./signup.presenter";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER, SIGNUP_CHECKEDTOKEN, SIGNUP_SENDTOKEN } from "./signup.queries";
-// import { useMoveToPage } from "../../../commons/hooks/useMoveToPage";
-import { message } from "antd";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -22,7 +19,7 @@ const schema = yup.object({
     name: yup
         .string()
         .min(2, "이름은 2자리 이상 입력해 주세요.")
-        .max(10, "이름이 너무 깁니다.")
+        .max(10, "10자 이내로 입력해주세요.")
         .required("이름은 필수 입력 사항입니다."),
     confirmPassword: yup
         .string()
@@ -55,7 +52,7 @@ export default function SignUpContainer(props: any) {
   const [urls, setUrls] = useState();
   // Alert
   const [alertModal, setAlertModal] = useState(false);
-  const [modalContents, setModalContents] = useState(false);
+  const [modalContents, setModalContents] = useState<string>();
   const [errorAlertModal, setErrorAlertModal] = useState(false);
   const [go, setGo] = useState(false)
 
@@ -99,7 +96,7 @@ export default function SignUpContainer(props: any) {
     const checkNumber = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
     if (checkNumber.test(phone)) {
       try {
-        const result = await sendTokenPhone({
+        await sendTokenPhone({
           variables: {
             phone,
           },
@@ -119,7 +116,7 @@ export default function SignUpContainer(props: any) {
   };
 
   const onClickTokenCheck = async () => {
-    console.log("1,2,3,Chceck");
+
     if(inputToken){
         try{
         const data = await checkedTokenPhone({
@@ -139,7 +136,7 @@ export default function SignUpContainer(props: any) {
           setErrorAlertModal(true);
         }
 
-      } catch(error){
+      } catch(error:any){
         setModalContents(error.message);
         setErrorAlertModal(true);
       }
@@ -150,11 +147,6 @@ export default function SignUpContainer(props: any) {
   }
 
   const onClickcreateUser = async (data: FormValues) => {
-    // const { email, name, password, phone } = data;
-    // console.log(data, "데이터");
-    // if (email && password && name && inputToken && trueToken && phone) {
-    //     setIsActive(true);
-    // }
 
     try {
       await createUser({
@@ -174,8 +166,7 @@ export default function SignUpContainer(props: any) {
 
       console.log("완료");
 
-      // router.push("/");
-    } catch (error) {
+    } catch (error:any) {
       setModalContents(error.message);
       setErrorAlertModal(true);
     }
@@ -193,9 +184,7 @@ export default function SignUpContainer(props: any) {
       onClickTokenCheck={onClickTokenCheck}
       onChangePhone={onChangePhone}
       onChangeToken={onChangeToken}
-      // isActive={isActive}
-      // fileRef={fileRef}
-      // onClickImage={onClickImage}
+
       setUrls={setUrls}
       urls={urls}
       // 모달

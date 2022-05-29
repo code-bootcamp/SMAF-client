@@ -18,7 +18,11 @@ export default function DetailPlanListColumn(props: any) {
   const router = useRouter();
   // const router = useRouter();
   const [my, setMy] = useState();
+  const [errorAlertModal, setErrorAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState<string>();
+
   const [, setDataTriger] = useRecoilState(triger);
+
   const { data: participatingData } = useQuery(FETCH_PARTICIPATING_USER, {
     variables: {
       projectId: router.query.projectId,
@@ -39,6 +43,11 @@ export default function DetailPlanListColumn(props: any) {
     setMy(me);
   };
 
+  // 에러 모달
+    const onClickErrorModal = () => {
+        setErrorAlertModal(false);
+    };
+
   useEffect(() => {
     Mydata();
   }, [participatingData]);
@@ -57,8 +66,9 @@ export default function DetailPlanListColumn(props: any) {
           },
         ],
       });
-    } catch (error) {
-      alert(error);
+    } catch (error:any) {
+      setModalContents(error.message);
+      setErrorAlertModal(true);
     } finally {
       setDataTriger((prev) => !prev);
     }
@@ -72,6 +82,9 @@ export default function DetailPlanListColumn(props: any) {
       dragItemId={props.dragItemId}
       my={my}
       scheduleArray={props.scheduleArray}
+      errorAlertModal={errorAlertModal}
+      modalContents={modalContents}
+      onClickErrorModal={onClickErrorModal}
     />
   );
 }

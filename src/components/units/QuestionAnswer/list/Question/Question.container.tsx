@@ -95,18 +95,6 @@ console.log(props)
           </S.TableMenuTitles>
           <S.TableMenuWriter>작성자</S.TableMenuWriter>
           <S.TableMenuDate>{props.el.createAt.slice(0,10)}</S.TableMenuDate>
-          {/* {data?.fetchQuestionComments[0] &&
-          !userData?.fetchLoginUser?.admin ? (
-            <S.QusStionAnswerBtn>답변완료</S.QusStionAnswerBtn>
-          ) : (
-            <div></div>
-          )}
-          {userData?.fetchLoginUser?.admin && (
-            <S.QusStionAnswerBtn onClick={onAnswerWrite}>
-              {isOpenAnswer ? "작성취소" : "답글달기"}
-            </S.QusStionAnswerBtn>
-          )} */}
-
           <S.QusStionAnswerBtn onClick={onAnswerWrite}>
             {isOpenAnswer ? "작성취소" : "답글달기"}
           </S.QusStionAnswerBtn>

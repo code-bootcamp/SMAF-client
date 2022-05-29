@@ -7,7 +7,12 @@ import { FETCH_PROCESS_CATEGORIES } from "./addColumnbtn.querys";
 import { triger } from "../../../../commons/store/index";
 import { useRecoilState } from "recoil";
 export default function AddColumnBtn(props: any) {
+  
   const [isOpen, setIsOpen] = useState(false);
+  const [errorAlertModal, setErrorAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState<string>();
+
+
   const [, setDataTriger] = useRecoilState(triger);
   const onToggleModal = () => {
     setIsOpen((prev: boolean) => !prev);
@@ -16,6 +21,11 @@ export default function AddColumnBtn(props: any) {
   const { register, handleSubmit, formState, reset } = useForm({
     mode: "onChange",
   });
+
+  // 에러 모달
+    const onClickErrorModal = () => {
+        setErrorAlertModal(false);
+    };
 
   const CreateProjectCategory = async (data: any) => {
     try {
@@ -33,11 +43,10 @@ export default function AddColumnBtn(props: any) {
           },
         ],
       });
-
-      // console.log(result);
       onToggleModal();
-    } catch (error) {
-      alert("error");
+    } catch (error:any) {
+      setModalContents(error.message);
+      setErrorAlertModal(true);
     } finally {
       setDataTriger((prev) => !prev);
     }
@@ -52,6 +61,9 @@ export default function AddColumnBtn(props: any) {
       onToggleModal={onToggleModal}
       isOpen={isOpen}
       reset={reset}
+      onClickErrorModal={onClickErrorModal}
+      errorAlertModal={errorAlertModal}
+      modalContents={modalContents}
     />
   );
 }

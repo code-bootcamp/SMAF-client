@@ -36,7 +36,7 @@ export default function HeaderUI(props: any) {
         </Tooltip>
 
         {props.data?.fetchLoginUser.userName === undefined ? (
-          <S.Signup>회원가입</S.Signup>
+          <S.Signup onClick={props.onClickSignUp}>회원가입</S.Signup>
         ) : (
           <S.WelcomeText>
             {props.data?.fetchLoginUser.userName} 님

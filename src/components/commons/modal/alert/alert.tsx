@@ -3,7 +3,7 @@ import { Modal } from "antd";
 import { useState } from "react";
 
 export default function Alert(props: any) {
-    const [isOpen, setIsOpen] = useState(false);
+    const [, setIsOpen] = useState(false);
     const onToggleModal = () => {
         setIsOpen((prev) => !prev);
     };

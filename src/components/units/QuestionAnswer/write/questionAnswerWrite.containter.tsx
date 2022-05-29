@@ -31,7 +31,6 @@ export default function QuestionAnswerWrite() {
           },
         });
         console.log(result, "결과");
-        // console.log(data, "크리에이트데이터");
         router.push("/QuestionAnswer");
       } catch (error) {
         console.log(data, "크리에이트데이타");

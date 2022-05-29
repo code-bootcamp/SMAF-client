@@ -12,7 +12,7 @@ export default function ChangePasswordUI(props: any) {
           onClickExit={
             props.go
               ? props.onClickRoutingModal
-              : props.onClickconfirmModal
+              : props.onClickConfirmModal
           }
           contents={props.modalContents}
         />

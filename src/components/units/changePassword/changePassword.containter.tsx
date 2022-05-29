@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import ChangePasswordUI from "./changePassword.presenter";
-import { CHANGE_CHECKEDTOKEN, CHANGE_SENDTOKEN, FETCH_LOGIN_USER, FETCH_USER, UPDATE_PASSWORD } from "./changePassword.queris";
+import { CHANGE_CHECKEDTOKEN, CHANGE_SENDTOKEN, FETCH_LOGIN_USER, UPDATE_PASSWORD } from "./changePassword.queris";
 import { useRouter } from "next/router";
 
 const schema = yup.object({
@@ -45,7 +45,7 @@ export default function ChangePassword(props: any) {
     const router = useRouter();
 
     const [alertModal, setAlertModal] = useState(false);
-    const [modalContents, setModalContents] = useState(false);
+    const [modalContents, setModalContents] = useState<string>();
     const [go, setGo] = useState(false);
     const [errorAlertModal, setErrorAlertModal] = useState(false);
 
@@ -62,7 +62,7 @@ export default function ChangePassword(props: any) {
     };
 
     // 확인 모달
-    const onClickconfirmModal = () => {
+    const onClickConfirmModal = () => {
         setAlertModal(false);
     };
 
@@ -88,7 +88,7 @@ export default function ChangePassword(props: any) {
     const checkNumber = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
     if (checkNumber.test(phone)) {
         try {
-            const result = await sendTokenPhone({
+            await sendTokenPhone({
             variables: {
                 phone,
             },
@@ -127,7 +127,7 @@ export default function ChangePassword(props: any) {
                     setModalContents("인증번호가 일치하지 않습니다.");
                     setErrorAlertModal(true);
                 }
-            } catch (error) {
+            } catch (error:any) {
                 setModalContents(error.message);
                 setErrorAlertModal(true);
             }
@@ -155,7 +155,7 @@ export default function ChangePassword(props: any) {
             setAlertModal(true);
 
             setGo(true);
-        } catch (error) {
+        } catch (error:any) {
             setModalContents(error.message);
             setAlertModal(true);
         }
@@ -177,7 +177,7 @@ export default function ChangePassword(props: any) {
             go={go}
             onClickRouterAlertModal={onClickRouterAlertModal}
             onClickRoutingModal={onClickRoutingModal}
-            onClickconfirmModal={onClickconfirmModal}
+            onClickConfirmModal={onClickConfirmModal}
             onClickErrorModal={onClickErrorModal}
             errorAlertModal={errorAlertModal}
             data={data}

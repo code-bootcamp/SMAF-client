@@ -2,12 +2,22 @@ import * as S from "./addColumnBtn.style";
 import { IAddColumnBtnProps } from "./addColumnbtn.types";
 import { Modal } from "antd";
 import { useEffect } from "react";
+import ErrorAlert from '../../../commons/modal/errorModal/alert'
 
 export default function AddColumnBtnHTML(props: IAddColumnBtnProps) {
   useEffect(() => {
     props.reset({ processName: "" });
   }, [props.isOpen]);
   return (
+    <>
+     {props.errorAlertModal && (
+            <ErrorAlert
+                onClick={props.onClickAlertModal}
+                onClickExit={props.onClickErrorModal}
+                contents={props.modalContents}
+            />
+        )}
+
     <S.Wrapper>
       <S.AddColumn>
         <div>항목추가</div>
@@ -40,5 +50,6 @@ export default function AddColumnBtnHTML(props: IAddColumnBtnProps) {
         ></S.AddCoulumnIcon>
       </S.AddColumn>
     </S.Wrapper>
+    </>
   );
 }
