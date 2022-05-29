@@ -181,6 +181,7 @@ export const SignUpPhoneSendButton = styled.button`
     color: #ffffff;
     font-size: 2rem;
     font-weight: 800;
+    cursor: pointer;
     @media ${breakPoints.mobile} {
         font-weight: 500;
         font-size: 12px;
@@ -231,6 +232,7 @@ export const SignSubmitButton = styled.button`
     color: #ffffff;
     font-size: 2.8rem;
     font-weight: 700;
+    cursor: pointer;
     @media ${breakPoints.mobile} {
         font-weight: 500;
         font-size: 15px;

@@ -80,19 +80,19 @@ export default function ProjectSignPageUI(props: any) {
                 <S.Must>*</S.Must>
               </S.LabelBox>
               <S.InputBox>
-                <div
-                  style={{
-                    width: "88rem",
-                    height: "30rem",
-                    backgroundColor: "white",
-                    borderRadius: "0.8rem",
-                  }}
+                <S.QuillDiv
+                  // style={{
+                  //   width: "88rem",
+                  //   height: "30rem",
+                  //   backgroundColor: "white",
+                  //   borderRadius: "0.8rem",
+                  // }}
                 >
                   <S.RQuill
                     onChange={props.onChangeContents}
                     value={props.getValues("contents") || ""}
                   />
-                </div>
+                </S.QuillDiv>
               </S.InputBox>
             </S.Block>
           </S.Inputs>

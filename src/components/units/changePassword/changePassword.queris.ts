@@ -26,3 +26,17 @@ export const CHANGE_CHECKEDTOKEN = gql`
         checkedToekn(phone: $phone, inputToken: $inputToken)
     }
 `;
+
+export const FETCH_LOGIN_USER = gql`
+    query fetchLoginUser {
+        fetchLoginUser {
+        userId
+        userName
+        email
+        phone
+        admin
+        userImageURL
+        projectTicket
+        }
+    }
+`;

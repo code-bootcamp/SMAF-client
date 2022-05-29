@@ -72,15 +72,12 @@ export const box2 = styled.div`
   width: 310px;
   height: 240px;
   padding: 24px 20px;
-  height: 24rem;
   border-radius: 16px 16px 16px 16px;
   cursor: pointer;
 `;
 
 // 프로젝트이름
 export const Title01 = styled.div`
-  width: 100%;
-  height: 29px;
   font-weight: 700;
   font-size: 2rem;
   line-height: 29px;
@@ -98,8 +95,6 @@ export const Title01 = styled.div`
 
 // 프로젝트요약
 export const Title02 = styled.div`
-  width: 100%;
-  height: 44px;
   margin-top: 4px;
   font-weight: 400;
   font-size: 1.5rem;
@@ -112,11 +107,10 @@ export const Title02 = styled.div`
 `;
 
 export const Date = styled.div`
-  width: 16.3rem;
-  height: 2rem;
-  margin-top: 29px;
+  margin-top: 25px;
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 2rem;
   color: #767676;
+  padding-top: 22px;
 `;

@@ -1,7 +1,9 @@
 import Alert from "../../commons/modal/alert/alert";
+import ErrorAlert from "../../commons/modal/errorModal/alert";
 import * as S from "./changePassword.styles";
 
 export default function ChangePasswordUI(props: any) {
+
   return (
     <>
       {props.alertModal && (
@@ -9,12 +11,19 @@ export default function ChangePasswordUI(props: any) {
           onClick={props.onClickAlertModal}
           onClickExit={
             props.go
-              ? props.onClickExitRouterModal
-              : props.onClickExitAlertModal
+              ? props.onClickRoutingModal
+              : props.onClickconfirmModal
           }
           contents={props.modalContents}
         />
       )}
+      {props.errorAlertModal && (
+                <ErrorAlert
+                    onClick={props.onClickAlertModal}
+                    onClickExit={props.onClickErrorModal}
+                    contents={props.modalContents}
+                />
+            )}
       <S.Wrapper>
         <S.Container>
           <S.ChangePasswordForm
