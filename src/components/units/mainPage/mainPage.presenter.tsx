@@ -4,13 +4,14 @@ import Login from "./mainSrc/login/login.container";
 import { IMainUIProps } from "./mainPage.types";
 import MiniCalendar from "./mainSrc/MiniCalendar/calendar.container";
 import ProjectList from "./mainSrc/projectList/projectList.container";
+import ExperienceSMAF from "./mainSrc/experienceSMAF/expericence.container";
 
 export default function MainUI(props: IMainUIProps) {
   return (
     <>
       {!props.myData ? (
         <S.Wrapper>
-          <Schedules />
+          <ExperienceSMAF />
           <Login />
         </S.Wrapper>
       ) : (

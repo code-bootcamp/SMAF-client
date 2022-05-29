@@ -4,4 +4,5 @@ export interface IQuestionAnswerListProps {
   data: any;
   refetch: any;
   lastPage: any;
+  myData: any;
 }

@@ -27,6 +27,8 @@ export default function TodoDetail(props: any) {
   useEffect(() => {
     getDates();
   }, []);
+
+  
   return (
     <TodoDetailHTML el={props.el} today={props.today} dateArray={dateArray} />
   );
