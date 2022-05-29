@@ -101,4 +101,9 @@ export const RemoveBtn = styled.button`
   border-radius: 1.3rem;
   border: none;
   cursor: pointer;
+
+  :hover {
+    background-color: #bdbdbd;
+    color: black;
+  }
 `;

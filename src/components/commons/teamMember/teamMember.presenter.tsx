@@ -87,10 +87,15 @@ export default function TeamMemberUI(props: TeamMemberUIProps) {
                 <AddMemberModal onToggleModal={onToggleModal} />
               </Modal>
             )}
-            <S.AddMember>
-              <S.TeamPersonAdd onClick={onToggleModal}>+</S.TeamPersonAdd>
-              <S.Name>팀원초대하기</S.Name>
-            </S.AddMember>
+            {props.myData?.fetchLoginUser.userId ===
+            props.partcipatingData?.fetchParticipatingUser?.[0].user.userId ? (
+              <S.AddMember>
+                <S.TeamPersonAdd onClick={onToggleModal}>+</S.TeamPersonAdd>
+                <S.Name>팀원초대하기</S.Name>
+              </S.AddMember>
+            ) : (
+              <div></div>
+            )}
           </S.Team>
         </S.TeamPeople>
       )}

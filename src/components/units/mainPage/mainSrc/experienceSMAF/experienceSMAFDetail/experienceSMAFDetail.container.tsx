@@ -1,19 +1,19 @@
 import ExperienceSMAFDetailHTML from "./experienceSMAFDetail.presenter";
 import { useEffect, useState } from "react";
-import { sessionTriger } from '../../../../../../commons/store/index';
-import { useRecoilState } from 'recoil';
+import { sessionTriger } from "../../../../../../commons/store/index";
+import { useRecoilState } from "recoil";
 
 export default function ExperienceSMAFDetail(props: any) {
   const [planCardName, setPlanCardName] = useState<string[] | any[]>([]);
-  const [,setSession] = useRecoilState(sessionTriger)
+  const [, setSession] = useRecoilState(sessionTriger);
   useEffect(() => {
     setPlanCardName([]);
   }, []);
 
-  useEffect(()=>{
-    sessionStorage.setItem(`Plan${props.number+1}`,[...planCardName])
-    setSession((prev)=>!prev)
-  },[planCardName])
+  useEffect(() => {
+    sessionStorage.setItem(`Plan${props.number + 1}`, [...planCardName]);
+    setSession((prev) => !prev);
+  }, [planCardName]);
 
   const AddPalnCard = () => {
     // eslint-disable-next-line no-array-constructor
@@ -30,6 +30,7 @@ export default function ExperienceSMAFDetail(props: any) {
       categoryIndex={props.number}
       AddPalnCard={AddPalnCard}
       planCardName={planCardName}
+      scheduleArray={props.scheduleArray}
     />
   );
 }

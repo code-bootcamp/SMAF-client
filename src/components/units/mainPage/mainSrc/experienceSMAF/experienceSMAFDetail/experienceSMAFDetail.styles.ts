@@ -4,13 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 16.8rem;
-  height: 4.2rem;
-  border-radius: 1.6rem;
-  background-color: white;
-  border: 1px solid black;
-  margin: 0rem 0.5rem;
-  padding: 0rem 1.5rem;
+  margin-right: 1rem;
 `;
 
 export const CategoryName = styled.div``;
@@ -25,4 +19,22 @@ export const AddPlanCard = styled.div`
 export const BasicColumn = styled.div`
   display: flex;
   flex-direction: column;
+`;
+export const AddcolumnBtn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: 700;
+  width: 16rem;
+  height: 4rem;
+  border-radius: 1.6rem;
+  background-color: #ffffff;
+  padding: 0px 2rem;
+`;
+
+export const AddCoulumnIcon = styled.img`
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
 `;
