@@ -78,6 +78,9 @@ export default function SignupUI(props: any) {
                                         인증번호 전송
                                     </S.SignUpPhoneSendButton>
                                 </S.SignNumberSend>
+                                <S.ErrorphoneMsg>
+                                    {props.formState.errors?.phone?.message}
+                                </S.ErrorphoneMsg>
                                 <S.SignNumberReceive>
                                     <S.SignUpPhoneInput
                                         type="text"
@@ -92,7 +95,6 @@ export default function SignupUI(props: any) {
                                         인증하기
                                     </S.SignUpPhoneSendButton>
                                 </S.SignNumberReceive>
-                                <S.ErrorMsg>{props.formState.errors?.phone?.message}</S.ErrorMsg>
                             </S.SignUpcertification>
                         </S.SignupPhone>
                         <S.SignAboutMe>
