@@ -4,7 +4,12 @@ import * as yup from "yup";
 import { ChangeEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import ChangePasswordUI from "./changePassword.presenter";
-import { CHANGE_CHECKEDTOKEN, CHANGE_SENDTOKEN, FETCH_LOGIN_USER, UPDATE_PASSWORD } from "./changePassword.queris";
+import {
+    CHANGE_CHECKEDTOKEN,
+    CHANGE_SENDTOKEN,
+    FETCH_LOGIN_USER,
+    UPDATE_PASSWORD,
+} from "./changePassword.queris";
 import { useRouter } from "next/router";
 
 const schema = yup.object({
@@ -54,7 +59,6 @@ export default function ChangePassword(props: any) {
         mode: "onChange",
     });
 
-
     // 이동 모달
     const onClickRoutingModal = () => {
         setAlertModal(false);
@@ -83,32 +87,28 @@ export default function ChangePassword(props: any) {
     };
 
     const onClickSendTokenPhone = async () => {
-    console.log(phone);
-
-    const checkNumber = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-    if (checkNumber.test(phone)) {
-        try {
-            await sendTokenPhone({
-            variables: {
-                phone,
-            },
-            });
-            setModalContents("인증번호가 발송되었습니다.");
-            setAlertModal(true);
-            setGo(false)
-            
-        } catch (error:any) {
-            setModalContents(error.message);
+        const checkNumber = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+        if (checkNumber.test(phone)) {
+            try {
+                await sendTokenPhone({
+                    variables: {
+                        phone,
+                    },
+                });
+                setModalContents("인증번호가 발송되었습니다.");
+                setAlertModal(true);
+                setGo(false);
+            } catch (error: any) {
+                setModalContents(error.message);
+                setErrorAlertModal(true);
+            }
+        } else {
+            setModalContents("번호를 입력해주세요.");
             setErrorAlertModal(true);
-        }
-        } else{
-        setModalContents("번호를 입력해주세요.");
-        setErrorAlertModal(true);
         }
     };
 
     const onClickTokenCheck = async () => {
-
         if (inputToken) {
             try {
                 const data = await checkedTokenPhone({
@@ -127,7 +127,7 @@ export default function ChangePassword(props: any) {
                     setModalContents("인증번호가 일치하지 않습니다.");
                     setErrorAlertModal(true);
                 }
-            } catch (error:any) {
+            } catch (error: any) {
                 setModalContents(error.message);
                 setErrorAlertModal(true);
             }
@@ -155,7 +155,7 @@ export default function ChangePassword(props: any) {
             setAlertModal(true);
 
             setGo(true);
-        } catch (error:any) {
+        } catch (error: any) {
             setModalContents(error.message);
             setAlertModal(true);
         }
