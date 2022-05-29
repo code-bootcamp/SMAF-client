@@ -1,15 +1,15 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 
-interface btnStyles1{
-  isOpenProject : boolean;
+interface btnStyles1 {
+  isOpenProject: boolean;
 }
 
-interface btnStyles2{
+interface btnStyles2 {
   isOpenMember: boolean;
 }
 
-interface btnStyles3{
+interface btnStyles3 {
   isOpenFile: boolean;
 }
 
@@ -62,7 +62,7 @@ export const DetailImg = styled.img`
   height: 14rem;
   object-fit: cover;
   padding-bottom: 2.3rem;
-  border-top-left-radius: 1.5rem; 
+  border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
   @media ${breakPoints.mobile} {
     width: 100%;
@@ -133,7 +133,7 @@ export const BtnList = styled.div`
   @media ${breakPoints.mobile} {
     display: flex;
   }
-`
+`;
 
 export const ShowBtn1 = styled.button`
   width: 12rem;
@@ -145,13 +145,14 @@ export const ShowBtn1 = styled.button`
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  border-bottom: ${(props:btnStyles1)=>(props.isOpenProject ? "2px solid black" : "none")};
+  border-bottom: ${(props: btnStyles1) =>
+    props.isOpenProject ? "2px solid black" : "none"};
   cursor: pointer;
-  :hover{
-    color:black;
+  :hover {
+    color: black;
     border-bottom: 2xp solid black;
   }
-`
+`;
 
 export const ShowBtn2 = styled.button`
   width: 12rem;
@@ -163,12 +164,13 @@ export const ShowBtn2 = styled.button`
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  border-bottom: ${(props:btnStyles2)=>(props.isOpenMember ? "2px solid black" : "none")};
+  border-bottom: ${(props: btnStyles2) =>
+    props.isOpenMember ? "2px solid black" : "none"};
   cursor: pointer;
-  :hover{
-    color:black;
+  :hover {
+    color: black;
   }
-`
+`;
 
 export const ShowBtn3 = styled.button`
   width: 12rem;
@@ -180,26 +182,20 @@ export const ShowBtn3 = styled.button`
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  border-bottom: ${(props:btnStyles3)=>(props.isOpenFile ? "2px solid black" : "none")};
+  border-bottom: ${(props: btnStyles3) =>
+    props.isOpenFile ? "2px solid black" : "none"};
   cursor: pointer;
-  :hover{
-    color:black;
+  :hover {
+    color: black;
     border-bottom: 2xp solid black;
   }
-`
+`;
 
 export const FileList = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 22rem;
-  border-radius: 1.5rem;
-  padding-left: 2rem;
-  background-color: #ffffff;
-  margin: 3.2rem 0px 12rem 0px;
-  padding-top: 20px;
   @media ${breakPoints.mobile} {
     width: 32rem;
-    display: ${(props:btnStyles3)=>(props.isOpenFile ? "flex" : "none")};
+    display: ${(props: btnStyles3) => (props.isOpenFile ? "flex" : "none")};
     margin: 3.2rem 2rem 12rem 2rem;
   }
 `;
@@ -208,8 +204,8 @@ export const MemberList = styled.div`
   display: flex;
   @media ${breakPoints.mobile} {
     width: 100%;
-    display: ${(props:btnStyles2)=>(props.isOpenMember ? "flex" : "none")};
-    padding:2rem;
+    display: ${(props: btnStyles2) => (props.isOpenMember ? "flex" : "none")};
+    padding: 2rem;
   }
 `;
 
@@ -282,7 +278,7 @@ export const RightWrapper = styled.div`
     background: #ededed;
   }
   @media ${breakPoints.mobile} {
-    display: ${(props:btnStyles1)=>(props.isOpenProject ? "flex" : "none")};
+    display: ${(props: btnStyles1) => (props.isOpenProject ? "flex" : "none")};
     padding-left: 2rem;
   }
 `;
