@@ -1,8 +1,13 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/media";
 
 export const Container = styled.div`
   width: 88rem;
   height: 66.4rem;
+  @media ${breakPoints.mobile} {
+    width: 36rem;
+    height: 55rem;
+  }
 `;
 export const Wrapper = styled.div`
   width: 88rem;
@@ -15,15 +20,21 @@ export const Wrapper = styled.div`
     width: 2rem;
     height: 0rem;
   }
-
   ::-webkit-scrollbar-thumb {
     height: 0rem;
     background: skyblue;
     border-radius: 4px;
   }
-
   ::-webkit-scrollbar-track {
     background: white;
+  }
+  @media ${breakPoints.mobile} {
+    width: 36rem;
+    height: 48rem;
+    padding: 0rem;
+    padding-left: 1rem;
+    padding-top: 20px;
+    border-radius: 0rem;
   }
 `;
 export const DateBox = styled.div`
@@ -35,13 +46,19 @@ export const DateBox = styled.div`
 export const Date = styled.span`
   font-size: 3.2rem;
   font-weight: 700;
+  @media ${breakPoints.mobile} {
+    font-size: 1.6rem;
+    margin-left: 20px;
+  }
 `;
 export const DateInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
-export const Direction = styled.span``;
+export const Direction = styled.span`
+  margin-left: 100px;
+`;
 export const DirectionBtn = styled.button`
   border: none;
   background-color: none;
@@ -68,5 +85,8 @@ export const AddBtn = styled.button`
   cursor: pointer;
   :hover {
     background: #6b6bff;
+  }
+  @media ${breakPoints.mobile} {
+    display: none;
   }
 `;

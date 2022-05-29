@@ -1,7 +1,5 @@
 import * as S from "./paymentListMenu.styles";
 import PaymentObject from "./paymentList/paymentList.container";
-import { v4 as uuidv4 } from "uuid";
-// import UserInfoCard01 from "../../commons/userInfoCard/01/userInfoCard01.container";
 import Pagination from "../../commons/paginations/01/Pagination";
 
 export default function PaymentListUI(props: any) {

@@ -19,8 +19,8 @@ export default function Project01(props: IUserProject) {
   const Dday = () => {
     const startDate = new Date();
     const endDate = new Date(props.el?.project.endDate.slice(0, 10));
-    console.log(startDate);
-    console.log(endDate);
+    // console.log(startDate);
+    // console.log(endDate);
     const day = startDate.getTime() - endDate.getTime();
 
     const dday = Math.trunc(Math.abs(day / (1000 * 3600 * 24)));
@@ -49,7 +49,7 @@ export default function Project01(props: IUserProject) {
           <ImageCircle el={props.el} id={props.el?.project.projectId} />
           <S.Title01>{props.el?.project.projectName}</S.Title01>
           <S.Title02>{props.el?.project.projectIntro}</S.Title02>
-          <S.Date>마감까지일 {dday}일 남았습니다.</S.Date>
+          <S.Date>마감까지 {dday}일 남았습니다.</S.Date>
         </S.box2>
       </S.Container>
     </S.card>

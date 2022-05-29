@@ -81,12 +81,12 @@ export default function ProjectSignPageUI(props: any) {
               </S.LabelBox>
               <S.InputBox>
                 <S.QuillDiv
-                  // style={{
-                  //   width: "88rem",
-                  //   height: "30rem",
-                  //   backgroundColor: "white",
-                  //   borderRadius: "0.8rem",
-                  // }}
+                // style={{
+                //   width: "88rem",
+                //   height: "30rem",
+                //   backgroundColor: "white",
+                //   borderRadius: "0.8rem",
+                // }}
                 >
                   <S.RQuill
                     onChange={props.onChangeContents}
@@ -145,21 +145,27 @@ export default function ProjectSignPageUI(props: any) {
               />
             </S.Color>
           </S.Block>
+
           <S.DateBox>
             <S.LabelBox>
               <S.Label>프로젝트 기간</S.Label>
               <S.Must>*</S.Must>
             </S.LabelBox>
-            <S.InputBox>
-              <S.StartEndDay>
-                <S.Date>시작일</S.Date>
-                <S.EndDate>종료일</S.EndDate>
-              </S.StartEndDay>
-              <S.DayPicker>
-                <DayPick data={props.data} />
-              </S.DayPicker>
-            </S.InputBox>
+
+            <S.InputDayBox>
+              <div>
+                <S.StartEndDay>
+                  <S.Date>시작일</S.Date>
+                  <S.EndDate>종료일</S.EndDate>
+                </S.StartEndDay>
+                <S.DayPicker>
+                  <DayPick data={props.data} />
+                </S.DayPicker>
+              </div>
+              <S.DayBox>dd</S.DayBox>
+            </S.InputDayBox>
           </S.DateBox>
+
           <S.Block>
             <S.LabelBox>
               <S.Label>장소</S.Label>
