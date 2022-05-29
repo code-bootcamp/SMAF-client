@@ -19,7 +19,6 @@ const SliderWrapper = styled(Slider)`
   width: 97rem;
   @media ${breakPoints.mobile} {
     width: 36rem;
-    border: 1px solid red;
   }
   .slick-list {
     height: 24rem;
@@ -33,6 +32,7 @@ const SliderWrapper = styled(Slider)`
     margin: 0;
     @media ${breakPoints.mobile} {
       margin-left: 20px;
+      padding-right: 20px;
     }
   }
 `;
@@ -45,6 +45,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
 
   const showMaxCnt = 3;
   const arr = Array.from(new Array(3));
+
   const settings = {
     dots: false,
     infinite: arr.length > showMaxCnt,

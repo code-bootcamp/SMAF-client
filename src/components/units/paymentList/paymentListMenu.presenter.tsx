@@ -7,9 +7,6 @@ import Pagination from "../../commons/paginations/01/Pagination";
 export default function PaymentListUI(props: any) {
   return (
     <S.Wrapper>
-      {/* <UserInfoCard01
-        onClickMoveToPaymentList={props.onClickMoveToPaymentList}
-      /> */}
       <S.RightWrapper>
         <S.Title>결제내역</S.Title>
         <S.Table>
@@ -18,9 +15,8 @@ export default function PaymentListUI(props: any) {
             <S.TableMenuPaymentDate>결제일</S.TableMenuPaymentDate>
             <S.TableMenuProduct>결제상품</S.TableMenuProduct>
             <S.TableMenuMoney>결제금액</S.TableMenuMoney>
-            {/* <S.TableMenuDate>작성일</S.TableMenuDate> */}
           </S.PaymentMenuList>
-          {props.data?.fetchPayments ? (
+          {props.data?.fetchPayments.length ? (
             <S.PaymentObjectList>
               {props.data?.fetchPayments.map((el: any, index: number) => (
                 <PaymentObject key={el.paymentId} el={el} index={index} />
