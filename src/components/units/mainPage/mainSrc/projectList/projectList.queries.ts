@@ -4,9 +4,9 @@ import { gql } from "@apollo/client";
 export const FETCH_PARTICIPATING_PROJECTS = gql`
   query fetchParticipatingProject {
     fetchParticipatingProject {
-     projectParticipantId
-     position
-     project {
+      projectParticipantId
+      position
+      project {
         projectId
         projectName
         projectIntro
@@ -15,7 +15,21 @@ export const FETCH_PARTICIPATING_PROJECTS = gql`
         startDate
         endDate
         projectColor
-     }
+      }
+    }
+  }
+`;
+
+export const FETCH_LOGIN_USER = gql`
+  query fetchLoginUser {
+    fetchLoginUser {
+      userId
+      userName
+      email
+      phone
+      admin
+      userImageURL
+      projectTicket
     }
   }
 `;

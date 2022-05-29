@@ -3,8 +3,15 @@ import * as S from "./experiencePlanCard.styles";
 export default function ExperiencePlanCardHTML(props: any) {
   return (
     <>
+      {/* <S.Wrapper>{props.el}</S.Wrapper> */}
       <S.Wrapper>
-        {props.categoryNum}카테고리 {props.number}번 글
+        {/* <div>{props.userData?.fetchUser.userName}</div> */}
+        <S.SpaceBetweenRow>
+          <S.TeamPerson src={"/test.png"}></S.TeamPerson>
+        </S.SpaceBetweenRow>
+        <S.Title>{props.el}</S.Title>
+        <S.Contents>내용이 들어가요!</S.Contents>
+        <S.Date>2022-06-27</S.Date>
       </S.Wrapper>
     </>
   );

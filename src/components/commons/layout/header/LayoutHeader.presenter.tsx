@@ -3,10 +3,9 @@ import { useMoveToPage } from "../../hooks/useMoveToPage";
 import Image02 from "../../images/01/image02";
 import * as S from "./LayoutHeader.styles";
 
-import { Tooltip } from 'antd';
+import { Tooltip } from "antd";
 
 export default function HeaderUI(props: any) {
-
   return (
     <S.Wrapper>
       <S.LogoWrapper>
@@ -20,19 +19,41 @@ export default function HeaderUI(props: any) {
         <S.Alarm src="/image/changealarm.png" alt="alarm" />
 
         <Tooltip
-        color="#FAC38B" 
-        overlayInnerStyle={{color: "#6D2F2F", fontWeight:"600", borderRadius:"12px"}}
-        placement="bottom" 
-        title="문의하기">
-          <span><S.Qna src="/image/qna.png" alt="qna" onClick={props.onClickQna} /></span>
+          color="#FAC38B"
+          overlayInnerStyle={{
+            color: "#6D2F2F",
+            fontWeight: "600",
+            borderRadius: "12px",
+          }}
+          placement="bottom"
+          title="문의하기"
+        >
+          <span>
+            <S.Qna src="/image/qna.png" alt="qna" onClick={props.onClickQna} />
+          </span>
         </Tooltip>
-
+        {/* {props.data?.fetchLoginUser?.projectTicket ? : } */}
         <Tooltip
-        color="#FAC38B"
-        overlayInnerStyle={{color: "#6D2F2F", fontWeight:"600", borderRadius:"12px"}}
-        placement="bottom" 
-        title={`무료체험이 ${props.data?.fetchLoginUser.projectTicket}회 남았습니다`}>
-          <span><Image02 src={props.data?.fetchLoginUser.userImageURL} /></span>
+          color="#FAC38B"
+          overlayInnerStyle={{
+            color: "#6D2F2F",
+            fontWeight: "600",
+            borderRadius: "12px",
+          }}
+          placement="bottom"
+          title={`무료체험이 ${
+            props.data?.fetchLoginUser.projectTicket
+              ? props.data?.fetchLoginUser.projectTicket
+              : 0
+          }회 남았습니다`}
+        >
+          <span>
+            {props.data?.fetchLoginUser.userImageURL ? (
+              <Image02 src={props.data?.fetchLoginUser.userImageURL} />
+            ) : (
+              <Image02 src={"/test.png"} />
+            )}
+          </span>
         </Tooltip>
 
         {props.data?.fetchLoginUser.userName === undefined ? (

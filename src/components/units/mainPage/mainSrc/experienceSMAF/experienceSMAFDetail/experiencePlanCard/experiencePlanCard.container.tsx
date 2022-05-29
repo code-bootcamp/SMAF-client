@@ -5,6 +5,7 @@ export default function ExperiencePlanCard(props: any) {
     <ExperiencePlanCardHTML
       number={props.number}
       categoryNum={props.categoryNum}
+      el={props.el}
     />
   );
 }
