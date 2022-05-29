@@ -89,7 +89,8 @@ export default function Dropdown02() {
     <Dropdown overlay={menu}>
       <a onClick={(e) => e.preventDefault()}>
         <Space01>
-          <div>문의유형 </div>
+          {/* <div>문의유형 </div> */}
+          <div>서비스 문의 </div>
           <DownOutlinedButton style={{ color: "#DBDBDB" }} />
         </Space01>
       </a>

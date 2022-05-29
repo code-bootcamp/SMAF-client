@@ -12,19 +12,13 @@ export default function FooterBottomUI() {
       </S.TopWrapper>
 
       <S.BottomWrapper>
+        <S.Logo>(주)SMAF</S.Logo>
         <S.SnsWrapper>
-          <S.FaceBook>
-            <span>f</span>
-          </S.FaceBook>
-          <S.Youtube>
-            <span></span>
-          </S.Youtube>
-          <S.Instagram>
-            <div>
-              <span></span>
-            </div>
-          </S.Instagram>
+          <S.FaceBook src="/images/facebook.png"></S.FaceBook>
+          <S.Youtube src="/images/youtube.png"></S.Youtube>
+          <S.Instagram src="/images/instagram.png"></S.Instagram>
         </S.SnsWrapper>
+
         <S.Copyright>COPYRIGHT(C)2022SMAF,LTD ALL RIGHTS RESERVED</S.Copyright>
       </S.BottomWrapper>
     </S.Wrapper>
