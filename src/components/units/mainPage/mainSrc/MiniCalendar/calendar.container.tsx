@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { FETCH_SCHEDULES } from "./calendar.querys";
 
-export default function MiniCalendar() {
+export default function MiniCalendar(props: any) {
   const [value, onChange] = useRecoilState(dateValue);
   const [mark, setMark] = useState<string[]>([]);
 
@@ -34,7 +34,7 @@ export default function MiniCalendar() {
         tileContent={({ date, view }) => {
           if (mark.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
             return (
-              <div className="dotBox">
+              <div onClick={props.OpenSchedules} className="dotBox">
                 <div className="dot"></div>
               </div>
             );
