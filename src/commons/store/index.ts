@@ -71,3 +71,8 @@ export const indexNum = atom({
   key: "index",
   default: 0,
 });
+
+export const sessionTriger = atom({
+  key: "sessionTriger",
+  default: false
+})

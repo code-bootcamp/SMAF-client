@@ -1,10 +1,16 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 22rem;
   background-color: white;
   border-radius: 1.6rem;
   padding: 1.5rem;
+  @media ${breakPoints.mobile} {
+    width: 32rem;
+  }
 `;
 export const Title = styled.div`
   font-size: 2.4rem;
@@ -16,12 +22,18 @@ export const FileHiddenIcon = styled.img`
   height: 0.7rem;
   margin-right: 1rem;
   cursor: pointer;
+  @media ${breakPoints.mobile} {
+    display: none;
+  }
 `;
 export const TitleBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 2rem;
+  @media ${breakPoints.mobile} {
+    width: 32rem;
+  }
 `;
 export const TeamPeople = styled.div``;
 export const TeamPerson = styled.img`

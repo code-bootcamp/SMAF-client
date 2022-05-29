@@ -6,11 +6,31 @@ import DetailPlanListColumn from "./detailPlanListColumn/detailPlanListColumn.co
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import ProjectEditDropdown from "../../commons/dropdown/06.projectEditDropdown/projectEditDropdown";
 import ErrorAlert from "../../commons/modal/errorModal/alert";
+import { useState } from 'react';
 export default function ProjectDetailPageHTML(
   props: IProjectDetailPageHTMLProps
 ) {
   // console.log(props.projectData, "projectData");
   // console.log(props.categoriesData, "categoriesData");
+  const [isOpenProject, setIsOpenProject] = useState<boolean>(true)
+  const [isOpenMember, setIsOpenMember] = useState<boolean>(false)
+  const [isOpenFile, setIsOpenFile] = useState<boolean>(false)
+
+  const OpenProject = () =>{
+    setIsOpenProject(true)
+    setIsOpenMember(false)
+    setIsOpenFile(false)
+  }
+  const OpenMember = () =>{
+    setIsOpenProject(false)
+    setIsOpenMember(true)
+    setIsOpenFile(false)
+  }
+  const OpenFile = () =>{
+    setIsOpenProject(false)
+    setIsOpenMember(false)
+    setIsOpenFile(true)
+  }
   return (
     <>
       {props.errorAlertModal && (
@@ -53,9 +73,17 @@ export default function ProjectDetailPageHTML(
                   {` `}
                   {props.projectData?.fetchProject?.address?.detailAddress}
                 </S.DetailProjectPosition>
+                <S.BtnList>
+                  <S.ShowBtn1 onClick={OpenProject} isOpenProject={isOpenProject}>일정</S.ShowBtn1>
+                  <S.ShowBtn2 onClick={OpenMember} isOpenMember={isOpenMember}>멤버</S.ShowBtn2>
+                  <S.ShowBtn3 onClick={OpenFile} isOpenFile={isOpenFile}>파일</S.ShowBtn3>
+                </S.BtnList>
               </S.ProjectDetail>
-              <TeamMember />
-              <S.FileList>
+              <S.MemberList isOpenMember={isOpenMember}>
+                <TeamMember />
+              </S.MemberList>
+                    {/* 업로드버튼은 머지후에 */}
+              <S.FileList isOpenFile={isOpenFile}>
                 <S.FileListName>
                   <div>File</div>
                   <S.FileHiddenIcon
@@ -81,8 +109,9 @@ export default function ProjectDetailPageHTML(
                   </>
                 )}
               </S.FileList>
+              
             </S.LeftWrapper>
-            <S.RightWrapper
+            <S.RightWrapper isOpenProject={isOpenProject}
               color={props.projectData?.fetchProject.projectColor}
             >
               {props.isLoading && (

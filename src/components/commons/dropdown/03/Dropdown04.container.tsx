@@ -37,7 +37,6 @@ export default function Dropdown01() {
     console.log("로그아웃완료, 기본페이지 이동");
     router.push(`/`);
     // 강제 새로고침 로그아웃시 필요한것
-    location.reload();
   };
 
   const menu = (
