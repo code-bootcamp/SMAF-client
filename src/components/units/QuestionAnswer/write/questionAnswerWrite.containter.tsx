@@ -1,9 +1,6 @@
 import QuestionAnswerWriteUI from "./questionAnswerWrite.presenter";
-import { useMutation, useQuery } from "@apollo/client";
-import {
-  CREATE_QUESTION_BOARD,
-  FETCH_LOGIN_USER,
-} from "./questionAnswerWrite.queris";
+import { useMutation } from "@apollo/client";
+import { CREATE_QUESTION_BOARD } from "./questionAnswerWrite.queris";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
