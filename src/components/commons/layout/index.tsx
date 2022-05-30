@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import Layoutheader from "./header/LayoutHeader.container";
-import { useRouter } from "next/router";
 import LayoutFooter from "./footer/LayutFooter.container";
 import { ReactNode } from "react";
 

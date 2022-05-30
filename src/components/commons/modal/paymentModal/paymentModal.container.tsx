@@ -4,7 +4,6 @@ import { gql, useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { async } from "../../../../commons/libraries/getAccessToken.ts/getAccessToken";
 
 declare const window: typeof globalThis & {
   IMP: any;

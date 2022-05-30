@@ -37,7 +37,7 @@ export default function DetailPlanAddModal(props: any) {
   const dDay = moment(selectedDay).format("YYYY-MM-DD");
   const CreateNewSchedule = async (data: any) => {
     try {
-      const result = await createSchedule({
+      await createSchedule({
         variables: {
           createScheduleInput: {
             ...data,
