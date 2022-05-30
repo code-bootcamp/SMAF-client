@@ -3,6 +3,7 @@ import { breakPoints } from "../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   @media ${breakPoints.mobile} {
+    display: flex;
   }
 `;
 
@@ -13,10 +14,10 @@ export const RightWrapper = styled.div`
   width: 97rem;
   margin-left: 9rem;
   @media ${breakPoints.mobile} {
-    width: 320px;
-    height: 330px;
+    width: 32rem;
     margin: auto;
     margin-top: 60px;
+    padding: 1.1rem 0rem;
     /* border: 1px solid red; */
   }
 `;
@@ -100,7 +101,7 @@ export const TableMenuProduct = styled.div`
   font-size: 1.6rem;
   line-height: 2.4rem;
   @media ${breakPoints.mobile} {
-    width: 5.1rem;
+    width: 5.9rem;
     margin-right: 6rem;
     font-size: 1.2rem;
   }
@@ -116,7 +117,7 @@ export const TableMenuMoney = styled.div`
   font-size: 1.6rem;
   line-height: 2.4rem;
   @media ${breakPoints.mobile} {
-    width: 5.1rem;
+    width: 5.9rem;
     margin-right: 0rem;
     font-size: 1.2rem;
   }
@@ -149,7 +150,7 @@ export const PaymentObjectList = styled.div`
 
   @media ${breakPoints.mobile} {
     width: 32rem;
-    height: 28rem;
+    height: 48rem;
     margin: 0rem auto;
   }
 `;

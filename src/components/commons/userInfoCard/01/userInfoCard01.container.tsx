@@ -33,12 +33,12 @@ export default function UserInfoCard01(props: IUserCardProps) {
       </S.CardTopWrapper>
       <S.MenuBtn onClick={props.OpenMenu}>메뉴</S.MenuBtn>
       <S.CardBottomWrapper isOpen={props.isOpen}>
-        <S.CardBottomContents>
+        <S.CardBottomContents onClick={props.OpenMenu}>
           <S.Icon src={"/images/pen.png"}></S.Icon>
           <S.Title onClick={props.onClickMoveToMyPage}>마이페이지</S.Title>
         </S.CardBottomContents>
         <S.Line></S.Line>
-        <S.CardBottomContents>
+        <S.CardBottomContents onClick={props.OpenMenu}>
           <S.Icon2 src={"/images/card.png"}></S.Icon2>
           <S.Title onClick={props.onClickMoveToPaymentList}>결제내역</S.Title>
         </S.CardBottomContents>

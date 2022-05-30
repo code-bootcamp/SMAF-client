@@ -12,8 +12,8 @@ export const Wrapper = styled.div`
   padding-bottom: 12rem;
   @media ${breakPoints.mobile} {
     width: 36rem;
-    height: 74rem;
     flex-direction: column;
+    height: ${(props: IsOpen) => (props.isOpen ? "98rem" : "60rem")};
     padding-top: 0rem;
     padding-bottom: 6rem;
   }
@@ -27,10 +27,10 @@ export const RightWrapper = styled.div`
   margin-left: 9rem;
   border-radius: 8px;
   @media ${breakPoints.mobile} {
+    display: ${(props: IsOpen) => (props.isOpen ? "flex" : "none")};
     width: 36rem;
     padding-top: 32px;
     margin-left: 0rem;
-    display: ${(props: IsOpen) => (props.isOpen ? "flex" : "none")};
   }
 `;
 
