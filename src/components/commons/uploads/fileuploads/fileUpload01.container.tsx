@@ -61,7 +61,7 @@ export default function ProjectFileUpload() {
 
     const onClickSubmit = async () => {
         try {
-            const result = await createProjectFile({
+            await createProjectFile({
                 variables: {
                     filename: decodeURIComponent(fname),
                     fileURL: urls,
@@ -81,7 +81,7 @@ export default function ProjectFileUpload() {
 
             setModalContents("파일 등록이 완료되었습니다!");
             setAlertModal(true);
-        } catch (error) {
+        } catch (error: any) {
             setModalContents(error.message);
             setErrorAlertModal(true);
         }
