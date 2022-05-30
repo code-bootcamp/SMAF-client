@@ -45,27 +45,28 @@ export default function PaymentModal(props: any) {
         const IMP = window.IMP;
         IMP.init("imp35583537");
 
-        IMP.request_pay(
-            {
-                // param
-                pg: "html5_inicis",
-                pay_method: "card",
-                // merchant_uid: "ORD20180131-0000011", // 주석하면 랜덤으로 생성됨 상품아이디 (중복되지 않게!)
-                name: "이용권 구매하기",
-                amount: "100",
-                buyer_email: data?.fetchLoginUser.email,
-                buyer_name: data?.fetchLoginUser.userName,
-                buyer_tel: "",
-                buyer_addr: "",
-                buyer_postcode: "",
-                // m_redirect_url: "http://localhost:3000/",
-            },
-            (rsp: any) => {
-                if (rsp.success) {
-                    console.log(rsp);
-                    const result = createPayment({
-                        variables: { impUid: rsp.imp_uid, amount: 100 },
-                    });
+
+    IMP.request_pay(
+      {
+        // param
+        pg: "html5_inicis",
+        pay_method: "card",
+        // merchant_uid: "ORD20180131-0000011", // 주석하면 랜덤으로 생성됨 상품아이디 (중복되지 않게!)
+        name: "이용권 구매하기",
+        amount: "200",
+        buyer_email: data?.fetchLoginUser.email,
+        buyer_name: data?.fetchLoginUser.userName,
+        buyer_tel: "",
+        buyer_addr: "",
+
+        // m_redirect_url: "http://localhost:3000/",
+      },
+      (rsp: any) => {
+        if (rsp.success) {
+          console.log(rsp);
+          const result = createPayment({
+            variables: { impUid: rsp.imp_uid, amount: 200 },
+          });
 
                     console.log("결제", result);
                     alert("결제에 성공했습니다.");

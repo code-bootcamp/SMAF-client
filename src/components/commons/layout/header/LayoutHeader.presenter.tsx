@@ -51,7 +51,7 @@ export default function HeaderUI(props: any) {
             {props.data?.fetchLoginUser.userImageURL ? (
               <Image02 src={props.data?.fetchLoginUser.userImageURL} />
             ) : (
-              <Image02 src={"/test.png"} />
+              <Image02 src={"/images/noprofile.png"} />
             )}
           </span>
         </Tooltip>
