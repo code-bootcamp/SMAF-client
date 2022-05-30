@@ -16,8 +16,6 @@ export default function MiniCalendar(props: any) {
 
   const { data: schedulesData } = useQuery(FETCH_SCHEDULES);
   const { data: participatingData } = useQuery(FETCH_PARTICIPATING_PROJECTS);
-  console.log(participatingData, "참가 프로젝트");
-  console.log(schedulesData, "모든일정");
 
   const dateArray = () => {
     const daysArray: any = [];
@@ -38,7 +36,6 @@ export default function MiniCalendar(props: any) {
         }
       });
     });
-    console.log(daysArray, "aaaa");
     setMark([...daysArray]);
   };
 

@@ -107,11 +107,7 @@ export default function ExperienceSMAFHTML(props: any) {
         {props.categoryName?.map((el: any, index: any) => (
           <Droppable droppableId={el[0]} key={index}>
             {(provided, snapshot) => (
-              <div
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-                // style={{backgroundColor: snapshot.isDraggingOver ? 'white' : 'grey'}}
-              >
+              <div ref={provided.innerRef} {...provided.droppableProps}>
                 <ExperienceSMAFDetail
                   key={index}
                   el={el}

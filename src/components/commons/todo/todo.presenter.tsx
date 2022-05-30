@@ -17,23 +17,21 @@ const Data = styled.div`
   position: relative;
 `;
 
-
 export default function TodoUI(props: any) {
-  console.log("😀",props)
   return (
     <>
-    {props.data?.fetchProjectSchedules.length ?
-    <>
-      {props.data?.fetchProjectSchedules.map((el: any) => (
-        <TodoDetail key={el.scheduleId} el={el} today={props.today} />
-      ))}
-      </>
-      :
-      <Data>
-        <NoSchedule src="/images/noschedule.png" />
-        <Nodata>등록된 일정이 없습니다.</Nodata>
-      </Data>
-    }
+      {props.data?.fetchProjectSchedules.length ? (
+        <>
+          {props.data?.fetchProjectSchedules.map((el: any) => (
+            <TodoDetail key={el.scheduleId} el={el} today={props.today} />
+          ))}
+        </>
+      ) : (
+        <Data>
+          <NoSchedule src="/images/noschedule.png" />
+          <Nodata>등록된 일정이 없습니다.</Nodata>
+        </Data>
+      )}
     </>
   );
 }
