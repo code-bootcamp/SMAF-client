@@ -36,6 +36,10 @@ export default function SchedulesUI(props: any) {
             </>
           )}
         </S.DateBox>
+        {/* <S.Data>
+        <S.NoSchedule src="/images/noschedule.png" />
+        <S.Nodata>등록된 일정이 없습니다.</S.Nodata>
+      </S.Data> */}
         <S.Wrapper>
           {props.ParticipatingData?.fetchParticipatingProject.map((el: any) => (
             <Todo

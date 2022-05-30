@@ -2,7 +2,7 @@ import * as S from "./myPage.styles";
 import styled from "@emotion/styled";
 import { IMyPageUIProps } from "./myPage.types";
 import { v4 as uuidv4 } from "uuid";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -13,16 +13,12 @@ import UserInfoCard01 from "../../commons/userInfoCard/01/userInfoCard01.contain
 import PaymentList from "../paymentList/paymentListMenu.contatiner";
 import PaymentModal from "../../commons/modal/paymentModal/paymentModal.container";
 import { breakPoints } from "../../../commons/styles/media";
-import Project04 from "../../commons/project/04/project04.container";
-import Project05 from "../../commons/project/05/project05.container";
-import Project06 from "../../commons/project/06/project06.container";
 
 const SliderWrapper = styled(Slider)`
   height: 24rem;
   width: 97rem;
   @media ${breakPoints.mobile} {
     width: 36rem;
-    display: none;
   }
   .slick-list {
     height: 24rem;
@@ -43,6 +39,11 @@ const SliderWrapper = styled(Slider)`
 
 export default function MyPageUI(props: IMyPageUIProps) {
   const fileRef = useRef<HTMLInputElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const OpenMenu = () => {
+    setIsOpen((prev) => !prev);
+  };
   const onClickUpload = () => {
     fileRef.current?.click();
   };
@@ -67,9 +68,11 @@ export default function MyPageUI(props: IMyPageUIProps) {
           onClickMoveToMyPage={props.onClickMoveToMyPage}
           onClickMoveToPasswordChange={props.onClickMoveToPasswordChange}
           data={props.userData}
+          isOpen={isOpen}
+          OpenMenu={OpenMenu}
         />
         {props.visible ? (
-          <S.RightWrapper>
+          <S.RightWrapper isOpen={isOpen}>
             <S.InnerWrapper>
               <S.ProjectTitle>
                 <S.Title>진행 중인 프로젝트</S.Title>
@@ -101,22 +104,6 @@ export default function MyPageUI(props: IMyPageUIProps) {
               ) : (
                 <Project03 />
               )}
-
-              {/* --------360px-------- */}
-              {props.activeData?.fetchActivatedProject.length ? (
-                <S.SliderFake>
-                  {props.activeData?.fetchActivatedProject.map((el: any) => (
-                    <Project04
-                      key={el.projectId}
-                      el={el}
-                      onClick={props.onClickMoveToProjectDetail}
-                    />
-                  ))}
-                </S.SliderFake>
-              ) : (
-                <Project06 />
-              )}
-              {/* --------360px-------- */}
             </S.InnerWrapper>
 
             <S.InnerWrapper>
@@ -139,23 +126,6 @@ export default function MyPageUI(props: IMyPageUIProps) {
               ) : (
                 <Project03 />
               )}
-              {/* --------360px-------- */}
-              {props.inActiveData?.fetchInactivatedProject.length ? (
-                <S.SliderFake>
-                  {props.inActiveData?.fetchInactivatedProject.map(
-                    (el: any) => (
-                      <Project05
-                        key={el.projectId}
-                        el={el}
-                        onClick={props.onClickMoveToProjectDetail}
-                      />
-                    )
-                  )}
-                </S.SliderFake>
-              ) : (
-                <Project06 />
-              )}
-              {/* --------360px-------- */}
             </S.InnerWrapper>
           </S.RightWrapper>
         ) : (

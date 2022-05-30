@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 
+interface IsOpen {
+  isOpen: boolean;
+}
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -9,6 +12,7 @@ export const Wrapper = styled.div`
   padding-bottom: 12rem;
   @media ${breakPoints.mobile} {
     width: 36rem;
+    height: 74rem;
     flex-direction: column;
     padding-top: 0rem;
     padding-bottom: 6rem;
@@ -26,6 +30,7 @@ export const RightWrapper = styled.div`
     width: 36rem;
     padding-top: 32px;
     margin-left: 0rem;
+    display: ${(props: IsOpen) => (props.isOpen ? "flex" : "none")};
   }
 `;
 
