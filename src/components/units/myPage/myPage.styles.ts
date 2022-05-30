@@ -34,6 +34,30 @@ export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
+  @media ${breakPoints.mobile} {
+    margin: 5px auto;
+    /* border: 1px solid blue; */
+  }
+`;
+
+export const SliderFake = styled.div`
+  display: none;
+  /* display: flex; */
+  flex-direction: row;
+  width: 97rem;
+  height: 24rem;
+  @media ${breakPoints.mobile} {
+    display: flex;
+    flex-direction: row;
+    width: 31rem;
+    height: 26rem;
+    margin-left: 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    /* border: 1px solid blue; */
+  }
 `;
 
 export const ProjectTitle = styled.div`
@@ -82,10 +106,10 @@ export const AddButton = styled.button`
     width: 14rem;
     height: 2.6rem;
     margin-right: 2.5rem;
+    border-radius: 8px;
     color: white;
     font-size: 1.4rem;
     line-height: 2.6rem;
-    border-radius: 8px;
   }
 `;
 

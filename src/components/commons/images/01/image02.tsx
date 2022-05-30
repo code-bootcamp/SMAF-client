@@ -5,7 +5,7 @@ const UserPhoto = styled.img`
   width: 3.1rem;
   height: 3.1rem;
   border-radius: 50%;
-  border: 3px solid white;
+  border: 3px solid #ffffff;
   @media ${breakPoints.mobile} {
     width: 2.4rem;
     height: 2.4rem;

@@ -2,44 +2,49 @@ import * as S from "./paymentModal.styles";
 import Head from "next/head";
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
-import { Modal, Button } from "antd";
+import { Modal } from "antd";
 import { useRouter } from "next/router";
 
+declare const window: typeof globalThis & {
+    IMP: any;
+};
+
 const CREATE_PAYMENT = gql`
-  mutation createPayment($impUid: String!, $amount: Float!) {
-    createPayment(impUid: $impUid, amount: $amount) {
-      paymentId
+    mutation createPayment($impUid: String!, $amount: Float!) {
+        createPayment(impUid: $impUid, amount: $amount) {
+            paymentId
+        }
     }
-  }
 `;
 
 const FETCH_LOGIN_USER = gql`
-  query fetchLoginUser {
-    fetchLoginUser {
-      userId
-      userName
-      email
-      phone
-      admin
-      userImageURL
-      projectTicket
+    query fetchLoginUser {
+        fetchLoginUser {
+            userId
+            userName
+            email
+            phone
+            admin
+            userImageURL
+            projectTicket
+        }
     }
-  }
 `;
 
 export default function PaymentModal(props: any) {
-  const router = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
-  const onToggleModal = () => {
-    setIsOpen((prev) => !prev);
-  };
+    const router = useRouter();
+    const [isOpen, setIsOpen] = useState(false);
+    const onToggleModal = () => {
+        setIsOpen((prev) => !prev);
+    };
 
-  const [createPayment] = useMutation(CREATE_PAYMENT);
-  const { data } = useQuery(FETCH_LOGIN_USER);
+    const [createPayment] = useMutation(CREATE_PAYMENT);
+    const { data } = useQuery(FETCH_LOGIN_USER);
 
-  const requestPay = () => {
-    const IMP = window.IMP;
-    IMP.init("imp35583537");
+    const requestPay = () => {
+        const IMP = window.IMP;
+        IMP.init("imp35583537");
+
 
     IMP.request_pay(
       {
@@ -48,31 +53,30 @@ export default function PaymentModal(props: any) {
         pay_method: "card",
         // merchant_uid: "ORD20180131-0000011", // 주석하면 랜덤으로 생성됨 상품아이디 (중복되지 않게!)
         name: "이용권 구매하기",
-        amount: "100",
+        amount: "200",
         buyer_email: data?.fetchLoginUser.email,
         buyer_name: data?.fetchLoginUser.userName,
         buyer_tel: "",
         buyer_addr: "",
-        buyer_postcode: "",
+
         // m_redirect_url: "http://localhost:3000/",
       },
       (rsp: any) => {
         if (rsp.success) {
           console.log(rsp);
           const result = createPayment({
-            variables: { impUid: rsp.imp_uid, amount: 100 },
+            variables: { impUid: rsp.imp_uid, amount: 200 },
           });
 
-          console.log("결제", result);
-          alert("결제에 성공했습니다.");
-          router.push("/project/new");
-        } else {
-          alert("결제에 실패했습니다! 다시 시도해 주세요.");
-        }
-      }
-    );
-  };
-
+                    console.log("결제", result);
+                    alert("결제에 성공했습니다.");
+                    router.push("/project/new");
+                } else {
+                    alert("결제에 실패했습니다! 다시 시도해 주세요.");
+                }
+            }
+        );
+    };
   return (
     <>
       <button

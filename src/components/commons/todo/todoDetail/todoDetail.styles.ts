@@ -1,8 +1,12 @@
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../../commons/styles/media";
 
 export const Wrapper = styled.div`
   display: flex;
-  margin: 1rem 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  margin-left: 1.8rem;
+  /* margin-left: 25px; */
   cursor: pointer;
 `;
 export const Color = styled.div`
@@ -10,13 +14,17 @@ export const Color = styled.div`
   height: 13.3rem;
   background-color: #ff8b8b;
   border-radius: 1.6rem 0 0 1.6rem;
+  @media ${breakPoints.mobile} {
+    width: 6rem;
+  }
 `;
 export const Box = styled.div`
-  width: 33rem;
+  width: 88rem;
   height: 13.3rem;
   background-color: #ffecec;
   border-radius: 0 1.6rem 1.6rem 0;
   padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+  /* border: 2px solid green; // 🍎 */
 `;
 export const TitleBox = styled.div`
   display: flex;
