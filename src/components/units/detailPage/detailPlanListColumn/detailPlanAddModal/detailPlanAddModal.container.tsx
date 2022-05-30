@@ -39,7 +39,7 @@ export default function DetailPlanAddModal(props: any) {
 
   const CreateNewSchedule = async (data: any) => {
     try {
-      const result = await createSchedule({
+      await createSchedule({
         variables: {
           createScheduleInput: {
             ...data,
@@ -61,8 +61,6 @@ export default function DetailPlanAddModal(props: any) {
       setAlertModal(true);
       props.onToggleModal();
       setSelectedDay(new Date())
-
-      console.log("여기여기여기", result)
 
     } catch (error:any) {
       setModalContents(error.message);

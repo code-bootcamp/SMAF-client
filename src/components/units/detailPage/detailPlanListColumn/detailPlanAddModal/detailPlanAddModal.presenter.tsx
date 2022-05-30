@@ -13,11 +13,7 @@ export default function DetailPlanAddModalHTML(
     {props.alertModal && (
         <Alert
           onClick={props.onClickAlertModal}
-          onClickExit={
-            props.go
-              ? props.onClickRoutingModal
-              : props.onClickConfirmModal
-          }
+          onClickExit={props.onClickConfirmModal}
           contents={props.modalContents}
         />
       )}

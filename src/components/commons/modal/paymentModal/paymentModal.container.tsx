@@ -103,7 +103,8 @@ export default function PaymentModal(props: any) {
           footer={null}
           centered={true}
         >
-          <S.Title>이용권을 모두 소진하셨습니다.결제하시겠습니까?</S.Title>
+          <S.Title>이용권을 모두 소진하셨습니다.</S.Title>
+          <S.Title>결제하시겠습니까?</S.Title>
           <Head>
             {/* <!-- jQuery --> */}
             <script
@@ -122,7 +123,8 @@ export default function PaymentModal(props: any) {
               <span>프로젝트 1개(200원)</span>
             </div>
           </S.CouponWrapper>
-          <S.SubTitle>하나의 프로젝트를 생성할 수 있습니다.</S.SubTitle>
+          <S.SubTitle>하나의 프로젝트를</S.SubTitle>
+          <S.SubTitle>생성할 수 있습니다.</S.SubTitle>
           <S.ButtonWrapper>
             <button onClick={onToggleModal}>취소</button>
             <button onClick={requestPay}>결제하기</button>
