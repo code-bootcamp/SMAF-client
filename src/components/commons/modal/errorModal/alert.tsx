@@ -4,7 +4,7 @@ import { Modal } from "antd";
 import { useState } from "react";
 
 export default function ErrorAlert(props: any) {
-    const [isOpen, setIsOpen] = useState(false);
+    const [, setIsOpen] = useState(false);
     const onToggleModal = () => {
         setIsOpen((prev) => !prev);
     };
@@ -30,7 +30,7 @@ export default function ErrorAlert(props: any) {
             >
                 <S.PointModal>
                     <S.Close onClick={onToggleModal}>X</S.Close>
-                    <S.Logo src="/images/remove.png"/>
+                    <S.Logo src="/images/remove.png" />
                     <S.ModalText>{props.contents ? props.contents : ""}</S.ModalText>
                     <S.ConfirmBtn onClick={props.onClickExit}>확인</S.ConfirmBtn>
                 </S.PointModal>

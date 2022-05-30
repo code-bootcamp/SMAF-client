@@ -3,7 +3,7 @@ import * as S from "./addColumnBtn.style";
 import { Modal } from "antd";
 import { useEffect } from "react";
 import ErrorAlert from "../../../commons/modal/errorModal/alert";
-// IAddColumnBtnProps
+
 export default function AddColumnBtnHTML(props: any) {
     useEffect(() => {
         props.reset({ processName: "" });

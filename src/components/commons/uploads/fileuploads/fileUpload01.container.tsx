@@ -61,7 +61,7 @@ export default function ProjectFileUpload() {
 
     const onClickSubmit = async () => {
         try {
-            const result = await createProjectFile({
+            await createProjectFile({
                 variables: {
                     filename: decodeURIComponent(fname),
                     fileURL: urls,

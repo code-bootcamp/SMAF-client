@@ -47,10 +47,7 @@ export default function ProjectFileUploadUI(props: any) {
                         <S.SubmitBtn onClick={props.onClickSubmit}>등록하기</S.SubmitBtn>
                     </S.SubmitBtnBox>
                 ) : (
-                    <S.AddFile
-                        onClick={props.onClickFileUpload}
-                        // fileRef={props.fileRef}
-                    >
+                    <S.AddFile onClick={props.onClickFileUpload}>
                         <input
                             type="file"
                             style={{ display: "none" }}

@@ -37,7 +37,6 @@ export default function PaymentModal(props: any) {
     const onToggleModal = () => {
         setIsOpen((prev) => !prev);
     };
-
     const [createPayment] = useMutation(CREATE_PAYMENT);
     const { data } = useQuery(FETCH_LOGIN_USER);
 
@@ -67,7 +66,6 @@ export default function PaymentModal(props: any) {
           const result = createPayment({
             variables: { impUid: rsp.imp_uid, amount: 200 },
           });
-
                     console.log("결제", result);
                     alert("결제에 성공했습니다.");
                     router.push("/project/new");

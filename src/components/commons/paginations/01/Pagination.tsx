@@ -54,7 +54,6 @@ export default function Pagination(props: any) {
                             key={index + startPage}
                             onClick={onClickPage}
                             id={String(index + startPage)}
-                            // current={startPage + index === current}
                             style={{
                                 color: current === startPage + index ? "#111111" : "#999999",
                                 fontWeight: current === startPage + index ? "700" : "400",
