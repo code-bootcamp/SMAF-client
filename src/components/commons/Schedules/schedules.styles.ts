@@ -31,6 +31,7 @@ export const Wrapper = styled.div`
   }
   ::-webkit-scrollbar-track {
     background: white;
+    border-radius: 1.6rem;
   }
   @media ${breakPoints.mobile} {
     width: 36rem;
@@ -60,6 +61,7 @@ export const DateInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   @media ${breakPoints.mobile} {
     background-color: white;
   }

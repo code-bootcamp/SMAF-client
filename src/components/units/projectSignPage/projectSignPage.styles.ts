@@ -327,6 +327,11 @@ export const Error = styled.div`
   padding: 1rem 0 0 2rem;
   font-size: 1.8rem;
   color: #dc0000;
+  @media ${breakPoints.mobile} {
+    padding-left: 0.3rem;
+    font-size: 12px;
+    line-height: 17px;
+  }
 `;
 export const Color = styled.div`
   padding-left: 13rem;
