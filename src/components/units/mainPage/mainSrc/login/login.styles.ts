@@ -150,6 +150,7 @@ export const ToBeforeLogin = styled.button`
     justify-content: center;
     padding-top: 3rem;
     cursor: pointer;
+    display: none;
 `;
 
 export const GoogleBotton = styled.button``;

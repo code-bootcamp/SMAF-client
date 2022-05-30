@@ -78,12 +78,12 @@ export default function MyPageUI(props: IMyPageUIProps) {
                 <S.Title>진행 중인 프로젝트</S.Title>
                 {!(props.userData?.fetchLoginUser.projectTicket <= 0) ? (
                   <S.AddButton onClick={props.onClickMoveToNewProject}>
-                    + 프로젝트 추가하기
+                    프로젝트 추가하기
                   </S.AddButton>
                 ) : (
                   <>
                     <S.AddButton onClick={onClickUpload}>
-                      + 프로젝트 추가하기
+                    프로젝트 추가하기
                     </S.AddButton>
                     <PaymentModal fileRef={fileRef} />
                   </>

@@ -13,14 +13,16 @@ interface btnStyles3 {
   isOpenFile: boolean;
 }
 export const Wrapper = styled.div`
+
   display: flex;
   width: 100rem;
   height: 82.4rem;
-  border: 10px solid white;
-  background-color: #ededed;
+  /* border: 10px solid white; */
+  /* background-color: #ededed; */
+  
   padding: 2rem;
   overflow: scroll;
-  border-radius: 1.6rem;
+  /* border-radius: 1.6rem; */
   ::-webkit-scrollbar {
     width: 0rem;
     height: 1rem;
@@ -29,13 +31,12 @@ export const Wrapper = styled.div`
   ::-webkit-scrollbar-thumb {
     height: 0rem;
     background: #bebebe;
-    border-radius: 1.6rem;
+    /* border-radius: 1.6rem; */
   }
 
   ::-webkit-scrollbar-track {
     background: white;
-    border-bottom-right-radius: 1.6rem;
-    border-bottom-left-radius: 1.6rem;
+    border-radius: 2rem;
   }
   @media ${breakPoints.mobile} {
     width: 32rem;

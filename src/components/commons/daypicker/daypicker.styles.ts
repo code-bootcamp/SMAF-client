@@ -21,7 +21,8 @@ export const Input = styled.input`
   @media ${breakPoints.mobile} {
     width: 14rem;
     height: 4.0rem;
-    padding: 0;
+     padding-left: 4rem;
+    font-size: 1.3rem;
   }
 `
 export const StartEndDate = styled.div`
