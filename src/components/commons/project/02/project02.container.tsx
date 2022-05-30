@@ -6,7 +6,6 @@ interface IUserProject {
 }
 
 export default function Project02(props: IUserProject) {
-  // console.log(props.el?.project.projectImageURL, "완료이미지나와라");
   return (
     <S.card>
       <S.Container>

@@ -2,8 +2,6 @@ import * as S from "./Question.styles";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faReply } from "@fortawesome/free-solid-svg-icons";
 import QuestionAnswerObject from "./QuestionAnswer/QuestionAnswer.container";
 import {
   FETCH_QUESTION_COMMENTS,
@@ -74,9 +72,6 @@ export default function QuestionObject(props: IQuestionProps) {
       setIsOpenAnswer(false);
     }
   };
-
-  // console.log(props);
-  // console.log(userData?.fetchLoginUser.admin);
   const [index] = useRecoilState(indexNum);
   return (
     <>
@@ -93,17 +88,7 @@ export default function QuestionObject(props: IQuestionProps) {
           </S.TableMenuTitles>
           <S.TableMenuWriter>작성자</S.TableMenuWriter>
           <S.TableMenuDate>{props.el.createAt.slice(0, 10)}</S.TableMenuDate>
-          {/* {data?.fetchQuestionComments[0] &&
-          !userData?.fetchLoginUser?.admin ? (
-            <S.QusStionAnswerBtn>답변완료</S.QusStionAnswerBtn>
-          ) : (
-            <div></div>
-          )}
-          {userData?.fetchLoginUser?.admin && (
-            <S.QusStionAnswerBtn onClick={onAnswerWrite}>
-              {isOpenAnswer ? "작성취소" : "답글달기"}
-            </S.QusStionAnswerBtn>
-          )} */}
+
           {userData?.fetchLoginUser.admin ? (
             <S.QusStionAnswerBtn onClick={onAnswerWrite}>
               {isOpenAnswer ? "작성취소" : "답글달기"}
@@ -119,7 +104,6 @@ export default function QuestionObject(props: IQuestionProps) {
               <ReactQuill
                 onChange={onChangeContents}
                 style={{ height: "11rem", width: "65rem" }}
-                // value={props.getValues("contents" || "")}
               />
               <S.AnswerSubmitBtn>등록하기</S.AnswerSubmitBtn>
             </S.AnswerWriteArea>

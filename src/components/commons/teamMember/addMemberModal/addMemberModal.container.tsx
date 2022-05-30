@@ -6,7 +6,6 @@ import {
   SEND_EMAIL,
 } from "./addMemberModal.querys";
 import * as S from "./addMemberModal.styles";
-// import AddMemberModalHTML from "./addMemberModal.presenter";
 import { useState, ChangeEvent } from "react";
 import { useRouter } from "next/router";
 import { AddMemberModalProps } from "./addMemberModal.types";
@@ -14,7 +13,6 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function AddMemberModal(props: AddMemberModalProps) {
   const [email, setEmail] = useState("");
-  //   const [emailError, setEmailError] = useState("");
   const [createParticipant] = useMutation(CREATE_PARTICIPANT);
   const [sendEmail] = useMutation(SEND_EMAIL);
   const router = useRouter();
@@ -74,7 +72,6 @@ export default function AddMemberModal(props: AddMemberModalProps) {
     props.onToggleModal();
   };
   return (
-    // <AddMemberModalHTML SearchUser={SearchUser} aaa={[getUserInfo, { data }]} />
     <>
       <S.Wrapper>
         <S.SearchWrapper>
@@ -82,7 +79,6 @@ export default function AddMemberModal(props: AddMemberModalProps) {
             placeholder="E-mail을 입력해주세요"
             onChange={onChangeEmail}
           ></S.SearchInput>
-          {/* <div>{emailError}</div> */}
           <S.SearchButton onClick={() => getUserInfo()}>
             팀원검색
           </S.SearchButton>

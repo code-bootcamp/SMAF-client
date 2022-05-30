@@ -12,8 +12,6 @@ import ProjectFileUpload from "../../commons/uploads/fileuploads/fileUpload01.co
 export default function ProjectDetailPageHTML(
   props: IProjectDetailPageHTMLProps
 ) {
-  // console.log(props.projectData, "projectData");
-  // console.log(props.categoriesData, "categoriesData");
   const [isOpenProject, setIsOpenProject] = useState<boolean>(true);
   const [isOpenMember, setIsOpenMember] = useState<boolean>(false);
   const [isOpenFile, setIsOpenFile] = useState<boolean>(false);
@@ -117,7 +115,6 @@ export default function ProjectDetailPageHTML(
                           <div
                             ref={provided.innerRef}
                             {...provided.droppableProps}
-                            // style={{backgroundColor: snapshot.isDraggingOver ? 'white' : 'grey'}}
                           >
                             <DetailPlanListColumn
                               key={el.processCategoryId}

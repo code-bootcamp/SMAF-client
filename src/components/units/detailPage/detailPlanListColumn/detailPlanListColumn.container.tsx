@@ -1,8 +1,6 @@
 import DetailPlanListColumnHTML from "./detailPlanListColumn.presenter";
 import { useQuery, useMutation } from "@apollo/client";
 import {
-  // FETCH_PROJECT_SCHEDULES_PROJECTID,
-  // FETCH_PROJECT_SCHEDULES_CATEGORY,
   DELETE_CATEGORY,
   FETCH_PROCESS_CATEGORIES,
   FETCH_PARTICIPATING_USER,
@@ -14,9 +12,7 @@ import { triger } from "../../../../commons/store/index";
 import { useRecoilState } from "recoil";
 
 export default function DetailPlanListColumn(props: any) {
-
   const router = useRouter();
-  // const router = useRouter();
   const [my, setMy] = useState();
   const [errorAlertModal, setErrorAlertModal] = useState(false);
   const [modalContents, setModalContents] = useState<string>();
@@ -28,11 +24,7 @@ export default function DetailPlanListColumn(props: any) {
       projectId: router.query.projectId,
     },
   });
-  // const { data: scheduleData } = useQuery(FETCH_PROJECT_SCHEDULES_CATEGORY, {
-  //   variables: {
-  //     processCategoryId: props.el.processCategoryId,
-  //   },
-  // });
+
   const { data: myData } = useQuery(FETCH_LOGIN_USER);
   const [deleteCategory] = useMutation(DELETE_CATEGORY);
 
@@ -44,9 +36,9 @@ export default function DetailPlanListColumn(props: any) {
   };
 
   // 에러 모달
-    const onClickErrorModal = () => {
-        setErrorAlertModal(false);
-    };
+  const onClickErrorModal = () => {
+    setErrorAlertModal(false);
+  };
 
   useEffect(() => {
     Mydata();
@@ -66,7 +58,7 @@ export default function DetailPlanListColumn(props: any) {
           },
         ],
       });
-    } catch (error:any) {
+    } catch (error: any) {
       setModalContents(error.message);
       setErrorAlertModal(true);
     } finally {

@@ -20,9 +20,6 @@ interface ILayoutProps {
 }
 
 export default function Layout(props: ILayoutProps) {
-  const router = useRouter();
-  console.log(router);
-
   return (
     <>
       <Layoutheader />
