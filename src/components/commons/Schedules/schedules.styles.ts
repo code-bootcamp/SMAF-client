@@ -100,3 +100,19 @@ export const AddBtn = styled.button`
     display: none;
   }
 `;
+
+export const Nodata = styled.div`
+  position: absolute;
+  top: 30rem;
+  font-size: 1.8rem;
+`;
+export const NoSchedule = styled.img`
+  width: 35rem;
+`;
+export const Data = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rem;
+  position: relative;
+`;

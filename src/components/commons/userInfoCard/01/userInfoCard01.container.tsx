@@ -6,6 +6,8 @@ import * as S from "./userInfoCard01.styles";
 
 interface IUserCardProps {
   data?: any;
+  isOpen: boolean;
+  OpenMenu: () => void;
   onClickMoveToPaymentList: () => void;
   onClickMoveToMyPage: () => void;
   onClickMoveToPasswordChange: () => void;
@@ -13,6 +15,7 @@ interface IUserCardProps {
 
 export default function UserInfoCard01(props: IUserCardProps) {
   const fileRef = useRef<HTMLInputElement>(null);
+
   const onClickUpload = () => {
     fileRef.current?.click();
   };
@@ -28,8 +31,8 @@ export default function UserInfoCard01(props: IUserCardProps) {
           {props.data?.fetchLoginUser.projectTicket} 개
         </S.Ticket>
       </S.CardTopWrapper>
-
-      <S.CardBottomWrapper>
+      <S.MenuBtn onClick={props.OpenMenu}>메뉴</S.MenuBtn>
+      <S.CardBottomWrapper isOpen={props.isOpen}>
         <S.CardBottomContents>
           <S.Icon src={"/images/pen.png"}></S.Icon>
           <S.Title onClick={props.onClickMoveToMyPage}>마이페이지</S.Title>
