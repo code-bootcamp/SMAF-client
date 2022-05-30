@@ -7,14 +7,12 @@ export const ModalWrapper = styled(Modal)`
 `;
 
 export const Title = styled.h1`
-  width: 174px;
-  height: 40px;
-  margin-bottom: 28px;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   text-align: center;
   letter-spacing: -0.02em;
+  font-weight: 600;
 `;
 
 export const CouponWrapper = styled.div`
@@ -25,6 +23,7 @@ export const CouponWrapper = styled.div`
   height: 68px;
   border-radius: 8px;
   background: #f1f1f5;
+  margin: 20px 0 20px 0;
   div {
     display: flex;
     flex-direction: row;
@@ -40,9 +39,9 @@ export const CouponWrapper = styled.div`
     height: 18px;
   }
   span {
-    width: 118px;
+    /* width: 118px; */
     height: 20px;
-    margin-left: 20px;
+    margin-left: 5px;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
@@ -54,7 +53,6 @@ export const CouponWrapper = styled.div`
 export const SubTitle = styled.p`
   width: 217px;
   height: 20px;
-  margin-top: 24px;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -65,7 +63,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 21.6rem;
-  margin-top: 2.8rem;
+  margin-top: 4.5rem;
   button {
     width: 10.4rem;
     height: 4rem;

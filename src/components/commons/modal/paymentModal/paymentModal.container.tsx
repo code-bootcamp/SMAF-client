@@ -77,59 +77,64 @@ export default function PaymentModal(props: any) {
             }
         );
     };
-
-    return (
-        <>
-            <button onClick={onToggleModal} ref={props.fileRef} style={{ display: "none" }}>
-                결제하기!!!
-            </button>
-            {isOpen && (
-                <Modal
-                    visible={true}
-                    onOk={onToggleModal}
-                    onCancel={onToggleModal}
-                    maskStyle={{
-                        width: "100%",
-                        height: "100%",
-                    }}
-                    bodyStyle={{
-                        width: "28rem",
-                        height: "40rem",
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center",
-                    }}
-                    width={280}
-                    footer={null}
-                    centered={true}
-                >
-                    <S.Title>이용권을 모두 소진하셨습니다.결제하시겠습니까?</S.Title>
-                    <Head>
-                        {/* <!-- jQuery --> */}
-                        <script
-                            type="text/javascript"
-                            src="https://code.jquery.com/jquery-1.12.4.min.js"
-                        ></script>
-                        {/* <!-- iamport.payment.js --> */}
-                        <script
-                            type="text/javascript"
-                            src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
-                        ></script>
-                    </Head>
-                    <S.CouponWrapper>
-                        <div>
-                            <img src="./images/coupon.png"></img>
-                            <span>프로젝트 1개(200원)</span>
-                        </div>
-                    </S.CouponWrapper>
-                    <S.SubTitle>하나의 프로젝트를 생성할 수 있습니다.</S.SubTitle>
-                    <S.ButtonWrapper>
-                        <button onClick={onToggleModal}>취소</button>
-                        <button onClick={requestPay}>결제하기</button>
-                    </S.ButtonWrapper>
-                </Modal>
-            )}
-        </>
-    );
+  return (
+    <>
+      <button
+        onClick={onToggleModal}
+        ref={props.fileRef}
+        style={{ display: "none" }}
+      >
+        결제하기!!!
+      </button>
+      {isOpen && (
+        <Modal
+          visible={true}
+          onOk={onToggleModal}
+          onCancel={onToggleModal}
+          maskStyle={{
+            width: "100%",
+            height: "100%",
+          }}
+          bodyStyle={{
+            width: "28rem",
+            height: "40rem",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          width={280}
+          footer={null}
+          centered={true}
+        >
+          <S.Title>이용권을 모두 소진하셨습니다.</S.Title>
+          <S.Title>결제하시겠습니까?</S.Title>
+          <Head>
+            {/* <!-- jQuery --> */}
+            <script
+              type="text/javascript"
+              src="https://code.jquery.com/jquery-1.12.4.min.js"
+            ></script>
+            {/* <!-- iamport.payment.js --> */}
+            <script
+              type="text/javascript"
+              src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
+            ></script>
+          </Head>
+          <S.CouponWrapper>
+            <div>
+              <img src="./images/coupon.png"></img>
+              <span>프로젝트 1개(200원)</span>
+            </div>
+          </S.CouponWrapper>
+          <S.SubTitle>하나의 프로젝트를</S.SubTitle>
+          <S.SubTitle>생성할 수 있습니다.</S.SubTitle>
+          <S.ButtonWrapper>
+            <button onClick={onToggleModal}>취소</button>
+            <button onClick={requestPay}>결제하기</button>
+          </S.ButtonWrapper>
+        </Modal>
+      )}
+    </>
+  );
 }

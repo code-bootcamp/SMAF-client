@@ -35,7 +35,6 @@ export const Table = styled.div`
 
 // 결제내역
 export const Title = styled.div`
-  width: 11.6rem;
   height: 4.6rem;
   margin-bottom: 2rem;
   text-align: left;
@@ -96,7 +95,6 @@ export const TableMenuPaymentDate = styled.div`
 export const TableMenuProduct = styled.div`
   display: flex;
   justify-content: center;
-  width: 5.8rem;
   margin-right: 9.8rem;
   font-weight: 700;
   font-size: 1.6rem;
