@@ -27,7 +27,7 @@ export const Title = styled.h1`
 `;
 export const LabelBox = styled.div`
     display: flex;
-    width: 221px;
+    width: 240px;
 `;
 export const Label = styled.span`
     font-size: 2.8rem;
@@ -134,10 +134,15 @@ export const AddImg = styled.div`
     justify-content: space-between;
 `;
 export const Img = styled.img`
-    width: 31rem;
+    width: 32rem;
     height: 16rem;
     background: #c4c4c4;
     border-radius: 0.8rem;
+    @media ${breakPoints.mobile} {
+        width: 32rem;
+        height: 16rem;
+        margin-top: 1rem;
+    }
 `;
 export const ImgPreviewBox = styled.div`
     width: 88rem;
@@ -145,12 +150,12 @@ export const ImgPreviewBox = styled.div`
     align-items: flex-end;
 `;
 export const ImgPreview = styled.div`
-    width: 31rem;
+    width: 32rem;
     height: 16rem;
     background: #c4c4c4;
     border-radius: 0.8rem;
     @media ${breakPoints.mobile} {
-        width: 25rem;
+        width: 32rem;
         height: 16rem;
         margin-top: 1rem;
     }
@@ -158,8 +163,7 @@ export const ImgPreview = styled.div`
 export const ImgInfo = styled.div`
     padding-left: 2rem;
     @media ${breakPoints.mobile} {
-        padding-left: 1rem;
-        font-size: 1rem;
+        display: none;
     }
 `;
 

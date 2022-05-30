@@ -113,7 +113,7 @@ export const AddButton = styled.button`
     margin-right: 2.5rem;
     border-radius: 8px;
     color: white;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     line-height: 2.6rem;
   }
 `;
