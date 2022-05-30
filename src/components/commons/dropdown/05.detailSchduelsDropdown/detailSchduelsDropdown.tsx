@@ -1,5 +1,4 @@
 import { Menu, Dropdown, Space, Modal } from "antd";
-// import { DownOutlined } from "@ant-design/icons";
 import { useMutation, gql } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useState } from "react";
@@ -67,11 +66,8 @@ const Img = styled.img`
 export default function DropdownSchduels(props: any) {
   const [updataSchedule] = useMutation(UPDATE_SCHEDULE);
   const [deleteSchedule] = useMutation(DELETE_SCHEDULE);
-
-  // console.log(props.el, "props.el");
   const [isOpen, setIsOpen] = useState(false);
   const [, setDataTriger] = useRecoilState(triger);
-  // const [, setDndData] = useRecoilState(dataTrigers);
   const onToggleModal = () => {
     setIsOpen((prev: boolean) => !prev);
   };
@@ -149,7 +145,6 @@ export default function DropdownSchduels(props: any) {
     } catch (error) {
       alert(error);
     } finally {
-      // setDndData((prev) => !prev);
       setDataTriger((prev) => !prev);
     }
   };
@@ -179,7 +174,6 @@ export default function DropdownSchduels(props: any) {
     } catch (error) {
       alert(error);
     } finally {
-      // setDndData((prev) => !prev);
       setDataTriger((prev) => !prev);
     }
   };
@@ -218,7 +212,6 @@ export default function DropdownSchduels(props: any) {
                   {...register("scheduleContents")}
                 ></S.ContentsArea>
               </S.ProjectContents>
-              {/* <DayPick/> */}
               <S.EndDate>
                 <S.Word>마감일</S.Word>
                 <S.Date {...register("scheduleDate")}></S.Date>
@@ -242,7 +235,6 @@ export default function DropdownSchduels(props: any) {
         <Space>
           <div style={{ width: "1.3rem" }}></div>
           <Img src="/detailPage/spread.png"></Img>
-          {/* <DownOutlined style={{ color: "#E5E5E5" }} /> */}
         </Space>
       </a>
     </Dropdown>
