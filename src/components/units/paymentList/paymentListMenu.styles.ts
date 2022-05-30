@@ -1,9 +1,6 @@
 import styled from "@emotion/styled";
 import { breakPoints } from "../../../commons/styles/media";
 
-interface IsOpen {
-  isOpen: boolean;
-}
 export const Wrapper = styled.div`
   @media ${breakPoints.mobile} {
     display: flex;
