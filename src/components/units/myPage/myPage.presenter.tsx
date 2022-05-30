@@ -13,12 +13,16 @@ import UserInfoCard01 from "../../commons/userInfoCard/01/userInfoCard01.contain
 import PaymentList from "../paymentList/paymentListMenu.contatiner";
 import PaymentModal from "../../commons/modal/paymentModal/paymentModal.container";
 import { breakPoints } from "../../../commons/styles/media";
+import Project04 from "../../commons/project/04/project04.container";
+import Project05 from "../../commons/project/05/project05.container";
+import Project06 from "../../commons/project/06/project06.container";
 
 const SliderWrapper = styled(Slider)`
   height: 24rem;
   width: 97rem;
   @media ${breakPoints.mobile} {
     width: 36rem;
+    display: none;
   }
   .slick-list {
     height: 24rem;
@@ -62,13 +66,13 @@ export default function MyPageUI(props: IMyPageUIProps) {
 
   return (
     <>
-      <S.Wrapper>
+      <S.Wrapper isOpen={isOpen}>
         <UserInfoCard01
+          isOpen={isOpen}
           onClickMoveToPaymentList={props.onClickMoveToPaymentList}
           onClickMoveToMyPage={props.onClickMoveToMyPage}
           onClickMoveToPasswordChange={props.onClickMoveToPasswordChange}
           data={props.userData}
-          isOpen={isOpen}
           OpenMenu={OpenMenu}
         />
         {props.visible ? (
@@ -104,6 +108,22 @@ export default function MyPageUI(props: IMyPageUIProps) {
               ) : (
                 <Project03 />
               )}
+
+              {/* --------360px-------- */}
+              {props.activeData?.fetchActivatedProject.length ? (
+                <S.SliderFake>
+                  {props.activeData?.fetchActivatedProject.map((el: any) => (
+                    <Project04
+                      key={el.projectId}
+                      el={el}
+                      onClick={props.onClickMoveToProjectDetail}
+                    />
+                  ))}
+                </S.SliderFake>
+              ) : (
+                <Project06 />
+              )}
+              {/* --------360px-------- */}
             </S.InnerWrapper>
 
             <S.InnerWrapper>
@@ -126,6 +146,23 @@ export default function MyPageUI(props: IMyPageUIProps) {
               ) : (
                 <Project03 />
               )}
+              {/* --------360px-------- */}
+              {props.inActiveData?.fetchInactivatedProject.length ? (
+                <S.SliderFake>
+                  {props.inActiveData?.fetchInactivatedProject.map(
+                    (el: any) => (
+                      <Project05
+                        key={el.projectId}
+                        el={el}
+                        onClick={props.onClickMoveToProjectDetail}
+                      />
+                    )
+                  )}
+                </S.SliderFake>
+              ) : (
+                <Project06 />
+              )}
+              {/* --------360px-------- */}
             </S.InnerWrapper>
           </S.RightWrapper>
         ) : (

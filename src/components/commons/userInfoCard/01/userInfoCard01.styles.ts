@@ -34,13 +34,14 @@ export const CardTopWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 33.8%;
+  width: 22rem;
+  height: 22rem;
   padding-top: 4rem;
 
   @media ${breakPoints.mobile} {
     padding-top: 0rem;
-    height: 21.2rem;
+    width: 36rem;
+    height: 22rem;
     margin-top: 28px;
   }
 `;
@@ -108,11 +109,16 @@ export const Coupon = styled.img`
 `;
 
 export const MenuBtn = styled.button`
-  width: 5rem;
-  border: none;
-  background-color: white;
-  border-radius: 1.6rem;
-  font-weight: 700;
+  display: none;
+  @media ${breakPoints.mobile} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: white;
+    height: 2rem;
+    font-weight: 700;
+  }
 `;
 export const CardBottomWrapper = styled.div`
   display: flex;
@@ -123,8 +129,10 @@ export const CardBottomWrapper = styled.div`
   border-bottom-left-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
   background-color: #ffffff;
+
   @media ${breakPoints.mobile} {
     display: ${(props: IsOpen) => (props.isOpen ? "none" : "flex")};
+    border-radius: 0rem;
   }
 `;
 

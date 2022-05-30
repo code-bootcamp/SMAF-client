@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { FETCH_PAYMENTS, FETCH_PAYMENTS_COUNT } from "./paymentListMenu.queris";
 
-export default function PaymentList() {
+export default function PaymentList(props: any) {
   const router = useRouter();
   const { data, refetch } = useQuery(FETCH_PAYMENTS, {
     variables: { page: 1 },
@@ -26,6 +26,7 @@ export default function PaymentList() {
       dataPaymentsCount={dataPaymentsCount}
       refetchPaymentsCount={refetchPaymentsCount}
       lastPage={lastPage}
+      isOpen={props.isOpen}
     />
   );
 }
