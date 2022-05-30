@@ -4,6 +4,8 @@ import { gql, useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
+import Alert from '../../../commons/modal/alert/alert'
+import ErrorAlert from '../../../commons/modal/errorModal/alert'
 
 declare const window: typeof globalThis & {
   IMP: any;
@@ -32,13 +34,33 @@ const FETCH_LOGIN_USER = gql`
 `;
 
 export default function PaymentModal(props: any) {
-  const router = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
-  const onToggleModal = () => {
-    setIsOpen((prev) => !prev);
-  };
-  const [createPayment] = useMutation(CREATE_PAYMENT);
-  const { data } = useQuery(FETCH_LOGIN_USER);
+    const router = useRouter();
+    const [isOpen, setIsOpen] = useState(false);
+    const onToggleModal = () => {
+        setIsOpen((prev) => !prev);
+    };
+
+    const [alertModal, setAlertModal] = useState(false);
+    const [modalContents, setModalContents] = useState("");
+    const [errorAlertModal, setErrorAlertModal] = useState(false);
+    
+    const [createPayment] = useMutation(CREATE_PAYMENT);
+    const { data } = useQuery(FETCH_LOGIN_USER);
+
+    const onClickExitSubmitModal = () => {
+        setAlertModal(false);
+        setIsOpen(false)
+    };
+
+    // 에러 모달
+    const onClickExitErrorModal = () => {
+        setErrorAlertModal(false);
+    };
+
+
+    const requestPay = () => {
+        const IMP = window.IMP;
+        IMP.init("imp35583537");
 
   const requestPay = () => {
     const IMP = window.IMP;
@@ -61,14 +83,17 @@ export default function PaymentModal(props: any) {
           createPayment({
             variables: { impUid: rsp.imp_uid, amount: 200 },
           });
-          alert("결제에 성공했습니다.");
-          router.push("/project/new");
-        } else {
-          alert("결제에 실패했습니다! 다시 시도해 주세요.");
-        }
-      }
-    );
-  };
+
+                setModalContents("결제에 성공했습니다.");
+                setAlertModal(true);
+
+                    router.push("/project/new");
+                } else {
+                    alert("결제에 실패했습니다! 다시 시도해 주세요.");
+                }
+            }
+        );
+    };
   return (
     <>
       <button
@@ -78,6 +103,19 @@ export default function PaymentModal(props: any) {
       >
         결제하기!!!
       </button>
+      {props.alertModal && (
+                <Alert
+                    onClickExit={onClickExitSubmitModal}
+                    contents={props.modalContents}
+                />
+            )}
+            {props.errorAlertModal && (
+                <ErrorAlert
+                    onClickExit={onClickExitErrorModal}
+                    contents={modalContents}
+                />
+            )}
+
       {isOpen && (
         <Modal
           visible={true}
