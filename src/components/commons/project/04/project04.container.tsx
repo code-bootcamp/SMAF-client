@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ImageCircle from "../../images/imagecircle/01/imagecircle.container";
-import * as S from "./project01.styles";
+import * as S from "./project04.styles";
 
 interface IUserProject {
   el?: any;
   onClick: (event: any) => void;
 }
-export default function Project01(props: IUserProject) {
+export default function Project04(props: IUserProject) {
   const router = useRouter();
   const [dday, setDday] = useState(0);
 

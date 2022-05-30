@@ -34,9 +34,7 @@ export default function DetailPlanAddModal(props: any) {
     const onClickErrorModal = () => {
         setErrorAlertModal(false);
     };
-
     const dDay = moment(selectedDay).format("YYYY-MM-DD");
-
     const CreateNewSchedule = async (data: any) => {
         try {
             const result = await createSchedule({
@@ -84,4 +82,3 @@ export default function DetailPlanAddModal(props: any) {
     );
 }
 
-// 14px

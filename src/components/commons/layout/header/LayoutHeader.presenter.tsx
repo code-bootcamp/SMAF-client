@@ -16,7 +16,6 @@ export default function HeaderUI(props: any) {
 
             <S.OptionWrapper>
                 <S.Alarm src="/image/changealarm.png" alt="alarm" />
-
                 <Tooltip
                     color="#FAC38B"
                     overlayInnerStyle={{
@@ -54,7 +53,6 @@ export default function HeaderUI(props: any) {
                         )}
                     </span>
                 </Tooltip>
-
                 {props.data?.fetchLoginUser.userName === undefined ? (
                     <S.Signup onClick={props.onClickSignUp}>회원가입</S.Signup>
                 ) : (

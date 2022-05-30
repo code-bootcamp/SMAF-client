@@ -145,6 +145,7 @@ export default function ProjectDetail() {
                             scheduleArray[index].splice(
                                 Number(result?.destination.index),
                                 0,
+
                                 // @ts-ignore
                                 saveItem
                             );

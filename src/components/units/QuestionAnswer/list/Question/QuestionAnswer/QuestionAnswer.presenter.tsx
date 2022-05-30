@@ -3,6 +3,7 @@ import { faReply } from "@fortawesome/free-solid-svg-icons";
 import * as S from "./QuestionAnswer.styles";
 import DOMPurify from "dompurify";
 export default function QuestionAnswerObjectHTML(props: any) {
+
   return (
     <S.Wrapper>
       <S.AnswerIcon>
@@ -19,7 +20,7 @@ export default function QuestionAnswerObjectHTML(props: any) {
         }}
       ></S.QuestionComment>
       <S.Admin>관리자</S.Admin>
-      <S.CreateAt>2012-11-12</S.CreateAt>
+      <S.CreateAt>{props.el.createAt.slice(0,10)}</S.CreateAt>
     </S.Wrapper>
   );
 }

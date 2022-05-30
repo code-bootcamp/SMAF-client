@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ImageCircle from "../../images/imagecircle/01/imagecircle.container";
-import * as S from "./project01.styles";
+import * as S from "./project05.styles";
 
 interface IUserProject {
   el?: any;
   onClick: (event: any) => void;
 }
-export default function Project01(props: IUserProject) {
+export default function Project04(props: IUserProject) {
   const router = useRouter();
   const [dday, setDday] = useState(0);
 
@@ -47,7 +47,7 @@ export default function Project01(props: IUserProject) {
           <ImageCircle el={props.el} id={props.el?.project.projectId} />
           <S.Title01>{props.el?.project.projectName}</S.Title01>
           <S.Title02>{props.el?.project.projectIntro}</S.Title02>
-          <S.Date>마감까지 {dday}일 남았습니다.</S.Date>
+          <S.Date>프로젝트가 마감되었습니다.</S.Date>
         </S.box2>
       </S.Container>
     </S.card>
