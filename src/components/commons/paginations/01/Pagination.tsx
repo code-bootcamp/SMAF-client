@@ -8,7 +8,7 @@ export default function Pagination(props: any) {
   const [startPage, setStartPage] = useState(1);
   const [current, setCurrent] = useState<any>();
   const [idNum, setIdNum] = useState(0);
-  const [index, setIndex] = useRecoilState(indexNum);
+  const [, setIndex] = useRecoilState(indexNum);
 
   useEffect(() => {
     setCurrent(1);

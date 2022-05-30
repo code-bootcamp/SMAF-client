@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import * as  S from './onedaypicker.styles'
+import { useState } from "react";
+import * as S from "./onedaypicker.styles";
 import moment from "moment";
-import { useRecoilState } from 'recoil';
-import { selectedDate } from '../../../../commons/store';
+import { useRecoilState } from "recoil";
+import { selectedDate } from "../../../../commons/store";
 
 export default function OneDayPick() {
   // const today = new Date();
-  const [selectedDay, setSelectedDay] = useRecoilState<Date | undefined>(selectedDate);
+  const [selectedDay, setSelectedDay] = useRecoilState<any>(selectedDate);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -18,33 +18,32 @@ export default function OneDayPick() {
     }
   };
 
-  const onChangeDate = (event) => {
-    setSelectedDay(event.target.value)
-  }
-
+  const onChangeDate = (event: any) => {
+    setSelectedDay(event.target.value);
+  };
 
   const day = (
     <div className="ma2">
       <S.Input
-      // size={50}
-      value={moment(selectedDay).format("YYYY-MM-DD")}
-      onChange={onChangeDate}
-      className="input-reset pa2 ma bg-white black ba"
+        // size={50}
+        value={moment(selectedDay).format("YYYY-MM-DD")}
+        onChange={onChangeDate}
+        className="input-reset pa2 ma bg-white black ba"
       />
     </div>
-  )
+  );
 
   return (
     <>
-    <div onClick={onClickOpen}>{day}</div>
-    {isOpen && (
-      <S.ReactDayOnePick
-        mode="single"
-        required
-        selected={selectedDay}
-        onSelect={setSelectedDay}
-      />
-    )}
+      <div onClick={onClickOpen}>{day}</div>
+      {isOpen && (
+        <S.ReactDayOnePick
+          mode="single"
+          required
+          selected={selectedDay}
+          onSelect={setSelectedDay}
+        />
+      )}
     </>
   );
 }

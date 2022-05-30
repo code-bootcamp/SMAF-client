@@ -22,20 +22,19 @@ export default function DetailPlanAddModal(props: any) {
   const [alertModal, setAlertModal] = useState(false);
   const [modalContents, setModalContents] = useState<string>();
   const [errorAlertModal, setErrorAlertModal] = useState(false);
-
-  const [selectedDay, setSelectedDay] = useRecoilState<Date | undefined>(selectedDate);
+  const [selectedDay, setSelectedDay] = useRecoilState<Date>(selectedDate);
 
   // 확인 모달
-    const onClickConfirmModal = () => {
-        setAlertModal(false);
-    };
+  const onClickConfirmModal = () => {
+    setAlertModal(false);
+  };
 
-    // 에러 모달
-    const onClickErrorModal = () => {
-        setErrorAlertModal(false);
-    };
+  // 에러 모달
+  const onClickErrorModal = () => {
+    setErrorAlertModal(false);
+  };
 
-  const dDay= moment(selectedDay).format("YYYY-MM-DD")  
+  const dDay = moment(selectedDay).format("YYYY-MM-DD");
 
   const CreateNewSchedule = async (data: any) => {
     try {
@@ -60,15 +59,14 @@ export default function DetailPlanAddModal(props: any) {
       setModalContents("일정이 등록되었습니다.");
       setAlertModal(true);
       props.onToggleModal();
-      setSelectedDay(new Date())
 
-      console.log("여기여기여기", result)
-
-    } catch (error:any) {
+      console.log("여기여기여기", result);
+    } catch (error: any) {
       setModalContents(error.message);
       setErrorAlertModal(true);
     } finally {
       setDataTriger((prev) => !prev);
+      setSelectedDay(new Date());
     }
   };
   return (

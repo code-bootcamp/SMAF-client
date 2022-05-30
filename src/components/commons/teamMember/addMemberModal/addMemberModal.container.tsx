@@ -79,7 +79,7 @@ export default function AddMemberModal(props: AddMemberModalProps) {
       <S.Wrapper>
         <S.SearchWrapper>
           <S.SearchInput
-            placeholder="E-mail을 입력해주세요"
+            placeholder="E-mail 혹은 이름을 입력해주세요"
             onChange={onChangeEmail}
           ></S.SearchInput>
           {/* <div>{emailError}</div> */}
@@ -93,7 +93,7 @@ export default function AddMemberModal(props: AddMemberModalProps) {
             <>
               <S.UserWrapper>
                 <S.UserImage src={el.userImageURL}></S.UserImage>
-                <S.UserName>{el.userName}</S.UserName>
+                <S.UserName id={el.userName}>{el.userName}</S.UserName>
                 <S.Email>{el.email}</S.Email>
                 <S.InviteButton id={el.email} onClick={OnClickAddUser}>
                   초대하기

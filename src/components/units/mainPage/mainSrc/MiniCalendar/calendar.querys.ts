@@ -6,6 +6,19 @@ export const FETCH_SCHEDULES = gql`
       scheduleId
       createAt
       scheduleDate
+      project {
+        projectId
+      }
+    }
+  }
+`;
+
+export const FETCH_PARTICIPATING_PROJECTS = gql`
+  query fetchParticipatingProject {
+    fetchParticipatingProject {
+      project {
+        projectId
+      }
     }
   }
 `;

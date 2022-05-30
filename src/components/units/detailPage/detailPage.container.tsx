@@ -25,6 +25,17 @@ export default function ProjectDetail() {
     scheduleContents: "string",
     scheduleDate: "DateTime",
     status: "boolean",
+    // scheduleId: "string",
+    // createAt: "DateTime",
+    // processCategory: {
+    //   processCategoryId: "string",
+    //   processName: "string",
+    //   __typename: "string",
+    // },
+    // project: {
+    //   projectId: "string",
+    //   __typename: "string",
+    // },
   });
 
   const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +83,7 @@ export default function ProjectDetail() {
       projectId: router.query.projectId,
     },
   });
-  
+
   // 에러 모달
   const onClickExitErrorModal = () => {
     setErrorAlertModal(false);
@@ -151,6 +162,7 @@ export default function ProjectDetail() {
               scheduleArray[index].splice(
                 Number(result?.destination.index),
                 0,
+                // @ts-ignore
                 saveItem
               );
             }
@@ -158,7 +170,7 @@ export default function ProjectDetail() {
         }
       });
       setScheduleArray(scheduleArray);
-    } catch (error:any) {
+    } catch (error: any) {
       setModalContents(error.message);
       setErrorAlertModal(true);
     } finally {
