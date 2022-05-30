@@ -1,7 +1,6 @@
 import * as S from "./expericence.styles";
 import ExperienceSMAFDetail from "./experienceSMAFDetail/experienceSMAFDetail.container";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-// import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 
 export default function ExperienceSMAFHTML(props: any) {
@@ -61,7 +60,7 @@ export default function ExperienceSMAFHTML(props: any) {
           <S.Team>
             <S.Member>
               <S.TeamPerson src="/mainPageImages/dog1.jpg" />
-              <S.Name>이름이 나와요</S.Name>
+              <S.Name>회원이름</S.Name>
             </S.Member>
           </S.Team>
         </S.MemberList>
@@ -83,7 +82,7 @@ export default function ExperienceSMAFHTML(props: any) {
                 <div>
                   <S.FileImg src="/images/file.png" />
                 </div>
-                파일 이름이 나와요2
+                파일 이름이 나와요
                 <a type="#">
                   <S.DownImg src="/images/download.png" />
                 </a>
@@ -92,7 +91,7 @@ export default function ExperienceSMAFHTML(props: any) {
                 <div>
                   <S.FileImg src="/images/file.png" />
                 </div>
-                파일 이름이 나와요3
+                파일 이름이 나와요
                 <a type="#">
                   <S.DownImg src="/images/download.png" />
                 </a>

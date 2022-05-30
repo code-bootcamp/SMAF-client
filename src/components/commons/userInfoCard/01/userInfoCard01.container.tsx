@@ -31,30 +31,30 @@ export default function UserInfoCard01(props: IUserCardProps) {
 
       <S.CardBottomWrapper>
         <S.CardBottomContents>
-          <S.Icon src={"images/pen.png"}></S.Icon>
+          <S.Icon src={"/images/pen.png"}></S.Icon>
           <S.Title onClick={props.onClickMoveToMyPage}>마이페이지</S.Title>
         </S.CardBottomContents>
         <S.Line></S.Line>
         <S.CardBottomContents>
-          <S.Icon2 src={"images/card.png"}></S.Icon2>
+          <S.Icon2 src={"/images/card.png"}></S.Icon2>
           <S.Title onClick={props.onClickMoveToPaymentList}>결제내역</S.Title>
         </S.CardBottomContents>
         <S.CardBottomContents>
-          <S.Icon src={"images/coupon.png"}></S.Icon>
+          <S.Icon src={"/images/coupon.png"}></S.Icon>
           <S.Title onClick={onClickUpload}>이용권구매하기</S.Title>
           <PaymentModal fileRef={fileRef} />
         </S.CardBottomContents>
         <S.CardBottomContents>
-          <S.Icon src={"images/save.png"}></S.Icon>
+          <S.Icon src={"/images/save.png"}></S.Icon>
           <S.Title>저장한 파일</S.Title>
         </S.CardBottomContents>
         <S.Line></S.Line>
         <S.CardBottomContents>
-          <S.Icon src={"images/profile.png"}></S.Icon>
+          <S.Icon src={"/images/profile.png"}></S.Icon>
           <S.Title>프로필 편집</S.Title>
         </S.CardBottomContents>
         <S.CardBottomContents>
-          <S.Icon src={"images/setting.png"}></S.Icon>
+          <S.Icon src={"/images/setting.png"}></S.Icon>
           <S.Title onClick={props.onClickMoveToPasswordChange}>설정</S.Title>
         </S.CardBottomContents>
       </S.CardBottomWrapper>
