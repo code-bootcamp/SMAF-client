@@ -8,6 +8,9 @@ export const FETCH_QUESTION_BOARDS = gql`
       title
       contents
       createAt
+      user{
+        userName
+      }
     }
   }
 `;

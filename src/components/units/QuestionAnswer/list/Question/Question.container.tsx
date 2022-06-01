@@ -86,9 +86,8 @@ export default function QuestionObject(props: IQuestionProps) {
           <S.TableMenuTitles onClick={onContents}>
             {props.el.title}
           </S.TableMenuTitles>
-          <S.TableMenuWriter>작성자</S.TableMenuWriter>
+          <S.TableMenuWriter>{props.el.user.userName}</S.TableMenuWriter>
           <S.TableMenuDate>{props.el.createAt.slice(0, 10)}</S.TableMenuDate>
-
           {userData?.fetchLoginUser.admin ? (
             <S.QusStionAnswerBtn onClick={onAnswerWrite}>
               {isOpenAnswer ? "작성취소" : "답글달기"}

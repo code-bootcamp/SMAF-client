@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   border: none;
   border-radius: 1.5rem;
   background-color: #333333;
+  
   @media ${breakPoints.mobile} {
     width: 36rem;
     /* height: 21.2rem; */
@@ -124,7 +125,7 @@ export const CardBottomWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 66.2%;
+  height: 67%;
   padding: 3.5rem 0rem 0rem 2.2rem;
   border-bottom-left-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
