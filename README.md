@@ -22,6 +22,36 @@
 ![5](https://user-images.githubusercontent.com/100768044/171325809-f70b776c-fffd-4d39-8da6-b0035f1541a4.PNG)
 
 ## 주요기능
+- 체험판/랜딩페이지
+
 ![KakaoTalk_20220601_125648330_07](https://user-images.githubusercontent.com/100768044/171326087-d21bf7ea-37cd-470a-a907-45fa34242817.gif)
 
-<img src="https://user-images.githubusercontent.com/100768044/171326087-d21bf7ea-37cd-470a-a907-45fa34242817.gif" width="1000" height="550"/>
+- 소셜로그인
+
+![KakaoTalk_20220601_125648330_09](https://user-images.githubusercontent.com/100768044/171327023-6b986589-63d1-415c-ab4c-9d1a94579625.gif)
+
+- 메인페이지/마이페이지
+
+![KakaoTalk_20220601_125648330_10](https://user-images.githubusercontent.com/100768044/171327209-4b0a15a2-55c3-49a7-9067-f0e1e8fa3ded.gif)
+
+
+- 결제
+
+![KakaoTalk_20220601_125648330_11](https://user-images.githubusercontent.com/100768044/171327257-82dad62f-c679-485c-bea3-33d4590b1cd7.gif)
+
+- 프로젝트 페이지
+
+![KakaoTalk_20220601_125648330_08](https://user-images.githubusercontent.com/100768044/171327342-14641d78-7868-498e-bfbb-4f764fa5a33c.gif)
+
+- 회원 검색/추가 메일발송
+
+![KakaoTalk_20220601_125648330_05](https://user-images.githubusercontent.com/100768044/171327552-b5b785a0-1475-439b-bb69-52ff6a70abd9.gif)
+
+
+- 반응형
+<div>
+  <img src="https://user-images.githubusercontent.com/100768044/171327890-6928999a-c525-4336-9d6c-906e60dea579.gif" width="200" height="400"/>
+
+  <img src="https://user-images.githubusercontent.com/100768044/171327913-e3c2941f-b1cb-460b-8041-ec26a7173c90.gif" width="200" height="400"/>
+</div>
+
