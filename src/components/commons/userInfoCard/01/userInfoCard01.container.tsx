@@ -1,5 +1,3 @@
-// import { card } from "../project/01/project01.styles";
-
 import { useRef } from "react";
 import PaymentModal from "../../modal/paymentModal/paymentModal.container";
 import * as S from "./userInfoCard01.styles";
@@ -27,7 +25,7 @@ export default function UserInfoCard01(props: IUserCardProps) {
         <S.Name>{props.data?.fetchLoginUser.userName}</S.Name>
         <S.Email>{props.data?.fetchLoginUser.email}</S.Email>
         <S.Ticket>
-          <S.Coupon src="/images/ticket.png"></S.Coupon>남은 티켓 수 {' '}
+          <S.Coupon src="/images/ticket.png"></S.Coupon>남은 티켓 수{" "}
           {props.data?.fetchLoginUser.projectTicket} 개
         </S.Ticket>
       </S.CardTopWrapper>

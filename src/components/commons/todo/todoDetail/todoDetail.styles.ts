@@ -24,7 +24,6 @@ export const Box = styled.div`
   background-color: #ffecec;
   border-radius: 0 1.6rem 1.6rem 0;
   padding: 1.5rem 1.5rem 1.5rem 2.5rem;
-  /* border: 2px solid green; // 🍎 */
 `;
 export const TitleBox = styled.div`
   display: flex;

@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import Layoutheader from "./header/LayoutHeader.container";
-import { useRouter } from "next/router";
 import LayoutFooter from "./footer/LayutFooter.container";
 import { ReactNode } from "react";
 
@@ -20,9 +19,6 @@ interface ILayoutProps {
 }
 
 export default function Layout(props: ILayoutProps) {
-  const router = useRouter();
-  console.log(router);
-
   return (
     <>
       <Layoutheader />

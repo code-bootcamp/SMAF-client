@@ -4,77 +4,91 @@ import { gql, useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
+import Alert from "../../../commons/modal/alert/alert";
+import ErrorAlert from "../../../commons/modal/errorModal/alert";
 
 declare const window: typeof globalThis & {
-    IMP: any;
+  IMP: any;
 };
 
 const CREATE_PAYMENT = gql`
-    mutation createPayment($impUid: String!, $amount: Float!) {
-        createPayment(impUid: $impUid, amount: $amount) {
-            paymentId
-        }
+  mutation createPayment($impUid: String!, $amount: Float!) {
+    createPayment(impUid: $impUid, amount: $amount) {
+      paymentId
     }
+  }
 `;
 
 const FETCH_LOGIN_USER = gql`
-    query fetchLoginUser {
-        fetchLoginUser {
-            userId
-            userName
-            email
-            phone
-            admin
-            userImageURL
-            projectTicket
-        }
+  query fetchLoginUser {
+    fetchLoginUser {
+      userId
+      userName
+      email
+      phone
+      admin
+      userImageURL
+      projectTicket
     }
+  }
 `;
 
 export default function PaymentModal(props: any) {
-    const router = useRouter();
-    const [isOpen, setIsOpen] = useState(false);
-    const onToggleModal = () => {
-        setIsOpen((prev) => !prev);
-    };
-    const [createPayment] = useMutation(CREATE_PAYMENT);
-    const { data } = useQuery(FETCH_LOGIN_USER);
+  const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+  const onToggleModal = () => {
+    setIsOpen((prev) => !prev);
+  };
 
-    const requestPay = () => {
-        const IMP = window.IMP;
-        IMP.init("imp35583537");
+  const [, setAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState("");
+  const [, setErrorAlertModal] = useState(false);
 
+  const [createPayment] = useMutation(CREATE_PAYMENT);
+  const { data } = useQuery(FETCH_LOGIN_USER);
+
+  const onClickExitSubmitModal = () => {
+    setAlertModal(false);
+    setIsOpen(false);
+  };
+
+  // 에러 모달
+  const onClickExitErrorModal = () => {
+    setErrorAlertModal(false);
+  };
+
+  const requestPay = () => {
+    const IMP = window.IMP;
+    IMP.init("imp35583537");
 
     IMP.request_pay(
       {
-        // param
         pg: "html5_inicis",
         pay_method: "card",
-        // merchant_uid: "ORD20180131-0000011", // 주석하면 랜덤으로 생성됨 상품아이디 (중복되지 않게!)
+
         name: "이용권 구매하기",
         amount: "200",
         buyer_email: data?.fetchLoginUser.email,
         buyer_name: data?.fetchLoginUser.userName,
         buyer_tel: "",
         buyer_addr: "",
-
-        // m_redirect_url: "http://localhost:3000/",
       },
       (rsp: any) => {
         if (rsp.success) {
-          console.log(rsp);
-          const result = createPayment({
+          createPayment({
             variables: { impUid: rsp.imp_uid, amount: 200 },
           });
-                    console.log("결제", result);
-                    alert("결제에 성공했습니다.");
-                    router.push("/project/new");
-                } else {
-                    alert("결제에 실패했습니다! 다시 시도해 주세요.");
-                }
-            }
-        );
-    };
+
+          setModalContents("결제에 성공했습니다.");
+          setAlertModal(true);
+
+          router.push("/project/new");
+        } else {
+          alert("결제에 실패했습니다! 다시 시도해 주세요.");
+        }
+      }
+    );
+  };
   return (
     <>
       <button
@@ -84,6 +98,19 @@ export default function PaymentModal(props: any) {
       >
         결제하기!!!
       </button>
+      {props.alertModal && (
+        <Alert
+          onClickExit={onClickExitSubmitModal}
+          contents={props.modalContents}
+        />
+      )}
+      {props.errorAlertModal && (
+        <ErrorAlert
+          onClickExit={onClickExitErrorModal}
+          contents={modalContents}
+        />
+      )}
+
       {isOpen && (
         <Modal
           visible={true}
@@ -108,12 +135,10 @@ export default function PaymentModal(props: any) {
           <S.Title>이용권을 모두 소진하셨습니다.</S.Title>
           <S.Title>결제하시겠습니까?</S.Title>
           <Head>
-            {/* <!-- jQuery --> */}
             <script
               type="text/javascript"
               src="https://code.jquery.com/jquery-1.12.4.min.js"
             ></script>
-            {/* <!-- iamport.payment.js --> */}
             <script
               type="text/javascript"
               src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"

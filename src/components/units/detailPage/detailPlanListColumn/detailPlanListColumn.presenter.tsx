@@ -12,26 +12,21 @@ export default function DetailPlanListColumnHTML(props: any) {
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
   };
-  // console.log(props.scheduleArray, "1");
-  // console.log(props.scheduleData?.fetchCategorySchedules, "2");
+
   return (
     <>
-    {props.errorAlertModal && (
-                <ErrorAlert
-                    onClick={props.onClickAlertModal}
-                    onClickExit={props.onClickErrorModal}
-                    contents={props.modalContents}
-                />
-            )}
+      {props.errorAlertModal && (
+        <ErrorAlert
+          onClick={props.onClickAlertModal}
+          onClickExit={props.onClickErrorModal}
+          contents={props.modalContents}
+        />
+      )}
       {props.scheduleArray && (
         <S.Wrapper>
           <S.AddColumn>
             <S.ColumnTitle>{props.columnData?.processName}</S.ColumnTitle>
             <S.BasicRow>
-              {/* <S.EditCoulumnIcon
-            // onClick={onToggleDropDown}
-            src="/detailPage/spread.png"
-          ></S.EditCoulumnIcon> */}
               {props.my?.position === "LEADER" && (
                 <DropdownDetail
                   DeleteCategory={props.DeleteCategory}
@@ -94,25 +89,3 @@ export default function DetailPlanListColumnHTML(props: any) {
     </>
   );
 }
-
-// {props.scheduleData?.fetchCategorySchedules.map((el: any, index: any) => (
-//   <Draggable
-//     key={String(el.scheduleId)}
-//     index={index}
-//     draggableId={String(el.scheduleId)}
-//   >
-//     {(provided) => (
-//       <div
-//         ref={provided.innerRef}
-//         {...provided.dragHandleProps}
-//         {...provided.draggableProps}
-//       >
-//         <DetailPlanCard
-//           key={el.scheduleId}
-//           el={el}
-//           dragItemId={props.dragItemId}
-//         />
-//       </div>
-//     )}
-//   </Draggable>
-//   ))}

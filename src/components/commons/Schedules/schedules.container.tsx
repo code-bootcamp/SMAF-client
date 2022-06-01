@@ -25,7 +25,6 @@ export default function Schedules(props: any) {
   const onClickToProjectSignUp = () => {
     router.push("/project/new");
   };
-  //   console.log(ParticipatingData);
   return (
     <SchedulesUI
       value={value}

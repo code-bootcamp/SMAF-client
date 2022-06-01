@@ -2,8 +2,6 @@ import * as S from "./Question.styles";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faReply } from "@fortawesome/free-solid-svg-icons";
 import QuestionAnswerObject from "./QuestionAnswer/QuestionAnswer.container";
 import {
   FETCH_QUESTION_COMMENTS,
@@ -74,7 +72,6 @@ export default function QuestionObject(props: IQuestionProps) {
       setIsOpenAnswer(false);
     }
   };
-
   const [index] = useRecoilState(indexNum);
   return (
     <>
@@ -106,7 +103,6 @@ export default function QuestionObject(props: IQuestionProps) {
               <ReactQuill
                 onChange={onChangeContents}
                 style={{ height: "11rem", width: "65rem" }}
-                // value={props.getValues("contents" || "")}
               />
               <S.AnswerSubmitBtn>등록하기</S.AnswerSubmitBtn>
             </S.AnswerWriteArea>
