@@ -1,17 +1,17 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
+import { ProjectParticipant } from "../../../../commons/types/generated/types";
 import ImageCircle from "../../images/imagecircle/01/imagecircle.container";
 import * as S from "./project01.styles";
 
 interface IUserProject {
-  el?: any;
-  onClick: (event: any) => void;
+  el?: ProjectParticipant;
 }
 export default function Project01(props: IUserProject) {
   const router = useRouter();
   const [dday, setDday] = useState(0);
 
-  const onClickToDetail = (event: any) => {
+  const onClickToDetail = (event: MouseEvent<HTMLDivElement>) => {
     router.push(`/project/${event.currentTarget.id}`);
   };
 
@@ -30,7 +30,7 @@ export default function Project01(props: IUserProject) {
   });
 
   return (
-    <S.card onClick={onClickToDetail} id={props.el.project.projectId}>
+    <S.card onClick={onClickToDetail} id={props.el?.project.projectId}>
       <S.Container>
         <S.box1>
           {props.el?.project.projectImageURL ? (

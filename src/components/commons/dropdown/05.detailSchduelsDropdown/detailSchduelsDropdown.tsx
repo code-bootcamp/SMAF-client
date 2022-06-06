@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import * as S from "./detailSchduelsDropdown.styles";
 import { triger } from "../../../../commons/store/index";
 import { useRecoilState } from "recoil";
+import { DropdownSchduelsProps } from "../dropdown.types";
 
 export const UPDATE_SCHEDULE = gql`
   mutation updateSchedule(
@@ -63,7 +64,7 @@ export const FETCH_SCHEDULE = gql`
 const Img = styled.img`
   margin-bottom: 1.2rem;
 `;
-export default function DropdownSchduels(props: any) {
+export default function DropdownSchduels(props: DropdownSchduelsProps) {
   const [updataSchedule] = useMutation(UPDATE_SCHEDULE);
   const [deleteSchedule] = useMutation(DELETE_SCHEDULE);
   const [isOpen, setIsOpen] = useState(false);

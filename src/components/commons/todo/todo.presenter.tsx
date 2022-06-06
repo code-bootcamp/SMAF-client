@@ -1,5 +1,7 @@
 import TodoDetail from "./todoDetail/todoDetail.container";
 import styled from "@emotion/styled";
+import { TodoUIProps } from "./todo.types";
+import { Schedule } from "../../../commons/types/generated/types";
 
 const Nodata = styled.div`
   position: absolute;
@@ -17,12 +19,12 @@ const Data = styled.div`
   position: relative;
 `;
 
-export default function TodoUI(props: any) {
+export default function TodoUI(props: TodoUIProps) {
   return (
     <>
       {props.data?.fetchProjectSchedules.length ? (
         <>
-          {props.data?.fetchProjectSchedules.map((el: any) => (
+          {props.data?.fetchProjectSchedules.map((el: Schedule) => (
             <TodoDetail key={el.scheduleId} el={el} today={props.today} />
           ))}
         </>

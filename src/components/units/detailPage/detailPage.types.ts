@@ -1,17 +1,23 @@
+import { DropResult } from "react-beautiful-dnd";
+import {
+  ProcessCategory,
+  Project,
+  User,
+} from "../../../commons/types/generated/types";
+
 export interface IProjectDetailPageHTMLProps {
-  onClickAlertModal: any;
-  OpenFileList: () => any;
-  handleDragEnd: (result: any) => any;
-  handleDragStart: (initial: any) => void;
-  onClickExitErrorModal: () => any;
-  scheduleArray: any;
+  OpenFileList: () => void;
+  handleDragEnd: (result: DropResult) => void;
+  handleDragStart: (initial: { draggableId: string }) => Promise<void>;
+  onClickExitErrorModal: () => void;
+  scheduleArray: Array<string[]>;
+  errorAlertModal: boolean;
+  modalContents: string | undefined;
+  projectData?: { fetchProject: Project };
+  categoriesData?: { fetchProcessCategories: Array<ProcessCategory> };
+  myData?: { fetchLoginUser: User };
   myDataInProject: any;
-  errorAlertModal: any;
-  modalContents: any;
   isOpen: boolean;
-  projectData: any;
-  categoriesData: any;
   isLoading: boolean;
   dragItemId: string;
-  myData: any;
 }

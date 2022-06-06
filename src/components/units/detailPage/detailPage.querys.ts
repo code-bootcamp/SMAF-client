@@ -135,11 +135,3 @@ export const FETCH_PARTCIPATING_USER = gql`
     }
   }
 `;
-
-export const FETCH_CATEGORYS = gql`
-  query fetchProcessCategories($projectId: String!) {
-    fetchProcessCategories(projectId: $projectId) {
-      processCategoryId
-    }
-  }
-`;

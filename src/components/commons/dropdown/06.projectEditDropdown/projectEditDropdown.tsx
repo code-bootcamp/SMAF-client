@@ -2,6 +2,7 @@ import { Menu, Dropdown, Space } from "antd";
 import { useMutation, gql, useQuery } from "@apollo/client";
 import * as S from "./projectEditDropdown.styles";
 import { useRouter } from "next/router";
+import { ProjectEditDropdownProps } from "../dropdown.types";
 
 export const UPDATE_PROJECT = gql`
   mutation updateProject(
@@ -31,7 +32,7 @@ export const FETCH_PROJECT = gql`
   }
 `;
 
-export default function ProjectEditDropdown(props: any) {
+export default function ProjectEditDropdown(props: ProjectEditDropdownProps) {
   const router = useRouter();
   const [updataProject] = useMutation(UPDATE_PROJECT);
   const [deleteProject] = useMutation(DELETE_PROJECT);
@@ -55,24 +56,27 @@ export default function ProjectEditDropdown(props: any) {
   };
 
   const EndProject = async () => {
+    if (!props.projectData) return;
     try {
       await updataProject({
         variables: {
           projectId: router.query.projectId,
           updateProjectInput: {
-            projectName: props.projectData?.fetchProject.projectName,
-            projectIntro: props.projectData?.fetchProject.projectIntro,
-            projectDetailIntro:
-              props.projectData?.fetchProject.projectDetailIntro,
-            projectImageURL: props.projectData?.fetchProject.projectImageURL,
-            projectColor: props.projectData?.fetchProject.projectColor,
-            startDate: props.projectData?.fetchProject.startDate,
-            endDate: props.projectData?.fetchProject.endDate,
-            projectAddress: {
-              address: props.projectData?.fetchProject.address.address,
-              detailAddress:
-                props.projectData?.fetchProject.address.detailAddress,
-            },
+            // projectName: props.projectData?.fetchProject.projectName,
+            // projectIntro: props.projectData?.fetchProject.projectIntro,
+            // projectDetailIntro:
+            //   props.projectData?.fetchProject.projectDetailIntro,
+            // projectImageURL: props.projectData?.fetchProject.projectImageURL,
+            // projectColor: props.projectData?.fetchProject.projectColor,
+            // startDate: props.projectData?.fetchProject.startDate,
+            // endDate: props.projectData?.fetchProject.endDate,
+            // projectAddress: {
+            //   address: props.projectData?.fetchProject.address.address,
+            //   detailAddress:
+            //     props.projectData?.fetchProject.address.detailAddress,
+            // },
+            // status: false,
+            ...props.projectData,
             status: false,
           },
         },
@@ -84,24 +88,27 @@ export default function ProjectEditDropdown(props: any) {
   };
 
   const ReOpenProject = async () => {
+    if (!props.projectData) return;
     try {
       await updataProject({
         variables: {
           projectId: router.query.projectId,
           updateProjectInput: {
-            projectName: props.projectData?.fetchProject.projectName,
-            projectIntro: props.projectData?.fetchProject.projectIntro,
-            projectDetailIntro:
-              props.projectData?.fetchProject.projectDetailIntro,
-            projectImageURL: props.projectData?.fetchProject.projectImageURL,
-            projectColor: props.projectData?.fetchProject.projectColor,
-            startDate: props.projectData?.fetchProject.startDate,
-            endDate: props.projectData?.fetchProject.endDate,
-            projectAddress: {
-              address: props.projectData?.fetchProject.address.address,
-              detailAddress:
-                props.projectData?.fetchProject.address.detailAddress,
-            },
+            // projectName: props.projectData?.fetchProject.projectName,
+            // projectIntro: props.projectData?.fetchProject.projectIntro,
+            // projectDetailIntro:
+            //   props.projectData?.fetchProject.projectDetailIntro,
+            // projectImageURL: props.projectData?.fetchProject.projectImageURL,
+            // projectColor: props.projectData?.fetchProject.projectColor,
+            // startDate: props.projectData?.fetchProject.startDate,
+            // endDate: props.projectData?.fetchProject.endDate,
+            // projectAddress: {
+            //   address: props.projectData?.fetchProject.address.address,
+            //   detailAddress:
+            //     props.projectData?.fetchProject.address.detailAddress,
+            // },
+            // status: true,
+            ...props.projectData,
             status: true,
           },
         },

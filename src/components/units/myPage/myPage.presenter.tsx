@@ -16,6 +16,7 @@ import { breakPoints } from "../../../commons/styles/media";
 import Project04 from "../../commons/project/04/project04.container";
 import Project05 from "../../commons/project/05/project05.container";
 import Project06 from "../../commons/project/06/project06.container";
+import { ProjectParticipant } from "../../../commons/types/generated/types";
 
 const SliderWrapper = styled(Slider)`
   height: 24rem;
@@ -80,14 +81,15 @@ export default function MyPageUI(props: IMyPageUIProps) {
             <S.InnerWrapper>
               <S.ProjectTitle>
                 <S.Title>진행 중인 프로젝트</S.Title>
-                {!(props.userData?.fetchLoginUser.projectTicket <= 0) ? (
+                {props.userData !== undefined &&
+                !(props.userData?.fetchLoginUser.projectTicket <= 0) ? (
                   <S.AddButton onClick={props.onClickMoveToNewProject}>
                     프로젝트 추가하기
                   </S.AddButton>
                 ) : (
                   <>
                     <S.AddButton onClick={onClickUpload}>
-                    프로젝트 추가하기
+                      프로젝트 추가하기
                     </S.AddButton>
                     <PaymentModal fileRef={fileRef} />
                   </>
@@ -97,13 +99,11 @@ export default function MyPageUI(props: IMyPageUIProps) {
               {props.activeData?.fetchActivatedProject.length ? (
                 <SliderWrapper {...settings}>
                   {/* 진행완료된프로젝트 */}
-                  {props.activeData?.fetchActivatedProject.map((el: any) => (
-                    <Project01
-                      key={uuidv4()}
-                      el={el}
-                      onClick={props.onClickMoveToProjectDetail}
-                    />
-                  ))}
+                  {props.activeData?.fetchActivatedProject.map(
+                    (el: ProjectParticipant) => (
+                      <Project01 key={uuidv4()} el={el} />
+                    )
+                  )}
                 </SliderWrapper>
               ) : (
                 <Project03 />
@@ -112,13 +112,11 @@ export default function MyPageUI(props: IMyPageUIProps) {
               {/* --------360px-------- */}
               {props.activeData?.fetchActivatedProject.length ? (
                 <S.SliderFake>
-                  {props.activeData?.fetchActivatedProject.map((el: any) => (
-                    <Project04
-                      key={el.projectId}
-                      el={el}
-                      onClick={props.onClickMoveToProjectDetail}
-                    />
-                  ))}
+                  {props.activeData?.fetchActivatedProject.map(
+                    (el: ProjectParticipant) => (
+                      <Project04 key={el.project.projectId} el={el} />
+                    )
+                  )}
                 </S.SliderFake>
               ) : (
                 <Project06 />
@@ -138,7 +136,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
                 <SliderWrapper {...settings}>
                   {/* 진행완료된프로젝트 */}
                   {props.inActiveData?.fetchInactivatedProject.map(
-                    (el: any) => (
+                    (el: ProjectParticipant) => (
                       <Project02 key={uuidv4()} el={el} />
                     )
                   )}
@@ -150,12 +148,8 @@ export default function MyPageUI(props: IMyPageUIProps) {
               {props.inActiveData?.fetchInactivatedProject.length ? (
                 <S.SliderFake>
                   {props.inActiveData?.fetchInactivatedProject.map(
-                    (el: any) => (
-                      <Project05
-                        key={el.projectId}
-                        el={el}
-                        onClick={props.onClickMoveToProjectDetail}
-                      />
+                    (el: ProjectParticipant) => (
+                      <Project05 key={el.project.projectId} el={el} />
                     )
                   )}
                 </S.SliderFake>

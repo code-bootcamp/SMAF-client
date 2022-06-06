@@ -4,8 +4,10 @@ import Todo from "../todo/todo.container";
 import { v4 as uuidv4 } from "uuid";
 import PaymentModal from "../modal/paymentModal/paymentModal.container";
 import { useRef } from "react";
+import { SchedulesUIProps } from "./schedules.types";
+import { ProjectParticipant } from "../../../commons/types/generated/types";
 
-export default function SchedulesUI(props: any) {
+export default function SchedulesUI(props: SchedulesUIProps) {
   const fileRef = useRef<HTMLInputElement>(null);
   const onClickUpload = () => {
     fileRef.current?.click();
@@ -25,7 +27,8 @@ export default function SchedulesUI(props: any) {
               <S.RDirectionBtn onClick={props.onClickAfter}>＞</S.RDirectionBtn>
             </S.Direction>
           </S.DateInfo>
-          {!(props.myData?.fetchLoginUser.projectTicket <= 0) ? (
+          {props.myData !== undefined &&
+          !(props.myData?.fetchLoginUser.projectTicket <= 0) ? (
             <S.AddBtn onClick={props.onClickToProjectSignUp}>
               + 프로젝트 생성
             </S.AddBtn>
@@ -36,18 +39,16 @@ export default function SchedulesUI(props: any) {
             </>
           )}
         </S.DateBox>
-        {/* <S.Data>
-        <S.NoSchedule src="/images/noschedule.png" />
-        <S.Nodata>등록된 일정이 없습니다.</S.Nodata>
-      </S.Data> */}
         <S.Wrapper>
-          {props.ParticipatingData?.fetchParticipatingProject.map((el: any) => (
-            <Todo
-              key={uuidv4()}
-              projectId={el.project?.projectId}
-              today={props.value}
-            />
-          ))}
+          {props.ParticipatingData?.fetchParticipatingProject.map(
+            (el: ProjectParticipant) => (
+              <Todo
+                key={uuidv4()}
+                projectId={el.project?.projectId}
+                today={props.value}
+              />
+            )
+          )}
         </S.Wrapper>
       </S.Container>
     </>

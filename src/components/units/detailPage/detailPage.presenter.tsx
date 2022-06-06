@@ -8,6 +8,7 @@ import ProjectEditDropdown from "../../commons/dropdown/06.projectEditDropdown/p
 import ErrorAlert from "../../commons/modal/errorModal/alert";
 import { useState } from "react";
 import ProjectFileUpload from "../../commons/uploads/fileuploads/fileUpload01.container";
+import { ProcessCategory } from "../../../commons/types/generated/types";
 
 export default function ProjectDetailPageHTML(
   props: IProjectDetailPageHTMLProps
@@ -35,7 +36,6 @@ export default function ProjectDetailPageHTML(
     <>
       {props.errorAlertModal && (
         <ErrorAlert
-          onClick={props.onClickAlertModal}
           onClickExit={props.onClickExitErrorModal}
           contents={props.modalContents}
         />
@@ -106,12 +106,12 @@ export default function ProjectDetailPageHTML(
                   onDragStart={props.handleDragStart}
                 >
                   {props.categoriesData?.fetchProcessCategories.map(
-                    (el: any, index: any) => (
+                    (el: ProcessCategory, index: number) => (
                       <Droppable
                         droppableId={String(el.processCategoryId)}
                         key={index}
                       >
-                        {(provided, snapshot) => (
+                        {(provided, __) => (
                           <div
                             ref={provided.innerRef}
                             {...provided.droppableProps}
@@ -120,7 +120,7 @@ export default function ProjectDetailPageHTML(
                               key={el.processCategoryId}
                               el={el}
                               scheduleArray={props.scheduleArray[index]}
-                              tableIndex={index}
+                              tableIndex={Number(index)}
                               dragItemId={props.dragItemId}
                             />
                             {provided.placeholder}

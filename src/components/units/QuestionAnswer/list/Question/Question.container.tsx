@@ -13,13 +13,17 @@ import { v4 as uuidv4 } from "uuid";
 import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { indexNum } from "../../../../../commons/store";
+import {
+  QuestionBoard,
+  QuestionComment,
+} from "../../../../../commons/types/generated/types";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface IQuestionProps {
-  el: any;
+  el: QuestionBoard;
   index: number;
-  dataQuestionBoardsCount: any;
+  dataQuestionBoardsCount: { fetchQuestionBoardsCount: number };
 }
 
 export default function QuestionObject(props: IQuestionProps) {
@@ -36,7 +40,7 @@ export default function QuestionObject(props: IQuestionProps) {
   const { handleSubmit, setValue, trigger } = useForm({
     mode: "onChange",
   });
-  const CreateNewQuestionComment = async (data: any) => {
+  const CreateNewQuestionComment = async (data: QuestionComment) => {
     await createQuestionComment({
       variables: {
         contents: data.contents,
@@ -97,7 +101,11 @@ export default function QuestionObject(props: IQuestionProps) {
           )}
         </S.BasicRow>
         {isOpen && <S.Question>{props.el.contents}</S.Question>}
-        <form onSubmit={handleSubmit(CreateNewQuestionComment)}>
+        <form
+          onSubmit={handleSubmit(
+            CreateNewQuestionComment as unknown as () => void
+          )}
+        >
           {isOpenAnswer && (
             <S.AnswerWriteArea>
               <ReactQuill
@@ -108,7 +116,7 @@ export default function QuestionObject(props: IQuestionProps) {
             </S.AnswerWriteArea>
           )}
         </form>
-        {data?.fetchQuestionComments.map((el: any) => (
+        {data?.fetchQuestionComments.map((el: QuestionComment) => (
           <QuestionAnswerObject key={uuidv4()} el={el} />
         ))}
       </S.Table>

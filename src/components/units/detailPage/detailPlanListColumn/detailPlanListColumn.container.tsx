@@ -10,29 +10,49 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { triger } from "../../../../commons/store/index";
 import { useRecoilState } from "recoil";
+import { IDetailPlanListColumnProps } from "./detailPlanListColumn.types";
+import {
+  Mutation,
+  MutationDeleteProcessCategoryArgs,
+  ProjectParticipant,
+  Query,
+  QueryFetchParticipatingUserArgs,
+} from "../../../../commons/types/generated/types";
 
-export default function DetailPlanListColumn(props: any) {
+export default function DetailPlanListColumn(
+  props: IDetailPlanListColumnProps
+) {
   const router = useRouter();
-  const [my, setMy] = useState();
+  const [my, setMy] = useState({});
   const [errorAlertModal, setErrorAlertModal] = useState(false);
   const [modalContents, setModalContents] = useState<string>();
 
   const [, setDataTriger] = useRecoilState(triger);
 
-  const { data: participatingData } = useQuery(FETCH_PARTICIPATING_USER, {
+  const { data: participatingData } = useQuery<
+    Pick<Query, "fetchParticipatingUser">,
+    QueryFetchParticipatingUserArgs
+  >(FETCH_PARTICIPATING_USER, {
     variables: {
-      projectId: router.query.projectId,
+      projectId: String(router.query.projectId),
     },
   });
 
-  const { data: myData } = useQuery(FETCH_LOGIN_USER);
-  const [deleteCategory] = useMutation(DELETE_CATEGORY);
+  const { data: myData } =
+    useQuery<Pick<Query, "fetchLoginUser">>(FETCH_LOGIN_USER);
+  const [deleteCategory] = useMutation<
+    Pick<Mutation, "deleteProcessCategory">,
+    MutationDeleteProcessCategoryArgs
+  >(DELETE_CATEGORY);
 
   const Mydata = () => {
-    const me = participatingData?.fetchParticipatingUser.filter(
-      (el: any) => el.user.userId === myData?.fetchLoginUser.userId
-    )[0];
-    setMy(me);
+    const me: ProjectParticipant | undefined =
+      participatingData?.fetchParticipatingUser.filter(
+        (el) => el.user.userId === myData?.fetchLoginUser.userId
+      )[0];
+    if (me !== undefined) {
+      setMy(me);
+    }
   };
 
   // 에러 모달
@@ -58,8 +78,10 @@ export default function DetailPlanListColumn(props: any) {
           },
         ],
       });
-    } catch (error: any) {
-      setModalContents(error.message);
+    } catch (error) {
+      let message = "Unknown Error";
+      if (error instanceof Error) message = error.message;
+      setModalContents(message);
       setErrorAlertModal(true);
     } finally {
       setDataTriger((prev) => !prev);
@@ -68,7 +90,6 @@ export default function DetailPlanListColumn(props: any) {
   return (
     <DetailPlanListColumnHTML
       columnData={props.el}
-      // scheduleData={scheduleData}
       participatingData={participatingData}
       DeleteCategory={DeleteCategory}
       dragItemId={props.dragItemId}

@@ -2,7 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply } from "@fortawesome/free-solid-svg-icons";
 import * as S from "./QuestionAnswer.styles";
 import DOMPurify from "dompurify";
-export default function QuestionAnswerObjectHTML(props: any) {
+import { QuestionAnswerObjectHTMLProps } from "./QuestionAnswer.types";
+export default function QuestionAnswerObjectHTML(props: QuestionAnswerObjectHTMLProps) {
 
   return (
     <S.Wrapper>

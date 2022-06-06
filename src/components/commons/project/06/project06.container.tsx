@@ -1,7 +1,8 @@
+import { ProjectParticipant } from "../../../../commons/types/generated/types";
 import * as S from "./project06.styles";
 
 interface IUserProject {
-  el?: any;
+  el?: ProjectParticipant;
 }
 
 export default function Project06(props: IUserProject) {

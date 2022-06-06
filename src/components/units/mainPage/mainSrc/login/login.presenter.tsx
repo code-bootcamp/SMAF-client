@@ -14,7 +14,6 @@ export default function LoginUI(props: any) {
 
       {props.errorAlertModal && (
         <ErrorAlert
-          onClick={props.onClickAlertModal}
           onClickExit={props.onClickExitErrorModal}
           contents={props.modalContents}
         />

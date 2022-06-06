@@ -2,8 +2,9 @@ import * as S from "./expericence.styles";
 import ExperienceSMAFDetail from "./experienceSMAFDetail/experienceSMAFDetail.container";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { useState } from "react";
+import { ExperienceSMAFHTMLProps } from "./expericence.types";
 
-export default function ExperienceSMAFHTML(props: any) {
+export default function ExperienceSMAFHTML(props: ExperienceSMAFHTMLProps) {
   const [isOpenProject, setIsOpenProject] = useState<boolean>(true);
   const [isOpenMember, setIsOpenMember] = useState<boolean>(false);
   const [isOpenFile, setIsOpenFile] = useState<boolean>(false);
@@ -104,7 +105,7 @@ export default function ExperienceSMAFHTML(props: any) {
         onDragEnd={props.handleDragEnd}
         onDragStart={props.handleDragStart}
       >
-        {props.categoryName?.map((el: any, index: any) => (
+        {props.categoryName?.map((el: string[], index: number) => (
           <Droppable droppableId={el[0]} key={index}>
             {(provided, snapshot) => (
               <div ref={provided.innerRef} {...provided.droppableProps}>

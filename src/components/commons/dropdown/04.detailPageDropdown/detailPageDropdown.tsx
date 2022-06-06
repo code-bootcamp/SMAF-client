@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import * as S from "./detailPageDropdown.styles";
 import { triger } from "../../../../commons/store/index";
 import { useRecoilState } from "recoil";
+import { DropdownDetailProps } from "../dropdown.types";
 
 export const UPDATE_PROCESS_CATEGORY = gql`
   mutation updateProcessCategory(
@@ -35,7 +36,7 @@ export const FETCH_PROCESS_CATEGORIES = gql`
 const Img = styled.img`
   margin-bottom: 1.2rem;
 `;
-export default function DropdownDetail(props: any) {
+export default function DropdownDetail(props: DropdownDetailProps) {
   const [updataProcessCategory] = useMutation(UPDATE_PROCESS_CATEGORY);
   const [, setDataTriger] = useRecoilState(triger);
   const router = useRouter();
@@ -48,7 +49,7 @@ export default function DropdownDetail(props: any) {
   const { register, handleSubmit } = useForm({
     mode: "onChange",
   });
-  
+
   const UpdateCategory = async (data: any) => {
     try {
       await updataProcessCategory({

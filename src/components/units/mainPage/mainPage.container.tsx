@@ -3,9 +3,10 @@ import MainUI from "./mainPage.presenter";
 import { useQuery } from "@apollo/client";
 import { FETCH_LOGIN_USER } from "./mainPage.querys";
 import { useState } from "react";
+import { User } from "../../../commons/types/generated/types";
 
 export default function Main() {
-  const { data: myData } = useQuery(FETCH_LOGIN_USER);
+  const { data: myData } = useQuery<{ fetchLoginUser: User }>(FETCH_LOGIN_USER);
   const [isOpenSchedules, setIsOpenSchedules] = useState(false);
 
   const OpenSchedules = () => {

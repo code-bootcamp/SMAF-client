@@ -1,3 +1,3 @@
 export interface AddMemberModalProps {
-  onToggleModal: () => any;
+  onToggleModal: () => void;
 }

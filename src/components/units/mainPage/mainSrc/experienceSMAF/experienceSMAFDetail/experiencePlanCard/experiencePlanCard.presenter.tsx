@@ -1,6 +1,7 @@
 import * as S from "./experiencePlanCard.styles";
+import { ExperiencePlanCardHTMLProps } from "./experiencePlanCard.types";
 
-export default function ExperiencePlanCardHTML(props: any) {
+export default function ExperiencePlanCardHTML(props: ExperiencePlanCardHTMLProps) {
   return (
     <>
       {/* <S.Wrapper>{props.el}</S.Wrapper> */}

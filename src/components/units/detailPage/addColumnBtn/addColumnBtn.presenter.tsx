@@ -2,8 +2,9 @@ import * as S from "./addColumnBtn.style";
 import { Modal } from "antd";
 import { useEffect } from "react";
 import ErrorAlert from "../../../commons/modal/errorModal/alert";
+import { AddColumnBtnHTMLProps } from "./addColumnbtn.types";
 
-export default function AddColumnBtnHTML(props: any) {
+export default function AddColumnBtnHTML(props: AddColumnBtnHTMLProps) {
   useEffect(() => {
     props.reset({ processName: "" });
   }, [props.isOpen]);
@@ -11,7 +12,6 @@ export default function AddColumnBtnHTML(props: any) {
     <>
       {props.errorAlertModal && (
         <ErrorAlert
-          onClick={props.onClickAlertModal}
           onClickExit={props.onClickErrorModal}
           contents={props.modalContents}
         />
@@ -32,7 +32,11 @@ export default function AddColumnBtnHTML(props: any) {
               footer={null}
               centered={true}
             >
-              <form onSubmit={props.handleSubmit(props.CreateProjectCategory)}>
+              <form
+                onSubmit={props.handleSubmit(
+                  props.CreateProjectCategory as unknown as () => void
+                )}
+              >
                 <S.NewCategory>
                   <S.CategoryTitle>카테고리 추가</S.CategoryTitle>
                   <S.CategoryInput

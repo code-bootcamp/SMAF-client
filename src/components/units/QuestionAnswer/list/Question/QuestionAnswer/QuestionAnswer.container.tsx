@@ -1,4 +1,5 @@
 import QuestionAnswerObjectHTML from "./QuestionAnswer.presenter";
-export default function QuestionAnswerObject(props: any) {
+import { QuestionAnswerObjectProps } from "./QuestionAnswer.types";
+export default function QuestionAnswerObject(props: QuestionAnswerObjectProps) {
   return <QuestionAnswerObjectHTML el={props.el} />;
 }

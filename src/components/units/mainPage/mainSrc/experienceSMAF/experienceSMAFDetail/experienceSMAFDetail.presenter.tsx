@@ -1,9 +1,10 @@
 import * as S from "./experienceSMAFDetail.styles";
 import ExperiencePlanCard from "./experiencePlanCard/experiencePlanCard.container";
 import { Draggable } from "react-beautiful-dnd";
+import { ExperienceSMAFDetailHTMLProps } from "./experienceSMAFDetail.types";
 // import { v4 as uuidv4 } from "uuid";
 
-export default function ExperienceSMAFDetailHTML(props: any) {
+export default function ExperienceSMAFDetailHTML(props: ExperienceSMAFDetailHTMLProps) {
   return (
     <>
       <S.BasicColumn>
@@ -18,7 +19,7 @@ export default function ExperienceSMAFDetailHTML(props: any) {
         </S.Wrapper>
         <div>
           {props.scheduleArray?.[props.categoryIndex]?.map(
-            (el: any, index: any) => (
+            (el: string, index: number) => (
               <Draggable key={el} index={index} draggableId={el}>
                 {(provided) => (
                   <div
