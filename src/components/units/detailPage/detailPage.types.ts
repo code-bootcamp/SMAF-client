@@ -2,6 +2,7 @@ import { DropResult } from "react-beautiful-dnd";
 import {
   ProcessCategory,
   Project,
+  Schedule,
   User,
 } from "../../../commons/types/generated/types";
 
@@ -10,7 +11,7 @@ export interface IProjectDetailPageHTMLProps {
   handleDragEnd: (result: DropResult) => void;
   handleDragStart: (initial: { draggableId: string }) => Promise<void>;
   onClickExitErrorModal: () => void;
-  scheduleArray: Array<string[]>;
+  scheduleArray: Array<Schedule[]>;
   errorAlertModal: boolean;
   modalContents: string | undefined;
   projectData?: { fetchProject: Project };

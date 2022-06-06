@@ -23,6 +23,7 @@ import {
   ProcessCategory,
   ProjectParticipant,
   User,
+  Schedule,
 } from "../../../commons/types/generated/types";
 import { DropResult } from "react-beautiful-dnd";
 
@@ -40,7 +41,7 @@ export default function ProjectDetail() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [dragItemId, setDragItemId] = useState("");
-  const [scheduleArray, setScheduleArray] = useState([[]]);
+  const [scheduleArray, setScheduleArray] = useState<Schedule[][]>([[]]);
   const [categorys, setCategorys] = useState<ProcessCategory[] | undefined>([]);
   const [myDataInProject, setMyDataInProject] = useState({});
   const [dataTriger] = useRecoilState(triger);
@@ -82,8 +83,9 @@ export default function ProjectDetail() {
     },
   });
 
-  const { data: myData } =
-    useQuery<Pick<Query, "fetchLoginUser">, User>(FETCH_LOGIN_USER);
+  const { data: myData } = useQuery<Pick<Query, "fetchLoginUser">, User>(
+    FETCH_LOGIN_USER
+  );
 
   // 에러 모달
   const onClickExitErrorModal = () => {
@@ -125,21 +127,23 @@ export default function ProjectDetail() {
   const DragAndDropData = () => {
     const schedulesList = schedulesData?.fetchProjectSchedules;
     const categoryList = categoriesData?.fetchProcessCategories;
-    const dataArray: any[] = [];
+    const dataArray: Array<Schedule[]> = [];
 
     categoryList?.forEach((category) => {
       const element = schedulesList?.filter(
         (el) =>
           el.processCategory.processCategoryId === category.processCategoryId
       );
-      dataArray.push(element);
+      if (element) {
+        dataArray.push(element);
+      }
     });
     setScheduleArray(dataArray);
     setCategorys(categoryList);
   };
 
   const handleDragStart = async (initial: { draggableId: string }) => {
-    const restoreItemArray: any[] = [];
+    const restoreItemArray: Schedule[] = [];
 
     const schedulesList = schedulesData?.fetchProjectSchedules;
     // eslint-disable-next-line array-callback-return
