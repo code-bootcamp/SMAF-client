@@ -1,5 +1,10 @@
+import { MouseEvent } from "react";
+import {
+  ProjectParticipant,
+  User,
+} from "../../../commons/types/generated/types";
 export interface TeamMemberUIProps {
-  partcipatingData: any;
-  DeleteParticipant: (event: any) => any;
-  myData: any;
+  partcipatingData?: { fetchParticipatingUser: Array<ProjectParticipant> };
+  myData?: { fetchLoginUser: User };
+  DeleteParticipant: (event: MouseEvent<HTMLButtonElement>) => void;
 }

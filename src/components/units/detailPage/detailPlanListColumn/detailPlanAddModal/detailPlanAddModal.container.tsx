@@ -2,7 +2,7 @@ import DetailPlanAddModalHTML from "./detailPlanAddModal.presenter";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import {
-  CREATE_PROCESS_CATEGORY,
+  CREATE_SCHEDULE,
   FETCH_PROJECT_SCHEDULES_CATEGORY,
 } from "./detailPlanAddModal.querys";
 import { useRouter } from "next/router";
@@ -10,10 +10,16 @@ import { useRecoilState } from "recoil";
 import { selectedDate, triger } from "../../../../../commons/store/index";
 import { useState } from "react";
 import moment from "moment";
+import { DetailPlanAddModalProps } from "./detailPlanAddModal.tpyes";
+import {
+  Mutation,
+  ProcessCategory,
+} from "../../../../../commons/types/generated/types";
 
-export default function DetailPlanAddModal(props: any) {
+export default function DetailPlanAddModal(props: DetailPlanAddModalProps) {
   const router = useRouter();
-  const [createSchedule] = useMutation(CREATE_PROCESS_CATEGORY);
+  const [createSchedule] =
+    useMutation<Pick<Mutation, "createSchedule">>(CREATE_SCHEDULE);
   const [, setDataTriger] = useRecoilState(triger);
   const { register, handleSubmit } = useForm({
     mode: "onChange",
@@ -23,7 +29,7 @@ export default function DetailPlanAddModal(props: any) {
   const [modalContents, setModalContents] = useState<string>();
   const [errorAlertModal, setErrorAlertModal] = useState(false);
 
-  const [selectedDay, setSelectedDay] = useRecoilState<any>(selectedDate);
+  const [selectedDay, setSelectedDay] = useRecoilState<Date>(selectedDate);
 
   // 확인 모달
   const onClickConfirmModal = () => {
@@ -35,7 +41,7 @@ export default function DetailPlanAddModal(props: any) {
     setErrorAlertModal(false);
   };
   const dDay = moment(selectedDay).format("YYYY-MM-DD");
-  const CreateNewSchedule = async (data: any) => {
+  const CreateNewSchedule = async (data: ProcessCategory) => {
     try {
       await createSchedule({
         variables: {
@@ -43,7 +49,7 @@ export default function DetailPlanAddModal(props: any) {
             ...data,
             scheduleDate: dDay,
             processCategoryId: props.categoryId,
-            projectId: router.query.projectId,
+            projectId: String(router.query.projectId),
           },
         },
         refetchQueries: [
@@ -59,8 +65,10 @@ export default function DetailPlanAddModal(props: any) {
       setAlertModal(true);
       props.onToggleModal();
       setSelectedDay(new Date());
-    } catch (error: any) {
-      setModalContents(error.message);
+    } catch (error) {
+      let message = "Unknown Error";
+      if (error instanceof Error) message = error.message;
+      setModalContents(message);
       setErrorAlertModal(true);
     } finally {
       setDataTriger((prev) => !prev);

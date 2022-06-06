@@ -2,8 +2,9 @@ import TodoDetailHTML from "./todoDetail.presenter";
 import { useState, useEffect } from "react";
 import moment from "antd/node_modules/moment";
 import { useRouter } from "next/router";
+import { TodoDetailProps } from "./todoDetail.types";
 
-export default function TodoDetail(props: any) {
+export default function TodoDetail(props: TodoDetailProps) {
   const router = useRouter();
   const [dateArray, setDateArray] = useState<string[]>([]);
 

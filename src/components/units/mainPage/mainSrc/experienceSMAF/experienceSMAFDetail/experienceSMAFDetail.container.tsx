@@ -2,9 +2,10 @@ import ExperienceSMAFDetailHTML from "./experienceSMAFDetail.presenter";
 import { useEffect, useState } from "react";
 import { sessionTriger } from "../../../../../../commons/store/index";
 import { useRecoilState } from "recoil";
+import { ExperienceSMAFDetailProps } from "./experienceSMAFDetail.types";
 
-export default function ExperienceSMAFDetail(props: any) {
-  const [planCardName, setPlanCardName] = useState<string[] | any[]>([]);
+export default function ExperienceSMAFDetail(props: ExperienceSMAFDetailProps) {
+  const [planCardName, setPlanCardName] = useState<string[][]>([]);
   const [, setSession] = useRecoilState(sessionTriger);
   useEffect(() => {
     setPlanCardName([]);

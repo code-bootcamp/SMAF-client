@@ -6,8 +6,11 @@ import { Draggable } from "react-beautiful-dnd";
 import DetailPlanAddModal from "./detailPlanAddModal/detailPlanAddModal.container";
 import DropdownDetail from "../../../commons/dropdown/04.detailPageDropdown/detailPageDropdown";
 import ErrorAlert from "../../../commons/modal/errorModal/alert";
+import { IDetailPlanListColumnHTMLProps } from "./detailPlanListColumn.types";
 
-export default function DetailPlanListColumnHTML(props: any) {
+export default function DetailPlanListColumnHTML(
+  props: IDetailPlanListColumnHTMLProps
+) {
   const [isOpen, setIsOpen] = useState(false);
   const onToggleModal = () => {
     setIsOpen((prev) => !prev);
@@ -17,11 +20,11 @@ export default function DetailPlanListColumnHTML(props: any) {
     <>
       {props.errorAlertModal && (
         <ErrorAlert
-          onClick={props.onClickAlertModal}
           onClickExit={props.onClickErrorModal}
           contents={props.modalContents}
         />
       )}
+
       {props.scheduleArray && (
         <S.Wrapper>
           <S.AddColumn>
@@ -63,7 +66,7 @@ export default function DetailPlanListColumnHTML(props: any) {
               />
             </Modal>
           )}
-          {props.scheduleArray?.map((el: any, index: any) => (
+          {props.scheduleArray?.map((el: any, index: number) => (
             <Draggable
               key={String(el.scheduleId)}
               index={index}

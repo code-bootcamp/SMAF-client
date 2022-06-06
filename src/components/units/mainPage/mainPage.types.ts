@@ -1,6 +1,8 @@
+import { User } from "../../../commons/types/generated/types";
+
 export interface IMainUIProps {
-    myData: any;
-    isOpenSchedules: boolean;
-    OpenSchedules: () => void;
-    CloseSchedules: () => void;
+  myData?: { fetchLoginUser: User };
+  isOpenSchedules: boolean;
+  OpenSchedules: () => void;
+  CloseSchedules: () => void;
 }

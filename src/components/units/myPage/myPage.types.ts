@@ -1,12 +1,15 @@
+import {
+  ProjectParticipant,
+  User,
+} from "../../../commons/types/generated/types";
+
 export interface IMyPageUIProps {
   visible: boolean;
-  data?: any;
-  activeData: any;
-  inActiveData: any;
-  userData: any;
+  activeData?: { fetchActivatedProject: Array<ProjectParticipant> };
+  inActiveData?: { fetchInactivatedProject: Array<ProjectParticipant> };
+  userData?: { fetchLoginUser: User };
   onClickMoveToNewProject: () => void;
   onClickMoveToPaymentList: () => void;
   onClickMoveToMyPage: () => void;
-  onClickMoveToProjectDetail: (event: any) => void;
   onClickMoveToPasswordChange: () => void;
 }

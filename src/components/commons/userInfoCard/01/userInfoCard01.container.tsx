@@ -1,9 +1,10 @@
 import { useRef } from "react";
+import { User } from "../../../../commons/types/generated/types";
 import PaymentModal from "../../modal/paymentModal/paymentModal.container";
 import * as S from "./userInfoCard01.styles";
 
 interface IUserCardProps {
-  data?: any;
+  data?: { fetchLoginUser: User };
   isOpen: boolean;
   OpenMenu: () => void;
   onClickMoveToPaymentList: () => void;

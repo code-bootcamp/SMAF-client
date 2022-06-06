@@ -6,62 +6,75 @@ import { useState } from "react";
 import { FETCH_PROCESS_CATEGORIES } from "./addColumnbtn.querys";
 import { triger } from "../../../../commons/store/index";
 import { useRecoilState } from "recoil";
-export default function AddColumnBtn(props: any) {
-    const [isOpen, setIsOpen] = useState(false);
-    const [errorAlertModal, setErrorAlertModal] = useState<any>(false);
-    const [modalContents, setModalContents] = useState<any>();
+import { AddColumnBtnProps } from "./addColumnbtn.types";
+import {
+  MutationCreateProcessCategoryArgs,
+  Mutation,
+} from "../../../../commons/types/generated/types";
 
-    const [, setDataTriger] = useRecoilState(triger);
-    const onToggleModal = () => {
-        setIsOpen((prev: boolean) => !prev);
-    };
-    const [createCategory] = useMutation(CREATE_PROCESS_CATEGORY);
-    const { register, handleSubmit, formState, reset } = useForm({
-        mode: "onChange",
-    });
+export default function AddColumnBtn(props: AddColumnBtnProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [errorAlertModal, setErrorAlertModal] = useState(false);
+  const [modalContents, setModalContents] = useState("");
 
-    // 에러 모달
-    const onClickErrorModal = () => {
-        setErrorAlertModal(false);
-    };
+  const [, setDataTriger] = useRecoilState(triger);
+  const onToggleModal = () => {
+    setIsOpen((prev: boolean) => !prev);
+  };
+  const [createCategory] = useMutation<
+    Pick<Mutation, "createProcessCategory">,
+    MutationCreateProcessCategoryArgs
+  >(CREATE_PROCESS_CATEGORY);
+  const { register, handleSubmit, formState, reset } = useForm({
+    mode: "onChange",
+  });
 
-    const CreateProjectCategory = async (data: any) => {
-        try {
-            await createCategory({
-                variables: {
-                    processName: data.processName,
-                    projectId: props.projectId,
-                },
-                refetchQueries: [
-                    {
-                        query: FETCH_PROCESS_CATEGORIES,
-                        variables: {
-                            projectId: props.projectId,
-                        },
-                    },
-                ],
-            });
-            onToggleModal();
-        } catch (error: any) {
-            setModalContents(error.message);
-            setErrorAlertModal(true);
-        } finally {
-            setDataTriger((prev) => !prev);
-        }
-    };
+  // 에러 모달
+  const onClickErrorModal = () => {
+    setErrorAlertModal(false);
+  };
 
-    return (
-        <DetailWriteBtnHTML
-            CreateProjectCategory={CreateProjectCategory}
-            register={register}
-            handleSubmit={handleSubmit}
-            formState={formState}
-            onToggleModal={onToggleModal}
-            isOpen={isOpen}
-            reset={reset}
-            onClickErrorModal={onClickErrorModal}
-            errorAlertModal={errorAlertModal}
-            modalContents={modalContents}
-        />
-    );
+  const CreateProjectCategory = async (
+    data: MutationCreateProcessCategoryArgs
+  ) => {
+    try {
+      await createCategory({
+        variables: {
+          processName: data.processName,
+          projectId: props.projectId,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_PROCESS_CATEGORIES,
+            variables: {
+              projectId: props.projectId,
+            },
+          },
+        ],
+      });
+      onToggleModal();
+    } catch (error) {
+      let message = "Unknown Error";
+      if (error instanceof Error) message = error.message;
+      setModalContents(message);
+      setErrorAlertModal(true);
+    } finally {
+      setDataTriger((prev) => !prev);
+    }
+  };
+
+  return (
+    <DetailWriteBtnHTML
+      CreateProjectCategory={CreateProjectCategory}
+      register={register}
+      handleSubmit={handleSubmit}
+      formState={formState}
+      onToggleModal={onToggleModal}
+      isOpen={isOpen}
+      reset={reset}
+      onClickErrorModal={onClickErrorModal}
+      errorAlertModal={errorAlertModal}
+      modalContents={modalContents}
+    />
+  );
 }

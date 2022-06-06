@@ -1,6 +1,7 @@
 import ExperiencePlanCardHTML from "./experiencePlanCard.presenter";
+import { ExperiencePlanCardProps } from "./experiencePlanCard.types";
 
-export default function ExperiencePlanCard(props: any) {
+export default function ExperiencePlanCard(props: ExperiencePlanCardProps) {
   return (
     <ExperiencePlanCardHTML
       number={props.number}

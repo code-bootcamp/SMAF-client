@@ -6,10 +6,11 @@ import {
   SEND_EMAIL,
 } from "./addMemberModal.querys";
 import * as S from "./addMemberModal.styles";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, MouseEvent } from "react";
 import { useRouter } from "next/router";
 import { AddMemberModalProps } from "./addMemberModal.types";
 import { v4 as uuidv4 } from "uuid";
+import { User } from "../../../../commons/types/generated/types";
 
 export default function AddMemberModal(props: AddMemberModalProps) {
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ export default function AddMemberModal(props: AddMemberModalProps) {
 
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setTimeout(() => {
-      setEmail((event.target as any).value);
+      setEmail((event.target as HTMLInputElement).value);
 
       if (event.target.value === "") {
         setEmail(uuidv4());
@@ -32,12 +33,13 @@ export default function AddMemberModal(props: AddMemberModalProps) {
     }, 1000);
   };
 
-  const OnClickAddUser = async (event: any) => {
-    const useEmail: any = [];
-    data?.fetchUserEmail.forEach((el: any) => {
+  const OnClickAddUser = async (event: MouseEvent<HTMLButtonElement>) => {
+    const useEmail: User[] = [];
+    data?.fetchUserEmail.forEach((el: User) => {
       if (
         el.userName.includes(email) ||
-        (el.email.includes(email) && el.email === event.target.id)
+        (el.email.includes(email) &&
+          el.email === (event.target as HTMLButtonElement).id)
       ) {
         useEmail.push(el);
       }
@@ -85,7 +87,7 @@ export default function AddMemberModal(props: AddMemberModalProps) {
         </S.SearchWrapper>
 
         <S.InnerWrapper>
-          {data?.fetchUserEmail.map((el: any) => (
+          {data?.fetchUserEmail.map((el: User) => (
             <>
               <S.UserWrapper>
                 <S.UserImage src={el.userImageURL}></S.UserImage>

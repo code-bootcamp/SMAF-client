@@ -7,69 +7,83 @@ import {
   FETCH_PROJECT_SCHEDULES_PROJECTID,
   FETCH_LOGIN_USER,
   FETCH_PARTCIPATING_USER,
-  FETCH_CATEGORYS,
 } from "./detailPage.querys";
 import { useRouter } from "next/router";
 import { UPDATE_SCHEDULE } from "../../commons/dropdown/05.detailSchduelsDropdown/detailSchduelsDropdown";
 import { useRecoilState } from "recoil";
 import { triger } from "../../../commons/store/index";
+import {
+  QueryFetchProjectSchedulesArgs,
+  QueryFetchParticipatingUserArgs,
+  QueryFetchProjectArgs,
+  Query,
+  Mutation,
+  QueryFetchProcessCategoriesArgs,
+  MutationUpdateScheduleArgs,
+  ProcessCategory,
+  ProjectParticipant,
+  User,
+} from "../../../commons/types/generated/types";
+import { DropResult } from "react-beautiful-dnd";
 
 export default function ProjectDetail() {
   const router = useRouter();
 
   const [errorAlertModal, setErrorAlertModal] = useState(false);
   const [modalContents, setModalContents] = useState<string>();
-
   const [restoreItem, setRestoreItem] = useState({
     scheduleName: "string",
     scheduleContents: "string",
     scheduleDate: "DateTime",
-    status: "boolean",
+    status: true,
   });
-
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [dragItemId, setDragItemId] = useState("");
   const [scheduleArray, setScheduleArray] = useState([[]]);
-  const [categorys, setCategorys] = useState([]);
-  const [myDataInProject, setMyDataInProject] = useState<{ position: string }>({
-    position: "",
-  });
-
+  const [categorys, setCategorys] = useState<ProcessCategory[] | undefined>([]);
+  const [myDataInProject, setMyDataInProject] = useState({});
   const [dataTriger] = useRecoilState(triger);
-  const [updataSchedule] = useMutation(UPDATE_SCHEDULE);
-  const { data: projectData } = useQuery(FETCH_PROJECT, {
+
+  const [updataSchedule] = useMutation<
+    Pick<Mutation, "updateSchedule">,
+    MutationUpdateScheduleArgs
+  >(UPDATE_SCHEDULE);
+  const { data: projectData } = useQuery<
+    Pick<Query, "fetchProject">,
+    QueryFetchProjectArgs
+  >(FETCH_PROJECT, {
     variables: {
-      projectId: router.query.projectId,
+      projectId: String(router.query.projectId),
+    },
+  });
+  const { data: categoriesData } = useQuery<
+    Pick<Query, "fetchProcessCategories">,
+    QueryFetchProcessCategoriesArgs
+  >(FETCH_PROCESS_CATEGORIES, {
+    variables: {
+      projectId: String(router.query.projectId),
+    },
+  });
+  const { data: schedulesData, refetch } = useQuery<
+    Pick<Query, "fetchProjectSchedules">,
+    QueryFetchProjectSchedulesArgs
+  >(FETCH_PROJECT_SCHEDULES_PROJECTID, {
+    variables: {
+      projectId: String(router.query.projectId),
+    },
+  });
+  const { data: partcipatingData } = useQuery<
+    Pick<Query, "fetchParticipatingUser">,
+    QueryFetchParticipatingUserArgs
+  >(FETCH_PARTCIPATING_USER, {
+    variables: {
+      projectId: String(router.query.projectId),
     },
   });
 
-  const { data: categoriesData } = useQuery(FETCH_PROCESS_CATEGORIES, {
-    variables: {
-      projectId: router.query.projectId,
-    },
-  });
-  const { data: schedulesData, refetch } = useQuery(
-    FETCH_PROJECT_SCHEDULES_PROJECTID,
-    {
-      variables: {
-        projectId: router.query.projectId,
-      },
-    }
-  );
-  const { data: partcipatingData } = useQuery(FETCH_PARTCIPATING_USER, {
-    variables: {
-      projectId: router.query.projectId,
-    },
-  });
-
-  const { data: myData } = useQuery(FETCH_LOGIN_USER);
-
-  const { data: categorysData } = useQuery(FETCH_CATEGORYS, {
-    variables: {
-      projectId: router.query.projectId,
-    },
-  });
+  const { data: myData } =
+    useQuery<Pick<Query, "fetchLoginUser">, User>(FETCH_LOGIN_USER);
 
   // 에러 모달
   const onClickExitErrorModal = () => {
@@ -77,11 +91,13 @@ export default function ProjectDetail() {
   };
 
   const MyData = () => {
-    const myAuth = partcipatingData?.fetchParticipatingUser.filter(
-      (el: any) => el.user.userId === myData?.fetchLoginUser?.userId
-    )[0];
-
-    setMyDataInProject(myAuth);
+    const myAuth: ProjectParticipant | undefined =
+      partcipatingData?.fetchParticipatingUser.filter(
+        (el) => el.user.userId === myData?.fetchLoginUser?.userId
+      )[0];
+    if (myAuth !== undefined) {
+      setMyDataInProject(myAuth);
+    }
   };
   useEffect(() => {
     refetch();
@@ -93,7 +109,7 @@ export default function ProjectDetail() {
 
   useEffect(() => {
     DragAndDropData();
-  }, [schedulesData, categorysData]);
+  }, [schedulesData, categoriesData]);
 
   useEffect(() => {
     MyData();
@@ -108,12 +124,12 @@ export default function ProjectDetail() {
   };
   const DragAndDropData = () => {
     const schedulesList = schedulesData?.fetchProjectSchedules;
-    const categoryList = categorysData?.fetchProcessCategories;
+    const categoryList = categoriesData?.fetchProcessCategories;
     const dataArray: any[] = [];
 
-    categoryList?.forEach((category: any) => {
+    categoryList?.forEach((category) => {
       const element = schedulesList?.filter(
-        (el: any) =>
+        (el) =>
           el.processCategory.processCategoryId === category.processCategoryId
       );
       dataArray.push(element);
@@ -122,12 +138,12 @@ export default function ProjectDetail() {
     setCategorys(categoryList);
   };
 
-  const handleDragStart = async (initial: any) => {
+  const handleDragStart = async (initial: { draggableId: string }) => {
     const restoreItemArray: any[] = [];
 
     const schedulesList = schedulesData?.fetchProjectSchedules;
     // eslint-disable-next-line array-callback-return
-    schedulesList.filter((el: any) => {
+    schedulesList?.filter((el) => {
       if (el.scheduleId === initial?.draggableId) {
         restoreItemArray.push(el);
         setDragItemId(el.scheduleId);
@@ -136,20 +152,20 @@ export default function ProjectDetail() {
     setRestoreItem(restoreItemArray[0]);
   };
 
-  const handleDragEnd = async (result: any) => {
+  const handleDragEnd = async (result: DropResult) => {
     if (!result?.destination) return;
     try {
-      scheduleArray.forEach((el: any) => {
+      scheduleArray?.forEach((el: object[]) => {
         if (el.includes(restoreItem)) {
           const saveItem = el.splice(el.indexOf(restoreItem), 1)[0];
-          categorys.forEach((category: any, index: any) => {
+          categorys?.forEach((category, index) => {
             if (
+              result?.destination !== undefined &&
               result?.destination.droppableId === category.processCategoryId
             ) {
               scheduleArray[index].splice(
                 Number(result?.destination.index),
                 0,
-
                 // @ts-ignore
                 saveItem
               );
@@ -158,8 +174,10 @@ export default function ProjectDetail() {
         }
       });
       setScheduleArray(scheduleArray);
-    } catch (error: any) {
-      setModalContents(error.message);
+    } catch (error) {
+      let message = "Unknown Error";
+      if (error instanceof Error) message = error.message;
+      setModalContents(message);
       setErrorAlertModal(true);
     } finally {
       if (result?.destination) {
@@ -192,7 +210,6 @@ export default function ProjectDetail() {
       onClickExitErrorModal={onClickExitErrorModal}
       errorAlertModal={errorAlertModal}
       modalContents={modalContents}
-      onClickAlertModal={undefined}
       myData={myData}
       myDataInProject={myDataInProject}
       scheduleArray={scheduleArray}

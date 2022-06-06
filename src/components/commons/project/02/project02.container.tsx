@@ -1,8 +1,9 @@
 import * as S from "./project02.styles";
 import ImageCircle from "../../images/imagecircle/01/imagecircle.container";
+import { ProjectParticipant } from "../../../../commons/types/generated/types";
 
 interface IUserProject {
-  el?: any;
+  el?: ProjectParticipant;
 }
 
 export default function Project02(props: IUserProject) {

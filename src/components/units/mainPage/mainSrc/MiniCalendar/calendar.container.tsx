@@ -9,8 +9,13 @@ import {
   FETCH_SCHEDULES,
   FETCH_PARTICIPATING_PROJECTS,
 } from "./calendar.querys";
+import { MiniCalendarProps } from "./calendar.types";
+import {
+  ProjectParticipant,
+  Schedule,
+} from "../../../../../commons/types/generated/types";
 
-export default function MiniCalendar(props: any) {
+export default function MiniCalendar(props: MiniCalendarProps) {
   const [value, onChange] = useRecoilState(dateValue);
   const [mark, setMark] = useState<string[]>([]);
 
@@ -18,24 +23,26 @@ export default function MiniCalendar(props: any) {
   const { data: participatingData } = useQuery(FETCH_PARTICIPATING_PROJECTS);
 
   const dateArray = () => {
-    const daysArray: any = [];
+    const daysArray: string[] = [];
 
-    participatingData?.fetchParticipatingProject.forEach((project: any) => {
-      schedulesData?.fetchSchedules.forEach((el: any) => {
-        if (
-          project.project?.projectId === el.project?.projectId &&
-          !daysArray.includes(
-            el.createAt.slice(0, 10),
-            el.scheduleDate.slice(0, 10)
-          )
-        ) {
-          daysArray.push(
-            el.createAt.slice(0, 10),
-            el.scheduleDate.slice(0, 10)
-          );
-        }
-      });
-    });
+    participatingData?.fetchParticipatingProject.forEach(
+      (project: ProjectParticipant) => {
+        schedulesData?.fetchSchedules.forEach((el: Schedule) => {
+          if (
+            project.project?.projectId === el.project?.projectId &&
+            !daysArray.includes(
+              el.createAt.slice(0, 10),
+              el.scheduleDate.slice(0, 10)
+            )
+          ) {
+            daysArray.push(
+              el.createAt.slice(0, 10),
+              el.scheduleDate.slice(0, 10)
+            );
+          }
+        });
+      }
+    );
     setMark([...daysArray]);
   };
 
@@ -50,7 +57,7 @@ export default function MiniCalendar(props: any) {
         value={value}
         formatDay={(locale, date) => moment(date).format("DD")}
         // @ts-ignore
-        tileContent={({ date, view }) => {
+        tileContent={({ date }) => {
           if (mark.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
             return (
               <div onClick={props.OpenSchedules} className="dotBox">

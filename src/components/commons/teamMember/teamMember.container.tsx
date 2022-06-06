@@ -6,25 +6,41 @@ import {
   FETCH_LOGIN_USER,
 } from "./teamMember.query";
 import { useRouter } from "next/router";
+import { MouseEvent } from "react";
+import {
+  Query,
+  QueryFetchParticipatingUserArgs,
+  Mutation,
+  MutationDeleteParticipantArgs,
+  ProjectParticipant,
+  User,
+} from "../../../commons/types/generated/types";
 
 export default function TeamMember() {
   const router = useRouter();
-  const [deleteParticipantUser] = useMutation(DELETE_PARTICIPANT);
-  const { data: partcipatingData } = useQuery(FETCH_PARTCIPATING_USER, {
+  const [deleteParticipantUser] = useMutation<
+    Pick<Mutation, "deleteParticipant">,
+    MutationDeleteParticipantArgs
+  >(DELETE_PARTICIPANT);
+  const { data: partcipatingData } = useQuery<
+    Pick<Query, "fetchParticipatingUser">,
+    QueryFetchParticipatingUserArgs
+  >(FETCH_PARTCIPATING_USER, {
     variables: {
-      projectId: router.query.projectId,
+      projectId: String(router.query.projectId),
     },
   });
-  const { data: myData } = useQuery(FETCH_LOGIN_USER);
+  const { data: myData } = useQuery<{ fetchLoginUser: User }>(FETCH_LOGIN_USER);
 
-  const DeleteParticipant = async (event: any) => {
-    const deleteId = partcipatingData.fetchParticipatingUser.filter(
-      (el: any) => el.projectParticipantId === event.target.id
+  const DeleteParticipant = async (event: MouseEvent<HTMLButtonElement>) => {
+    const deleteId = partcipatingData?.fetchParticipatingUser.filter(
+      (el: ProjectParticipant) =>
+        el.projectParticipantId === (event.target as HTMLButtonElement).id
     );
     try {
       await deleteParticipantUser({
         variables: {
-          projectParticipantId: deleteId?.[0].projectParticipantId,
+          projectParticipantId: String(deleteId?.[0].projectParticipantId),
         },
         refetchQueries: [
           {

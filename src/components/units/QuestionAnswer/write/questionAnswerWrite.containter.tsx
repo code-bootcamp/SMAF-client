@@ -6,8 +6,10 @@ import { useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { dropdownKey } from "../../../../commons/store";
 import { useState } from "react";
+import { CreateQuestionBoardInput } from "../../../../commons/types/generated/types";
+import { QuestionAnswerWriteProps } from "./questionAnswerWrite.types";
 
-export default function QuestionAnswerWrite(props: any) {
+export default function QuestionAnswerWrite(_props: QuestionAnswerWriteProps) {
   const router = useRouter();
   const [createQuestionBoard] = useMutation(CREATE_QUESTION_BOARD);
   const { register, handleSubmit, formState } = useForm({
@@ -32,7 +34,7 @@ export default function QuestionAnswerWrite(props: any) {
     setErrorAlertModal(false);
   };
 
-  const CreateNewQusetionBoard = async (data: any) => {
+  const CreateNewQusetionBoard = async (data: CreateQuestionBoardInput) => {
     if (data) {
       try {
         await createQuestionBoard({
@@ -46,8 +48,10 @@ export default function QuestionAnswerWrite(props: any) {
         });
         setModalContents("문의 등록이 완료되었습니다!");
         setAlertModal(true);
-      } catch (error: any) {
-        setModalContents(error.message);
+      } catch (error) {
+        let message = "Unknown Error";
+        if (error instanceof Error) message = error.message;
+        setModalContents(message);
         setErrorAlertModal(true);
       }
     }
