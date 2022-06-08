@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 
-// 참여중인 프로젝트 목록
 export const FETCH_ACTIVE_PROJECT = gql`
   query fetchActivatedProject {
     fetchActivatedProject {
@@ -23,7 +22,6 @@ export const FETCH_ACTIVE_PROJECT = gql`
   }
 `;
 
-// 참여했던 프로젝트 목록
 export const FETCH_INACTIVE_PROJECT = gql`
   query fetchInactivatedProject($standard: String!) {
     fetchInactivatedProject(standard: $standard) {
