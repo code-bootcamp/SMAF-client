@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { ChangeEvent, useRef, useState } from "react";
+import { Query, QueryFetchProjectFilesArgs } from "../../../../commons/types/generated/types";
 import ProjectFileUploadUI from "./fileUpload01.presenter";
 import {
     CREATE_PROJECT_FILE,
@@ -10,7 +11,7 @@ import {
 } from "./fileUpload01.queries";
 import { checkValidationFile } from "./fileUpload01.validation";
 
-export default function ProjectFileUpload() {
+export default function ProjectFileUpload(_props: any) {
     const router = useRouter();
     const fileRef = useRef<HTMLInputElement>(null);
     const [urls, setUrls] = useState("");
@@ -22,7 +23,10 @@ export default function ProjectFileUpload() {
     const [projectFileUpload] = useMutation(PROJECT_FILE_UPLOAD);
     const [createProjectFile] = useMutation(CREATE_PROJECT_FILE);
 
-    const { data: fetchProjectFiles } = useQuery(PROJECT_FILES_FETCH, {
+    const { data: fetchProjectFiles } = useQuery<
+        Pick<Query, "fetchProjectFiles">,
+        QueryFetchProjectFilesArgs
+    >(PROJECT_FILES_FETCH, {
         variables: {
             projectId: String(router.query.projectId),
         },
