@@ -14,30 +14,21 @@ export default function MyPage() {
   });
   const [visible, setVisible] = useState(true);
 
-  // 프로젝트 등록하기
   const onClickMoveToNewProject = () => {
     router.push("project/new");
   };
 
-  // 결제내역 이동
   const onClickMoveToPaymentList = () => {
     setVisible(false);
   };
 
-  // 마이페이지 이동
   const onClickMoveToMyPage = () => {
     setVisible(true);
   };
 
-  // 설정(비밀번호 변경으로 이동)
   const onClickMoveToPasswordChange = () => {
     router.push("signup/changePassword");
   };
-
-  // 프로젝트 상세로 이동
-  // const onClickMoveToProjectDetail = (event: MouseEvent) => {
-  //     if (event.target instanceof Element) router.push(`/project/${event.target.id}`);
-  // };
 
   return (
     <MyPageUI

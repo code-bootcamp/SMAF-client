@@ -1,22 +1,22 @@
 import * as S from "./myPage.styles";
 import styled from "@emotion/styled";
+import { breakPoints } from "../../../commons/styles/media";
 import { IMyPageUIProps } from "./myPage.types";
+import { ProjectParticipant } from "../../../commons/types/generated/types";
 import { v4 as uuidv4 } from "uuid";
 import { useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Project01 from "../../commons/project/01/project01.container";
-import Project02 from "../../commons/project/02/project02.container";
-import Project03 from "../../commons/project/03/project03.container";
 import UserInfoCard01 from "../../commons/userInfoCard/01/userInfoCard01.container";
 import PaymentList from "../paymentList/paymentListMenu.contatiner";
 import PaymentModal from "../../commons/modal/paymentModal/paymentModal.container";
-import { breakPoints } from "../../../commons/styles/media";
+import Project01 from "../../commons/project/01/project01.container";
+import Project02 from "../../commons/project/02/project02.container";
+import Project03 from "../../commons/project/03/project03.container";
 import Project04 from "../../commons/project/04/project04.container";
 import Project05 from "../../commons/project/05/project05.container";
 import Project06 from "../../commons/project/06/project06.container";
-import { ProjectParticipant } from "../../../commons/types/generated/types";
 
 const SliderWrapper = styled(Slider)`
   height: 24rem;
