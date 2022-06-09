@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   }
 `;
 
-// 오른쪽박스
 export const RightWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,11 +17,9 @@ export const RightWrapper = styled.div`
     margin: auto;
     margin-top: 60px;
     padding: 1.1rem 0rem;
-    /* border: 1px solid red; */
   }
 `;
 
-// 표
 export const Table = styled.div`
   display: flex;
   flex-direction: column;
@@ -34,7 +31,6 @@ export const Table = styled.div`
   }
 `;
 
-// 결제내역
 export const Title = styled.div`
   height: 4.6rem;
   margin-bottom: 2rem;
@@ -62,7 +58,6 @@ export const PaymentMenuList = styled.div`
   }
 `;
 
-// 번호
 export const TableMenuNo = styled.div`
   display: flex;
   justify-content: center;
@@ -76,7 +71,6 @@ export const TableMenuNo = styled.div`
   }
 `;
 
-// 결제일
 export const TableMenuPaymentDate = styled.div`
   display: flex;
   justify-content: center;
@@ -92,7 +86,6 @@ export const TableMenuPaymentDate = styled.div`
   }
 `;
 
-// 결제상품
 export const TableMenuProduct = styled.div`
   display: flex;
   justify-content: center;
@@ -107,7 +100,6 @@ export const TableMenuProduct = styled.div`
   }
 `;
 
-// 결제금액
 export const TableMenuMoney = styled.div`
   display: flex;
   justify-content: center;
@@ -123,7 +115,6 @@ export const TableMenuMoney = styled.div`
   }
 `;
 
-// 작성일
 export const TableMenuDate = styled.div`
   display: flex;
   justify-content: center;

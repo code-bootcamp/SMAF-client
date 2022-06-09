@@ -160,7 +160,7 @@ export default function MyPageUI(props: IMyPageUIProps) {
             </S.InnerWrapper>
           </S.RightWrapper>
         ) : (
-          <PaymentList />
+          <PaymentList isOpen={false} />
         )}
       </S.Wrapper>
     </>

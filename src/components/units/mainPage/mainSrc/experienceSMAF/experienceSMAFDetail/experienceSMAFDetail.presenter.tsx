@@ -4,7 +4,9 @@ import { Draggable } from "react-beautiful-dnd";
 import { ExperienceSMAFDetailHTMLProps } from "./experienceSMAFDetail.types";
 // import { v4 as uuidv4 } from "uuid";
 
-export default function ExperienceSMAFDetailHTML(props: ExperienceSMAFDetailHTMLProps) {
+export default function ExperienceSMAFDetailHTML(
+  props: ExperienceSMAFDetailHTMLProps
+) {
   return (
     <>
       <S.BasicColumn>
@@ -13,7 +15,7 @@ export default function ExperienceSMAFDetailHTML(props: ExperienceSMAFDetailHTML
             {props.categoryName}
             <S.AddCoulumnIcon
               onClick={props.AddPalnCard}
-              src="/detailPage/AddColumn.png"
+              src="/detailPage/addcolumn.png"
             ></S.AddCoulumnIcon>
           </S.AddcolumnBtn>
         </S.Wrapper>

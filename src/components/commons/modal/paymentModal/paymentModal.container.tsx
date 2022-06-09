@@ -1,15 +1,23 @@
 import * as S from "./paymentModal.styles";
 import Head from "next/head";
 import { gql, useMutation, useQuery } from "@apollo/client";
-import { useState } from "react";
+import { LegacyRef, useState } from "react";
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import Alert from "../../../commons/modal/alert/alert";
 import ErrorAlert from "../../../commons/modal/errorModal/alert";
+import { User } from "../../../../commons/types/generated/types";
 
 declare const window: typeof globalThis & {
   IMP: any;
 };
+
+interface IPayment {
+  alertModal: boolean;
+  errorAlertModal: boolean;
+  modalContents: string | undefined;
+  fileRef: LegacyRef<HTMLButtonElement> | undefined;
+}
 
 const CREATE_PAYMENT = gql`
   mutation createPayment($impUid: String!, $amount: Float!) {
@@ -33,7 +41,7 @@ const FETCH_LOGIN_USER = gql`
   }
 `;
 
-export default function PaymentModal(props: any) {
+export default function PaymentModal(props: IPayment) {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const onToggleModal = () => {
@@ -45,14 +53,13 @@ export default function PaymentModal(props: any) {
   const [, setErrorAlertModal] = useState(false);
 
   const [createPayment] = useMutation(CREATE_PAYMENT);
-  const { data } = useQuery(FETCH_LOGIN_USER);
+  const { data } = useQuery<{ fetchLoginUser: User }>(FETCH_LOGIN_USER);
 
   const onClickExitSubmitModal = () => {
     setAlertModal(false);
     setIsOpen(false);
   };
 
-  // 에러 모달
   const onClickExitErrorModal = () => {
     setErrorAlertModal(false);
   };
@@ -65,7 +72,6 @@ export default function PaymentModal(props: any) {
       {
         pg: "html5_inicis",
         pay_method: "card",
-
         name: "이용권 구매하기",
         amount: "200",
         buyer_email: data?.fetchLoginUser.email,
@@ -78,10 +84,8 @@ export default function PaymentModal(props: any) {
           createPayment({
             variables: { impUid: rsp.imp_uid, amount: 200 },
           });
-
           setModalContents("결제에 성공했습니다.");
           setAlertModal(true);
-
           router.push("/project/new");
         } else {
           alert("결제에 실패했습니다! 다시 시도해 주세요.");
@@ -96,7 +100,7 @@ export default function PaymentModal(props: any) {
         ref={props.fileRef}
         style={{ display: "none" }}
       >
-        결제하기!!!
+        결제하기
       </button>
       {props.alertModal && (
         <Alert

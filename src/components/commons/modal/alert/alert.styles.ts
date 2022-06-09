@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 
-// 그림자
 export const ModalWrapper = styled.div`
   min-height: 100%;
   min-width: 100%;
@@ -46,7 +45,6 @@ export const Logo = styled.div`
 `;
 
 export const ModalText = styled.div`
-  /* border: 1px solid red; */
   font-size: 18px;
   font-weight: 400;
   line-height: 26px;
