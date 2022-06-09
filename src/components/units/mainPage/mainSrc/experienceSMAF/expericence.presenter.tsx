@@ -125,7 +125,7 @@ export default function ExperienceSMAFHTML(props: ExperienceSMAFHTMLProps) {
           항목추가
           <S.AddCoulumnIcon
             onClick={props.AddColumn}
-            src="/detailPage/AddColumn.png"
+            src="/detailPage/addcolumn.png"
           ></S.AddCoulumnIcon>
         </S.AddcolumnBtn>
       </DragDropContext>

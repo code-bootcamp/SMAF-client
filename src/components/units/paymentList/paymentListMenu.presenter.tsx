@@ -1,8 +1,10 @@
 import * as S from "./paymentListMenu.styles";
 import PaymentObject from "./paymentList/paymentList.container";
 import Pagination from "../../commons/paginations/01/Pagination";
+import { Payment } from "../../../commons/types/generated/types";
+import { IPaymentList } from "./paymentListMenu.types";
 
-export default function PaymentListUI(props: any) {
+export default function PaymentListUI(props: IPaymentList) {
   return (
     <S.Wrapper>
       <S.RightWrapper>
@@ -16,7 +18,7 @@ export default function PaymentListUI(props: any) {
           </S.PaymentMenuList>
           {props.data?.fetchPayments.length ? (
             <S.PaymentObjectList>
-              {props.data?.fetchPayments.map((el: any, index: number) => (
+              {props.data?.fetchPayments.map((el: Payment, index: number) => (
                 <PaymentObject key={el.paymentId} el={el} index={index} />
               ))}
             </S.PaymentObjectList>

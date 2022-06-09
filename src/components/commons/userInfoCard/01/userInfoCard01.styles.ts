@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   border: none;
   border-radius: 1.5rem;
   background-color: #333333;
-  
+
   @media ${breakPoints.mobile} {
     width: 36rem;
     /* height: 21.2rem; */

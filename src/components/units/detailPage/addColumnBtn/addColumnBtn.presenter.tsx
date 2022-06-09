@@ -49,7 +49,7 @@ export default function AddColumnBtnHTML(props: AddColumnBtnHTMLProps) {
           )}
           <S.AddCoulumnIcon
             onClick={props.onToggleModal}
-            src="/detailPage/AddColumn.png"
+            src="/detailPage/addcolumn.png"
           ></S.AddCoulumnIcon>
         </S.AddColumn>
       </S.Wrapper>
