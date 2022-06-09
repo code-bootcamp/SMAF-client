@@ -1,17 +1,16 @@
 import Dropdown01 from "../../dropdown/03/Dropdown04.container";
 import Image02 from "../../images/01/image02";
 import * as S from "./LayoutHeader.styles";
-
 import { Tooltip } from "antd";
+import { ILayoutHeaderUIProps } from "./LayoutHeader.types";
 
-export default function HeaderUI(props: any) {
-  return (
-    <S.Wrapper>
-      <S.LogoWrapper>
-        <S.Icon src="/image/mainClick.png" onClick={props.onClickMain} />
-        <S.Logo onClick={props.onClickMain}>SMAF</S.Logo>
-      </S.LogoWrapper>
-
+export default function HeaderUI(props: ILayoutHeaderUIProps) {
+    return (
+        <S.Wrapper>
+            <S.LogoWrapper>
+                <S.Icon src="/image/mainClick.png" onClick={props.onClickMain} />
+                <S.Logo onClick={props.onClickMain}>SMAF</S.Logo>
+            </S.LogoWrapper>
       <S.Search placeholder="프로젝트검색"></S.Search>
 
       <S.OptionWrapper>
