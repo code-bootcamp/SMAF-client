@@ -2,10 +2,21 @@ import PaymentListUI from "./paymentListMenu.presenter";
 import { useRouter } from "next/router";
 import { useQuery } from "@apollo/client";
 import { FETCH_PAYMENTS, FETCH_PAYMENTS_COUNT } from "./paymentListMenu.queris";
+import {
+  Query,
+  QueryFetchPaymentsArgs,
+} from "../../../commons/types/generated/types";
 
-export default function PaymentList(props: any) {
+interface IPropsIsOpen {
+  isOpen: boolean;
+}
+
+export default function PaymentList(props: IPropsIsOpen) {
   const router = useRouter();
-  const { data, refetch } = useQuery(FETCH_PAYMENTS, {
+  const { data, refetch } = useQuery<
+    Pick<Query, "fetchPayments">,
+    QueryFetchPaymentsArgs
+  >(FETCH_PAYMENTS, {
     variables: { page: 1 },
   });
   const { data: dataPaymentsCount, refetch: refetchPaymentsCount } =
@@ -20,13 +31,13 @@ export default function PaymentList(props: any) {
 
   return (
     <PaymentListUI
-      onClickMoveToMyPage={onClickMoveToMyPage}
       data={data}
       refetch={refetch}
       dataPaymentsCount={dataPaymentsCount}
       refetchPaymentsCount={refetchPaymentsCount}
       lastPage={lastPage}
       isOpen={props.isOpen}
+      onClickMoveToMyPage={onClickMoveToMyPage}
     />
   );
 }
