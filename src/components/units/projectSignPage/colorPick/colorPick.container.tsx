@@ -1,7 +1,8 @@
 import { useState, ChangeEvent } from "react";
 import * as S from "./colorPick.styles";
+import { IColorPickProps } from "./colorPick.types";
 
-export default function ColorPick(props: any) {
+export default function ColorPick(props: IColorPickProps) {
   const [isSelect, setIsSelect] = useState([
     { key: "0", value: "#FF8B8B", checked: false, index: 0 },
     { key: "1", value: "#FFCA8B", checked: false, index: 1 },

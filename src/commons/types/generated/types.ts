@@ -31,6 +31,9 @@ export type CreateProjectInput = {
     projectIntro: Scalars["String"];
     projectName: Scalars["String"];
     startDate: Scalars["DateTime"];
+    remarks?:Scalars["String"];
+    contents?:Scalars["String"];
+    detailAddress?:Scalars["String"]
 };
 
 export type CreateQuestionBoardInput = {
@@ -279,6 +282,7 @@ export type Project = {
     startDate: Scalars["DateTime"];
     status: Scalars["Boolean"];
     updateAt: Scalars["DateTime"];
+    remarks: Scalars["String"]
 };
 
 export type ProjectAddress = {
@@ -465,6 +469,10 @@ export type UpdateProjectInput = {
     projectName?: InputMaybe<Scalars["String"]>;
     startDate?: InputMaybe<Scalars["DateTime"]>;
     status?: InputMaybe<Scalars["Boolean"]>;
+    remarks?:InputMaybe<Scalars["String"]>;
+    contents?:InputMaybe<Scalars["String"]>;
+    detailAddress?:InputMaybe<Scalars["String"]>;
+    fetchProject?: any;
 };
 
 export type UpdateQuestionBoardInput = {
