@@ -15,7 +15,7 @@ import { useRecoilState } from "recoil";
 import { fromValues, toValues } from "../../../commons/store";
 import { useRouter } from "next/router";
 import { checkValidationImage } from "../../commons/uploads/upload1/Upload01.validation";
-import { Modal } from "antd";
+import { CreateProjectInput, Query, QueryFetchProjectArgs, UpdateProjectInput } from "../../../commons/types/generated/types";
 
 const schema = yup.object({
   projectName: yup.string().required("필수 입력 사항입니다."),
@@ -41,9 +41,9 @@ export default function ProjectSign(props: any) {
   const [createProject] = useMutation(CREATE_PROJECT);
   const [updateProject] = useMutation(UPDATE_PROJECT);
   const [uploadFile] = useMutation(UPLOAD_FILE);
-  const { data } = useQuery(FETCH_PROJECT, {
+  const { data } = useQuery<Pick<Query, "fetchProject">, QueryFetchProjectArgs | undefined>(FETCH_PROJECT, {
     variables: {
-      projectId: router.query.projectId,
+      projectId: String(router.query.projectId),
     },
   });
 
@@ -77,7 +77,7 @@ export default function ProjectSign(props: any) {
   const [toValue] = useRecoilState<string>(toValues);
 
   // 주소 state
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState<string | null>("");
 
   const [submit, setSubmit] = useState();
   const [update, setUpdate] = useState<string | string[] | undefined>();
@@ -137,13 +137,16 @@ export default function ProjectSign(props: any) {
     try {
       const result = await uploadFile({ variables: { file } });
       setUrls(result.data.projectImageUpload);
-    } catch (error: any) {
-      Modal.error({ content: error.message });
+    } catch (error) {
+      let message = "Unknown Error";
+        if (error instanceof Error) message = error.message;
+        setModalContents(message);
+        setErrorAlertModal(true);
     }
   };
 
   // 등록하기
-  const onClickSubmit = async (data: any) => {
+  const onClickSubmit = async (data: CreateProjectInput) => {
     if (data) {
       try {
         const result = await createProject({
@@ -176,7 +179,7 @@ export default function ProjectSign(props: any) {
   };
 
   // 수정하기
-  const onClickUpdate = async (data: any) => {
+  const onClickUpdate = async (data: UpdateProjectInput) => {
     const currentFiles = urls;
     const defaultFiles = data.fetchProject?.projectImageURL;
     const isChangedFiles = currentFiles !== defaultFiles;
@@ -227,7 +230,7 @@ export default function ProjectSign(props: any) {
       setUrls(data?.fetchProject.projectImageURL);
     }
     setValue("projectName", data?.fetchProject?.projectName);
-    setValue("remarks", data?.fetchProject?.remarks);
+    setValue<string>("remarks", data?.fetchProject?.remarks);
     setValue("detailAddress", data?.fetchProject.address.detailAddress);
     setAddress(data?.fetchProject.address.address);
   }, [data]);
@@ -240,7 +243,6 @@ export default function ProjectSign(props: any) {
       handleCancel={handleCancel}
       handleComplete={handleComplete}
       address={address}
-      setAddress={setAddress}
       onChangeContents={onChangeContents}
       onClickSubmit={onClickSubmit}
       register={register}

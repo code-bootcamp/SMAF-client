@@ -1,14 +1,15 @@
 import * as S from "./projectSignPage.styles";
 import DayPick from "../../commons/daypicker/daypicker";
 import KakaoMapPage from "./kakaoMap/kakaomap.container";
-import { Modal } from "antd";
 import DaumPostcode from "react-daum-postcode";
 import ColorPick from "./colorPick/colorPick.container";
 import { useEffect } from "react";
 import Alert from "../../commons/modal/alert/alert";
 import ErrorAlert from "../../commons/modal/errorModal/alert";
+import { IProjectSignPresenterProps } from "./projectSignPage.types";
+import { Modal } from "antd";
 
-export default function ProjectSignPageUI(props: any) {
+export default function ProjectSignPageUI(props: IProjectSignPresenterProps) {
   // react-quill contents 값 넣어주기
   useEffect(() => {
     props.reset({ contents: props.data?.fetchProject.projectDetailIntro });

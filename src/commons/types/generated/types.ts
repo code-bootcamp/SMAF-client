@@ -23,14 +23,17 @@ export type Scalars = {
 };
 
 export type CreateProjectInput = {
-  endDate: Scalars["DateTime"];
-  projectAddress: ProjectAddressInput;
-  projectColor?: InputMaybe<Scalars["String"]>;
-  projectDetailIntro: Scalars["String"];
-  projectImageURL?: InputMaybe<Scalars["String"]>;
-  projectIntro: Scalars["String"];
-  projectName: Scalars["String"];
-  startDate: Scalars["DateTime"];
+    endDate: Scalars["DateTime"];
+    projectAddress: ProjectAddressInput;
+    projectColor?: InputMaybe<Scalars["String"]>;
+    projectDetailIntro: Scalars["String"];
+    projectImageURL?: InputMaybe<Scalars["String"]>;
+    projectIntro: Scalars["String"];
+    projectName: Scalars["String"];
+    startDate: Scalars["DateTime"];
+    remarks?:Scalars["String"];
+    contents?:Scalars["String"];
+    detailAddress?:Scalars["String"]
 };
 
 export type CreateQuestionBoardInput = {
@@ -264,20 +267,21 @@ export type ProcessCategory = {
 };
 
 export type Project = {
-  __typename?: "Project";
-  address: ProjectAddress;
-  createAt: Scalars["DateTime"];
-  deletedAt: Scalars["DateTime"];
-  endDate: Scalars["DateTime"];
-  projectColor: Scalars["String"];
-  projectDetailIntro: Scalars["String"];
-  projectId: Scalars["String"];
-  projectImageURL: Scalars["String"];
-  projectIntro: Scalars["String"];
-  projectName: Scalars["String"];
-  startDate: Scalars["DateTime"];
-  status: Scalars["Boolean"];
-  updateAt: Scalars["DateTime"];
+    __typename?: "Project";
+    address: ProjectAddress;
+    createAt: Scalars["DateTime"];
+    deletedAt: Scalars["DateTime"];
+    endDate: Scalars["DateTime"];
+    projectColor: Scalars["String"];
+    projectDetailIntro: Scalars["String"];
+    projectId: Scalars["String"];
+    projectImageURL: Scalars["String"];
+    projectIntro: Scalars["String"];
+    projectName: Scalars["String"];
+    startDate: Scalars["DateTime"];
+    status: Scalars["Boolean"];
+    updateAt: Scalars["DateTime"];
+    remarks: Scalars["String"]
 };
 
 export type ProjectAddress = {
@@ -455,15 +459,19 @@ export type UpdateProjectFile = {
 };
 
 export type UpdateProjectInput = {
-  endDate?: InputMaybe<Scalars["DateTime"]>;
-  projectAddress?: InputMaybe<ProjectAddressInput>;
-  projectColor?: InputMaybe<Scalars["String"]>;
-  projectDetailIntro?: InputMaybe<Scalars["String"]>;
-  projectImageURL?: InputMaybe<Scalars["String"]>;
-  projectIntro?: InputMaybe<Scalars["String"]>;
-  projectName?: InputMaybe<Scalars["String"]>;
-  startDate?: InputMaybe<Scalars["DateTime"]>;
-  status?: InputMaybe<Scalars["Boolean"]>;
+    endDate?: InputMaybe<Scalars["DateTime"]>;
+    projectAddress?: InputMaybe<ProjectAddressInput>;
+    projectColor?: InputMaybe<Scalars["String"]>;
+    projectDetailIntro?: InputMaybe<Scalars["String"]>;
+    projectImageURL?: InputMaybe<Scalars["String"]>;
+    projectIntro?: InputMaybe<Scalars["String"]>;
+    projectName?: InputMaybe<Scalars["String"]>;
+    startDate?: InputMaybe<Scalars["DateTime"]>;
+    status?: InputMaybe<Scalars["Boolean"]>;
+    remarks?:InputMaybe<Scalars["String"]>;
+    contents?:InputMaybe<Scalars["String"]>;
+    detailAddress?:InputMaybe<Scalars["String"]>;
+    fetchProject?: any;
 };
 
 export type UpdateQuestionBoardInput = {
