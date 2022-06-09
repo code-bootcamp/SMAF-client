@@ -37,7 +37,7 @@ export default function DetailPlanListColumnHTML(
                 />
               )}
               <S.AddCoulumnIcon
-                src="/detailPage/AddColumn.png"
+                src="/detailPage/addcolumn.png"
                 onClick={onToggleModal}
               ></S.AddCoulumnIcon>
             </S.BasicRow>

@@ -39,7 +39,6 @@ export const CouponWrapper = styled.div`
     height: 18px;
   }
   span {
-    /* width: 118px; */
     height: 20px;
     margin-left: 5px;
     font-size: 14px;
