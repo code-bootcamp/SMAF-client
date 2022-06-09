@@ -26,7 +26,7 @@ export interface ISignupUIProps {
     onChangePhone: (event: ChangeEvent<HTMLInputElement>) => void;
     onChangeToken: (event: ChangeEvent<HTMLInputElement>) => void;
     setUrls: any;
-    urls?: string;
+    urls?: String;
     // 모달
     alertModal: boolean;
     errorAlertModal: boolean;
