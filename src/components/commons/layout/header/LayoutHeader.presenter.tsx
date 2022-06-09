@@ -1,10 +1,10 @@
 import Dropdown01 from "../../dropdown/03/Dropdown04.container";
 import Image02 from "../../images/01/image02";
 import * as S from "./LayoutHeader.styles";
-
 import { Tooltip } from "antd";
+import { ILayoutHeaderUIProps } from "./LayoutHeader.types";
 
-export default function HeaderUI(props: any) {
+export default function HeaderUI(props: ILayoutHeaderUIProps) {
     return (
         <S.Wrapper>
             <S.LogoWrapper>
