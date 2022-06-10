@@ -47,10 +47,10 @@ export default function LoginUI(props: ILoginUIProps) {
                         <S.GoogleBtn className="google" type="button" onClick={props.clickMeGoogle}>
                             <S.Logo src="/mainPageImages/google.png" />
                         </S.GoogleBtn>
-                        <S.NaverBtn className="google" type="button" onClick={props.clickMeNaver}>
+                        <S.NaverBtn className="naver" type="button" onClick={props.clickMeNaver}>
                             <S.Logo src="/mainPageImages/naver.png" />
                         </S.NaverBtn>
-                        <S.KakaoBtn className="google" type="button" onClick={props.clickMeKakao}>
+                        <S.KakaoBtn className="kakao" type="button" onClick={props.clickMeKakao}>
                             <S.Logo src="/mainPageImages/kakao.png" />
                         </S.KakaoBtn>
                     </S.Sns>
