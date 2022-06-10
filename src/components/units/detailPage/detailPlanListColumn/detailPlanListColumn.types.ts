@@ -1,10 +1,11 @@
 import {
   ProcessCategory,
   ProjectParticipant,
+  Schedule,
 } from "../../../../commons/types/generated/types";
 export interface IDetailPlanListColumnProps {
   el: ProcessCategory;
-  scheduleArray: string[];
+  scheduleArray: Schedule[];
   dragItemId: string;
   tableIndex: number;
 }
@@ -14,7 +15,7 @@ export interface IDetailPlanListColumnHTMLProps {
   columnData: ProcessCategory;
   dragItemId: string;
   my: any;
-  scheduleArray: string[];
+  scheduleArray: Schedule[];
   errorAlertModal: boolean;
   modalContents: string | undefined;
   onClickErrorModal: () => void;
