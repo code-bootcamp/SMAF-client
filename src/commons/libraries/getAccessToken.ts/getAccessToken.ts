@@ -2,34 +2,21 @@ import { GraphQLClient, gql } from "graphql-request";
 
 const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAccessToken {
-    restoreAccessToken {
-      accessToken
-    }
+    restoreAccessToken
   }
 `;
 
 export async function getAccessToken() {
   try {
     const graphQLClient = new GraphQLClient(
-      "https://backend06.codebootcamp.co.kr/graphql",
-      { credentials: "include" }
+      "https://backend.smaf.shop/graphql",
+      {
+        credentials: "include",
+      }
     );
     const result = await graphQLClient.request(RESTORE_ACCESS_TOKEN);
-    const newAccessToken = result.restoreAccessToken.accessToken;
+    const newAccessToken = result.restoreAccessToken;
 
     return newAccessToken;
-  } catch (error) {
-    console.log((error instanceof Error).message);
-  }
+  } catch (error) {}
 }
-
-// axios로 하는 방법
-// axios.post("http://backend06.codebootcamp.co.kr/graphql",{
-//     query:`
-//     mutation restoreAccessToken {
-//         restoreAccessToken {
-//           accessToken
-//         }
-//       }
-//     `
-// })

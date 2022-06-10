@@ -1,0 +1,11 @@
+schema: https://backend.smaf.shop/graphql
+generates:
+  ./src/commons/types/generated/types.ts:
+    plugins:
+      - typescript
+    # config:
+    #   typesPrefix:
+# yarn add @graphql-codegen/cli
+# yarn add @graphql-codegen/typescript
+# codegne.yaml 파일 생성
+# schema 수정

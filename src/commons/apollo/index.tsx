@@ -5,10 +5,8 @@ import {
   ApolloLink,
 } from "@apollo/client";
 import { useRecoilState } from "recoil";
-
 import { createUploadLink } from "apollo-upload-client";
 import { ReactNode, useEffect } from "react";
-
 import { getAccessToken } from "../libraries/getAccessToken.ts/getAccessToken";
 import { onError } from "@apollo/client/link/error";
 import { accessTokenState } from "../store/index";
@@ -21,11 +19,26 @@ export default function ApolloSetting(props: IAppProps) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   // const [, setUserInfo] = useRecoilState(userInfoState);
 
+  // useEffect(() => {
+  //   const accessToken = Cookies.get("accessToken");
+  //   if (accessToken) {
+  //     setAccessToken(accessToken);
+  //   } else {
+  //     getAccessToken().then((newAccessToken) => {
+  //       if (!newAccessToken) return;
+  //       setAccessToken(newAccessToken);
+  //     });
+  //   }
+  // }, []);
+
+  // 2. restoreToken API 이용한 로그인 방식 (원래 방식)
   useEffect(() => {
     getAccessToken().then((newAccessToken) => {
       setAccessToken(newAccessToken);
     });
   }, []);
+
+  // api 요청을 할때 누군지 증명할거를 갖고만 있었던 상황이였고 이걸 제출함으로써 나를 증명
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {
     if (graphQLErrors) {
@@ -51,15 +64,16 @@ export default function ApolloSetting(props: IAppProps) {
       }
     }
   });
-
   const uploadLink = createUploadLink({
-    uri: "https://backend06.codebootcamp.co.kr/graphql",
-    headers: { Authorization: `Bearer ${accessToken}` },
+    uri: "https://backend.smaf.shop/graphql",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
     credentials: "include",
   });
   const client = new ApolloClient({
     link: ApolloLink.from([errorLink, uploadLink]),
-    cache: new InMemoryCache(), // 백엔드 컴퓨터 주소
+    cache: new InMemoryCache(),
   });
   return (
     <>
