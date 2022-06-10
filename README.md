@@ -9,6 +9,8 @@
 
 직관적인 UI 를 통하여 쉽게 사용이 가능한 장점을 가진 일정 관리 Flatform 입니다.
 
+notion : https://www.notion.so/dingco/5-6c65f237620d45ff86a9b8fd5388f2ce
+
 
 ## 팀원소개
 
