@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { indexNum } from "../../../../commons/store";
 import { ApolloQueryResult } from "@apollo/client";
-import { Payment } from "../../../../commons/types/generated/types";
+import { QuestionBoard } from "../../../../commons/types/generated/types";
 
 interface IPropsPagination {
   refetch: (
@@ -14,11 +14,9 @@ interface IPropsPagination {
       | undefined
   ) => Promise<ApolloQueryResult<any>>;
   lastPage: number;
-  data:
-    | {
-        fetchPayments: Payment[];
-      }
-    | undefined;
+  data?: {
+    fetchQuestionBoards: QuestionBoard[];
+  };
 }
 
 export default function Pagination(props: IPropsPagination) {

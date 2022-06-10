@@ -1,10 +1,9 @@
 import * as S from "./alert.styles";
 import { Modal } from "antd";
 import { useState } from "react";
-import { Scalars } from "../../../../commons/types/generated/types";
 
 interface IPropsErrorAlert {
-  contents: Scalars["String"];
+  contents?: string;
   onClickExit: () => void;
 }
 
